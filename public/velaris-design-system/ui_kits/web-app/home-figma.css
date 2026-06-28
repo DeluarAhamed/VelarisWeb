@@ -301,8 +301,8 @@ header.nav.solid{box-shadow:0 10px 30px -18px rgba(2,16,31,.28)}
 .stack-card.dark .sc-read{color:var(--teal-bright)}
 .sc-read svg{width:16px;height:16px;transition:transform .2s}
 .stack-card:hover .sc-read svg{transform:translateX(4px)}
-.sc-visual{position:relative;overflow:hidden;background:linear-gradient(150deg,#0a2236,#02101f);display:flex}
-.sc-visual img{width:100%;height:100%;object-fit:cover;object-position:center}
+.sc-visual{position:relative;overflow:hidden;background:linear-gradient(150deg,#0a2236,#02101f);display:flex;align-items:center;justify-content:center;padding:18px}
+.sc-visual img{width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;border-radius:12px;box-shadow:0 26px 60px -42px rgba(0,0,0,.65)}
 
 /* more cases grid */
 .more-cases{padding:8px 0 0}

@@ -1,3 +1,5 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
 /* ============================================================================
    VELARIS WEB — sub-page styles (services, service detail, case detail,
    blog listing, blog detail, about, pricing). Loaded alongside home-figma.css.
@@ -195,7 +197,7 @@
 .wl-item:hover{transform:translateY(-4px);box-shadow:0 44px 90px -46px rgba(2,16,31,.5)}
 .wl-item.rev .wl-visual{order:2}
 .wl-visual{background:linear-gradient(150deg,#0a2236,#02101f);overflow:hidden;align-self:stretch;min-height:340px;display:flex}
-.wl-visual img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.wl-visual img{width:100%;height:100%;object-fit:contain;object-position:center center;background:#fff;border-radius:12px;box-shadow:0 22px 52px -36px rgba(2,16,31,.58)}
 .wl-text{padding:44px 42px}
 .wl-n{font-family:var(--font-mono);font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--teal)}
 .wl-logo{height:30px;width:auto;margin:16px 0 0;display:block}
@@ -212,17 +214,19 @@
 .wl-read{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-size:14.5px;font-weight:600;color:var(--teal)}
 .wl-read svg{width:16px;height:16px;transition:transform .2s}
 .wl-item:hover .wl-read svg{transform:translateX(4px)}
+
 /* ---- CASE DETAIL (editorial, sticky-left) ---- */
 #caseDetail{--case-font-ui:var(--font-ui);--case-font-display:var(--font-display);font-family:var(--case-font-ui)}
 #caseDetail .cs-title,#caseDetail .cs-h2,#caseDetail .ct-big,#caseDetail .ct-info b,#caseDetail .case-quote p{font-family:var(--case-font-display)}
-#caseDetail.case-hazelwood .serif,#caseDetail.case-navasana .serif,#caseDetail.case-core .serif,#caseDetail.case-bellavista .serif{font-family:var(--case-font-display);font-style:normal}
+#caseDetail.case-hazelwood .serif,#caseDetail.case-navasana .serif,#caseDetail.case-core .serif,#caseDetail.case-bellavista .serif,#caseDetail.case-coastal .serif{font-family:var(--case-font-display);font-style:normal}
 #caseDetail.case-bellavista{--case-font-ui:"PP Neue Montreal",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--case-font-display:"PP Neue Montreal",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--teal:#D2B15F;--teal-deep:#B4913E;--teal-bright:#E4C97C;--cream:#F5F1E6}
+#caseDetail.case-coastal{--case-font-ui:"General Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--case-font-display:"General Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--teal:#F4A01D;--teal-deep:#CC7E10;--teal-bright:#53B6C8;--cream:#F7F3EA}
 .cs-hero{padding:50px 0 40px}
 .cs-eyebrow{font-family:var(--font-mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--teal);text-transform:uppercase}
 .cs-title{font-size:54px;letter-spacing:-.03em;line-height:1.06;max-width:1000px;text-wrap:balance;margin:14px 0 0}
 .cs-introlead{font-size:20px;color:var(--ink-2);line-height:1.55;max-width:720px;margin:20px 0 0}
-.cs-hero-visual{border-radius:18px;overflow:hidden;aspect-ratio:16/8.5;box-shadow:0 50px 100px -50px rgba(2,16,31,.6);display:flex;margin-top:40px}
-.cs-hero-visual img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.cs-hero-visual{border-radius:18px;overflow:hidden;aspect-ratio:16/9.5;box-shadow:0 50px 100px -50px rgba(2,16,31,.6);display:flex;align-items:center;justify-content:center;margin-top:40px;padding:18px;background:linear-gradient(150deg,var(--cream),#fff)}
+.cs-hero-visual img{width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:12px;box-shadow:0 28px 70px -46px rgba(2,16,31,.7)}
 
 .cs-layout-sec{padding:40px 0 80px}
 .cs-layout{display:grid;grid-template-columns:330px 1fr;gap:60px;align-items:start}
@@ -253,15 +257,15 @@
 .cs-mblock p:not(.cs-lead){font-size:17px;color:var(--ink-2);line-height:1.68;margin:16px 0 0}
 
 .cs-gallery3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
-.g3{border-radius:14px;overflow:hidden;aspect-ratio:3/4;display:flex;padding:16px}
-.g3 img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:8px;box-shadow:0 20px 40px -24px rgba(2,16,31,.5)}
+.g3{border-radius:14px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;padding:16px}
+.g3 img{width:100%;height:100%;object-fit:contain;object-position:center center;border-radius:8px;box-shadow:0 20px 40px -24px rgba(2,16,31,.5);background:#fff}
 
 .cs-showcase{margin-top:40px;border-radius:18px;overflow:hidden}
 .sh-panel{display:flex;align-items:center;justify-content:center;padding:54px 36px;overflow:hidden}
 .sh-float{border-radius:12px;overflow:hidden;box-shadow:0 50px 90px -44px rgba(2,16,31,.55);max-width:100%}
 .sh-float.lg{width:min(760px,100%);aspect-ratio:16/9.5}
 .sh-float.tab{width:min(460px,90%);aspect-ratio:4/3}
-.sh-float img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.sh-float img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;background:#fff}
 
 .cs-type{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
 .cs-type-card{border:1px solid var(--line);border-radius:16px;padding:26px 28px;display:flex;align-items:center;gap:24px;background:#fff}
@@ -277,8 +281,8 @@
 .sw small{font-family:var(--font-mono);font-size:11.5px;color:var(--ink-3)}
 
 .cs-detail-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:28px}
-.dt-tall{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -44px rgba(2,16,31,.4);max-height:600px}
-.dt-tall img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.dt-tall{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -44px rgba(2,16,31,.4);max-height:720px;background:#fff;display:flex;align-items:flex-start;justify-content:center}
+.dt-tall img{width:100%;height:100%;object-fit:contain;object-position:top center;display:block;background:#fff}
 .dt-side{display:flex;flex-direction:column;gap:16px}
 .dt-card{flex:1;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:22px}
 .dt-card img{width:100%;border-radius:8px;box-shadow:0 24px 44px -26px rgba(2,16,31,.5)}

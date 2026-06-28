@@ -20,11 +20,58 @@
     "Branding":["photo-1626785774573-4b799315345d","photo-1600267185393-e158a98703de","photo-1516321318423-f06f85e504b3","photo-1523726491678-bf852e717f6a","photo-1512295767273-ac109ac3acfa"],
     "Analytics":["photo-1551288049-bebda4e38f71","photo-1460925895917-afdab827c52f","photo-1554224154-26032ffc0d07","photo-1542744095-fcf48d80b0fd","photo-1454165804606-c3d57bc86b40"]
   };
-  function pickImg(p){ var pool=PIMG[p.cat]||PIMG["Web Design"]; var key=(p.slug||p.title||''); var n=0; for(var i=0;i<key.length;i++) n=(n+key.charCodeAt(i)*(i+1))%9973; return pool[n%pool.length]; }
-  function grad(p){ return GRADS[p.cat] || 'linear-gradient(135deg,#0a2236,#2F9B95,#02101f)'; }
-  function thumb(p, w){ var id=pickImg(p); var g=grad(p);
-    if(id) return 'background:linear-gradient(180deg,rgba(2,16,31,.12),rgba(2,16,31,.62)),url('+uns(id,w||600)+') center/cover, '+g;
-    return 'background:'+g; }
+  function seedFor(p){ var key=(p.slug||p.title||p.kw||'velaris'); var n=0; for(var i=0;i<key.length;i++) n=(n+key.charCodeAt(i)*(i+11))%99991; return n; }
+  function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function wrapWords(s,max){ var words=String(s||'').split(/\s+/), lines=[], line=''; words.forEach(function(w){ if((line+' '+w).trim().length>max&&line){ lines.push(line); line=w; } else line=(line+' '+w).trim(); }); if(line) lines.push(line); return lines.slice(0,3); }
+  function coverSvg(p){
+    var palettes={
+      "Local SEO":['#0A5D5D','#2F9B95','#7FD3D6','#06111C'],
+      "Web Design":['#1A2940','#6A4CF6','#49C9C0','#07111E'],
+      "Conversion":['#1A2940','#F97316','#A259FF','#07111E'],
+      "Lead Generation":['#07111E','#2F9B95','#D6F7F6','#0F424A'],
+      "Webflow":['#0B1D2A','#2563EB','#7FD3D6','#07111E'],
+      "Framer":['#111111','#4B5563','#F5F5F5','#050505'],
+      "AI Web Development":['#22163F','#7C3AED','#7FD3D6','#0F172A'],
+      "Email Marketing":['#082F49','#0EA5A0','#F4A261','#07111E'],
+      "Branding":['#2D1B4E','#C94B9C','#F4A261','#160A22'],
+      "Analytics":['#0F2027','#2C5364','#7FD3D6','#07111E']
+    };
+    var pal=palettes[p.cat]||['#07111E','#2F9B95','#7FD3D6','#0F424A'];
+    var seed=seedFor(p), angle=115+(seed%50), x=8+(seed%72), y=16+(seed%54), lines=wrapWords(p.title,24), kw=esc(p.kw||p.cat||'SEO strategy');
+    var bars=[0,1,2,3,4].map(function(i){ var h=38+((seed+i*17)%72), bx=654+i*38, by=314-h; return '<rect x="'+bx+'" y="'+by+'" width="22" height="'+h+'" rx="11" fill="'+(i%2?pal[2]:pal[1])+'" opacity="'+(.45+i*.08).toFixed(2)+'"/>'; }).join('');
+    var title=lines.map(function(l,i){ return '<text x="64" y="'+(150+i*54)+'" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="800" fill="#FFFFFF">'+esc(l)+'</text>'; }).join('');
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 506">'+
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="'+pal[0]+'"/><stop offset=".58" stop-color="'+pal[3]+'"/><stop offset="1" stop-color="'+pal[1]+'"/></linearGradient>'+
+      '<radialGradient id="r" cx="'+x+'%" cy="'+y+'%" r="70%"><stop stop-color="'+pal[2]+'" stop-opacity=".55"/><stop offset="1" stop-color="'+pal[2]+'" stop-opacity="0"/></radialGradient></defs>'+
+      '<rect width="900" height="506" fill="url(#g)"/><rect width="900" height="506" fill="url(#r)"/>'+
+      '<path d="M0 392 C170 326 258 474 424 396 S724 282 900 358 L900 506 L0 506 Z" fill="#ffffff" opacity=".08"/>'+
+      '<g opacity=".16" stroke="#fff"><path d="M68 88H832M68 420H832M126 50V456M774 50V456"/></g>'+
+      '<circle cx="'+(690+(seed%80))+'" cy="'+(128+(seed%70))+'" r="'+(70+(seed%38))+'" fill="'+pal[1]+'" opacity=".18"/>'+
+      '<circle cx="'+(728-(seed%70))+'" cy="'+(168+(seed%54))+'" r="'+(42+(seed%28))+'" fill="'+pal[2]+'" opacity=".22"/>'+
+      '<text x="64" y="72" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="3" fill="'+pal[2]+'">'+esc((p.cat||'INSIGHT').toUpperCase())+'</text>'+
+      title+
+      '<g transform="translate(64 362)"><rect width="'+Math.min(480,Math.max(180,kw.length*10+36))+'" height="44" rx="22" fill="#fff" opacity=".12"/><text x="22" y="29" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#fff">'+kw+'</text></g>'+
+      '<g transform="rotate('+angle+' 720 260)">'+bars+'</g>'+
+      '<text x="64" y="466" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#fff" opacity=".72">Velaris Web SEO Playbook</text>'+
+      '</svg>';
+    return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+  }
+  function thumb(p, w){ return "background:linear-gradient(180deg,rgba(2,16,31,.05),rgba(2,16,31,.18)),url('"+coverSvg(p)+"') center/cover no-repeat"; }
+  function seoKeywords(p){
+    var rel={
+      "Local SEO":["local SEO","Google Business Profile","map pack ranking","near me searches","local lead generation","service area SEO"],
+      "Web Design":["website design","conversion web design","responsive website design","service business website","UX design","homepage design"],
+      "Conversion":["conversion rate optimization","website conversion","CTA optimization","landing page optimization","trust signals","lead conversion"],
+      "Lead Generation":["lead generation","qualified leads","lead magnet","sales funnel","website enquiries","booked calls"],
+      "Webflow":["Webflow development","Webflow CMS","Webflow SEO","no-code website","CMS website","Webflow agency"],
+      "Framer":["Framer development","Framer website","animated landing page","Framer CMS","fast launch website","interactive web design"],
+      "AI Web Development":["AI web development","AI website","automation","Claude AI development","AI workflow","custom web app"],
+      "Email Marketing":["email marketing","cold email","email automation","lead nurturing","outreach campaign","B2B email"],
+      "Branding":["brand identity","logo design","brand system","visual identity","brand guidelines","brand strategy"],
+      "Analytics":["website analytics","Google Search Console","conversion tracking","GA4","SEO reporting","performance dashboard"]
+    };
+    return [p.kw,p.title,p.cat].concat(rel[p.cat]||[]).filter(Boolean).join(', ');
+  }
   function svcIcon(s){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+(IC[s.icon]||'')+'</svg>'; }
 
   /* ===== SERVICES LISTING ===== */
@@ -372,6 +419,9 @@
     var P=window.VELARIS_POSTS, pi=Math.max(0,P.map(function(x){return x.slug;}).indexOf(qs('slug'))), post=P[pi];
     document.title=post.title+' — Velaris Web';
     var md3=document.querySelector('meta[name="description"]'); if(md3) md3.setAttribute('content',post.excerpt);
+    var mk=document.querySelector('meta[name="keywords"]');
+    if(!mk){ mk=document.createElement('meta'); mk.setAttribute('name','keywords'); document.head.appendChild(mk); }
+    mk.setAttribute('content',seoKeywords(post));
     pd.querySelector('[data-crumb]').textContent=post.cat;
     pd.querySelector('[data-cat]').textContent=post.cat;
     pd.querySelector('[data-date]').textContent=post.date;

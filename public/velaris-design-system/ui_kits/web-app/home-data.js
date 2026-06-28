@@ -133,7 +133,7 @@ window.VELARIS_CASES = [
     slug:"bellavista", n:"04", client:"Bellavista Investments", sector:"B2B · Private Equity",
     logo:"home-img/logo-bellavistra.png", logoInvert:false, dark:false, featured:false,
     projectClient:"Junior Aguaze", timeline:"3 weeks",
-    fonts:{uiStack:"\"PP Neue Montreal\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif", displayStack:"\"PP Neue Montreal\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif"},
+    fonts:{ui:"PP Neue Montreal", display:"PP Neue Montreal", uiStack:"\"PP Neue Montreal\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif", displayStack:"\"PP Neue Montreal\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif"},
     title:["An ","institutional-grade"," presence for a capital firm"],
     headline:"An Institutional-Grade Website for a Capital Firm",
     summary:"A disciplined, credible digital presence that finally matches the calibre of Bellavista's deals and investor relationships.",
@@ -157,6 +157,8 @@ window.VELARIS_CASES = [
   {
     slug:"coastal", n:"05", client:"Coastal Crest Lettings", sector:"B2C · Property",
     logo:"home-img/logo-coastal.png", logoInvert:false, dark:false, featured:false,
+    fonts:{ui:"General Sans", display:"General Sans", uiStack:"\"General Sans\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif", displayStack:"\"General Sans\",system-ui,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif"},
+    palette:["#2D3F69","#F4A01D","#53B6C8","#F7F3EA"],
     title:["A fresh, trustworthy site for a ","lettings"," business"],
     headline:"A Fresh, Trustworthy Website for a Lettings Business",
     summary:"A clean, modern lettings website built exactly to brief — patient collaboration, fresh ideas and a finish the client was thrilled with.",
