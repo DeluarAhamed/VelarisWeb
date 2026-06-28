@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+body{margin:0;background:#3a3a3a;display:flex;gap:20px;padding:20px;font-family:sans-serif;flex-wrap:wrap}
+.phone{width:390px;height:844px;background:#fff;border-radius:0;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.phone iframe{width:390px;height:844px;border:0}
+.label{color:#fff;font-size:12px;margin-bottom:6px}
+.col{display:flex;flex-direction:column}
+</style></head><body>
+<div class="col"><div class="label">about.html @ 390px</div><div class="phone"><iframe src="../ui_kits/web-app/about.html"></iframe></div></div>
+<div class="col"><div class="label">about.html @ 390px (menu open)</div><div class="phone"><iframe id="f2" src="../ui_kits/web-app/about.html"></iframe></div></div>
+<script>
+setTimeout(function(){try{document.getElementById('f2').contentDocument.getElementById('burger').click();}catch(e){}},1500);
+</script>
+</body></html>

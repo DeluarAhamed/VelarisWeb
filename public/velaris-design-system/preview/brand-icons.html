@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Icon set" subtitle="Ant Outlined icons, currentColor" viewport="700x245" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background:#fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 20px 24px; }
+  .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px 8px; }
+  .i { display:flex; align-items:center; justify-content:center; }
+  .i .vi { width: 22px; height: 22px; display:inline-block; color: var(--text-secondary); }
+  .note { margin-top: 16px; font-size: 11.5px; color: var(--text-tertiary); }
+  .note b { color: var(--text-secondary); }
+  code { font-family: var(--font-mono); font-size: 11px; background: var(--fill-tertiary); border:1px solid var(--border-secondary); border-radius:4px; padding:1px 5px; color: var(--teal-8); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid" id="g"></div>
+  <div class="note"><b>Ant Design Icons — Outlined.</b> Single-weight line icons, <code>fill: currentColor</code> · ~50 curated in <b>assets/icons/</b>.</div>
+</div>
+<script>window.ICON_BASE='../assets/icons';</script>
+<script>
+  var names = ['search','user','bell','setting','home','mail','plus','close','check','down','up','left','right','menu','ellipsis','edit','delete','eye','calendar','clock','filter','download','upload','star','heart','message','team','dashboard','appstore','file-text','folder','lock','logout','info-circle','check-circle','close-circle','question-circle','arrow-right','link','global','shopping-cart','rocket','thunderbolt','cloud','bar-chart','pie-chart','line-chart','bulb','api','safety','sync','database'];
+  document.getElementById('g').innerHTML = names.map(function(n){return '<div class="i"><span class="vi" data-icon="'+n+'"></span></div>';}).join('');
+</script>
+<script src="../assets/icons.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!-- @dsCard group="UI Kit — Web App" name="Home page (marketing)" subtitle="Velaris Web landing — hero, features, analytics, CTA" viewport="1280x900" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velaris Web | Lead Generation Websites</title>
+<meta name="description" content="Velaris Web helps B2B and B2C founders turn websites into clearer, higher-converting lead generation systems.">
+<link rel="canonical" href="https://www.velarisweb.com/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Velaris Web | Lead Generation Websites">
+<meta property="og:description" content="Velaris Web helps B2B and B2C founders turn websites into clearer, higher-converting lead generation systems.">
+<meta property="og:image" content="https://www.velarisweb.com/assets/velaris-main-logo.webp">
+<meta property="og:site_name" content="Velaris Web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Velaris Web | Lead Generation Websites">
+<meta name="twitter:description" content="Velaris Web helps B2B and B2C founders turn websites into clearer, higher-converting lead generation systems.">
+<meta name="twitter:image" content="https://www.velarisweb.com/assets/velaris-main-logo.webp">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="kit.css">
+<script>window.ICON_BASE = '../../assets/icons';</script>
+<style>
+  html, body { height: auto; }
+  body { background: #fff; color: var(--text-primary); }
+  .vicon svg { width: 100%; height: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-6); }
+
+  /* ---- Nav ---- */
+  header.nav { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-secondary); }
+  .nav-inner { display: flex; align-items: center; gap: 36px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand img { width: 32px; height: 32px; border-radius: 9px; display: block; }
+  .brand span { font-family: var(--font-display); font-weight: 700; font-size: 21px; letter-spacing: .01em; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 14.5px; color: var(--text-secondary); font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .ln { font-size: 14.5px; font-weight: 500; color: var(--text-secondary); }
+  .ln:hover { color: var(--text-primary); }
+
+  /* ---- Hero ---- */
+  .hero { position: relative; overflow: hidden; padding: 78px 0 88px; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .hero-bg .g1 { position: absolute; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(52,151,156,.16), transparent 65%); top: -240px; right: -160px; }
+  .hero-bg .g2 { position: absolute; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(26,41,64,.10), transparent 65%); top: 40px; left: -220px; }
+  .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border-secondary) 1px, transparent 1px), linear-gradient(90deg, var(--border-secondary) 1px, transparent 1px); background-size: 46px 46px; mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%); opacity: .5; }
+  .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 880px; margin: 0 auto; }
+  .pill-badge { display: inline-flex; align-items: center; gap: 9px; height: 32px; padding: 0 8px 0 6px; border-radius: 999px; background: #fff; border: 1px solid var(--border-secondary); box-shadow: var(--shadow-tertiary); font-size: 13px; color: var(--text-secondary); margin-bottom: 26px; }
+  .pill-badge .tagx { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 9px; border-radius: 999px; background: var(--teal-1); color: var(--teal-7); font-weight: 600; font-size: 12px; }
+  h1.hero-title { font-family: var(--font-display); font-weight: 700; font-size: 70px; line-height: 1.04; letter-spacing: -.015em; margin: 0; }
+  h1.hero-title em { font-style: italic; color: var(--teal-6); }
+  .hero-sub { font-size: 19px; line-height: 1.6; color: var(--text-secondary); max-width: 620px; margin: 24px auto 0; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; margin-top: 34px; }
+  .btn-xl { height: 50px; padding: 0 26px; font-size: 16px; border-radius: 8px; }
+  .btn-primary.btn-xl { box-shadow: var(--shadow-primary); }
+  .hero-note { margin-top: 18px; font-size: 13.5px; color: var(--text-tertiary); display: flex; gap: 18px; justify-content: center; }
+  .hero-note span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-note .vicon { color: var(--color-success); }
+
+  /* ---- Browser preview ---- */
+  .preview { position: relative; z-index: 1; margin: 56px auto 0; max-width: 1060px; }
+  .browser { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-secondary); box-shadow: 0 30px 70px -30px rgba(26,41,64,.4), 0 12px 30px -12px rgba(0,0,0,.18); background: #fff; }
+  .browser-bar { height: 44px; display: flex; align-items: center; gap: 14px; padding: 0 16px; background: var(--gray-2); border-bottom: 1px solid var(--border-secondary); }
+  .dots { display: flex; gap: 7px; }
+  .dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .url { flex: 1; max-width: 360px; margin: 0 auto; height: 26px; border-radius: 999px; background: #fff; border: 1px solid var(--border-secondary); display: flex; align-items: center; justify-content: center; gap: 7px; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+  .url .vicon { color: var(--color-success); }
+
+  /* mini dashboard inside preview */
+  .mini { display: grid; grid-template-columns: 200px 1fr; height: 420px; }
+  .mini-side { background: #fff; border-right: 1px solid var(--border-secondary); padding: 16px 12px; }
+  .mini-brand { display: flex; align-items: center; gap: 8px; padding: 4px 8px 16px; }
+  .mini-brand img { width: 24px; height: 24px; border-radius: 7px; }
+  .mini-brand b { font-family: var(--font-display); font-size: 16px; }
+  .mini-nav { display: flex; flex-direction: column; gap: 3px; }
+  .mini-nav a { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 10px; border-radius: 6px; font-size: 13px; color: var(--text-secondary); }
+  .mini-nav a .vicon { width: 15px; height: 15px; }
+  .mini-nav a.on { background: var(--teal-1); color: var(--teal-7); font-weight: 600; }
+  .mini-main { background: var(--bg-layout); padding: 18px; overflow: hidden; }
+  .mini-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .mini-h h4 { font-size: 16px; font-weight: 600; margin: 0; }
+  .mini-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+  .mini-card { background: #fff; border: 1px solid var(--border-secondary); border-radius: 8px; padding: 13px; }
+  .mini-card .l { font-size: 11.5px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+  .mini-card .l .vicon { width: 13px; height: 13px; color: var(--teal-6); }
+  .mini-card .v { font-family: var(--font-mono); font-size: 21px; font-weight: 700; letter-spacing: -.02em; margin-top: 6px; }
+  .mini-card .d { font-size: 11px; color: var(--color-success); font-weight: 600; margin-top: 2px; }
+  .mini-chart { background: #fff; border: 1px solid var(--border-secondary); border-radius: 8px; padding: 14px 16px; }
+  .mini-chart .ct { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .bars { display: flex; align-items: flex-end; gap: 10px; height: 96px; }
+  .bars > div { flex: 1; border-radius: 4px 4px 0 0; background: var(--teal-2); }
+  .bars > div.hi { background: var(--brand-gradient); }
+
+  /* ---- Trust strip ---- */
+  .trust { padding: 40px 0 8px; }
+  .trust p { text-align: center; font-size: 13px; color: var(--text-tertiary); font-weight: 500; letter-spacing: .03em; margin: 0 0 22px; }
+  .trust-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; opacity: .72; }
+  .trust-logo { display: flex; align-items: center; gap: 9px; color: var(--text-secondary); font-weight: 700; font-size: 18px; letter-spacing: -.01em; }
+  .trust-logo .vicon { width: 22px; height: 22px; color: var(--brand-navy); }
+
+  /* ---- Section ---- */
+  section.block { padding: 96px 0; }
+  .sec-head { max-width: 680px; margin: 0 auto 56px; text-align: center; }
+  .sec-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 46px; line-height: 1.1; letter-spacing: -.01em; margin: 14px 0 0; }
+  .sec-head p { font-size: 17px; line-height: 1.6; color: var(--text-secondary); margin: 16px 0 0; }
+
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feat { background: #fff; border: 1px solid var(--border-secondary); border-radius: 14px; padding: 28px; transition: box-shadow .2s, transform .2s, border-color .2s; }
+  .feat:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: transparent; }
+  .feat-ico { width: 46px; height: 46px; border-radius: 12px; background: var(--teal-1); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .feat-ico .vicon { width: 23px; height: 23px; color: var(--teal-7); }
+  .feat h3 { font-size: 19px; font-weight: 600; margin: 0 0 8px; }
+  .feat p { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+  .feat .more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; color: var(--teal-6); font-weight: 600; font-size: 14px; }
+  .feat .more .vicon { width: 13px; height: 13px; }
+
+  /* split feature */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .split.alt { background: var(--gray-2); }
+  .split-copy h2 { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.12; letter-spacing: -.01em; margin: 14px 0 0; }
+  .split-copy p { font-size: 16.5px; line-height: 1.65; color: var(--text-secondary); margin: 16px 0 0; }
+  .check-list { margin: 24px 0 0; display: flex; flex-direction: column; gap: 13px; }
+  .check-list li { display: flex; gap: 11px; align-items: flex-start; list-style: none; font-size: 15px; color: var(--text-primary); }
+  .check-list .vicon { width: 20px; height: 20px; flex: none; color: var(--teal-6); margin-top: 1px; }
+  ul.check-list { padding: 0; }
+
+  .code-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border-secondary); box-shadow: var(--shadow); background: var(--brand-navy); }
+  .code-bar { height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .code-bar i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .code-bar span { margin-left: 8px; font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,.5); }
+  .code-body { padding: 22px 24px; font-family: var(--font-mono); font-size: 13.5px; line-height: 2.0; color: #C5E8E9; }
+  .code-body .c { color: rgba(255,255,255,.4); }
+  .code-body .p { color: #fff; }
+  .code-body .ok { color: #6AC1C4; }
+
+  .analytics-shot { border-radius: 14px; border: 1px solid var(--border-secondary); box-shadow: var(--shadow); background: #fff; padding: 22px; }
+  .as-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .as-h b { font-size: 15px; }
+  .seg2 { display: inline-flex; background: var(--fill-tertiary); border-radius: 6px; padding: 3px; }
+  .seg2 span { font-size: 12px; padding: 4px 12px; border-radius: 4px; color: var(--text-secondary); }
+  .seg2 span.on { background: #fff; box-shadow: var(--shadow-tertiary); color: var(--text-primary); font-weight: 500; }
+  .as-bars { display: flex; align-items: flex-end; gap: 14px; height: 150px; }
+  .as-bars > div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end; }
+  .as-bars .bar { width: 100%; max-width: 40px; border-radius: 5px 5px 0 0; background: var(--teal-2); }
+  .as-bars .bar.hi { background: var(--brand-gradient); }
+  .as-bars small { font-size: 11px; color: var(--text-tertiary); }
+
+  /* ---- Metrics band ---- */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  .metrics .m .v { font-family: var(--font-mono); font-size: 44px; font-weight: 700; letter-spacing: -.03em; }
+  .metrics .m .l { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+
+  /* ---- CTA ---- */
+  .cta { position: relative; overflow: hidden; border-radius: 22px; background: var(--brand-gradient); color: #fff; padding: 72px 56px; text-align: center; }
+  .cta .glow { position: absolute; border-radius: 50%; filter: blur(70px); }
+  .cta h2 { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1.1; margin: 0; position: relative; }
+  .cta p { font-size: 18px; color: rgba(255,255,255,.85); max-width: 540px; margin: 18px auto 0; position: relative; }
+  .cta-actions { display: flex; gap: 14px; justify-content: center; margin-top: 32px; position: relative; }
+  .btn-white { background: #fff; color: var(--teal-8); }
+  .btn-white:hover { background: rgba(255,255,255,.9); }
+
+  /* ---- Footer ---- */
+  footer.site { border-top: 1px solid var(--border-secondary); padding: 56px 0 32px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+  .foot-brand img { width: 30px; height: 30px; border-radius: 8px; }
+  .foot-brand p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin: 14px 0 0; max-width: 260px; }
+  .foot-col h5 { font-size: 13px; font-weight: 600; color: var(--text-primary); margin: 0 0 14px; }
+  .foot-col a { display: block; font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; }
+  .foot-col a:hover { color: var(--teal-6); }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border-secondary); font-size: 13px; color: var(--text-tertiary); }
+  .foot-social { display: flex; gap: 14px; }
+  .foot-social a { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border-secondary); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); }
+  .foot-social a:hover { color: var(--teal-6); border-color: var(--teal-6); }
+  .foot-social .vicon { width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#"><img src="../../assets/velaris-app-icon.jpg" alt=""><span>Velaris</span></a>
+    <nav class="nav-links">
+      <a href="#">Product</a>
+      <a href="#">Solutions</a>
+      <a href="#">Docs</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="#">Changelog</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="ln" href="index.html">Sign in</a>
+      <a class="btn btn-primary" href="index.html">Start for free</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid"></div>
+    <div class="g1"></div>
+    <div class="g2"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="pill-badge"><span class="tagx"><span class="vicon" data-icon="thunderbolt" style="width:12px;height:12px"></span>New</span> Edge deploys now live in 14 regions</div>
+    <h1 class="hero-title">Build, ship &amp; <em>scale</em><br>your web presence.</h1>
+    <p class="hero-sub">Velaris is the platform for teams who ship to the web — instant deploys, real-time analytics, and uptime you can trust. From first commit to global traffic, with clarity.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-xl" href="index.html">Start for free</a>
+      <a class="btn btn-default btn-xl" href="#"><span class="vicon" data-icon="global" style="width:16px;height:16px"></span>Book a demo</a>
+    </div>
+    <div class="hero-note">
+      <span><span class="vicon" data-icon="check" style="width:13px;height:13px"></span>No credit card required</span>
+      <span><span class="vicon" data-icon="check" style="width:13px;height:13px"></span>Deploy in under a minute</span>
+      <span><span class="vicon" data-icon="check" style="width:13px;height:13px"></span>Free for hobby projects</span>
+    </div>
+  </div>
+
+  <!-- Browser preview -->
+  <div class="wrap preview">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i></div>
+        <div class="url"><span class="vicon" data-icon="lock" style="width:11px;height:11px"></span>app.velaris.io/dashboard</div>
+        <div style="width:54px"></div>
+      </div>
+      <div class="mini">
+        <div class="mini-side">
+          <div class="mini-brand"><img src="../../assets/velaris-app-icon.jpg" alt=""><b>Velaris</b></div>
+          <div class="mini-nav">
+            <a class="on"><span class="vicon" data-icon="dashboard"></span>Dashboard</a>
+            <a><span class="vicon" data-icon="appstore"></span>Projects</a>
+            <a><span class="vicon" data-icon="bar-chart"></span>Analytics</a>
+            <a><span class="vicon" data-icon="team"></span>Team</a>
+            <a><span class="vicon" data-icon="setting"></span>Settings</a>
+          </div>
+        </div>
+        <div class="mini-main">
+          <div class="mini-h"><h4>Dashboard</h4><span class="tag tag-success" style="height:22px"><span class="dot" style="background:#52C41A"></span>All systems live</span></div>
+          <div class="mini-stats">
+            <div class="mini-card"><div class="l"><span class="vicon" data-icon="global"></span>Visitors</div><div class="v">296k</div><div class="d">▲ 12.4%</div></div>
+            <div class="mini-card"><div class="l"><span class="vicon" data-icon="rocket"></span>Deploys</div><div class="v">184</div><div class="d">▲ 8.1%</div></div>
+            <div class="mini-card"><div class="l"><span class="vicon" data-icon="safety"></span>Uptime</div><div class="v">99.98%</div><div class="d">▲ 0.02%</div></div>
+          </div>
+          <div class="mini-chart">
+            <div class="ct">Traffic — last 7 days</div>
+            <div class="bars">
+              <div style="height:52%"></div><div style="height:40%"></div><div style="height:68%"></div>
+              <div class="hi" style="height:92%"></div><div style="height:74%"></div><div style="height:46%"></div><div style="height:58%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="wrap trust">
+  <p>Trusted by fast-moving teams shipping to the web</p>
+  <div class="trust-row">
+    <div class="trust-logo"><span class="vicon" data-icon="cloud"></span>Northwind</div>
+    <div class="trust-logo"><span class="vicon" data-icon="api"></span>Apex Labs</div>
+    <div class="trust-logo"><span class="vicon" data-icon="thunderbolt"></span>Voltage</div>
+    <div class="trust-logo"><span class="vicon" data-icon="rocket"></span>Liftoff</div>
+    <div class="trust-logo"><span class="vicon" data-icon="global"></span>Meridian</div>
+    <div class="trust-logo"><span class="vicon" data-icon="safety"></span>Bastion</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Everything you ship</div>
+      <h2>One platform, from commit to traffic</h2>
+      <p>Connect a repo and Velaris handles the rest — builds, previews, global delivery, and the insight to know what's working.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-ico"><span class="vicon" data-icon="rocket"></span></div>
+        <h3>Instant deploys</h3>
+        <p>Push to your branch and Velaris builds, previews, and ships to the edge in under a minute. Every commit gets its own URL.</p>
+        <a class="more">Learn more <span class="vicon" data-icon="arrow-right"></span></a>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><span class="vicon" data-icon="bar-chart"></span></div>
+        <h3>Real-time analytics</h3>
+        <p>See visitors, page views, and performance the moment they happen — privacy-first, no extra tags, no sampling.</p>
+        <a class="more">Learn more <span class="vicon" data-icon="arrow-right"></span></a>
+      </div>
+      <div class="feat">
+        <div class="feat-ico"><span class="vicon" data-icon="safety"></span></div>
+        <h3>Uptime you can trust</h3>
+        <p>99.98% platform uptime, automatic SSL, and instant rollbacks. Production protection keeps risky deploys behind approval.</p>
+        <a class="more">Learn more <span class="vicon" data-icon="arrow-right"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 1: deploy -->
+<section class="block" style="padding-top:0">
+  <div class="wrap split">
+    <div class="split-copy">
+      <div class="eyebrow">Deploys</div>
+      <h2>Ship on every push, with zero config</h2>
+      <p>Connect GitHub and Velaris detects your framework, builds it, and deploys globally. Preview every pull request before it goes live.</p>
+      <ul class="check-list">
+        <li><span class="vicon" data-icon="check-circle"></span>Framework presets for Next.js, Astro, SvelteKit, Vue &amp; more</li>
+        <li><span class="vicon" data-icon="check-circle"></span>Immutable deploys with one-click rollback</li>
+        <li><span class="vicon" data-icon="check-circle"></span>Automatic SSL and custom domains in seconds</li>
+      </ul>
+    </div>
+    <div class="code-card">
+      <div class="code-bar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>velaris deploy</span></div>
+      <div class="code-body">
+<span class="c"># push to main</span><br>
+<span class="p">$ git push origin main</span><br>
+<span class="c">→ Building velaris-marketing (Next.js)</span><br>
+<span class="c">→ Uploading to 14 edge regions</span><br>
+<span class="ok">✓ Deployed in 38s</span><br>
+<span class="ok">✓ https://velaris.io is live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 2: analytics -->
+<section class="block split alt" style="border-radius:0">
+  <div class="wrap split">
+    <div class="analytics-shot">
+      <div class="as-h"><b>Traffic overview</b><div class="seg2"><span class="on">Week</span><span>Month</span><span>Year</span></div></div>
+      <div class="as-bars">
+        <div><div class="bar" style="height:56%"></div><small>Mon</small></div>
+        <div><div class="bar" style="height:44%"></div><small>Tue</small></div>
+        <div><div class="bar" style="height:70%"></div><small>Wed</small></div>
+        <div><div class="bar hi" style="height:96%"></div><small>Thu</small></div>
+        <div><div class="bar" style="height:80%"></div><small>Fri</small></div>
+        <div><div class="bar" style="height:38%"></div><small>Sat</small></div>
+        <div><div class="bar" style="height:52%"></div><small>Sun</small></div>
+      </div>
+    </div>
+    <div class="split-copy">
+      <div class="eyebrow">Analytics</div>
+      <h2>Know what's working, the moment it happens</h2>
+      <p>Real-time, privacy-first analytics built in. No third-party scripts, no cookie banners — just a clear view of your traffic, pages, and performance.</p>
+      <ul class="check-list">
+        <li><span class="vicon" data-icon="check-circle"></span>Live visitor and page-view streams</li>
+        <li><span class="vicon" data-icon="check-circle"></span>Core Web Vitals tracked per deploy</li>
+        <li><span class="vicon" data-icon="check-circle"></span>Country, referrer &amp; top-page breakdowns</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="block">
+  <div class="wrap metrics">
+    <div class="m"><div class="v" style="color:var(--teal-6)">99.98%</div><div class="l">Platform uptime</div></div>
+    <div class="m"><div class="v" style="color:var(--teal-6)">42s</div><div class="l">Average build time</div></div>
+    <div class="m"><div class="v" style="color:var(--teal-6)">14</div><div class="l">Edge regions</div></div>
+    <div class="m"><div class="v" style="color:var(--teal-6)">12k+</div><div class="l">Teams shipping</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <div class="glow" style="width:340px;height:340px;background:rgba(120,220,225,.3);top:-120px;right:-60px"></div>
+      <div class="glow" style="width:300px;height:300px;background:rgba(26,41,64,.45);bottom:-120px;left:-40px"></div>
+      <h2>Ship your next idea with clarity</h2>
+      <p>Start free, invite your team, and deploy to the edge in minutes. No credit card required.</p>
+      <div class="cta-actions">
+        <a class="btn btn-white btn-xl" href="index.html">Start for free</a>
+        <a class="btn btn-ghost-on-dark btn-xl" href="#">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#"><img src="../../assets/velaris-app-icon.jpg" alt=""><span style="font-family:var(--font-display);font-weight:700;font-size:21px">Velaris</span></a>
+        <p>The platform for teams who ship to the web. Build, deploy, and scale your web presence with clarity.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="#">Deploys</a><a href="#">Analytics</a><a href="#">Domains</a><a href="#">Edge network</a><a href="pricing.html">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h5>Developers</h5>
+        <a href="#">Documentation</a><a href="#">API reference</a><a href="#">Guides</a><a href="#">Changelog</a><a href="#">Status</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a><a href="#">Contact</a><a href="#">Security</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Velaris Web. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="#"><span class="vicon" data-icon="global"></span></a>
+        <a href="#"><span class="vicon" data-icon="message"></span></a>
+        <a href="#"><span class="vicon" data-icon="link"></span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/icons.js"></script>
+</body>
+</html>

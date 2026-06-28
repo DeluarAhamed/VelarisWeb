@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Colors" name="Neutrals" subtitle="Gray scale + alpha-on-white text/fill system" viewport="700x185" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; }
+  h4 { font-size: 12px; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+  .grays { display: flex; gap: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-secondary); }
+  .g { flex: 1; height: 46px; }
+  .g span { display:none; }
+  .alphas { display: flex; gap: 10px; margin-top: 18px; }
+  .acol { flex: 1; }
+  .achip { height: 30px; border-radius: var(--radius-sm); border: 1px solid var(--border-secondary); display:flex; align-items:center; padding: 0 10px; font-size: 11px; color: #fff; margin-bottom: 6px; }
+  .lbl { font-size: 10.5px; color: var(--text-tertiary); font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h4>Neutral gray scale — gray/1 → gray/13</h4>
+  <div class="grays">
+    <div class="g" style="background:#FFFFFF"></div>
+    <div class="g" style="background:#FAFAFA"></div>
+    <div class="g" style="background:#F5F5F5"></div>
+    <div class="g" style="background:#F0F0F0"></div>
+    <div class="g" style="background:#D9D9D9"></div>
+    <div class="g" style="background:#BFBFBF"></div>
+    <div class="g" style="background:#8C8C8C"></div>
+    <div class="g" style="background:#595959"></div>
+    <div class="g" style="background:#434343"></div>
+    <div class="g" style="background:#262626"></div>
+    <div class="g" style="background:#1F1F1F"></div>
+    <div class="g" style="background:#141414"></div>
+    <div class="g" style="background:#000000"></div>
+  </div>
+  <div class="alphas">
+    <div class="acol">
+      <div class="achip" style="background:rgba(0,0,0,0.88)">Text primary</div>
+      <div class="lbl">rgba(0,0,0,.88)</div>
+    </div>
+    <div class="acol">
+      <div class="achip" style="background:rgba(0,0,0,0.65)">Text secondary</div>
+      <div class="lbl">rgba(0,0,0,.65)</div>
+    </div>
+    <div class="acol">
+      <div class="achip" style="background:rgba(0,0,0,0.45)">Text tertiary</div>
+      <div class="lbl">rgba(0,0,0,.45)</div>
+    </div>
+    <div class="acol">
+      <div class="achip" style="background:rgba(0,0,0,0.25);color:rgba(0,0,0,.55)">Disabled</div>
+      <div class="lbl">rgba(0,0,0,.25)</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

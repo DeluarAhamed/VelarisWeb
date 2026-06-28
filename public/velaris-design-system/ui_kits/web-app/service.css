@@ -1,0 +1,215 @@
+/* ============================================================================
+   VELARIS WEB — SERVICE PAGE (musemind-structured layout, Velaris brand)
+   Loaded after home-figma.css + pages.css on service.html.
+   Reuses kit tokens: --cream --navy --teal --teal-bright --ink --ink-2 --ink-3
+   --line --r --font-display --font-mono.
+   ========================================================================== */
+
+/* ---------- HERO ---------- */
+.svc-hero{position:relative;overflow:hidden;background:#02101f;color:#fff;padding:58px 0 72px;border-bottom:none;
+  background-image:
+    radial-gradient(120% 90% at 100% 0%, rgba(47,155,149,.30), transparent 55%),
+    radial-gradient(80% 70% at 0% 100%, rgba(47,155,149,.12), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 96px),
+    linear-gradient(150deg,#05192b,#02101f)}
+.svc-hero .wrap{position:relative;z-index:2}
+.svc-hero .crumb{color:rgba(255,255,255,.55);margin-bottom:26px}
+.svc-hero .crumb a:hover{color:var(--teal-bright)}
+.svc-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+.svc-hero .eyebrow{color:var(--teal-bright)}
+.svc-hero h1{font-size:54px;letter-spacing:-.03em;line-height:1.02;color:#fff;margin:16px 0 0;text-wrap:balance}
+.svc-hero h1 .serif{color:var(--teal-bright)}
+.svc-hero-intro{font-size:19px;line-height:1.6;color:rgba(255,255,255,.74);margin:22px 0 0;max-width:560px}
+.svc-hero .phero-cta{margin-top:32px}
+.svc-hero-stats{display:flex;gap:38px;margin-top:40px;flex-wrap:wrap}
+.svc-hero-stats .svh b{display:block;font-family:var(--font-mono);font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--teal-bright)}
+.svc-hero-stats .svh small{font-size:12.5px;color:rgba(255,255,255,.6)}
+/* hero visual panel */
+.svc-hero-visual{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:5/4;
+  box-shadow:0 60px 110px -50px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.12)}
+.svc-hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.svc-hero-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(47,155,149,.34),transparent 50%,rgba(2,16,31,.5))}
+.svc-hero-badge{position:absolute;z-index:2;left:18px;bottom:18px;display:flex;align-items:center;gap:11px;
+  padding:11px 16px 11px 12px;border-radius:14px;background:rgba(6,22,38,.72);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.14)}
+.svc-hero-badge .ic{width:38px;height:38px;border-radius:11px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.svc-hero-badge .ic svg{width:20px;height:20px}
+.svc-hero-badge b{display:block;font-size:14px;color:#fff;line-height:1.2}
+.svc-hero-badge small{font-size:11.5px;color:rgba(255,255,255,.6);font-family:var(--font-mono)}
+
+/* ---------- TRUSTED-BY LOGO STRIP ---------- */
+.svc-logos{padding:34px 0;border-bottom:1px solid var(--line);background:#fff}
+.svc-logos-label{display:block;text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:22px}
+.svc-logo-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:42px}
+.svc-logo-row img{height:30px;width:auto;opacity:.62;filter:grayscale(1);transition:opacity .2s,filter .2s}
+.svc-logo-row img:hover{opacity:1;filter:grayscale(0)}
+
+/* ---------- PROCESS ---------- */
+.svc-proc-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
+.svc-proc-head h2{font-size:40px;letter-spacing:-.02em;margin:14px 0 0}
+.svc-proc-head h2 .serif{color:var(--teal)}
+.svc-proc-head .pi{color:var(--ink-2);font-size:18px;line-height:1.6;margin:0 0 22px}
+.proc-steps{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proc-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px 30px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.proc-card:hover{transform:translateY(-4px);box-shadow:0 36px 70px -42px rgba(2,16,31,.32);border-color:rgba(47,155,149,.4)}
+.proc-card .step{font-family:var(--font-mono);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.proc-card h3{font-size:22px;letter-spacing:-.02em;margin:10px 0 0}
+.proc-card>p{font-size:15px;color:var(--ink-2);line-height:1.55;margin:12px 0 20px}
+.proc-points{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:11px 18px}
+.proc-points li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);line-height:1.35}
+.proc-points li svg{width:16px;height:16px;color:var(--teal);flex:none;margin-top:1px}
+
+/* ---------- CAPABILITIES (what's included) ---------- */
+.cap2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.cap2{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative;transition:transform .2s,box-shadow .2s,border-color .2s}
+.cap2:hover{transform:translateY(-4px);box-shadow:0 36px 70px -42px rgba(2,16,31,.3);border-color:rgba(47,155,149,.4)}
+.cap2 .cap-ic{width:46px;height:46px;border-radius:13px;background:var(--cream);color:var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.cap2 .cap-ic svg{width:22px;height:22px}
+.cap2 .cap-n{position:absolute;top:26px;right:28px;font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--ink-3)}
+.cap2 h3{font-size:18px;letter-spacing:-.01em;margin:0 0 8px;line-height:1.3}
+.cap2 p{font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
+
+/* ---------- BENEFITS (why it works) ---------- */
+.ben-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.ben-l{position:sticky;top:104px}
+.ben-l h2{font-size:38px;letter-spacing:-.02em;margin:14px 0 0}
+.ben-l h2 .serif{color:var(--teal)}
+.ben-l>p{color:var(--ink-2);font-size:17px;line-height:1.6;margin:16px 0 26px}
+.ben-visual{margin-top:30px;border-radius:18px;overflow:hidden;aspect-ratio:4/3;position:relative;border:1px solid var(--line)}
+.ben-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.ben-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(47,155,149,.22),transparent 55%)}
+.ben-list{display:flex;flex-direction:column;gap:14px}
+.ben-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;transition:border-color .2s,box-shadow .2s}
+.ben-item:hover{border-color:rgba(47,155,149,.4);box-shadow:0 30px 60px -44px rgba(2,16,31,.28)}
+.ben-item h3{font-size:19px;letter-spacing:-.01em;margin:0}
+.ben-item>p{font-size:14.5px;color:var(--ink-2);line-height:1.55;margin:9px 0 16px}
+.ben-points{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:9px 22px}
+.ben-points li{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2)}
+.ben-points li svg{width:15px;height:15px;color:var(--teal);flex:none}
+
+/* ---------- SUCCESS STORY ---------- */
+.story-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+.story-l .eyebrow{color:var(--teal-bright)}
+.story-quote{font-family:var(--font-display);font-style:italic;font-size:29px;line-height:1.36;color:#fff;margin:18px 0 0;text-wrap:pretty}
+.story-who{display:flex;align-items:center;gap:14px;margin-top:26px}
+.story-who .av{width:48px;height:48px;border-radius:50%;background-size:cover;background-position:center;flex:none;border:1px solid rgba(255,255,255,.2)}
+.story-who b{display:block;color:#fff;font-size:15px}
+.story-who span{font-size:13px;color:rgba(255,255,255,.6)}
+.story-link{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:14.5px;font-weight:600;color:var(--teal-bright)}
+.story-link svg{width:17px;height:17px}
+.story-link:hover{gap:12px}
+.story-stats{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(255,255,255,.14);border-radius:18px;overflow:hidden}
+.story-stats .ss{padding:30px 28px;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+.story-stats .ss:nth-child(2n){border-right:none}
+.story-stats .ss:nth-last-child(-n+2){border-bottom:none}
+.story-stats .ss b{display:block;font-family:var(--font-mono);font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--teal-bright)}
+.story-stats .ss small{font-size:12.5px;color:rgba(255,255,255,.62);line-height:1.35;display:block;margin-top:6px}
+
+/* ---------- INDUSTRIES ---------- */
+.ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ind-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 26px;transition:transform .2s,border-color .2s}
+.ind-card:hover{transform:translateY(-3px);border-color:rgba(47,155,149,.45)}
+.ind-card h3{font-size:17px;letter-spacing:-.01em;margin:0 0 7px}
+.ind-card p{font-size:13.5px;color:var(--ink-2);line-height:1.5;margin:0}
+.ind-card .ind-x{font-family:var(--font-mono);font-size:12px;color:var(--teal);display:block;margin-bottom:14px}
+
+/* ---------- WHY VELARIS ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.why-card{background:#fff;padding:32px 30px;transition:background .2s}
+.why-card:hover{background:var(--cream)}
+.why-card .wic{width:44px;height:44px;border-radius:12px;background:var(--navy);color:var(--teal-bright);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.why-card .wic svg{width:21px;height:21px}
+.why-card h3{font-size:18px;letter-spacing:-.01em;margin:0 0 8px}
+.why-card p{font-size:14px;color:var(--ink-2);line-height:1.55;margin:0}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .svc-hero-grid{grid-template-columns:1fr;gap:38px}
+  .svc-hero h1{font-size:42px}
+  .svc-hero-visual{aspect-ratio:16/10}
+  .svc-proc-head{grid-template-columns:1fr;gap:18px}
+  .proc-steps{grid-template-columns:1fr}
+  .cap2-grid{grid-template-columns:1fr 1fr}
+  .ben-grid{grid-template-columns:1fr;gap:34px}
+  .ben-l{position:static}
+  .story-grid{grid-template-columns:1fr;gap:34px}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .svc-hero h1{font-size:34px}
+  .svc-hero-stats{gap:24px}
+  .proc-points{grid-template-columns:1fr}
+  .cap2-grid{grid-template-columns:1fr}
+  .ind-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .story-stats{grid-template-columns:1fr 1fr}
+}
+
+/* ============================================================================
+   DEPTH & POLISH PASS — layering, glows, gradient tiles, ambient texture
+   ========================================================================== */
+
+/* ---- HERO: halo glow, layered ring, floating live chip ---- */
+.svc-hero-r{position:relative}
+.svc-hero-r::before{content:"";position:absolute;inset:-16% -12% -20% -4%;z-index:0;border-radius:46px;
+  background:radial-gradient(58% 58% at 68% 30%, rgba(73,201,192,.42), transparent 72%);filter:blur(6px);pointer-events:none}
+.svc-hero-visual{z-index:1;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 2px 0 rgba(255,255,255,.06) inset, 0 70px 120px -54px rgba(0,0,0,.8), 0 28px 60px -40px rgba(73,201,192,.42)}
+.svc-hero-visual::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;border:1px solid rgba(255,255,255,.10);pointer-events:none}
+.svc-hero-chip{position:absolute;z-index:3;top:16px;right:16px;display:flex;align-items:center;gap:8px;
+  padding:8px 13px;border-radius:11px;background:rgba(6,22,38,.74);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);font-size:12px;color:#fff;font-weight:500;letter-spacing:.01em}
+.svc-hero-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 4px rgba(73,201,192,.22)}
+
+/* ---- AMBIENT TEXTURE on light sections (scoped to service page) ---- */
+#serviceDetail .section{position:relative}
+#serviceDetail .section.cream{background:
+  radial-gradient(60% 46% at 86% -10%, rgba(47,155,149,.08), transparent 60%), var(--cream)}
+#serviceDetail .section.cream::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background-image:radial-gradient(rgba(2,16,31,.055) 1px, transparent 1px);background-size:22px 22px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent)}
+#serviceDetail .section.cream .wrap{position:relative;z-index:1}
+
+/* ---- PROCESS: depth, watermark numeral, lead-card tint, accent tick ---- */
+.proc-card{position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(2,16,31,.04), 0 22px 46px -36px rgba(2,16,31,.30)}
+.proc-card:first-child{background:linear-gradient(162deg,#ffffff,#eef8f7)}
+.proc-card .bgnum{position:absolute;top:-30px;right:-4px;font-family:var(--font-display);font-weight:800;
+  font-size:158px;line-height:1;color:rgba(47,155,149,.07);z-index:0;pointer-events:none;user-select:none}
+.proc-card>*{position:relative;z-index:1}
+.proc-card .bgnum{z-index:0}
+.proc-card .step{display:inline-flex;align-items:center;gap:8px}
+.proc-card .step::before{content:"";width:20px;height:2px;border-radius:2px;background:var(--teal);display:inline-block}
+
+/* ---- CAPABILITIES: top-accent reveal, gradient icon tile, deeper lift ---- */
+.cap2{overflow:hidden;box-shadow:0 1px 2px rgba(2,16,31,.04), 0 22px 44px -34px rgba(2,16,31,.30)}
+.cap2::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--teal-bright));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.cap2:hover::before{transform:scaleX(1)}
+.cap2:hover{box-shadow:0 42px 84px -44px rgba(2,16,31,.42)}
+.cap2 .cap-ic{background:linear-gradient(150deg,var(--teal),var(--navy));color:#fff;
+  box-shadow:0 14px 26px -12px rgba(47,155,149,.7)}
+
+/* ---- BENEFITS: deeper visual, floating proof card ---- */
+.ben-visual{box-shadow:0 44px 84px -50px rgba(2,16,31,.5)}
+.ben-proof{position:absolute;z-index:3;left:18px;bottom:18px;display:flex;align-items:center;gap:12px;
+  padding:12px 16px;border-radius:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
+  box-shadow:0 22px 44px -24px rgba(2,16,31,.45);border:1px solid rgba(255,255,255,.7)}
+.ben-proof .stars{color:#f5a623;font-size:13px;letter-spacing:2px;line-height:1}
+.ben-proof b{font-size:13.5px;color:var(--ink);display:block;line-height:1.2}
+.ben-proof small{display:block;font-size:11.5px;color:var(--ink-3);margin-top:2px}
+
+/* ---- INDUSTRIES: badge tile + depth ---- */
+.ind-card{box-shadow:0 18px 42px -36px rgba(2,16,31,.30)}
+.ind-card:hover{box-shadow:0 36px 66px -42px rgba(2,16,31,.4)}
+.ind-card .ind-x{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border-radius:10px;background:var(--cream);color:var(--teal);margin-bottom:16px}
+
+/* ---- WHY VELARIS: gradient tiles + group elevation ---- */
+.why-grid{box-shadow:0 34px 78px -50px rgba(2,16,31,.42)}
+.why-card .wic{background:linear-gradient(150deg,var(--teal),var(--navy));color:#fff;
+  box-shadow:0 14px 28px -14px rgba(47,155,149,.6)}
+
+/* ---- SUCCESS STORY: accent rule on quote ---- */
+.story-l .story-quote{padding-left:22px;border-left:3px solid var(--teal-bright)}

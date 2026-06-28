@@ -1,0 +1,15 @@
+/* ============================================================================
+   VELARIS WEB — Design System entry point
+   ----------------------------------------------------------------------------
+   Single stylesheet for consumers to link. Pulls in all global design tokens
+   (colors, type scale, spacing, radius, shadows) and the self-hosted
+   @font-face declarations (Zodiak + Cabinet Grotesk).
+
+       <link rel="stylesheet" href="styles.css">
+
+   Page- and kit-scoped styles (ui_kits/web-app/kit.css, home-figma.css) are
+   intentionally NOT imported here — they carry layout rules, not tokens, and
+   are linked per-page alongside this file.
+   ========================================================================== */
+
+@import url('colors_and_type.css');

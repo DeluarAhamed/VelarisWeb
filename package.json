@@ -1,0 +1,32 @@
+{
+  "name": "velarisweb",
+  "version": "1.0.0",
+  "description": "Velaris Web marketing site built from the Figma brand kit.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "cms:dev": "npm --prefix sanity run dev",
+    "cms:build": "npm --prefix sanity run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ant-design/icons": "^6.2.5",
+    "antd": "^6.4.3",
+    "fig-kiwi": "^0.0.1",
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "vite": "^8.0.16",
+    "zstddec": "^0.2.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0",
+    "sharp": "^0.34.5"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Type" name="Mono & data" subtitle="Space Mono for code, metrics, IDs" viewport="700x130" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; }
+  .mono { font-family: var(--font-mono); }
+  .big { font-size: 26px; font-weight: 700; color: var(--text-primary); letter-spacing: -.02em; }
+  .row { display:flex; gap: 22px; align-items:center; margin-top: 16px; }
+  .data { font-size: 13px; color: var(--text-secondary); }
+  .data b { color: var(--text-primary); }
+  code { background: var(--fill-tertiary); border: 1px solid var(--border-secondary); border-radius: var(--radius-sm); padding: 2px 7px; font-size: 12.5px; color: var(--teal-8); }
+  .meta { margin-top: 16px; font-size: 11px; color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mono big">Space Mono · 0123456789</div>
+  <div class="row mono">
+    <span class="data"><b>99.9%</b> uptime</span>
+    <span class="data"><b>1,204</b> users</span>
+    <span class="data"><b>24 MB</b></span>
+    <code>npm i @velaris/ui</code>
+  </div>
+  <div class="meta mono">Code, IDs, metrics &amp; technical labels — 13px</div>
+</div>
+</body>
+</html>

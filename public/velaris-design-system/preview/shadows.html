@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Spacing" name="Elevation" subtitle="Ant three-layer shadows + teal glow" viewport="700x150" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: var(--bg-layout); }
+  .wrap { width: 700px; box-sizing: border-box; padding: 28px 24px; display:flex; gap: 20px; }
+  .item { flex:1; text-align:center; }
+  .card { height: 64px; background:#fff; border-radius: var(--radius-lg); }
+  .item .k { margin-top: 12px; font-size: 11.5px; font-weight: 600; color: var(--text-primary); }
+  .item .d { font-size: 10.5px; color: var(--text-tertiary); margin-top: 2px; }
+  .t { box-shadow: var(--shadow-tertiary); }
+  .d1 { box-shadow: var(--shadow); }
+  .s { box-shadow: var(--shadow-secondary); }
+  .p { box-shadow: var(--shadow-primary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="item"><div class="card t"></div><div class="k">Tertiary</div><div class="d">forms · resting cards</div></div>
+  <div class="item"><div class="card d1"></div><div class="k">Default</div><div class="d">raised surfaces</div></div>
+  <div class="item"><div class="card s"></div><div class="k">Secondary</div><div class="d">dropdowns · popovers</div></div>
+  <div class="item"><div class="card p" style="background:var(--teal-6)"></div><div class="k">Primary glow</div><div class="d">hero CTAs only</div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Tags & badges" subtitle="Tags, pills, count badges, status dots" viewport="700x180" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display:flex; flex-direction:column; gap: 16px; }
+  .row { display:flex; gap: 9px; align-items:center; flex-wrap:wrap; }
+  .lbl { font-size: 11px; color: var(--text-tertiary); width: 64px; }
+  .tag { height: 22px; padding: 0 8px; border-radius: var(--radius-sm); font-size: 12px; display:inline-flex; align-items:center; gap:5px; border:1px solid transparent; }
+  .tag .d { width:6px; height:6px; border-radius:50%; }
+  .pill { border-radius: 999px; }
+  .badge { position:relative; width:34px; height:34px; border-radius: var(--radius); background: var(--fill-secondary); }
+  .badge .b { position:absolute; top:-6px; right:-6px; min-width:18px; height:18px; padding:0 5px; border-radius:999px; background: var(--color-error); color:#fff; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center; box-sizing:border-box; }
+  .dot { width:8px; height:8px; border-radius:50%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <span class="lbl">Tags</span>
+    <span class="tag" style="background:var(--teal-1);color:var(--teal-8);border-color:var(--teal-3)">Teal</span>
+    <span class="tag" style="background:var(--color-success-bg);color:var(--color-success-active);border-color:var(--color-success-border)"><span class="d" style="background:var(--color-success)"></span>Success</span>
+    <span class="tag" style="background:var(--color-warning-bg);color:var(--color-warning-active);border-color:var(--color-warning-border)">Pending</span>
+    <span class="tag" style="background:var(--color-error-bg);color:var(--color-error-active);border-color:var(--color-error-border)">Error</span>
+    <span class="tag" style="background:var(--fill-tertiary);color:var(--text-secondary);border-color:var(--border-secondary)">Default</span>
+  </div>
+  <div class="row">
+    <span class="lbl">Pills</span>
+    <span class="tag pill" style="background:var(--teal-6);color:#fff">Active</span>
+    <span class="tag pill" style="background:var(--fill-tertiary);color:var(--text-secondary)">Draft</span>
+    <span class="tag pill" style="background:var(--brand-navy);color:#fff">Pro</span>
+  </div>
+  <div class="row">
+    <span class="lbl">Badges</span>
+    <div class="badge"><span class="b">5</span></div>
+    <div class="badge"><span class="b" style="background:var(--teal-6)">12</span></div>
+    <span class="tag" style="gap:6px;border:0;color:var(--text-secondary)"><span class="dot" style="background:var(--color-success)"></span>Online</span>
+    <span class="tag" style="gap:6px;border:0;color:var(--text-secondary)"><span class="dot" style="background:var(--text-quaternary)"></span>Offline</span>
+  </div>
+</div>
+</body>
+</html>

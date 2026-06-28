@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Colors" name="Semantic colors" subtitle="Success, warning, error, info (Ant defaults)" viewport="700x130" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .col .main { height: 56px; border-radius: var(--radius); display:flex; align-items:flex-end; padding: 8px 10px; box-sizing:border-box; color:#fff; font-weight:600; font-size:13px; }
+  .scale { display:flex; margin-top:6px; gap:0; border-radius: var(--radius-sm); overflow:hidden; }
+  .scale div { flex:1; height: 18px; }
+  .meta { margin-top:6px; font-size:10.5px; font-family: var(--font-mono); color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="col">
+    <div class="main" style="background:var(--color-success)">Success</div>
+    <div class="scale"><div style="background:#F6FFED"></div><div style="background:#B7EB8F"></div><div style="background:#73D13D"></div><div style="background:#52C41A"></div><div style="background:#389E0D"></div></div>
+    <div class="meta">#52C41A</div>
+  </div>
+  <div class="col">
+    <div class="main" style="background:var(--color-warning)">Warning</div>
+    <div class="scale"><div style="background:#FFFBE6"></div><div style="background:#FFE58F"></div><div style="background:#FFC53D"></div><div style="background:#FAAD14"></div><div style="background:#D48806"></div></div>
+    <div class="meta">#FAAD14</div>
+  </div>
+  <div class="col">
+    <div class="main" style="background:var(--color-error)">Error</div>
+    <div class="scale"><div style="background:#FFF2F0"></div><div style="background:#FFCCC7"></div><div style="background:#FF7875"></div><div style="background:#FF4D4F"></div><div style="background:#D9363E"></div></div>
+    <div class="meta">#FF4D4F</div>
+  </div>
+  <div class="col">
+    <div class="main" style="background:var(--color-info)">Info</div>
+    <div class="scale"><div style="background:#E6F4FF"></div><div style="background:#91CAFF"></div><div style="background:#4096FF"></div><div style="background:#1677FF"></div><div style="background:#0958D9"></div></div>
+    <div class="meta">#1677FF</div>
+  </div>
+</div>
+</body>
+</html>

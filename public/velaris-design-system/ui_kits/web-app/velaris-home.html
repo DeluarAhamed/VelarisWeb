@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velaris Web | Modern Lead Generation Websites</title>
+<meta name="description" content="Velaris Web creates premium, conversion-focused websites and SEO systems for founders and growing service businesses.">
+<link rel="canonical" href="https://www.velarisweb.com/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Velaris Web | Modern Lead Generation Websites">
+<meta property="og:description" content="Velaris Web creates premium, conversion-focused websites and SEO systems for founders and growing service businesses.">
+<meta property="og:image" content="https://www.velarisweb.com/assets/velaris-main-logo.webp">
+<meta property="og:site_name" content="Velaris Web">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Velaris Web | Modern Lead Generation Websites">
+<meta name="twitter:description" content="Velaris Web creates premium, conversion-focused websites and SEO systems for founders and growing service businesses.">
+<meta name="twitter:image" content="https://www.velarisweb.com/assets/velaris-main-logo.webp">
+<link rel="icon" type="image/jpeg" href="../../assets/velaris-app-icon.jpg">
+<link rel="apple-touch-icon" href="../../assets/velaris-app-icon.jpg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  :root{
+    --navy:#000B19;          /* dark sections          */
+    --navy-2:#0A1A2E;        /* dark card surface      */
+    --mint:#E1EFF0;          /* pale teal wash         */
+    --mint-2:#EEF6F6;
+    --ink:#0B1620;           /* near-black body text   */
+    --muted:#5B6B73;         /* secondary text         */
+    --muted-d:#9DB2BC;       /* secondary on dark      */
+    --line:#E4E9EA;
+    --line-d:rgba(255,255,255,.12);
+    --accent:#34979C;        /* brand teal             */
+    --maxw:1280px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-ui);
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+  .serif{font-family:var(--font-display);font-weight:400;}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;letter-spacing:-.01em;margin:0;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-ui);
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .eyebrow.on-dark{color:#7FD3D6;}
+  .eyebrow.on-dark::before{background:#7FD3D6;}
+
+  /* ---- Buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--font-ui);font-size:15px;font-weight:600;height:54px;padding:0 26px;
+    border-radius:7px;border:1.5px solid transparent;cursor:pointer;transition:.18s ease;white-space:nowrap;}
+  .btn svg{width:17px;height:17px;}
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{background:#13243a;transform:translateY(-1px);}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{background:#2b8085;transform:translateY(-1px);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-on-dark{background:#fff;color:var(--navy);}
+  .btn-on-dark:hover{background:var(--mint);transform:translateY(-1px);}
+  .btn-ghost-dark{background:transparent;color:#fff;border-color:var(--line-d);}
+  .btn-ghost-dark:hover{border-color:#fff;}
+  .btn-sm{height:46px;padding:0 20px;font-size:14px;}
+
+  /* ---- Nav ---- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);
+    backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;gap:40px;height:80px;}
+  .brand{display:flex;align-items:baseline;gap:7px;font-family:var(--font-display);}
+  .brand b{font-weight:800;font-size:25px;letter-spacing:-.02em;}
+  .brand span{font-weight:300;font-size:25px;color:var(--accent);font-style:italic;}
+  .nav-links{display:flex;gap:34px;margin-left:8px;}
+  .nav-links a{font-family:var(--font-ui);font-size:15px;font-weight:500;color:var(--muted);transition:.15s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink);}
+  .nav-cta{margin-left:auto;display:flex;align-items:center;gap:14px;}
+
+  /* ---- Hero ---- */
+  .hero{position:relative;overflow:hidden;padding:74px 0 0;}
+  .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(1100px 520px at 50% -10%,var(--mint) 0%,rgba(225,239,240,0) 62%);}
+  .hero .wrap{position:relative;z-index:1;}
+  .hero-top{max-width:880px;margin:0 auto;text-align:center;}
+  .rating{display:inline-flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:8px 8px 8px 18px;box-shadow:var(--shadow);font-size:14px;}
+  .rating b{font-weight:700;}
+  .stars{display:inline-flex;gap:2px;color:#F5A623;}
+  .stars svg{width:16px;height:16px;}
+  .rating .src{display:inline-flex;align-items:center;gap:6px;background:var(--mint-2);
+    border-radius:999px;padding:5px 12px;font-weight:600;font-size:13px;color:var(--muted);}
+  .hero h1{font-size:74px;line-height:1.02;margin:26px 0 0;letter-spacing:-.025em;}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .hero-sub{font-size:20px;color:var(--muted);max-width:620px;margin:24px auto 0;line-height:1.55;}
+  .hero-actions{display:flex;gap:14px;justify-content:center;margin-top:34px;}
+  .hero-trust{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px;
+    font-size:14px;color:var(--muted);}
+  .hero-trust .dotline{width:34px;height:1px;background:var(--line);}
+  .hero-shot{position:relative;margin:58px auto 0;max-width:1080px;}
+  .hero-shot .frame{border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 40px 90px -40px rgba(0,11,25,.45);background:#fff;}
+  .hero-shot img{width:100%;}
+
+  /* ---- Logos strip ---- */
+  .logos{padding:46px 0 8px;}
+  .logos p{text-align:center;font-size:13px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 26px;}
+  .logos-row{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+    opacity:.85;}
+  .logo-mark{display:flex;align-items:center;gap:9px;font-family:var(--font-display);
+    font-weight:700;font-size:20px;color:#243038;white-space:nowrap;}
+  .logo-mark svg{width:22px;height:22px;color:var(--accent);}
+
+  /* ---- Section scaffolding ---- */
+  section{position:relative;}
+  .pad{padding:104px 0;}
+  .sec-head{max-width:720px;}
+  .sec-head.center{margin:0 auto;text-align:center;}
+  .sec-head h2{font-size:50px;line-height:1.05;margin:18px 0 0;letter-spacing:-.02em;}
+  .sec-head h2 em{font-style:italic;color:var(--accent);}
+  .sec-head p{font-size:18px;color:var(--muted);margin:18px 0 0;}
+  .sec-head.center p{margin-left:auto;margin-right:auto;max-width:560px;}
+
+  /* ---- Problem (dark) ---- */
+  .dark{background:var(--navy);color:#fff;}
+  .dark h2{color:#fff;}
+  .problem{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .problem .lead{font-size:21px;line-height:1.5;color:#fff;margin:22px 0 0;font-family:var(--font-display);font-style:italic;}
+  .problem .body{color:var(--muted-d);font-size:17px;margin:18px 0 0;}
+  .vs{display:flex;flex-direction:column;gap:16px;}
+  .vs-card{border:1px solid var(--line-d);border-radius:14px;padding:24px 26px;display:flex;gap:18px;align-items:flex-start;}
+  .vs-card .ic{width:44px;height:44px;border-radius:11px;flex:none;display:flex;align-items:center;justify-content:center;}
+  .vs-card.bad .ic{background:rgba(255,107,107,.14);color:#FF8B8B;}
+  .vs-card.good{background:var(--navy-2);border-color:rgba(127,211,214,.3);}
+  .vs-card.good .ic{background:rgba(127,211,214,.16);color:#7FD3D6;}
+  .vs-card h4{font-family:var(--font-ui);font-weight:700;font-size:17px;margin:0 0 5px;color:#fff;}
+  .vs-card p{margin:0;font-size:15px;color:var(--muted-d);line-height:1.5;}
+  .vs-card .ic svg{width:22px;height:22px;}
+
+  /* ---- Stats band ---- */
+  .stats{border-top:1px solid var(--line-d);margin-top:72px;padding-top:56px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+  .stat .n{font-family:var(--font-display);font-weight:500;font-size:58px;line-height:1;letter-spacing:-.02em;}
+  .stat .n em{font-style:italic;color:#7FD3D6;}
+  .stat .l{color:var(--muted-d);font-size:15px;margin-top:12px;}
+
+  /* ---- Process ---- */
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px;}
+  .pcard{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;
+    transition:.2s ease;display:flex;flex-direction:column;}
+  .pcard:hover{box-shadow:0 28px 60px -34px rgba(0,11,25,.4);transform:translateY(-4px);border-color:#D5DDDE;}
+  .pcard .ph{aspect-ratio:16/11;overflow:hidden;background:var(--mint);}
+  .pcard .ph img{width:100%;height:100%;object-fit:cover;}
+  .pcard .pb{padding:28px 28px 32px;}
+  .pcard .step{font-family:var(--font-mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.04em;}
+  .pcard h3{font-size:25px;margin:14px 0 0;letter-spacing:-.01em;}
+  .pcard p{font-size:15.5px;color:var(--muted);margin:12px 0 0;line-height:1.55;}
+
+  /* ---- Case study ---- */
+  .case{background:var(--mint);border-radius:26px;overflow:hidden;display:grid;
+    grid-template-columns:1fr 1fr;align-items:center;}
+  .case .cl{padding:64px 56px;}
+  .case .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;
+    padding:7px 15px;font-size:13px;font-weight:600;color:var(--accent);}
+  .case h2{font-size:42px;line-height:1.08;margin:22px 0 0;letter-spacing:-.02em;}
+  .case h2 em{font-style:italic;color:var(--accent);}
+  .case .quote{font-size:17px;color:#2C3940;margin:22px 0 0;line-height:1.6;}
+  .case-metrics{display:flex;gap:40px;margin:30px 0 0;}
+  .case-metrics .n{font-family:var(--font-display);font-size:42px;line-height:1;}
+  .case-metrics .n em{font-style:italic;color:var(--accent);}
+  .case-metrics .l{font-size:14px;color:var(--muted);margin-top:8px;}
+  .case .cr{padding:48px 56px 48px 0;}
+  .case .cr .shot{border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,11,25,.4);}
+
+  /* ---- Testimonials ---- */
+  .tgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:56px;}
+  .tcard{border:1px solid var(--line);border-radius:20px;padding:40px;display:flex;flex-direction:column;}
+  .tcard.feature{background:var(--navy);border-color:transparent;color:#fff;}
+  .tcard .qt{font-family:var(--font-display);font-size:26px;line-height:1.4;letter-spacing:-.01em;}
+  .tcard.feature .qt{color:#fff;}
+  .tcard .qt em{font-style:italic;color:var(--accent);}
+  .tcard.feature .qt em{color:#7FD3D6;}
+  .tcard .who{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:32px;}
+  .tcard .who img{width:52px;height:52px;border-radius:50%;object-fit:cover;}
+  .tcard .who .nm{font-family:var(--font-ui);font-weight:700;font-size:16px;}
+  .tcard .who .rl{font-size:14px;color:var(--muted);}
+  .tcard.feature .who .rl{color:var(--muted-d);}
+  .tcard.small .qt{font-size:20px;}
+
+  /* ---- FAQ ---- */
+  .faq-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start;}
+  .faq-list{border-top:1px solid var(--line);}
+  details.faq{border-bottom:1px solid var(--line);}
+  details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+    align-items:center;gap:24px;padding:26px 0;font-family:var(--font-display);font-size:21px;
+    letter-spacing:-.01em;}
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq .pls{width:26px;height:26px;flex:none;position:relative;transition:.2s;}
+  details.faq .pls::before,details.faq .pls::after{content:"";position:absolute;background:var(--accent);
+    border-radius:2px;left:50%;top:50%;transform:translate(-50%,-50%);}
+  details.faq .pls::before{width:14px;height:2px;}
+  details.faq .pls::after{width:2px;height:14px;transition:.2s;}
+  details.faq[open] .pls::after{transform:translate(-50%,-50%) scaleY(0);}
+  details.faq p{margin:0 0 26px;color:var(--muted);font-size:16px;line-height:1.6;max-width:560px;}
+
+  /* ---- Final CTA ---- */
+  .cta{position:relative;overflow:hidden;border-radius:26px;color:#fff;padding:90px 64px;text-align:center;}
+  .cta .cbg{position:absolute;inset:0;z-index:0;}
+  .cta .cbg img{width:100%;height:100%;object-fit:cover;}
+  .cta .cbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,11,25,.55),rgba(0,11,25,.78));}
+  .cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+  .cta h2{font-size:54px;line-height:1.04;color:#fff;letter-spacing:-.02em;}
+  .cta h2 em{font-style:italic;color:#7FD3D6;}
+  .cta p{font-size:19px;color:rgba(255,255,255,.82);margin:20px 0 0;}
+  .cta-actions{display:flex;gap:14px;justify-content:center;margin-top:36px;}
+
+  /* ---- Footer ---- */
+  footer.site{background:var(--navy);color:#fff;padding:80px 0 36px;}
+  .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;}
+  .foot-brand .brand b{color:#fff;}
+  .foot-brand p{color:var(--muted-d);font-size:16px;margin:18px 0 24px;max-width:300px;line-height:1.6;}
+  .foot-col h5{font-family:var(--font-ui);font-size:13px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted-d);margin:0 0 18px;}
+  .foot-col a{display:block;font-size:15px;color:#D6E0E6;margin-bottom:13px;transition:.15s;}
+  .foot-col a:hover{color:#7FD3D6;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:64px;
+    padding-top:28px;border-top:1px solid var(--line-d);font-size:14px;color:var(--muted-d);}
+  .foot-social{display:flex;gap:10px;}
+  .foot-social a{width:38px;height:38px;border-radius:9px;border:1px solid var(--line-d);
+    display:flex;align-items:center;justify-content:center;color:#D6E0E6;transition:.15s;}
+  .foot-social a:hover{border-color:#7FD3D6;color:#7FD3D6;}
+  .foot-social svg,.foot-social img{width:17px;height:17px;display:block;}
+
+  @media(max-width:960px){
+    .wrap{padding:0 22px;}
+    .nav-links{display:none;}
+    .hero h1{font-size:46px;}
+    .problem,.case,.tgrid,.faq-wrap,.foot-top{grid-template-columns:1fr;gap:36px;}
+    .stats,.process-grid{grid-template-columns:1fr 1fr;}
+    .case .cr{padding:0 28px 40px;}
+    .sec-head h2,.cta h2{font-size:36px;}
+    .pad{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#"><b>velaris</b><span>web</span></a>
+    <nav class="nav-links">
+      <a class="active" href="#">Home</a>
+      <a href="#work">Work</a>
+      <a href="#process">Services</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#contact">Book a call</a>
+      <a class="btn btn-primary btn-sm" href="#ebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download Free e-Book
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="rating">
+        <b>Excellent</b>
+        <span class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        </span>
+        <span>5.0 from 120+ projects</span>
+        <span class="src">Clutch</span>
+      </div>
+      <h1>Websites built to <em>generate leads</em>, not just look good</h1>
+      <p class="hero-sub">We're a conversion-focused web design studio. We turn quiet websites into the hardest-working salesperson on your team — with strategy, design, and build under one roof.</p>
+      <div class="hero-actions">
+        <a class="btn btn-accent" href="#contact">Book a free strategy call</a>
+        <a class="btn btn-ghost" href="#work">See our work</a>
+      </div>
+      <div class="hero-trust">
+        <span class="dotline"></span>
+        <span>Trusted by 120+ growing brands across the UK</span>
+        <span class="dotline"></span>
+      </div>
+    </div>
+
+    <div class="hero-shot">
+      <div class="frame"><img src="home-img/hero-card.jpg" alt="Hazelwood Hearcare — a Velaris Web project shown across devices"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOGOS ===== -->
+<section class="logos">
+  <div class="wrap">
+    <p>Brands that grow with velaris web</p>
+    <div class="logos-row">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="9"/></svg>Hazelwood</span>
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="4"/></svg>Northby</span>
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 22h20z"/></svg>Apex Clinic</span>
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20Z"/></svg>Lumen</span>
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="8" width="18" height="8" rx="4"/></svg>Forge &amp; Co</span>
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="12" r="5"/><circle cx="16" cy="12" r="5"/></svg>Wells</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROBLEM (dark) ===== -->
+<section class="dark pad" id="about">
+  <div class="wrap">
+    <div class="problem">
+      <div>
+        <span class="eyebrow on-dark">The real problem</span>
+        <h2 style="font-size:48px;line-height:1.06;margin-top:18px;letter-spacing:-.02em;">Most business websites generate no leads at all</h2>
+        <p class="lead">A beautiful site that nobody acts on is just an expensive brochure.</p>
+        <p class="body">Visitors land, get confused, and leave. Slow pages, unclear messaging, and no obvious next step quietly cost you customers every single day. We fix the root cause — not just the pixels.</p>
+      </div>
+      <div class="vs">
+        <div class="vs-card bad">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></span>
+          <div><h4>The typical website</h4><p>Pretty design, vague message, buried call-to-action. Looks fine, converts nothing.</p></div>
+        </div>
+        <div class="vs-card good">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div><h4>A velaris web site</h4><p>Sharp positioning, frictionless journey, and a CTA that earns the click — measured and improved over time.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">120<em>+</em></div><div class="l">Projects shipped to date</div></div>
+      <div class="stat"><div class="n">2.8<em>×</em></div><div class="l">Average lift in conversion</div></div>
+      <div class="stat"><div class="n">14</div><div class="l">Days to a live, faster site</div></div>
+      <div class="stat"><div class="n">96<em>%</em></div><div class="l">Clients who stay on retainer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="pad" id="process">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">How we work</span>
+      <h2>Three steps from <em>invisible</em> to in-demand</h2>
+      <p>One team handling strategy, design, and build — so nothing gets lost in translation.</p>
+    </div>
+    <div class="process-grid">
+      <article class="pcard">
+        <div class="ph"><img src="home-img/service-a.jpg" alt="Strategy and wireframing"></div>
+        <div class="pb">
+          <span class="step">01 — STRATEGY &amp; RESEARCH</span>
+          <h3>Strategy &amp; research</h3>
+          <p>We map your customers, competitors, and goals, then plan the exact journey that turns a visitor into a lead.</p>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="ph"><img src="home-img/service-b.jpg" alt="Conversion-focused design"></div>
+        <div class="pb">
+          <span class="step">02 — CONVERSION-FOCUSED DESIGN</span>
+          <h3>Conversion-focused design</h3>
+          <p>Every layout, message, CTA, and interaction is designed to improve user experience and move people to act.</p>
+        </div>
+      </article>
+      <article class="pcard">
+        <div class="ph"><img src="home-img/service-c.jpg" alt="Development and build"></div>
+        <div class="pb">
+          <span class="step">03 — DEVELOPMENT &amp; BUILD</span>
+          <h3>Development &amp; build</h3>
+          <p>We hand-build fast, SEO-ready sites that load in a blink and keep performing long after launch.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE STUDY ===== -->
+<section class="pad" id="work" style="padding-top:0;">
+  <div class="wrap">
+    <div class="case">
+      <div class="cl">
+        <span class="badge">★ Featured case study</span>
+        <h2>How Hazelwood Hearcare went from <em>invisible to fully booked</em></h2>
+        <p class="quote">"velaris web rebuilt our site around the patient journey. Within two months we were turning away bookings — the phone simply did not stop ringing."</p>
+        <div class="case-metrics">
+          <div><div class="n"><em>+213%</em></div><div class="l">Online bookings</div></div>
+          <div><div class="n"><em>4.1×</em></div><div class="l">Organic traffic</div></div>
+          <div><div class="n">300<em>+</em></div><div class="l">5-star reviews</div></div>
+        </div>
+        <div style="margin-top:34px;"><a class="btn btn-primary" href="#">Read the full story</a></div>
+      </div>
+      <div class="cr">
+        <div class="shot"><img src="home-img/hero-card.jpg" alt="Hazelwood Hearcare website across devices"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="pad dark" style="padding-top:0;background:#fff;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Client love</span>
+      <h2 style="color:var(--ink);">Results clients are happy to <em style="color:var(--accent);">talk about</em></h2>
+    </div>
+    <div class="tgrid">
+      <article class="tcard feature">
+        <p class="qt">"We've worked with three agencies before. velaris web is the first that treated our website like a <em>growth channel</em> — and the numbers prove it. Genuinely the best money we've spent."</p>
+        <div class="who">
+          <img src="home-img/avatar.png" alt="Imran Malik">
+          <div><div class="nm">Imran Malik</div><div class="rl">Founder, Matin Productions</div></div>
+        </div>
+      </article>
+      <article class="tcard small">
+        <p class="qt">"Clear process, zero jargon, and a site that finally <em>brings in enquiries</em> on autopilot. Couldn't recommend them more."</p>
+        <div class="who">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:var(--accent);">SK</div>
+          <div><div class="nm">Sarah Kemp</div><div class="rl">Director, Apex Clinic</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG / EBOOK ===== -->
+<section class="pad" id="blog" style="padding-top:0;">
+  <div class="wrap">
+    <div class="case" style="background:var(--navy);">
+      <div class="cl">
+        <span class="eyebrow on-dark">Free resource</span>
+        <h2 style="color:#fff;margin-top:16px;">The 9 mistakes quietly <em>killing your conversions</em></h2>
+        <p class="quote" style="color:var(--muted-d);">A practical, no-fluff e-book covering the exact issues we fix on every project — with checklists you can apply to your own site today.</p>
+        <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn-on-dark" href="#ebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download free e-book
+          </a>
+          <a class="btn btn-ghost-dark" href="#blog">Read the blog</a>
+        </div>
+      </div>
+      <div class="cr" style="padding:48px 56px;">
+        <div class="shot" style="box-shadow:0 30px 60px -30px rgba(0,0,0,.6);"><img src="home-img/blog.jpg" alt="velaris web e-book cover"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="pad" style="padding-top:0;">
+  <div class="wrap">
+    <div class="faq-wrap">
+      <div class="sec-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 style="font-size:42px;margin-top:16px;">Questions, <em>answered</em></h2>
+        <p>Still unsure? Book a free call and we'll talk through your site, no pressure.</p>
+        <div style="margin-top:24px;"><a class="btn btn-accent" href="#contact">Book a call</a></div>
+      </div>
+      <div class="faq-list">
+        <details class="faq" open>
+          <summary>How long does a project take?<span class="pls"></span></summary>
+          <p>Most marketing sites go live in 4–6 weeks. We can ship a focused landing page or rebuild in as little as 14 days when speed matters.</p>
+        </details>
+        <details class="faq">
+          <summary>How much does a website cost?<span class="pls"></span></summary>
+          <p>Projects typically start around £4k for a focused site and scale with complexity. You'll get a fixed, itemised quote after your strategy call — no surprises.</p>
+        </details>
+        <details class="faq">
+          <summary>Do you only design, or build too?<span class="pls"></span></summary>
+          <p>Both. Strategy, design, and development all happen in-house, so your site is built exactly as designed — fast, accessible, and easy to update.</p>
+        </details>
+        <details class="faq">
+          <summary>What happens after launch?<span class="pls"></span></summary>
+          <p>We track performance and offer ongoing care plans for updates, testing, and continual conversion improvements. 96% of clients stay on with us.</p>
+        </details>
+        <details class="faq">
+          <summary>Will my site rank on Google?<span class="pls"></span></summary>
+          <p>Every build is technically SEO-ready — fast loading, structured, and clean. We also offer content and growth retainers to push rankings further.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="pad" id="contact" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta">
+      <div class="cbg"><img src="home-img/cta-bg.png" alt=""></div>
+      <div class="cta-inner">
+        <span class="eyebrow on-dark" style="justify-content:center;">Let's build</span>
+        <h2>Ready for a website that <em>actually sells?</em></h2>
+        <p>Book a free, no-obligation strategy call. We'll review your current site and show you exactly where the leads are leaking.</p>
+        <div class="cta-actions">
+          <a class="btn btn-on-dark" href="#">Book a free strategy call</a>
+          <a class="btn btn-ghost-dark" href="#ebook">Download free e-book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#"><b style="color:#fff;">velaris</b><span>web</span></a>
+        <p>A conversion-focused web design studio building websites that turn visitors into customers.</p>
+        <a class="btn btn-accent btn-sm" href="#contact">Start a project</a>
+      </div>
+      <div class="foot-col">
+        <h5>Studio</h5>
+        <a href="#work">Work</a><a href="#process">Services</a><a href="#about">About</a><a href="#blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="#">Web design</a><a href="#">Development</a><a href="#">SEO &amp; growth</a><a href="#">Brand &amp; UX</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="#">hello@velaris.web</a><a href="#">+44 20 7946 0123</a><a href="#">London, UK</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 velaris web. All rights reserved.</span>
+      <div class="foot-social">
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-7-6.1 7H1.7l8.2-9.4L1 2h7l4.8 6.4L18.9 2Zm-2.4 18h1.9L7.6 4H5.6l10.9 16Z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.linkedin.com/in/deluar-ahamed/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="home-img/linkedin.png" alt=""></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

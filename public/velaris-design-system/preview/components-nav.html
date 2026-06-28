@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Navigation" subtitle="Side menu, tabs, segmented control" viewport="700x200" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 20px 24px; display:flex; gap: 22px; }
+  .menu { width: 220px; background:#fff; }
+  .mi { display:flex; align-items:center; gap:10px; height: 40px; padding: 0 12px; border-radius: var(--radius); font-size: 14px; color: var(--text-secondary); cursor:pointer; }
+  .mi .vi { width:16px; height:16px; display:inline-block; }
+  .mi.active { background: var(--teal-1); color: var(--teal-7); font-weight: 600; }
+  .mi:hover:not(.active) { background: var(--fill-secondary); color: var(--text-primary); }
+  .tabs { flex:1; }
+  .tabbar { display:flex; gap: 0; border-bottom: 1px solid var(--border-secondary); }
+  .tab { padding: 9px 16px; font-size: 14px; color: var(--text-secondary); cursor:pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  .tab.active { color: var(--teal-6); border-bottom-color: var(--teal-6); font-weight: 500; }
+  .seg { display:inline-flex; background: var(--fill-tertiary); border-radius: var(--radius); padding: 3px; margin-top: 18px; }
+  .seg div { padding: 5px 14px; font-size: 13px; border-radius: var(--radius-sm); color: var(--text-secondary); cursor:pointer; }
+  .seg div.on { background:#fff; color: var(--text-primary); box-shadow: var(--shadow-tertiary); font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="menu">
+    <div class="mi active"><span class="vi" data-icon="dashboard"></span>Dashboard</div>
+    <div class="mi"><span class="vi" data-icon="appstore"></span>Projects</div>
+    <div class="mi"><span class="vi" data-icon="bar-chart"></span>Analytics</div>
+    <div class="mi"><span class="vi" data-icon="team"></span>Team</div>
+    <div class="mi"><span class="vi" data-icon="setting"></span>Settings</div>
+  </div>
+  <div class="tabs">
+    <div class="tabbar">
+      <div class="tab active">Overview</div>
+      <div class="tab">Activity</div>
+      <div class="tab">Members</div>
+      <div class="tab">Settings</div>
+    </div>
+    <div class="seg">
+      <div class="on">Day</div>
+      <div>Week</div>
+      <div>Month</div>
+    </div>
+  </div>
+</div>
+<script>window.ICON_BASE='../assets/icons';</script>
+<script src="../assets/icons.js"></script>
+</body>
+</html>

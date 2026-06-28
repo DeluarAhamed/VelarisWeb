@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Buttons" subtitle="Types, sizes, states — teal primary" viewport="700x140" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display:flex; flex-direction:column; gap: 14px; }
+  .row { display:flex; gap: 12px; align-items:center; }
+  .btn { height: 32px; padding: 0 16px; border-radius: var(--radius); font-size: 14px; font-weight: 500; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border: 1px solid transparent; transition: all .2s cubic-bezier(.645,.045,.355,1); font-family: var(--font-ui); }
+  .primary { background: var(--teal-6); color:#fff; }
+  .primary:hover { background: var(--teal-5); }
+  .default { background:#fff; color: var(--text-primary); border-color: var(--border); }
+  .default:hover { color: var(--teal-6); border-color: var(--teal-6); }
+  .dashed { background:#fff; color: var(--text-primary); border: 1px dashed var(--border); }
+  .text { background:transparent; color: var(--text-primary); }
+  .text:hover { background: var(--fill-secondary); }
+  .link { background:transparent; color: var(--teal-6); }
+  .danger { background: var(--color-error); color:#fff; }
+  .primary.disabled { background: var(--fill-secondary); color: var(--text-quaternary); cursor:not-allowed; }
+  .sm { height: 24px; padding: 0 10px; font-size: 13px; }
+  .lg { height: 40px; padding: 0 20px; font-size: 16px; }
+  .vi { width: 14px; height: 14px; display:inline-block; }
+  .lbl { font-size: 11px; color: var(--text-tertiary); width: 70px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="row">
+    <span class="lbl">Types</span>
+    <button class="btn primary"><span class="vi" data-icon="plus"></span>Primary</button>
+    <button class="btn default">Default</button>
+    <button class="btn dashed">Dashed</button>
+    <button class="btn text">Text</button>
+    <button class="btn link">Link</button>
+    <button class="btn danger">Delete</button>
+  </div>
+  <div class="row">
+    <span class="lbl">Sizes</span>
+    <button class="btn primary sm">Small</button>
+    <button class="btn primary">Default</button>
+    <button class="btn primary lg">Large</button>
+    <button class="btn primary disabled">Disabled</button>
+  </div>
+</div>
+<script>window.ICON_BASE='../assets/icons';</script>
+<script src="../assets/icons.js"></script>
+</body>
+</html>

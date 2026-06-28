@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.sanity/
+sanity/.sanity/
+sanity/dist/
+*.log
+qa-*.png

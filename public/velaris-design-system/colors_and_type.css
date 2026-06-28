@@ -1,0 +1,263 @@
+/* ============================================================================
+   VELARIS WEB — Core Design Tokens (colors + type)
+   ----------------------------------------------------------------------------
+   Foundation: Ant Design token architecture, rebranded to the Velaris Web
+   brand. Primary hue swapped from Ant blue (#1677FF) to Velaris teal, derived
+   from the logo gradient (teal #34979C → deep navy #1A2940). Neutrals and
+   functional/semantic colors follow Ant Design defaults.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Zodiak — brand display serif (self-hosted). Matches the VELARIS WEB wordmark. */
+@font-face { font-family: 'Zodiak'; font-weight: 300; font-style: normal; font-display: swap;
+  src: url('fonts/Zodiak-Light.woff2') format('woff2'), url('fonts/Zodiak-Light.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 300; font-style: italic; font-display: swap;
+  src: url('fonts/Zodiak-LightItalic.woff2') format('woff2'), url('fonts/Zodiak-LightItalic.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url('fonts/Zodiak-Regular.woff2') format('woff2'), url('fonts/Zodiak-Regular.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 400; font-style: italic; font-display: swap;
+  src: url('fonts/Zodiak-Italic.woff2') format('woff2'), url('fonts/Zodiak-Italic.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 700; font-style: normal; font-display: swap;
+  src: url('fonts/Zodiak-Bold.woff2') format('woff2'), url('fonts/Zodiak-Bold.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 700; font-style: italic; font-display: swap;
+  src: url('fonts/Zodiak-BoldItalic.woff2') format('woff2'), url('fonts/Zodiak-BoldItalic.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 800; font-style: normal; font-display: swap;
+  src: url('fonts/Zodiak-Extrabold.woff2') format('woff2'), url('fonts/Zodiak-Extrabold.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 800; font-style: italic; font-display: swap;
+  src: url('fonts/Zodiak-ExtraboldItalic.woff2') format('woff2'), url('fonts/Zodiak-ExtraboldItalic.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 900; font-style: normal; font-display: swap;
+  src: url('fonts/Zodiak-Black.woff2') format('woff2'), url('fonts/Zodiak-Black.woff') format('woff'); }
+@font-face { font-family: 'Zodiak'; font-weight: 900; font-style: italic; font-display: swap;
+  src: url('fonts/Zodiak-BlackItalic.woff2') format('woff2'), url('fonts/Zodiak-BlackItalic.woff') format('woff'); }
+
+/* Cabinet Grotesk — brand UI sans (self-hosted). Replaces the system stack. */
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 300; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Light.woff2') format('woff2'), url('fonts/CabinetGrotesk-Light.woff') format('woff'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Regular.woff2') format('woff2'), url('fonts/CabinetGrotesk-Regular.woff') format('woff'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 500; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Medium.woff2') format('woff2'), url('fonts/CabinetGrotesk-Medium.woff') format('woff'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 700; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Bold.woff2') format('woff2'), url('fonts/CabinetGrotesk-Bold.woff') format('woff'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 800; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Extrabold.woff2') format('woff2'), url('fonts/CabinetGrotesk-Extrabold.woff') format('woff'); }
+@font-face { font-family: 'Cabinet Grotesk'; font-weight: 900; font-style: normal; font-display: swap;
+  src: url('fonts/CabinetGrotesk-Black.woff2') format('woff2'), url('fonts/CabinetGrotesk-Black.woff') format('woff'); }
+
+:root {
+  /* ---------------------------------------------------------------------- */
+  /* BRAND — Velaris teal scale (primary). 6 = brand primary.              */
+  /* Ramps from a pale teal wash up into the logo's deep navy at 10.        */
+  /* ---------------------------------------------------------------------- */
+  --teal-1:  #E9F6F6;   /* lightest bg wash (Tag / Alert / hover surfaces)  */
+  --teal-2:  #C5E8E9;
+  --teal-3:  #9BD7D9;
+  --teal-4:  #6AC1C4;
+  --teal-5:  #41A8AC;
+  --teal-6:  #2A8F94;   /* ◆ PRIMARY — brand teal                           */
+  --teal-7:  #1E7378;   /* hover-dark / active border                        */
+  --teal-8:  #155A60;
+  --teal-9:  #0F424A;
+  --teal-10: #1A2940;   /* logo gradient terminus — deep brand navy          */
+
+  /* Semantic primary aliases (Ant naming) */
+  --color-primary:           var(--teal-6);
+  --color-primary-bg:        var(--teal-1);
+  --color-primary-bg-hover:  var(--teal-2);
+  --color-primary-border:    var(--teal-3);
+  --color-primary-hover:     var(--teal-5);
+  --color-primary-active:    var(--teal-7);
+  --color-primary-text:      var(--teal-6);
+  --color-primary-text-hover:var(--teal-5);
+
+  /* Brand gradient (logo mark) */
+  --brand-gradient: linear-gradient(155deg, #34979C 0%, #277E84 38%, #1A2940 100%); /* @kind color */
+  --brand-navy: #1A2940;
+  --brand-teal: #34979C;
+
+  /* ---------------------------------------------------------------------- */
+  /* FUNCTIONAL / SEMANTIC (Ant defaults)                                   */
+  /* ---------------------------------------------------------------------- */
+  --color-success:        #52C41A;   /* green/6  */
+  --color-success-bg:     #F6FFED;
+  --color-success-border: #B7EB8F;
+  --color-success-hover:  #73D13D;
+  --color-success-active: #389E0D;
+
+  --color-warning:        #FAAD14;   /* gold/6  */
+  --color-warning-bg:     #FFFBE6;
+  --color-warning-border: #FFE58F;
+  --color-warning-hover:  #FFC53D;
+  --color-warning-active: #D48806;
+
+  --color-error:          #FF4D4F;   /* red/6   */
+  --color-error-bg:       #FFF2F0;
+  --color-error-border:   #FFCCC7;
+  --color-error-hover:    #FF7875;
+  --color-error-active:   #D9363E;
+
+  --color-info:           #1677FF;   /* blue/6 (info stays Ant blue)        */
+  --color-info-bg:        #E6F4FF;
+  --color-info-border:    #91CAFF;
+
+  --color-link:        var(--teal-6);
+  --color-link-hover:  var(--teal-5);
+  --color-link-active: var(--teal-7);
+
+  /* ---------------------------------------------------------------------- */
+  /* NEUTRALS — Ant uses alpha-on-white for text, solid grays for surfaces  */
+  /* ---------------------------------------------------------------------- */
+  --text-primary:     rgba(0, 0, 0, 0.88);   /* titles, body                */
+  --text-secondary:   rgba(0, 0, 0, 0.65);   /* secondary text              */
+  --text-tertiary:    rgba(0, 0, 0, 0.45);   /* captions, placeholders      */
+  --text-quaternary:  rgba(0, 0, 0, 0.25);   /* disabled                    */
+
+  --border:           rgba(0, 0, 0, 0.15);   /* default control border      */
+  --border-secondary: rgba(0, 0, 0, 0.06);   /* dividers, card borders      */
+
+  --fill:             rgba(0, 0, 0, 0.15);
+  --fill-secondary:   rgba(0, 0, 0, 0.06);
+  --fill-tertiary:    rgba(0, 0, 0, 0.04);
+  --fill-quaternary:  rgba(0, 0, 0, 0.02);
+
+  --bg-container:     #FFFFFF;   /* cards, modals, inputs                   */
+  --bg-elevated:      #FFFFFF;   /* popovers, dropdowns                     */
+  --bg-layout:        #F5F5F5;   /* page / app background                   */
+  --bg-spotlight:     rgba(0, 0, 0, 0.85);  /* tooltips                     */
+
+  /* Neutral gray scale (Ant gray/1–13) */
+  --gray-1:  #FFFFFF;
+  --gray-2:  #FAFAFA;
+  --gray-3:  #F5F5F5;
+  --gray-4:  #F0F0F0;
+  --gray-5:  #D9D9D9;
+  --gray-6:  #BFBFBF;
+  --gray-7:  #8C8C8C;
+  --gray-8:  #595959;
+  --gray-9:  #434343;
+  --gray-10: #262626;
+  --gray-11: #1F1F1F;
+  --gray-12: #141414;
+  --gray-13: #000000;
+
+  /* ---------------------------------------------------------------------- */
+  /* ELEVATION — Ant shadow system                                          */
+  /* ---------------------------------------------------------------------- */
+  --shadow-tertiary:
+    0 1px 2px 0 rgba(0,0,0,0.03),
+    0 1px 6px -1px rgba(0,0,0,0.02),
+    0 2px 4px 0 rgba(0,0,0,0.02);
+  --shadow:                          /* default — cards, raised surfaces    */
+    0 1px 2px -2px rgba(0,0,0,0.16),
+    0 3px 6px 0 rgba(0,0,0,0.12),
+    0 5px 12px 4px rgba(0,0,0,0.09);
+  --shadow-secondary:                /* dropdowns, popovers, floatbutton    */
+    0 6px 16px 0 rgba(0,0,0,0.08),
+    0 3px 6px -4px rgba(0,0,0,0.12),
+    0 9px 28px 8px rgba(0,0,0,0.05);
+  --shadow-primary:                  /* teal-tinted, for branded CTAs       */
+    0 4px 14px 0 rgba(42,143,148,0.28);
+
+  /* ---------------------------------------------------------------------- */
+  /* RADIUS — Ant radius scale                                              */
+  /* ---------------------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius:    6px;    /* base — buttons, inputs, default                   */
+  --radius-lg: 8px;    /* cards, modals                                    */
+  --radius-xl: 12px;
+  --radius-pill: 999px;
+
+  /* ---------------------------------------------------------------------- */
+  /* SPACING — Ant 4px base scale                                           */
+  /* ---------------------------------------------------------------------- */
+  --space-xxs: 4px;
+  --space-xs:  8px;
+  --space-sm:  12px;
+  --space:     16px;   /* base padding                                     */
+  --space-md:  20px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-xxl: 48px;
+
+  /* ====================================================================== */
+  /* TYPOGRAPHY                                                             */
+  /* ====================================================================== */
+
+  /* Font families
+     - UI: native system stack (matches SF Pro Text used in the source kit)
+     - Display/brand: Playfair Display — high-contrast serif echoing the
+       VELARIS WEB wordmark (SUBSTITUTE — see README, awaiting brand font)
+     - Mono: Space Mono — for code, data, technical labels                  */
+  --font-ui: "Cabinet Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI",
+             Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Zodiak", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-mono: "Space Mono", "SF Mono", ui-monospace, "Roboto Mono", monospace;
+
+  /* Type scale (Ant) — size / line-height */
+  --fs-sm:  12px;  --lh-sm:  20px;
+  --fs-base:14px;  --lh-base:22px;   /* body / UI default                  */
+  --fs-lg:  16px;  --lh-lg:  24px;
+  --fs-xl:  20px;  --lh-xl:  28px;   /* h5 / lead                          */
+
+  --fs-h5: 16px;   --lh-h5: 24px;
+  --fs-h4: 20px;   --lh-h4: 28px;
+  --fs-h3: 24px;   --lh-h3: 32px;
+  --fs-h2: 30px;   --lh-h2: 38px;
+  --fs-h1: 38px;   --lh-h1: 46px;
+  --fs-display: 56px; --lh-display: 64px;  /* marketing hero (Playfair)     */
+
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+}
+
+/* ========================================================================== */
+/* SEMANTIC TYPE ROLES                                                        */
+/* ========================================================================== */
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Marketing / brand display — serif */
+.v-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+/* Product UI headings — system sans, Ant weights */
+h1, .v-h1 { font-family: var(--font-ui); font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: var(--fw-semibold); color: var(--text-primary); margin: 0; }
+h2, .v-h2 { font-family: var(--font-ui); font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: var(--fw-semibold); color: var(--text-primary); margin: 0; }
+h3, .v-h3 { font-family: var(--font-ui); font-size: var(--fs-h3); line-height: var(--lh-h3); font-weight: var(--fw-semibold); color: var(--text-primary); margin: 0; }
+h4, .v-h4 { font-family: var(--font-ui); font-size: var(--fs-h4); line-height: var(--lh-h4); font-weight: var(--fw-semibold); color: var(--text-primary); margin: 0; }
+h5, .v-h5 { font-family: var(--font-ui); font-size: var(--fs-h5); line-height: var(--lh-h5); font-weight: var(--fw-semibold); color: var(--text-primary); margin: 0; }
+
+.v-body    { font-family: var(--font-ui); font-size: var(--fs-base); line-height: var(--lh-base); font-weight: var(--fw-regular); color: var(--text-primary); }
+.v-body-lg { font-family: var(--font-ui); font-size: var(--fs-lg);   line-height: var(--lh-lg);   font-weight: var(--fw-regular); color: var(--text-primary); }
+.v-caption { font-family: var(--font-ui); font-size: var(--fs-sm);   line-height: var(--lh-sm);   font-weight: var(--fw-regular); color: var(--text-secondary); }
+.v-strong  { font-weight: var(--fw-semibold); }
+
+.v-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--fill-tertiary);
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  color: var(--text-primary);
+}
+
+.v-link { color: var(--color-link); text-decoration: none; cursor: pointer; transition: color .2s; }
+.v-link:hover { color: var(--color-link-hover); }

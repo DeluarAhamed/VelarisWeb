@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="App tile" subtitle="Rounded-square gradient mark, size scale" viewport="700x140" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background:#fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display:flex; align-items:center; gap: 26px; }
+  .tile { width: 96px; height: 96px; border-radius: 22px; background: var(--brand-gradient); flex:none; box-shadow: var(--shadow); }
+  .scales { display:flex; align-items:flex-end; gap: 16px; }
+  .s { background: var(--brand-gradient); border-radius: 22%; }
+  .meta { font-size: 12.5px; color: var(--text-secondary); line-height: 1.7; }
+  .meta b { color: var(--text-primary); }
+  code { font-family: var(--font-mono); font-size: 11px; color: var(--teal-8); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="scales">
+    <div class="s" style="width:72px;height:72px;border-radius:18px"></div>
+    <div class="s" style="width:48px;height:48px;border-radius:12px"></div>
+    <div class="s" style="width:32px;height:32px;border-radius:8px"></div>
+    <div class="s" style="width:20px;height:20px;border-radius:5px"></div>
+  </div>
+  <div class="meta">
+    <b>App tile</b> — rounded square, teal→navy gradient.<br>
+    Radius scales with size (~22% of side).<br>
+    <code>linear-gradient(155deg,#34979C,#1A2940)</code><br>
+    Mark + sparkle star knocked out in white.
+  </div>
+</div>
+</body>
+</html>

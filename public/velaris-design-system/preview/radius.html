@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Spacing" name="Corner radius" subtitle="2 / 4 / 6 / 8 / 12 / pill" viewport="700x130" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display:flex; gap: 18px; align-items:flex-end; }
+  .item { text-align:center; }
+  .box { width: 78px; height: 60px; background: var(--teal-1); border: 1.5px solid var(--teal-5); }
+  .item .v { margin-top: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+  .item .k { font-size: 10.5px; color: var(--text-tertiary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="item"><div class="box" style="border-radius:2px"></div><div class="v">2px</div><div class="k">xs</div></div>
+  <div class="item"><div class="box" style="border-radius:4px"></div><div class="v">4px</div><div class="k">sm</div></div>
+  <div class="item"><div class="box" style="border-radius:6px"></div><div class="v">6px</div><div class="k">base · button</div></div>
+  <div class="item"><div class="box" style="border-radius:8px"></div><div class="v">8px</div><div class="k">lg · card</div></div>
+  <div class="item"><div class="box" style="border-radius:12px"></div><div class="v">12px</div><div class="k">xl · panel</div></div>
+  <div class="item"><div class="box" style="border-radius:999px"></div><div class="v">pill</div><div class="k">tag · avatar</div></div>
+</div>
+</body>
+</html>

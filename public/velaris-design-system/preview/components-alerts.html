@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Alerts" subtitle="Success / info / warning / error banners" viewport="700x215" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); background: #fff; }
+  .wrap { width: 700px; box-sizing: border-box; padding: 22px 24px; display:flex; flex-direction:column; gap: 10px; }
+  .alert { display:flex; gap: 10px; padding: 9px 14px; border-radius: var(--radius); border: 1px solid; font-size: 13px; align-items:center; }
+  .alert .vi { width: 16px; height: 16px; flex:none; display:inline-block; }
+  .alert b { font-weight: 600; }
+  .alert .body { color: var(--text-secondary); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="alert" style="background:var(--color-success-bg);border-color:var(--color-success-border)">
+    <span class="vi" data-icon="check-circle" style="color:var(--color-success)"></span>
+    <span><b>Project created.</b> <span class="body">Your workspace is ready to use.</span></span>
+  </div>
+  <div class="alert" style="background:var(--teal-1);border-color:var(--teal-3)">
+    <span class="vi" data-icon="info-circle" style="color:var(--teal-6)"></span>
+    <span><b>Heads up.</b> <span class="body">A new version is available to install.</span></span>
+  </div>
+  <div class="alert" style="background:var(--color-warning-bg);border-color:var(--color-warning-border)">
+    <span class="vi" data-icon="info-circle" style="color:var(--color-warning-active)"></span>
+    <span><b>Usage near limit.</b> <span class="body">You've used 90% of your monthly quota.</span></span>
+  </div>
+  <div class="alert" style="background:var(--color-error-bg);border-color:var(--color-error-border)">
+    <span class="vi" data-icon="close-circle" style="color:var(--color-error)"></span>
+    <span><b>Couldn't reach the server.</b> <span class="body">Check your connection and retry.</span></span>
+  </div>
+</div>
+<script>window.ICON_BASE='../assets/icons';</script>
+<script src="../assets/icons.js"></script>
+</body>
+</html>

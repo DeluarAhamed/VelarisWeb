@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Logo lockups" subtitle="Horizontal lockup + app tile on gradient" viewport="700x150" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; font-family: var(--font-ui); }
+  .wrap { width: 700px; box-sizing: border-box; display:flex; }
+  .panel { flex:1; height: 150px; display:flex; align-items:center; justify-content:center; }
+  .light { background:#fff; border-right: 1px solid var(--border-secondary); }
+  .dark { background: var(--brand-gradient); }
+  .light img { height: 42px; }
+  .dark img { height: 64px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="panel light"><img src="../assets/velaris-logo-horizontal.jpg" alt="Velaris Web"></div>
+  <div class="panel dark"><img src="../assets/velaris-app-icon.jpg" alt="Velaris app icon" style="border-radius:14px"></div>
+</div>
+</body>
+</html>
