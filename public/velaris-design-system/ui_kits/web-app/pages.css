@@ -295,6 +295,18 @@
 .cs-page-cap small{font-family:var(--font-mono);font-size:11px;color:var(--teal);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
 .cs-page-shot img{display:block;width:100%;height:auto;object-fit:contain;object-position:top center;background:#f4f6f8}
 .cs-page-shot:first-child img{height:auto}
+#caseDetail.case-hazelwood .g3{align-items:flex-start;padding:14px;background:linear-gradient(150deg,#0E7C86,#0B2B3A)}
+#caseDetail.case-hazelwood .g3 img{width:100%;height:auto;object-fit:initial;object-position:top center}
+#caseDetail.case-hazelwood .sh-float img{width:100%;height:auto;object-fit:initial;object-position:top center}
+#caseDetail.case-hazelwood .dt-tall{max-height:820px;align-items:flex-start;background:#fff}
+#caseDetail.case-hazelwood .dt-tall img{width:100%;height:auto;object-fit:initial;object-position:top center}
+#caseDetail.case-hazelwood .dt-card{align-items:flex-start;background:#fff}
+#caseDetail.case-hazelwood .dt-card img{width:100%;height:auto;max-height:none;object-fit:initial;object-position:top center}
+#caseDetail.case-hazelwood .cs-page-gallery{grid-template-columns:1fr;gap:28px}
+#caseDetail.case-hazelwood .cs-page-shot{background:#eaf4f5;border:2px solid rgba(14,124,134,.28);box-shadow:0 36px 80px -54px rgba(11,43,58,.7);max-height:min(820px,78vh);overflow-y:auto;scrollbar-color:#0E7C86 #d7eef0}
+#caseDetail.case-hazelwood .cs-page-shot:first-child{grid-column:auto}
+#caseDetail.case-hazelwood .cs-page-cap{position:sticky;top:0;z-index:2;background:#eaf4f5;border-bottom:1px solid rgba(14,124,134,.22)}
+#caseDetail.case-hazelwood .cs-page-shot img{width:100%;height:auto;object-fit:initial;object-position:top center;background:#fff}
 
 .cs-results{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
 .cs-results .cm{text-align:left;padding:24px 26px;background:var(--cream);border-radius:16px}
