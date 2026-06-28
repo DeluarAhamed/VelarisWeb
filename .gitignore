@@ -5,3 +5,5 @@ sanity/.sanity/
 sanity/dist/
 *.log
 qa-*.png
+
+.vercel
