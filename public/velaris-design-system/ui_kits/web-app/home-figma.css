@@ -302,8 +302,8 @@ html.nav-hidden .stack-pin{top:24px;height:min(calc(100vh - 48px),780px);min-hei
 .stack-card.dark .sc-read{color:var(--teal-bright)}
 .sc-read svg{width:16px;height:16px;transition:transform .2s}
 .stack-card:hover .sc-read svg{transform:translateX(4px)}
-.sc-visual{position:relative;overflow:hidden;background:linear-gradient(150deg,#0a2236,#02101f);display:flex;align-items:center;justify-content:center;padding:18px}
-.sc-visual img{width:100%;height:100%;object-fit:contain;object-position:center;background:#fff;border-radius:12px;box-shadow:0 26px 60px -42px rgba(0,0,0,.65)}
+.sc-visual{position:relative;overflow:hidden;background:linear-gradient(150deg,#0a2236,#02101f);display:flex;align-items:center;justify-content:center;padding:0}
+.sc-visual img{width:100%;height:100%;object-fit:cover;object-position:center;background:transparent;border-radius:0;box-shadow:none}
 
 /* more cases grid */
 .more-cases{padding:8px 0 0}
