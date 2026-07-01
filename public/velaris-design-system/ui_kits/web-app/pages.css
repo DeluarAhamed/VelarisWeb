@@ -191,14 +191,14 @@
 /* ---- WORK / PORTFOLIO LIST ---- */
 .work-list{display:flex;flex-direction:column;gap:40px}
 .work-stack{padding-bottom:0}
-.wl-item{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;color:inherit;
+.wl-item{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:stretch;color:inherit;
   border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;
   box-shadow:0 30px 70px -48px rgba(2,16,31,.4);transition:transform .25s,box-shadow .25s}
 .wl-item:hover{transform:translateY(-4px);box-shadow:0 44px 90px -46px rgba(2,16,31,.5)}
 .wl-item.rev .wl-visual{order:2}
-.wl-visual{background:linear-gradient(150deg,#0a2236,#02101f);overflow:hidden;align-self:stretch;min-height:340px;display:flex}
+.wl-visual{background:linear-gradient(150deg,#0a2236,#02101f);overflow:hidden;align-self:stretch;min-height:360px;display:flex;align-items:center;justify-content:center;padding:18px}
 .wl-visual img{width:100%;height:100%;object-fit:contain;object-position:center center;background:#fff;border-radius:12px;box-shadow:0 22px 52px -36px rgba(2,16,31,.58)}
-.wl-text{padding:44px 42px}
+.wl-text{padding:38px 40px;min-height:0;display:flex;flex-direction:column;justify-content:center}
 .wl-n{font-family:var(--font-mono);font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--teal)}
 .wl-logo{height:30px;width:auto;margin:16px 0 0;display:block}
 .wl-text h3{font-size:28px;letter-spacing:-.025em;line-height:1.12;margin:16px 0 0}

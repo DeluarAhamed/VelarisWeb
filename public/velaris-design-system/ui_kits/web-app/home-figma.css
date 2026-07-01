@@ -260,7 +260,7 @@ header.nav.solid{box-shadow:0 10px 30px -18px rgba(2,16,31,.28)}
 .cases h2 .serif{color:var(--teal)}
 .cases-head p{color:var(--ink-2);margin:16px 0 0;font-size:18px}
 .stack{margin-top:30px;position:relative}
-.stack-pin{position:sticky;top:104px;height:min(72vh,680px);overflow:hidden;border-radius:24px;
+.stack-pin{position:sticky;top:92px;height:min(calc(100vh - 126px),760px);min-height:620px;overflow:hidden;border-radius:24px;
   box-shadow:0 30px 70px -40px rgba(2,16,31,.4);isolation:isolate}
 .stack-card{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.05fr;gap:0;
   background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;
@@ -271,7 +271,7 @@ header.nav.solid{box-shadow:0 10px 30px -18px rgba(2,16,31,.28)}
 .stack-card.dark{background:var(--navy);border-color:transparent;color:#fff}
 .stack-card.dark .sc-text h3,.stack-card.dark .sum,.stack-card.dark .sc-text{color:#fff}
 .stack-card.dark .sc-sector,.stack-card.dark .sc-stats small{color:rgba(255,255,255,.7)}
-.sc-text{padding:46px 44px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.sc-text{padding:40px 44px;display:flex;flex-direction:column;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(47,155,149,.36) transparent}
 .sc-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
 .sc-num{font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.05em;color:var(--teal)}
 .stack-card.dark .sc-num{color:var(--teal-bright)}
