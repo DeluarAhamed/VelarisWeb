@@ -58,6 +58,7 @@
     }
     window.addEventListener('scroll',updateTarget,{passive:true});
     window.addEventListener('resize',layout);
+    window.addEventListener('velaris:chrome',layout);
     if(mobile.addEventListener) mobile.addEventListener('change',layout);
     layout();
   };
@@ -187,8 +188,10 @@
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
     if(nav){
       nav.classList.toggle('solid', y > 14);
-      if(y > 150 && y > lastY + 4){ nav.classList.add('hide'); document.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');}); }
-      else if(y < lastY - 4 || y < 120){ nav.classList.remove('hide'); }
+      var wasHidden = nav.classList.contains('hide');
+      if(y > 84 && y > lastY + 4){ nav.classList.add('hide'); document.documentElement.classList.add('nav-hidden'); document.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');}); }
+      else if(y < lastY - 4 || y < 72){ nav.classList.remove('hide'); document.documentElement.classList.remove('nav-hidden'); }
+      if(wasHidden !== nav.classList.contains('hide')) window.dispatchEvent(new CustomEvent('velaris:chrome'));
       lastY = y;
     }
     ticking = false;
