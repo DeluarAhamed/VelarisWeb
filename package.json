@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
     "cms:dev": "npm --prefix sanity run dev",
-    "cms:build": "npm --prefix sanity run build"
+    "cms:build": "npm --prefix sanity run build",
+    "cms:seed": "npm --prefix sanity run seed:build",
+    "cms:import": "npm --prefix sanity run seed:import"
   },
   "keywords": [],
   "author": "",

@@ -7,7 +7,9 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "deploy": "sanity deploy"
+    "deploy": "sanity deploy",
+    "seed:build": "node scripts/build-seed.mjs",
+    "seed:import": "sanity dataset import seed/velaris-content.ndjson production --replace"
   },
   "dependencies": {
     "@sanity/vision": "^4.10.1",
