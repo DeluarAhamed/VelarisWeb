@@ -573,27 +573,11 @@ footer.site{background:var(--navy-2);color:rgba(255,255,255,.7);padding:74px 0 3
 .imodal-ok svg{width:17px;height:17px}
 
 /* ============================ PERFORMANCE + BOOKING ============================ */
-main > section,
-body > section:not(.hero):not(.phero):not(.cta),
-footer.site{content-visibility:auto;contain-intrinsic-size:1px 760px}
 img{max-width:100%;height:auto}
-.vw-preloader{position:fixed;inset:0;z-index:999;background:#f5f8f8;display:flex;align-items:center;justify-content:center;
-  opacity:1;visibility:visible;transition:opacity .35s ease,visibility .35s ease}
-.vw-preloader.done{opacity:0;visibility:hidden}
-.vw-preloader-card{width:min(480px,calc(100vw - 40px));padding:34px;border:1px solid rgba(2,16,31,.12);border-radius:18px;background:#fff;
-  box-shadow:0 30px 90px -60px rgba(2,16,31,.55)}
-.vw-preloader-logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(180deg,#2B8B8D,#1A283F);margin-bottom:24px}
-.vw-wire{height:14px;border-radius:999px;background:linear-gradient(90deg,#eef3f4,#dce7e8,#eef3f4);background-size:220% 100%;
-  animation:vwWire 1.1s linear infinite}
-.vw-wire.w1{width:78%;height:22px}.vw-wire.w2{width:56%;margin-top:12px}
-.vw-wire-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}
-.vw-wire-grid span{display:block;height:70px;border-radius:12px;background:#eef3f4}
-.vw-wire.long{width:92%;margin-top:12px}.vw-wire.med{width:68%;margin-top:12px}
-@keyframes vwWire{to{background-position:-220% 0}}
 
 .contact-booking{padding:105px 0;background:#dbe4e7;color:var(--ink)}
 .legacy-contact{display:none}
-.contact-booking-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:74px;align-items:center}
+.contact-booking-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:74px;align-items:start}
 .contact-booking-copy h2{font-size:52px;line-height:1.05;letter-spacing:-.035em;margin:16px 0 0;max-width:560px}
 .contact-booking-copy h2 .serif{color:var(--teal)}
 .contact-booking-copy p{font-size:18px;color:var(--ink-2);line-height:1.6;max-width:560px;margin:22px 0 0}
@@ -613,6 +597,7 @@ img{max-width:100%;height:auto}
 .contact-tabs button{flex:1;border:0;border-radius:999px;background:transparent;padding:11px 14px;font:700 13px var(--font-ui);color:var(--ink-2);cursor:pointer}
 .contact-tabs button.active{background:#fff;color:var(--ink);box-shadow:0 8px 24px -18px rgba(2,16,31,.35)}
 .contact-inline-form{display:flex;flex-direction:column;gap:17px}
+.contact-inline-form[hidden],.contact-calendar[hidden]{display:none!important}
 .contact-inline-form .btn{width:100%;justify-content:center}
 .contact-calendar{min-height:700px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
 @media (max-width:760px){

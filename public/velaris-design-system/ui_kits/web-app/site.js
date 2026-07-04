@@ -8,32 +8,6 @@
   var page = document.body.getAttribute('data-page') || '';
   var CAL_URL = 'https://calendly.com/velarisweb/30min';
 
-  (function installPreloader(){
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var loader = document.createElement('div');
-    loader.className = 'vw-preloader';
-    loader.setAttribute('aria-hidden','true');
-    loader.innerHTML =
-      '<div class="vw-preloader-card">'+
-        '<div class="vw-preloader-logo"></div>'+
-        '<div class="vw-wire w1"></div><div class="vw-wire w2"></div>'+
-        '<div class="vw-wire-grid"><span></span><span></span><span></span></div>'+
-        '<div class="vw-wire long"></div><div class="vw-wire med"></div>'+
-      '</div>';
-    document.body.appendChild(loader);
-    var start = Date.now();
-    function hide(){
-      var wait = Math.max(0, 420 - (Date.now() - start));
-      setTimeout(function(){
-        loader.classList.add('done');
-        setTimeout(function(){ if(loader.parentNode) loader.parentNode.removeChild(loader); }, 380);
-      }, wait);
-    }
-    if(document.readyState === 'complete') hide();
-    else window.addEventListener('load', hide, {once:true});
-    setTimeout(hide, 2600);
-  })();
-
   window.VelarisInitStack = function(stack){
     if(!stack) return;
     var pin=stack.querySelector('.stack-pin');
