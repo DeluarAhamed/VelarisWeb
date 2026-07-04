@@ -575,9 +575,10 @@ footer.site{background:var(--navy-2);color:rgba(255,255,255,.7);padding:74px 0 3
 /* ============================ PERFORMANCE + BOOKING ============================ */
 img{max-width:100%;height:auto}
 
-.contact-booking{padding:105px 0;background:#dbe4e7;color:var(--ink)}
+.contact-booking{padding:105px 0;background:#dbe4e7;color:var(--ink);overflow-anchor:none}
 .legacy-contact{display:none}
-.contact-booking-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:74px;align-items:start}
+.contact-booking-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:74px;align-items:start;min-height:720px}
+.contact-booking-copy,.contact-booking-card{align-self:start}
 .contact-booking-copy h2{font-size:52px;line-height:1.05;letter-spacing:-.035em;margin:16px 0 0;max-width:560px}
 .contact-booking-copy h2 .serif{color:var(--teal)}
 .contact-booking-copy p{font-size:18px;color:var(--ink-2);line-height:1.6;max-width:560px;margin:22px 0 0}
@@ -599,7 +600,8 @@ img{max-width:100%;height:auto}
 .contact-inline-form{display:flex;flex-direction:column;gap:17px}
 .contact-inline-form[hidden],.contact-calendar[hidden]{display:none!important}
 .contact-inline-form .btn{width:100%;justify-content:center}
-.contact-calendar{min-height:700px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.contact-calendar{height:700px;min-height:700px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.contact-calendar .calendly-inline-widget{height:700px!important;min-height:700px}
 @media (max-width:760px){
   .imodal-grid{grid-template-columns:1fr}
   .imodal-left{padding:38px 28px 26px}
@@ -608,12 +610,12 @@ img{max-width:100%;height:auto}
   .imodal-form{padding:28px 26px}
   .ifield-row{flex-direction:column;gap:16px}
   .contact-booking{padding:70px 0}
-  .contact-booking-wrap{grid-template-columns:1fr;gap:34px}
+  .contact-booking-wrap{grid-template-columns:1fr;gap:34px;min-height:0}
   .contact-booking-copy h2{font-size:34px}
   .contact-booking-card{padding:24px 20px}
   .contact-founder{margin-top:30px}
   .contact-checks{margin-top:28px}
-  .contact-calendar{min-height:650px}
+  .contact-calendar,.contact-calendar .calendly-inline-widget{height:650px!important;min-height:650px}
 }
 
 /* ============================ RESPONSIVE ============================ */

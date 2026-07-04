@@ -356,7 +356,7 @@
       var mode = mount.getAttribute('data-mode') || 'form';
       mount.innerHTML =
         '<div class="wrap contact-booking-wrap">'+
-          '<div class="contact-booking-copy reveal">'+
+          '<div class="contact-booking-copy">'+
             '<span class="eyebrow">Start the conversation</span>'+
             '<h2>Have a project idea in mind? <span class="serif">Let\'s get started</span></h2>'+
             '<p>We\'ll schedule a call to understand your goals. After discovery, we\'ll send a clear proposal, timeline and next steps.</p>'+
@@ -366,7 +366,7 @@
             '</div>'+
             '<ul class="contact-checks"><li>Free 20-minute strategy call</li><li>Clear proposal and timeline</li><li>No obligation, ever</li></ul>'+
           '</div>'+
-          '<div class="contact-booking-card reveal">'+
+          '<div class="contact-booking-card">'+
             '<div class="contact-tabs" role="tablist">'+
               '<button class="active" type="button" data-contact-tab="form">Send inquiry</button>'+
               '<button type="button" data-contact-tab="calendar">Book a call</button>'+
@@ -389,9 +389,12 @@
       var calReady = false;
       function show(which, shouldLoad){
         var calendar = which === 'calendar';
+        var topBefore = mount.getBoundingClientRect().top;
         tabs.forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-contact-tab') === which); });
         formPanel.hidden = calendar;
         calPanel.hidden = !calendar;
+        formPanel.style.display = calendar ? 'none' : '';
+        calPanel.style.display = calendar ? '' : 'none';
         if(calendar && shouldLoad !== false && !calReady){
           calReady = true;
           loadCalendly(function(){
@@ -402,6 +405,10 @@
             }
           });
         }
+        requestAnimationFrame(function(){
+          var delta = mount.getBoundingClientRect().top - topBefore;
+          if(Math.abs(delta) > 1) window.scrollBy(0, delta);
+        });
       }
       tabs.forEach(function(t){ t.addEventListener('click', function(e){ e.preventDefault(); show(t.getAttribute('data-contact-tab')); }); });
       formPanel.addEventListener('submit', function(e){ e.preventDefault(); formPanel.querySelector('.imodal-ok').classList.add('show'); });
