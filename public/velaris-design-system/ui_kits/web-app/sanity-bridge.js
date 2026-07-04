@@ -22,7 +22,7 @@
   function legacy(path) {
     if (!path) return '';
     if (/^(https?:|data:|\/)/.test(path)) return path;
-    return basePath + path;
+    return basePath + String(path).replace(/^(home-img\/.+)\.(png|jpe?g)$/i, '$1.webp');
   }
 
   function imageFrom(obj, fallback) {

@@ -6,6 +6,33 @@
   'use strict';
   var base = document.body.getAttribute('data-base') || '';
   var page = document.body.getAttribute('data-page') || '';
+  var CAL_URL = 'https://calendly.com/velarisweb/30min';
+
+  (function installPreloader(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var loader = document.createElement('div');
+    loader.className = 'vw-preloader';
+    loader.setAttribute('aria-hidden','true');
+    loader.innerHTML =
+      '<div class="vw-preloader-card">'+
+        '<div class="vw-preloader-logo"></div>'+
+        '<div class="vw-wire w1"></div><div class="vw-wire w2"></div>'+
+        '<div class="vw-wire-grid"><span></span><span></span><span></span></div>'+
+        '<div class="vw-wire long"></div><div class="vw-wire med"></div>'+
+      '</div>';
+    document.body.appendChild(loader);
+    var start = Date.now();
+    function hide(){
+      var wait = Math.max(0, 420 - (Date.now() - start));
+      setTimeout(function(){
+        loader.classList.add('done');
+        setTimeout(function(){ if(loader.parentNode) loader.parentNode.removeChild(loader); }, 380);
+      }, wait);
+    }
+    if(document.readyState === 'complete') hide();
+    else window.addEventListener('load', hide, {once:true});
+    setTimeout(hide, 2600);
+  })();
 
   window.VelarisInitStack = function(stack){
     if(!stack) return;
@@ -73,7 +100,7 @@
     '<defs><linearGradient id="vlg" x1="16" y1="0" x2="16" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2B8B8D"></stop><stop offset=".89" stop-color="#1A283F"></stop></linearGradient></defs></svg>';
   var BRAND = '<a class="brand" href="'+base+'home-figma.html" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
-  var LINKEDIN_ICON = base+'home-img/linkedin.png';
+  var LINKEDIN_ICON = base+'home-img/linkedin.webp';
 
   function svcMega(){
     var S = window.VELARIS_SERVICES||[];
@@ -181,6 +208,25 @@
   if(navMount) navMount.innerHTML = navHTML;
   if(footMount) footMount.innerHTML = footHTML;
 
+  function tuneMedia(root){
+    root = root || document;
+    [].slice.call(root.querySelectorAll('img')).forEach(function(img, i){
+      if(!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
+      if(!img.hasAttribute('loading')){
+        var top = 9999;
+        try { top = img.getBoundingClientRect().top; } catch(e){}
+        if(i > 1 || top > window.innerHeight * 1.25) img.setAttribute('loading','lazy');
+        else img.setAttribute('fetchpriority','high');
+      }
+    });
+  }
+  tuneMedia();
+  if('MutationObserver' in window){
+    new MutationObserver(function(list){
+      list.forEach(function(m){ [].slice.call(m.addedNodes).forEach(function(n){ if(n.nodeType===1) tuneMedia(n); }); });
+    }).observe(document.body,{childList:true,subtree:true});
+  }
+
   /* interactions */
   var nav = document.querySelector('header.nav');
   var lastY = window.pageYOffset || 0, ticking = false;
@@ -248,7 +294,7 @@
           '<h2>Have a project in mind? <span class="serif">Let\'s get started</span></h2>'+
           '<p>We\'ll schedule a call to discuss your idea. After a discovery session we\'ll send a proposal, and once approved we get to work.</p>'+
           '<div class="imodal-founder">'+
-            '<span class="if-photo" style="background-image:url('+base+'home-img/founder.jpg)"></span>'+
+            '<span class="if-photo" style="background-image:url('+base+'home-img/founder.webp)"></span>'+
             '<div class="if-meta"><b>Deluar Ahamed</b><span>Founder &amp; Lead Designer</span>'+
             '<a class="if-li" href="'+LINKEDIN_URL+'" target="_blank" rel="noopener"><img src="'+LINKEDIN_ICON+'" alt=""> Connect on LinkedIn</a></div>'+
           '</div>'+
@@ -289,18 +335,35 @@
   if(iform) iform.addEventListener('submit', function(e){ e.preventDefault(); iform.querySelector('.imodal-ok').classList.add('show'); setTimeout(closeModal, 1800); });
 
   /* ---- CALENDLY booking integration ---- */
-  var CAL_URL = 'https://calendly.com/velarisweb/30min';
-  (function loadCalendly(){
+  var calendlyLoading = false;
+  var calendlyQueue = [];
+  function flushCalendlyQueue(){
+    var q = calendlyQueue.slice();
+    calendlyQueue = [];
+    q.forEach(function(fn){ if(fn) fn(); });
+  }
+  function loadCalendly(done){
+    if(window.Calendly){ if(done) done(); return; }
+    if(done) calendlyQueue.push(done);
     if(!document.querySelector('link[href*="calendly"]')){
       var l=document.createElement('link'); l.rel='stylesheet'; l.href='https://assets.calendly.com/assets/external/widget.css'; document.head.appendChild(l);
     }
-    if(!document.querySelector('script[src*="calendly"]')){
-      var s=document.createElement('script'); s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true; document.head.appendChild(s);
-    }
-  })();
+    var existing = document.querySelector('script[src*="calendly"]');
+    if(existing) return;
+    if(calendlyLoading) return;
+    calendlyLoading = true;
+    var s=document.createElement('script');
+    s.src='https://assets.calendly.com/assets/external/widget.js';
+    s.async=true;
+    s.onload=function(){ calendlyLoading=false; flushCalendlyQueue(); };
+    s.onerror=function(){ calendlyLoading=false; flushCalendlyQueue(); };
+    document.head.appendChild(s);
+  }
   function openCalendly(){
-    if(window.Calendly && window.Calendly.initPopupWidget){ window.Calendly.initPopupWidget({url:CAL_URL}); }
-    else { window.open(CAL_URL,'_blank','noopener'); }
+    loadCalendly(function(){
+      if(window.Calendly && window.Calendly.initPopupWidget){ window.Calendly.initPopupWidget({url:CAL_URL}); }
+      else { window.open(CAL_URL,'_blank','noopener'); }
+    });
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-booking]');
@@ -313,4 +376,75 @@
     var t=(a.textContent||'').trim().toLowerCase();
     if(/^book a (free )?call/.test(t) || t==='book a call'){ a.setAttribute('data-booking',''); a.setAttribute('href', CAL_URL); }
   });
+
+  function renderContactSections(){
+    [].slice.call(document.querySelectorAll('[data-contact-section]')).forEach(function(mount){
+      var mode = mount.getAttribute('data-mode') || 'form';
+      mount.innerHTML =
+        '<div class="wrap contact-booking-wrap">'+
+          '<div class="contact-booking-copy reveal">'+
+            '<span class="eyebrow">Start the conversation</span>'+
+            '<h2>Have a project idea in mind? <span class="serif">Let\'s get started</span></h2>'+
+            '<p>We\'ll schedule a call to understand your goals. After discovery, we\'ll send a clear proposal, timeline and next steps.</p>'+
+            '<div class="contact-founder">'+
+              '<img src="'+base+'home-img/founder.webp" alt="Deluar Ahamed">'+
+              '<div><b>Deluar Ahamed</b><span>Founder &amp; Lead Designer</span><a href="'+LINKEDIN_URL+'" target="_blank" rel="noopener"><img src="'+LINKEDIN_ICON+'" alt=""> Connect on LinkedIn</a></div>'+
+            '</div>'+
+            '<ul class="contact-checks"><li>Free 20-minute strategy call</li><li>Clear proposal and timeline</li><li>No obligation, ever</li></ul>'+
+          '</div>'+
+          '<div class="contact-booking-card reveal">'+
+            '<div class="contact-tabs" role="tablist">'+
+              '<button class="active" type="button" data-contact-tab="form">Send inquiry</button>'+
+              '<button type="button" data-contact-tab="calendar">Book a call</button>'+
+            '</div>'+
+            '<form class="contact-inline-form" data-panel="form">'+
+              '<div class="ifield"><label>Full name</label><input type="text" placeholder="Jane Cooper" required></div>'+
+              '<div class="ifield-row"><div class="ifield"><label>Company name</label><input type="text" placeholder="Ex. Tesla Inc"></div><div class="ifield"><label>Email *</label><input type="email" placeholder="you@example.com" required></div></div>'+
+              '<div class="ifield-row"><div class="ifield"><label>Service required *</label><select required><option value="" selected disabled>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div><div class="ifield"><label>Project budget *</label><select required><option value="" selected disabled>Select your range</option><option>&pound;1k - &pound;3k</option><option>&pound;3k - &pound;6k</option><option>&pound;6k - &pound;12k</option><option>&pound;12k+</option></select></div></div>'+
+              '<div class="ifield"><label>Project details *</label><textarea placeholder="Tell us more about your idea" required></textarea></div>'+
+              '<button class="btn btn-dark" type="submit">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
+              '<p class="imodal-alt">Not interested in the form? <a href="#" data-contact-tab="calendar">Book a call directly</a></p>'+
+              '<div class="imodal-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg> Thanks! We\'ll be in touch within one business day.</div>'+
+            '</form>'+
+            '<div class="contact-calendar" data-panel="calendar" hidden><div class="calendly-inline-widget" data-url="'+CAL_URL+'" style="min-width:320px;height:700px;"></div></div>'+
+          '</div>'+
+        '</div>';
+      var tabs = [].slice.call(mount.querySelectorAll('[data-contact-tab]'));
+      var formPanel = mount.querySelector('[data-panel="form"]');
+      var calPanel = mount.querySelector('[data-panel="calendar"]');
+      var calReady = false;
+      function show(which, shouldLoad){
+        var calendar = which === 'calendar';
+        tabs.forEach(function(t){ t.classList.toggle('active', t.getAttribute('data-contact-tab') === which); });
+        formPanel.hidden = calendar;
+        calPanel.hidden = !calendar;
+        if(calendar && shouldLoad !== false && !calReady){
+          calReady = true;
+          loadCalendly(function(){
+            if(window.Calendly && window.Calendly.initInlineWidget){
+              var widget = calPanel.querySelector('.calendly-inline-widget');
+              widget.innerHTML = '';
+              window.Calendly.initInlineWidget({url:CAL_URL,parentElement:widget});
+            }
+          });
+        }
+      }
+      tabs.forEach(function(t){ t.addEventListener('click', function(e){ e.preventDefault(); show(t.getAttribute('data-contact-tab')); }); });
+      formPanel.addEventListener('submit', function(e){ e.preventDefault(); formPanel.querySelector('.imodal-ok').classList.add('show'); });
+      if(mode === 'calendly') show('calendar', false);
+      else if('IntersectionObserver' in window){
+        new IntersectionObserver(function(entries, obs){
+          entries.forEach(function(entry){ if(entry.isIntersecting && mode === 'calendly'){ show('calendar'); obs.disconnect(); } });
+        },{rootMargin:'500px'}).observe(mount);
+      }
+      if(mode === 'calendly' && 'IntersectionObserver' in window){
+        new IntersectionObserver(function(entries, obs){
+          entries.forEach(function(entry){ if(entry.isIntersecting){ show('calendar'); obs.disconnect(); } });
+        },{rootMargin:'500px'}).observe(mount);
+      } else if(mode === 'calendly') {
+        show('calendar');
+      }
+    });
+  }
+  renderContactSections();
 })();
