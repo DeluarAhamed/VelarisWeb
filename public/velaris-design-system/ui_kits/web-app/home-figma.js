@@ -16,10 +16,10 @@
   function thumb(p){ var id=PIMG[p.cat]||"photo-1467232004584-a241de8bcf5d";
     return 'linear-gradient(180deg,rgba(2,16,31,.12),rgba(2,16,31,.6)),url('+uns(id)+') center/cover'; }
 
-  /* ---- B2B / B2C : slide up from bottom ---- */
+  /* ---- Audience segments: slide up from bottom ---- */
   (function(){
     var swap=document.querySelector('[data-swap]'); if(!swap) return;
-    var words=['B2B','B2C'], i=0;
+    var words=['Founders','Consultants','Coaches','Local Businesses','Service Businesses'], i=0;
     var el=document.createElement('span'); el.className='word'; el.textContent=words[0]; swap.appendChild(el);
     if(rm) return;
     setInterval(function(){
