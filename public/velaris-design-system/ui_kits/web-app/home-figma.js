@@ -123,7 +123,7 @@
         foot='<div class="sc-outcome"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/></svg></span>'+
           '<p><b>The outcome</b>'+c.outcome+'</p></div>';
       }
-      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" id="case-'+c.slug+'" href="case.html?c='+c.slug+'">'+
+      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" id="case-'+c.slug+'" href="/case?c='+c.slug+'">'+
         '<div class="sc-text">'+
           '<div class="sc-top"><span class="sc-num">CASE '+c.n+'</span><span class="sc-sector">'+c.sector+'</span></div>'+
           '<img class="sc-logo" src="'+c.logo+'" alt="'+c.client+'"'+(c.logoInvert?' style="filter:brightness(0) invert(1)"':'')+'>'+
@@ -145,7 +145,7 @@
       var foot = c.quote
         ? '<p class="mc-quote">"'+c.quote+'"</p><div class="mc-author"><span class="av" style="background-image:url('+c.avatar+')"></span><span><b>'+c.author+'</b><span>'+c.role+'</span></span></div>'
         : '<p class="mc-quote">'+c.summary+'</p><div class="mc-author"><span class="av" style="background:var(--cream);display:flex;align-items:center;justify-content:center"><img src="'+c.logo+'" alt="" style="width:22px;height:auto"></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></div>';
-      return '<a class="mc" id="case-'+c.slug+'" href="case.html?c='+c.slug+'">'+
+      return '<a class="mc" id="case-'+c.slug+'" href="/case?c='+c.slug+'">'+
         '<div class="mc-img"><img src="'+c.img+'" alt="'+c.client+' website"></div>'+
         '<div class="mc-body"><span class="mc-sector">'+c.sector+'</span>'+foot+'</div></a>';
     }).join('');
@@ -160,7 +160,7 @@
       return '<div class="svc'+(s.feat?' feat':'')+'">'+
         '<div class="svc-top"><div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+ic[s.icon]+'</svg></div><span class="svc-n">'+s.tag+'</span></div>'+
         '<h3>'+s.name+'</h3><p>'+s.short+'</p><ul class="feats">'+feats+'</ul>'+
-        '<a class="svc-link" href="service.html?s='+s.slug+'">Learn more '+ARROW+'</a></div>';
+        '<a class="svc-link" href="/service?s='+s.slug+'">Learn more '+ARROW+'</a></div>';
     }).join('');
     var prev=document.getElementById('svcPrev'), next=document.getElementById('svcNext');
     function by(){ var c=scroll.querySelector('.svc'); return c?c.getBoundingClientRect().width+20:360; }
@@ -220,7 +220,7 @@
     var track=document.getElementById('artTrack'); if(!track||!window.VELARIS_POSTS) return;
     var posts=window.VELARIS_POSTS.slice(0,8);
     track.innerHTML=posts.map(function(p,i){
-      return '<a class="art-card" href="post.html?slug='+p.slug+'"><div class="art-thumb"><div class="ph" style="background:'+thumb(p)+'"></div><span class="art-topic">'+p.cat+'</span></div>'+
+      return '<a class="art-card" href="/post?slug='+p.slug+'"><div class="art-thumb"><div class="ph" style="background:'+thumb(p)+'"></div><span class="art-topic">'+p.cat+'</span></div>'+
         '<div class="art-body"><div class="art-tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min read</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p>'+
         '<span class="art-read">Read more '+ARROW+'</span></div></a>';

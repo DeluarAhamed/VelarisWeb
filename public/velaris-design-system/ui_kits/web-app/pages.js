@@ -79,7 +79,7 @@
   if(svcList && window.VELARIS_SERVICES){
     svcList.innerHTML=window.VELARIS_SERVICES.map(function(s){
       var feats=s.feats.map(function(f){ return '<li>'+CHECK+f+'</li>'; }).join('');
-      return '<a class="svc'+(s.feat?' feat':'')+'" href="service.html?s='+s.slug+'" style="text-decoration:none;color:inherit">'+
+      return '<a class="svc'+(s.feat?' feat':'')+'" href="/service?s='+s.slug+'" style="text-decoration:none;color:inherit">'+
         '<div class="svc-top"><div class="svc-ic">'+svcIcon(s)+'</div><span class="svc-n">'+s.tag+'</span></div>'+
         '<h3>'+s.name+'</h3><p>'+s.short+'</p><ul class="feats">'+feats+'</ul>'+
         '<span class="svc-link">Learn more '+ARROW+'</span></a>';
@@ -164,7 +164,7 @@
       if(story){
         sd.querySelector('[data-story-quote]').textContent='“'+plain(story.quote)+'”';
         sd.querySelector('[data-story-who]').innerHTML='<span class="av" style="background-image:url('+story.avatar+')"></span><span><b>'+story.author+'</b><span>'+story.role+'</span></span>';
-        var sl=sd.querySelector('[data-story-link]'); if(sl) sl.href='case.html?c='+story.slug;
+        var sl=sd.querySelector('[data-story-link]'); if(sl) sl.href='/case?c='+story.slug;
         sd.querySelector('[data-story-stats]').innerHTML=(story.stats||[]).slice(0,4).map(function(st){
           return '<div class="ss"><b>'+st[0]+'</b><small>'+st[1]+'</small></div>';
         }).join('');
@@ -189,7 +189,7 @@
       var rel=window.VELARIS_CASES.filter(function(c){ return c.services.join(' ').toLowerCase().indexOf(plain(s.name).split(' ')[0].toLowerCase())>-1; });
       if(rel.length<2) rel=window.VELARIS_CASES.slice(0,3);
       rw.innerHTML=rel.slice(0,3).map(function(c){
-        return '<a class="svw-card" href="case.html?c='+c.slug+'"><div class="svw-img"><img src="'+c.img+'" alt="'+c.client+'"></div>'+
+        return '<a class="svw-card" href="/case?c='+c.slug+'"><div class="svw-img"><img src="'+c.img+'" alt="'+c.client+'"></div>'+
           '<div class="svw-b"><span>'+c.sector+'</span><b>'+c.client+'</b></div></a>';
       }).join('');
     }
@@ -198,7 +198,7 @@
     var others=window.VELARIS_SERVICES.filter(function(x){return x.slug!==s.slug;}).slice(0,3);
     var ow=document.getElementById('svcOther');
     if(ow) ow.innerHTML=others.map(function(o){
-      return '<a href="service.html?s='+o.slug+'"><span class="ic">'+svcIcon(o)+'</span><span><b>'+o.name+'</b><span>'+o.tagline+'</span></span></a>';
+      return '<a href="/service?s='+o.slug+'"><span class="ic">'+svcIcon(o)+'</span><span><b>'+o.name+'</b><span>'+o.tagline+'</span></span></a>';
     }).join('');
   }
 
@@ -211,7 +211,7 @@
       var foot = c.quote
         ? '<div class="sc-quote"><span class="av" style="background-image:url('+c.avatar+')"></span><div><p class="qt">"'+c.quote.slice(0,160)+(c.quote.length>160?'…':'')+'"</p><span class="nm">'+c.author+' <span class="rl">— '+c.role+'</span></span></div></div>'
         : '<div class="sc-outcome"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/></svg></span><p><b>The outcome</b>'+c.outcome+'</p></div>';
-      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" href="case.html?c='+c.slug+'">'+
+      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" href="/case?c='+c.slug+'">'+
         '<div class="sc-text"><div class="sc-top"><span class="sc-num">CASE '+c.n+'</span><span class="sc-sector">'+c.sector+'</span></div>'+
         '<img class="sc-logo" src="'+c.logo+'" alt="'+c.client+'"'+(c.logoInvert?' style="filter:brightness(0) invert(1)"':'')+'>'+
         '<h3>'+title+'</h3><p class="sum">'+c.summary+'</p>'+
@@ -353,8 +353,8 @@
     // prev/next
     var prev=list[(i-1+list.length)%list.length], next=list[(i+1)%list.length];
     var cn=cd.querySelector('[data-casenav]');
-    if(cn) cn.innerHTML='<a href="case.html?c='+prev.slug+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> '+prev.client+'</a>'+
-      '<a href="case.html?c='+next.slug+'">'+next.client+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>';
+    if(cn) cn.innerHTML='<a href="/case?c='+prev.slug+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> '+prev.client+'</a>'+
+      '<a href="/case?c='+next.slug+'">'+next.client+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>';
 
     // scroll reveal for case sections
     var cobs=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); cobs.unobserve(en.target);} }); },{threshold:.12});
@@ -366,7 +366,7 @@
   if(rg && window.VELARIS_RESOURCES){
     rg.innerHTML=window.VELARIS_RESOURCES.map(function(r){
       var free=/free/i.test(r.price);
-      var href=/playbook/i.test(r.title+' '+r.desc+' '+r.cta) ? '/playbook' : 'about.html#contact';
+      var href=/playbook/i.test(r.title+' '+r.desc+' '+r.cta) ? '/playbook' : '/about#contact';
       return '<a class="res-card'+(r.featured?' feat':'')+'" href="'+href+'">'+
         '<div class="res-thumb" style="background:linear-gradient(180deg,rgba(2,16,31,.18),rgba(2,16,31,.66)),url('+uns(r.img,700)+') center/cover">'+
           '<span class="res-type">'+r.type+'</span>'+
@@ -384,7 +384,7 @@
     // featured (first two)
     var fw=document.getElementById('blogFeatured');
     if(fw) fw.innerHTML=posts.slice(0,2).map(function(p){
-      return '<a class="feat-post" href="post.html?slug='+p.slug+'"><div class="thumb" style="'+thumb(p,900)+'"><span class="topic">'+p.cat+'</span></div>'+
+      return '<a class="feat-post" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p,900)+'"><span class="topic">'+p.cat+'</span></div>'+
         '<div class="fb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.date+'</span><span>'+p.read+' min read</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
     }).join('');
@@ -402,7 +402,7 @@
     function render(){
       var data=listFor(), slice=data.slice(0,shown);
       grid.innerHTML=slice.map(function(p){
-        return '<a class="pcard" href="post.html?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
+        return '<a class="pcard" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
           '<div class="pb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min</span></div>'+
           '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
       }).join('');
@@ -435,7 +435,7 @@
     if(rel.length<3) rel=rel.concat(P.filter(function(x){return x.slug!==post.slug && rel.indexOf(x)<0;}).slice(0,3-rel.length));
     var rw=pd.querySelector('[data-related]');
     if(rw) rw.innerHTML=rel.map(function(p){
-      return '<a class="pcard" href="post.html?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
+      return '<a class="pcard" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
         '<div class="pb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
     }).join('');
@@ -478,7 +478,7 @@
   var spg=document.getElementById('servicePricing');
   if(spg && window.VELARIS_SERVICE_PRICING){
     spg.innerHTML=window.VELARIS_SERVICE_PRICING.map(function(p){
-      return '<a class="sprice" href="service.html?s='+p.slug+'">'+
+      return '<a class="sprice" href="/service?s='+p.slug+'">'+
         '<span class="sp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+(IC[p.icon]||'')+'</svg></span>'+
         '<div class="sp-body"><b>'+p.name+'</b><span>'+p.note+'</span></div>'+
         '<div class="sp-price">'+p.price+'</div></a>';

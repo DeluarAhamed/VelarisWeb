@@ -72,7 +72,7 @@
     '<path d="M21.93 11.83c-.21.12-.37.22-.54.31-1.36.77-2.58 1.73-3.75 2.76-1.04.92-2.01 1.91-2.92 2.96-.13.15-.18.15-.3 0-.37-.5-.7-1.03-1.02-1.56-.09-.15-.06-.23.07-.33 1.88-1.4 3.92-2.51 6.08-3.4.68-.28 1.39-.54 2.1-.74.07-.02.15-.05.27 0z" fill="white"></path>'+
     '<path d="M27.36 7.36c-.02.06-.08.07-.13.08-.38.11-.75.23-1.14.31-.33.07-.53.25-.61.61-.1.43-.23.86-.34 1.29-.01.04-.01.11-.07.1-.05 0-.04-.06-.05-.1-.1-.42-.22-.84-.32-1.26-.08-.35-.26-.57-.6-.64-.4-.08-.79-.19-1.17-.32-.05-.02-.12-.01-.12-.08 0-.06.06-.05.11-.07.4-.12.81-.25 1.22-.35.32-.08.49-.28.56-.6.09-.4.18-.81.28-1.21.02-.07.01-.19.1-.19.09 0 .08.12.1.19.11.41.22.82.31 1.24.07.31.24.48.53.56.41.1.81.23 1.22.35.05.01.11 0 .12.08z" fill="white"></path>'+
     '<defs><linearGradient id="vlg" x1="16" y1="0" x2="16" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2B8B8D"></stop><stop offset=".89" stop-color="#1A283F"></stop></linearGradient></defs></svg>';
-  var BRAND = '<a class="brand" href="'+base+'home-figma.html" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
+  var BRAND = '<a class="brand" href="/" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
   var LINKEDIN_ICON = base+'home-img/linkedin.webp';
 
@@ -80,20 +80,20 @@
     var S = window.VELARIS_SERVICES||[];
     var ic = {code:'<path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/>',spark:'<path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.3 1-5.5-4-3.9L10.5 8z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>',mail:'<path d="M3 6l9 7 9-7M3 6v12h18V6"/>',ux:'<path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/>',brand:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',webflow:'<path d="M3 8l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4"/>',framer:'<path d="M6 3h12v6H12zM6 9h6l6 6h-6v6z"/>'};
     var links = S.map(function(s){
-      return '<a class="mega-link" href="'+base+'service.html?s='+s.slug+'"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">'+ic[s.icon]+'</svg></span><span><b>'+s.name+'</b><span>'+s.tagline+'</span></span></a>';
+      return '<a class="mega-link" href="/service?s='+s.slug+'"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">'+ic[s.icon]+'</svg></span><span><b>'+s.name+'</b><span>'+s.tagline+'</span></span></a>';
     }).join('');
     return '<div class="mega wide"><div class="mega-inner"><div class="mega-grid">'+links+'</div>'+
-      '<div class="mega-foot"><div><b>Not sure what you need?</b><p>Book a free 20-min call and we\'ll map it out.</p></div><a class="btn btn-teal" href="'+base+'pricing.html">See pricing</a></div></div></div>';
+      '<div class="mega-foot"><div><b>Not sure what you need?</b><p>Book a free 20-min call and we\'ll map it out.</p></div><a class="btn btn-teal" href="/pricing">See pricing</a></div></div></div>';
   }
   function caseMega(){
     var C = (window.VELARIS_CASES||[]).slice(0,4);
     var icons={hazelwood:'icon-hazelwood.png',navasana:'icon-navasana.png',core:'icon-core.png',bellavista:'icon-bellavista.png',coastal:'icon-coastal.png'};
     var links = C.map(function(c){
       var ic = icons[c.slug] ? base+'home-img/'+icons[c.slug] : base+c.logo;
-      return '<a class="mega-link" href="'+base+'case.html?c='+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
+      return '<a class="mega-link" href="/case?c='+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
     }).join('');
     return '<div class="mega"><div class="mega-inner"><div class="mega-grid one">'+links+'</div>'+
-      '<div class="mega-foot"><div><b>See every project</b><p>Browse the full Velaris portfolio.</p></div><a class="btn btn-teal" href="'+base+'work.html">View all</a></div></div></div>';
+      '<div class="mega-foot"><div><b>See every project</b><p>Browse the full Velaris portfolio.</p></div><a class="btn btn-teal" href="/work">View all</a></div></div></div>';
   }
 
   /* mobile drawer accordion sections */
@@ -106,12 +106,12 @@
   }
   function svcDrawerLinks(){
     return (window.VELARIS_SERVICES||[]).map(function(s){
-      return '<a class="dsub" href="'+base+'service.html?s='+s.slug+'" data-close>'+s.name+'</a>';
+      return '<a class="dsub" href="/service?s='+s.slug+'" data-close>'+s.name+'</a>';
     }).join('');
   }
   function caseDrawerLinks(){
     return (window.VELARIS_CASES||[]).slice(0,5).map(function(c){
-      return '<a class="dsub" href="'+base+'case.html?c='+c.slug+'" data-close>'+c.client+'</a>';
+      return '<a class="dsub" href="/case?c='+c.slug+'" data-close>'+c.client+'</a>';
     }).join('');
   }
 
@@ -120,13 +120,13 @@
     '<a href="/playbook">Download Free Playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></a></div></div>'+
     '<header class="nav"><div class="wrap nav-inner">'+BRAND+
       '<nav class="nav-links" aria-label="Primary">'+
-        '<div class="nav-item'+(page==='home'?' active':'')+'"><a href="'+base+'home-figma.html">Home</a></div>'+
-        '<div class="nav-item has-mega'+(page==='services'?' active':'')+'"><a href="'+base+'services.html" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+svcMega()+'</div>'+
-        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="'+base+'work.html" aria-haspopup="true">Case Studies <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
-        '<div class="nav-item'+(page==='pricing'?' active':'')+'"><a href="'+base+'pricing.html">Pricing</a></div>'+
-        '<div class="nav-item'+(page==='resources'?' active':'')+'"><a href="'+base+'resources.html">Resources</a></div>'+
-        '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="'+base+'about.html">About</a></div>'+
-        '<div class="nav-item'+(page==='blog'?' active':'')+'"><a href="'+base+'blog.html">Blog</a></div>'+
+        '<div class="nav-item'+(page==='home'?' active':'')+'"><a href="/">Home</a></div>'+
+        '<div class="nav-item has-mega'+(page==='services'?' active':'')+'"><a href="/services" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+svcMega()+'</div>'+
+        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/work" aria-haspopup="true">Case Studies <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
+        '<div class="nav-item'+(page==='pricing'?' active':'')+'"><a href="/pricing">Pricing</a></div>'+
+        '<div class="nav-item'+(page==='resources'?' active':'')+'"><a href="/resources">Resources</a></div>'+
+        '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
+        '<div class="nav-item'+(page==='blog'?' active':'')+'"><a href="/blog">Blog</a></div>'+
       '</nav>'+
       '<div class="nav-right"><a class="ghost" data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
         '<a class="btn btn-teal" data-inquiry href="#start">Start a Project</a>'+
@@ -135,13 +135,13 @@
     '<div class="drawer" id="drawer"><div class="drawer-bg" data-close></div><div class="drawer-panel">'+
       '<div class="drawer-head">'+BRAND+'<button class="drawer-close" data-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
       '<nav class="drawer-nav" aria-label="Mobile">'+
-        '<a class="dl" href="'+base+'home-figma.html" data-close>Home</a>'+
-        drawerAcc('Services', svcDrawerLinks(), base+'services.html', 'All services')+
-        drawerAcc('Case Studies', caseDrawerLinks(), base+'work.html', 'View all work')+
-        '<a class="dl" href="'+base+'pricing.html" data-close>Pricing</a>'+
-        '<a class="dl" href="'+base+'resources.html" data-close>Resources</a>'+
-        '<a class="dl" href="'+base+'about.html" data-close>About</a>'+
-        '<a class="dl" href="'+base+'blog.html" data-close>Blog</a>'+
+        '<a class="dl" href="/" data-close>Home</a>'+
+        drawerAcc('Services', svcDrawerLinks(), '/services', 'All services')+
+        drawerAcc('Case Studies', caseDrawerLinks(), '/work', 'View all work')+
+        '<a class="dl" href="/pricing" data-close>Pricing</a>'+
+        '<a class="dl" href="/resources" data-close>Resources</a>'+
+        '<a class="dl" href="/about" data-close>About</a>'+
+        '<a class="dl" href="/blog" data-close>Blog</a>'+
       '</nav>'+
       '<div class="drawer-cta">'+
         '<a class="btn btn-line" data-booking data-close href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
@@ -159,17 +159,17 @@
           '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>'+
         '</div></div>'+
       '<div class="foot-col"><h5>Services</h5>'+
-        '<a href="'+base+'service.html?s=brand-identity">Logo &amp; Brand Design</a>'+
-        '<a href="'+base+'service.html?s=conversion-uiux">UI/UX Design</a>'+
-        '<a href="'+base+'service.html?s=webflow-development">Webflow Development</a>'+
-        '<a href="'+base+'service.html?s=seo-optimization">Local SEO</a>'+
-        '<a href="'+base+'service.html?s=social-media-management">Social Media Management</a></div>'+
+        '<a href="/service?s=brand-identity">Logo &amp; Brand Design</a>'+
+        '<a href="/service?s=conversion-uiux">UI/UX Design</a>'+
+        '<a href="/service?s=webflow-development">Webflow Development</a>'+
+        '<a href="/service?s=seo-optimization">Local SEO</a>'+
+        '<a href="/service?s=social-media-management">Social Media Management</a></div>'+
       '<div class="foot-col"><h5>Company</h5>'+
-        '<a href="'+base+'work.html">Case Studies</a>'+
-        '<a href="'+base+'pricing.html">Pricing</a>'+
-        '<a href="'+base+'resources.html">Resources</a>'+
-        '<a href="'+base+'about.html">About</a>'+
-        '<a href="'+base+'blog.html">Blog</a></div>'+
+        '<a href="/work">Case Studies</a>'+
+        '<a href="/pricing">Pricing</a>'+
+        '<a href="/resources">Resources</a>'+
+        '<a href="/about">About</a>'+
+        '<a href="/blog">Blog</a></div>'+
       '<div class="foot-col"><h5>Get started</h5>'+
         '<a data-inquiry href="#start">Start a Project</a>'+
         '<a data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+

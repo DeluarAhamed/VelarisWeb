@@ -160,7 +160,7 @@
         };
       });
       window.VELARIS_HERO_SLIDES = window.VELARIS_CASES.map(function (c) {
-        return {client: plain(c.client), tag: plain(c.sector), img: c.img, headline: plain(c.headline), blurb: plain(c.summary), href: 'case.html?c=' + c.slug};
+        return {client: plain(c.client), tag: plain(c.sector), img: c.img, headline: plain(c.headline), blurb: plain(c.summary), href: '/case?c=' + c.slug};
       });
     }
 

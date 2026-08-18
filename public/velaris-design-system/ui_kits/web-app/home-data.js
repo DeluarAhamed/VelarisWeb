@@ -9,27 +9,27 @@ window.VELARIS_HERO_SLIDES = [
   {client:"Coastal Crest Lettings", tag:"B2C · Property", img:"home-img/dev-coastal.webp",
    headline:"Lettings Made Simple, Transparent & Stress-Free",
    blurb:"A fresh, modern lettings website built exactly to brief — bringing a 20-year, family-run property business online with clarity and trust.",
-   href:"case.html?c=coastal"},
+   href:"/case?c=coastal"},
   {client:"Hazelwood Hearcare", tag:"B2C · Local Healthcare", img:"home-img/dev-hazelwood.webp",
    headline:"How Hazelwood Generated 60+ Qualified Leads in 30 Days",
    blurb:"We redesigned their digital experience with a conversion-focused website, SEO optimization and a trust-driven structure — helping generate 300+ Google reviews and over £30K in revenue.",
-   href:"case.html?c=hazelwood"},
+   href:"/case?c=hazelwood"},
   {client:"Bellavista Investments", tag:"B2B · Private Equity", img:"home-img/dev-bellavista.webp",
    headline:"An Institutional-Grade Website for a Capital Firm",
    blurb:"A disciplined, credible presence that matches the calibre of their deals — built to win the trust of investors, founders and business owners.",
-   href:"case.html?c=bellavista"},
+   href:"/case?c=bellavista"},
   {client:"Core Mechanical Design", tag:"B2B · Engineering", img:"home-img/dev-core.webp",
    headline:"From Concept to Product — A Premium Engineering Presence",
    blurb:"A confident, editorial website showcasing deep technical work and positioning the consultancy as the obvious premium choice for serious product teams.",
-   href:"case.html?c=core"},
+   href:"/case?c=core"},
   {client:"Menstruacion", tag:"B2C · Femtech", img:"home-img/dev-menstruation.webp",
    headline:"A Warm, Trusted Health Resource for Parents & Teens",
    blurb:"A reassuring, expert-led experience that parents actually feel comfortable using — pairing sensitive design with a research-backed content hub.",
-   href:"case.html?c=menstruation"},
+   href:"/case?c=menstruation"},
   {client:"Navasana", tag:"B2B · AI Cyber Insurance", img:"home-img/dev-navasana.webp",
    headline:"Clarity & Credibility for a Complex AI Cyber Platform",
    blurb:"We translated a complex, technical product into a clear, credible brand experience that turns enterprise visitors into qualified demo requests.",
-   href:"case.html?c=navasana"}
+   href:"/case?c=navasana"}
 ];
 
 /* ---- CLIENT LOGOS (marquee) ---- */
