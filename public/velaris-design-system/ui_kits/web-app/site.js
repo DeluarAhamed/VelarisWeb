@@ -117,7 +117,7 @@
 
   var navHTML =
     '<div class="topbar"><div class="wrap"><span>New — The 2026 Lead Generation Playbook for B2B &amp; B2C founders.</span>'+
-    '<a href="'+base+'playbook.html">Download Free Playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></a></div></div>'+
+    '<a href="/playbook">Download Free Playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></a></div></div>'+
     '<header class="nav"><div class="wrap nav-inner">'+BRAND+
       '<nav class="nav-links" aria-label="Primary">'+
         '<div class="nav-item'+(page==='home'?' active':'')+'"><a href="'+base+'home-figma.html">Home</a></div>'+
@@ -173,7 +173,7 @@
       '<div class="foot-col"><h5>Get started</h5>'+
         '<a data-inquiry href="#start">Start a Project</a>'+
         '<a data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
-        '<a href="'+base+'playbook.html">Free Playbook</a></div>'+
+        '<a href="/playbook">Free Playbook</a></div>'+
     '</div><div class="foot-bottom"><span>© <span id="yr">2026</span> Velaris Web. All rights reserved.</span>'+
       '<div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>';
 

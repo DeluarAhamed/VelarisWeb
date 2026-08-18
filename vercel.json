@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/playbook.html",
+      "destination": "/playbook",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/playbook",
+      "destination": "/velaris-design-system/ui_kits/web-app/playbook.html"
+    }
+  ]
+}

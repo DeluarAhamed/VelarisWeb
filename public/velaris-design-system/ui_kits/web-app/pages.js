@@ -366,7 +366,7 @@
   if(rg && window.VELARIS_RESOURCES){
     rg.innerHTML=window.VELARIS_RESOURCES.map(function(r){
       var free=/free/i.test(r.price);
-      var href=/playbook/i.test(r.title+' '+r.desc+' '+r.cta) ? 'playbook.html' : 'about.html#contact';
+      var href=/playbook/i.test(r.title+' '+r.desc+' '+r.cta) ? '/playbook' : 'about.html#contact';
       return '<a class="res-card'+(r.featured?' feat':'')+'" href="'+href+'">'+
         '<div class="res-thumb" style="background:linear-gradient(180deg,rgba(2,16,31,.18),rgba(2,16,31,.66)),url('+uns(r.img,700)+') center/cover">'+
           '<span class="res-type">'+r.type+'</span>'+
