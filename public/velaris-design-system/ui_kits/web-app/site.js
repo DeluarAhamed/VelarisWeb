@@ -269,7 +269,7 @@
           '<h2>Have a project in mind? <span class="serif">Let\'s get started</span></h2>'+
           '<p>We\'ll schedule a call to discuss your idea. After a discovery session we\'ll send a proposal, and once approved we get to work.</p>'+
           '<div class="imodal-founder">'+
-            '<span class="if-photo" style="background-image:url('+base+'home-img/founder.webp)"></span>'+
+            '<span class="if-photo" style="background-image:url('+ASSET_BASE+'home-img/founder.webp)"></span>'+
             '<div class="if-meta"><b>Deluar Ahamed</b><span>Founder &amp; Lead Designer</span>'+
             '<a class="if-li" href="'+LINKEDIN_URL+'" target="_blank" rel="noopener"><img src="'+LINKEDIN_ICON+'" alt=""> Connect on LinkedIn</a></div>'+
           '</div>'+
@@ -362,7 +362,7 @@
             '<h2>Have a project idea in mind? <span class="serif">Let\'s get started</span></h2>'+
             '<p>We\'ll schedule a call to understand your goals. After discovery, we\'ll send a clear proposal, timeline and next steps.</p>'+
             '<div class="contact-founder">'+
-              '<img src="'+base+'home-img/founder.webp" alt="Deluar Ahamed">'+
+              '<img src="'+ASSET_BASE+'home-img/founder.webp" alt="Deluar Ahamed">'+
               '<div><b>Deluar Ahamed</b><span>Founder &amp; Lead Designer</span><a href="'+LINKEDIN_URL+'" target="_blank" rel="noopener"><img src="'+LINKEDIN_ICON+'" alt=""> Connect on LinkedIn</a></div>'+
             '</div>'+
             '<ul class="contact-checks"><li>Free 20-minute strategy call</li><li>Clear proposal and timeline</li><li>No obligation, ever</li></ul>'+

@@ -5,9 +5,21 @@
   var ease = 'cubic-bezier(.22,.61,.36,1)';
   var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>';
+  var ASSET_BASE='/velaris-design-system/ui_kits/web-app/';
+  function asset(path){
+    if(!path || /^(?:[a-z]+:|\/|data:|#)/i.test(path)) return path;
+    return ASSET_BASE+String(path).replace(/^\.\//,'');
+  }
+  (window.VELARIS_LOGOS||[]).forEach(function(item){ item.src=asset(item.src); });
+  (window.VELARIS_TESTIMONIALS||[]).forEach(function(item){ item.avatar=asset(item.avatar); });
+  (window.VELARIS_CASES||[]).forEach(function(c){
+    c.logo=asset(c.logo); c.img=asset(c.img); c.avatar=asset(c.avatar);
+    if(c.gallery) c.gallery=c.gallery.map(asset);
+    if(c.pages) c.pages.forEach(function(p){ p.img=asset(p.img); });
+  });
 
-  var revObs=new IntersectionObserver(function(es){ es.forEach(function(en){
-    if(en.isIntersecting){ en.target.classList.add('in'); revObs.unobserve(en.target); } }); },{threshold:.12});
+  var revObs='IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){
+    if(en.isIntersecting){ en.target.classList.add('in'); revObs.unobserve(en.target); } }); },{threshold:.12}) : {observe:function(el){el.classList.add('in');},unobserve:function(){}};
   function revObserve(els){ els.forEach(function(el){ revObs.observe(el); }); }
 
   /* category + real imagery helper (shared visual language for blog) */
@@ -104,8 +116,8 @@
     if(rm){ el.firstChild.textContent=fmt(target); return; }
     requestAnimationFrame(step);
   }
-  var statObs=new IntersectionObserver(function(es){ es.forEach(function(en){
-    if(en.isIntersecting){ animateNum(en.target); statObs.unobserve(en.target); } }); },{threshold:.5});
+  var statObs='IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){
+    if(en.isIntersecting){ animateNum(en.target); statObs.unobserve(en.target); } }); },{threshold:.5}) : {observe:function(el){animateNum(el);},unobserve:function(){}};
   document.querySelectorAll('[data-to]').forEach(function(el){ statObs.observe(el); });
 
   /* ---- CASE STUDIES (featured stack) ---- */

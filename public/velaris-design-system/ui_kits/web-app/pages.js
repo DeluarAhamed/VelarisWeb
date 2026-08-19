@@ -3,6 +3,16 @@
   'use strict';
   var ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg>';
+  var ASSET_BASE='/velaris-design-system/ui_kits/web-app/';
+  function asset(path){
+    if(!path || /^(?:[a-z]+:|\/|data:|#)/i.test(path)) return path;
+    return ASSET_BASE+String(path).replace(/^\.\//,'');
+  }
+  (window.VELARIS_CASES||[]).forEach(function(c){
+    c.logo=asset(c.logo); c.img=asset(c.img); c.avatar=asset(c.avatar);
+    if(c.gallery) c.gallery=c.gallery.map(asset);
+    if(c.pages) c.pages.forEach(function(p){ p.img=asset(p.img); });
+  });
   var IC={code:'<path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 4l-2 16"/>',spark:'<path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.3 1-5.5-4-3.9L10.5 8z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>',mail:'<path d="M3 6l9 7 9-7M3 6v12h18V6"/>',ux:'<path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.5"/>',brand:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',webflow:'<path d="M3 8l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4"/>',framer:'<path d="M6 3h12v6H12zM6 9h6l6 6h-6v6z"/>'};
   function qs(k){ return new URLSearchParams(location.search).get(k); }
   function uns(id, w){ id=(id||'').replace('unsplash:',''); return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=80'; }
@@ -357,7 +367,7 @@
       '<a href="/case?c='+next.slug+'">'+next.client+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>';
 
     // scroll reveal for case sections
-    var cobs=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); cobs.unobserve(en.target);} }); },{threshold:.12});
+    var cobs='IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); cobs.unobserve(en.target);} }); },{threshold:.12}) : {observe:function(el){el.classList.add('in');},unobserve:function(){}};
     cd.querySelectorAll('.reveal').forEach(function(el){ cobs.observe(el); });
   }
 
@@ -442,7 +452,7 @@
   }
 
   /* reveal */
-  var revObs=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); revObs.unobserve(en.target);} }); },{threshold:.1});
+  var revObs='IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); revObs.unobserve(en.target);} }); },{threshold:.1}) : {observe:function(el){el.classList.add('in');},unobserve:function(){}};
   document.querySelectorAll('.reveal').forEach(function(el){ revObs.observe(el); });
 
   /* FAQ accordion (pricing / service pages reuse) */
