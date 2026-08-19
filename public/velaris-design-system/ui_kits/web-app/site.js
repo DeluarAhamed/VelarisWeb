@@ -7,6 +7,7 @@
   var base = document.body.getAttribute('data-base') || '';
   var page = document.body.getAttribute('data-page') || '';
   var CAL_URL = 'https://calendly.com/velarisweb/30min';
+  var ASSET_BASE = '/velaris-design-system/ui_kits/web-app/';
 
   window.VelarisInitStack = function(stack){
     if(!stack) return;
@@ -74,7 +75,7 @@
     '<defs><linearGradient id="vlg" x1="16" y1="0" x2="16" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2B8B8D"></stop><stop offset=".89" stop-color="#1A283F"></stop></linearGradient></defs></svg>';
   var BRAND = '<a class="brand" href="/" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
-  var LINKEDIN_ICON = base+'home-img/linkedin.webp';
+  var LINKEDIN_ICON = ASSET_BASE+'home-img/linkedin.webp';
 
   function svcMega(){
     var S = window.VELARIS_SERVICES||[];
@@ -87,9 +88,9 @@
   }
   function caseMega(){
     var C = (window.VELARIS_CASES||[]).slice(0,4);
-    var icons={hazelwood:'icon-hazelwood.png',navasana:'icon-navasana.png',core:'icon-core.png',bellavista:'icon-bellavista.png',coastal:'icon-coastal.png'};
+    var icons={hazelwood:'icon-hazelwood.webp',navasana:'icon-navasana.webp',core:'icon-core.webp',bellavista:'icon-bellavista.webp',coastal:'icon-coastal.webp'};
     var links = C.map(function(c){
-      var ic = icons[c.slug] ? base+'home-img/'+icons[c.slug] : base+c.logo;
+      var ic = icons[c.slug] ? ASSET_BASE+'home-img/'+icons[c.slug] : ASSET_BASE+c.logo;
       return '<a class="mega-link" href="/case?c='+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
     }).join('');
     return '<div class="mega"><div class="mega-inner"><div class="mega-grid one">'+links+'</div>'+
