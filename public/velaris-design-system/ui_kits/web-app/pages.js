@@ -15,6 +15,11 @@
   });
   var IC={code:'<path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 4l-2 16"/>',spark:'<path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.3 1-5.5-4-3.9L10.5 8z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>',mail:'<path d="M3 6l9 7 9-7M3 6v12h18V6"/>',ux:'<path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.5"/>',brand:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',webflow:'<path d="M3 8l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4"/>',framer:'<path d="M6 3h12v6H12zM6 9h6l6 6h-6v6z"/>'};
   function qs(k){ return new URLSearchParams(location.search).get(k); }
+  function setCanonical(path){
+    var link=document.querySelector('link[rel="canonical"]');
+    if(!link){ link=document.createElement('link'); link.rel='canonical'; document.head.appendChild(link); }
+    link.href=location.origin+path;
+  }
   function uns(id, w){ id=(id||'').replace('unsplash:',''); return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=80'; }
   var GRADS={ "Local SEO":'linear-gradient(135deg,#0a5d5d,#1f8a5b,#0a3d3d)',"Web Design":'linear-gradient(135deg,#1a1a2e,#3a2a4a,#0f3460)',"Conversion":'linear-gradient(135deg,#ff9a56,#a259ff,#2d9bf0)',"Lead Generation":'linear-gradient(135deg,#0f2027,#2F9B95,#203a43)',"Webflow":'linear-gradient(135deg,#11212d,#2563eb,#0b1d2a)',"Framer":'linear-gradient(135deg,#1a1a1a,#444,#0d0d0d)',"AI Web Development":'linear-gradient(135deg,#2d1b4e,#7c3aed,#1e1b4b)',"Email Marketing":'linear-gradient(135deg,#0b1d2a,#0ea5a0,#072e2c)',"Branding":'linear-gradient(135deg,#2d1b4e,#c94b9c,#f4a261)',"Analytics":'linear-gradient(135deg,#0f2027,#203a43,#2c5364)' };
   /* category -> rotating Unsplash photos so blog covers do not repeat */
@@ -107,6 +112,7 @@
     var pick=function(map){ return (map && (map[s.slug]||map._default)) || []; };
 
     document.title=plain(s.name)+' — Velaris Web';
+    setCanonical('/service?s='+encodeURIComponent(s.slug));
     var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',plain(s.intro));
 
     // ---- hero ----
@@ -245,6 +251,7 @@
       else if(c.fonts.display) cd.style.setProperty('--case-font-display', '"'+c.fonts.display+'", var(--font-display)');
     }
     document.title=c.client+' Case Study — Velaris Web';
+    setCanonical('/case?c='+encodeURIComponent(c.slug));
     var md2=document.querySelector('meta[name="description"]'); if(md2) md2.setAttribute('content',c.summary);
 
     // per-case enrichment (palettes + requirement copy)
@@ -428,6 +435,7 @@
   if(pd && window.VELARIS_POSTS){
     var P=window.VELARIS_POSTS, pi=Math.max(0,P.map(function(x){return x.slug;}).indexOf(qs('slug'))), post=P[pi];
     document.title=post.title+' — Velaris Web';
+    setCanonical('/post?slug='+encodeURIComponent(post.slug));
     var md3=document.querySelector('meta[name="description"]'); if(md3) md3.setAttribute('content',post.excerpt);
     var mk=document.querySelector('meta[name="keywords"]');
     if(!mk){ mk=document.createElement('meta'); mk.setAttribute('name','keywords'); document.head.appendChild(mk); }
