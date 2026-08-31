@@ -210,8 +210,8 @@
     if(nav){
       nav.classList.toggle('solid', y > 14);
       var wasHidden = nav.classList.contains('hide');
-      if(y > 84 && y > lastY + 4){ nav.classList.add('hide'); document.documentElement.classList.add('nav-hidden'); document.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');}); }
-      else if(y < lastY - 4 || y < 72){ nav.classList.remove('hide'); document.documentElement.classList.remove('nav-hidden'); }
+      if(y > 84 && y > lastY + 2){ nav.classList.add('hide'); document.documentElement.classList.add('nav-hidden'); document.querySelectorAll('.nav-item.open').forEach(function(i){i.classList.remove('open');}); }
+      else if(y < lastY || y < 72){ nav.classList.remove('hide'); document.documentElement.classList.remove('nav-hidden'); }
       if(wasHidden !== nav.classList.contains('hide')) window.dispatchEvent(new CustomEvent('velaris:chrome'));
       lastY = y;
     }

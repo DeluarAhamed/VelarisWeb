@@ -146,6 +146,8 @@ header.nav.solid{box-shadow:0 10px 30px -18px rgba(2,16,31,.28)}
 .trust-pill small{font-size:13px;font-weight:600;color:var(--ink-2)}
 .trust-pill small b{color:var(--teal-deep)}
 .hero h1{font-size:58px;margin:24px 0 0;letter-spacing:-.03em;text-wrap:balance;line-height:1.04;color:var(--ink)}
+.hero-highlight{display:inline-block;color:var(--teal-deep);font-family:var(--font-display);font-weight:400;font-style:normal;position:relative;white-space:nowrap}
+.hero-highlight::after{content:"";position:absolute;left:1%;right:0;bottom:-.04em;height:.11em;border-radius:99px;background:var(--teal-bright);opacity:.5}
 .seg-swap{display:inline-flex;position:relative;vertical-align:baseline;height:1.05em;overflow:hidden;
   padding:0 .06em}
 .seg-swap .word{display:inline-block;color:var(--teal);font-style:italic;font-family:var(--font-display);font-weight:400;will-change:transform,opacity}

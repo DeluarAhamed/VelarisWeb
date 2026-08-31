@@ -118,6 +118,7 @@
     var pick=function(map){ return (map && (map[s.slug]||map._default)) || []; };
 
     var seo={
+      'linkedin-positioning':['LinkedIn Profile Optimization for Founders & Consultants | Velaris Web','LinkedIn profile positioning, copy and banner design for founders and consultants who want to communicate expertise, build trust and win more clients.'],
       'brand-identity':['Brand Design & Logo Services for Growing Businesses | Velaris Web','Build a distinctive, consistent brand with strategy, logo design and practical identity systems created to earn trust and support business growth.'],
       'conversion-uiux':['Conversion-Focused Web Design & UX Services | Velaris Web','Conversion-focused web design and UX services that clarify your offer, strengthen trust and turn more qualified website visitors into enquiries.'],
       'custom-development':['Custom Web Development Services | Velaris Web','Fast, accessible custom web development for businesses that need flexible, scalable websites engineered around performance and conversion.'],

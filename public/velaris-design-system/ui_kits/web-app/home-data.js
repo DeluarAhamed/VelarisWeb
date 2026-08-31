@@ -204,7 +204,19 @@ window.VELARIS_CASES = [
    Order: brand → web/UX design → build (custom/Webflow/Framer/AI) → SEO → cold email. */
 window.VELARIS_SERVICES = [
   {
-    slug:"brand-identity", tag:"01", name:"Logo &amp; Brand Design", icon:"brand", feat:false,
+    slug:"linkedin-positioning", tag:"01", name:"LinkedIn Profile Positioning", icon:"brand", feat:true,
+    short:"A clear, credible LinkedIn presence that turns profile visits into relevant client conversations.",
+    feats:["Headline, About &amp; Featured strategy","Banner, offer &amp; CTA alignment"],
+    tagline:"Make your expertise clear within seconds.",
+    intro:"Your LinkedIn profile is often the first sales conversation you never get to join. We position your headline, banner, About section, Featured content and offer so founders, consultants and expert-led businesses communicate their value clearly and give the right prospects a reason to take the next step.",
+    includes:["Audience &amp; offer positioning","Headline and profile narrative","LinkedIn banner design","About section copy","Featured section strategy","Service messaging &amp; call-to-action"],
+    outcome:"A connected personal brand that builds authority on LinkedIn and guides qualified prospects toward your website or strategy call.",
+    highlights:[["5 sec","To communicate value"],["1","Connected message"],["360°","Profile alignment"]],
+    bestfor:"Founders and consultants whose expertise is stronger than their current LinkedIn presence.",
+    deliverable:"A complete LinkedIn positioning system with copy, banner direction and implementation guidance."
+  },
+  {
+    slug:"brand-identity", tag:"02", name:"Logo &amp; Brand Design", icon:"brand", feat:false,
     short:"A distinctive identity, logo and brand kit that makes your business look credible and recognisable.",
     feats:["Logo &amp; brand system","Guidelines that scale"],
     tagline:"A brand that looks as good as your work.",
@@ -216,7 +228,7 @@ window.VELARIS_SERVICES = [
     deliverable:"Logo suite, brand guidelines and a ready-to-use asset kit."
   },
   {
-    slug:"conversion-uiux", tag:"02", name:"Web &amp; UX Design", icon:"ux", feat:false,
+    slug:"conversion-uiux", tag:"03", name:"Web &amp; UX Design", icon:"ux", feat:false,
     short:"Conversion-focused web design built around your customer's journey to maximise trust and bookings.",
     feats:["Wireframe → high-fidelity","Conversion-tested layouts"],
     tagline:"Design that turns clicks into booked calls.",
@@ -228,7 +240,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A complete, conversion-tested design system ready to build."
   },
   {
-    slug:"custom-development", tag:"03", name:"Custom-Coded Development", icon:"code", feat:false,
+    slug:"custom-development", tag:"04", name:"Custom-Coded Development", icon:"code", feat:false,
     short:"Hand-built, lightning-fast websites with zero template bloat — engineered for speed, SEO and longevity.",
     feats:["Core Web Vitals optimized","Scalable, secure architecture"],
     tagline:"Websites built by hand, engineered to perform.",
@@ -240,7 +252,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A hand-coded, SEO-ready website you fully own."
   },
   {
-    slug:"webflow-development", tag:"04", name:"Webflow Development", icon:"webflow", feat:false,
+    slug:"webflow-development", tag:"05", name:"Webflow Development", icon:"webflow", feat:false,
     short:"Powerful, CMS-driven Webflow sites you can edit yourself — fast to launch, easy to scale.",
     feats:["Visual CMS you control","Fast, no-dev updates"],
     tagline:"Beautiful, editable websites — without the dev queue.",
@@ -252,7 +264,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A live Webflow site plus editor training for your team."
   },
   {
-    slug:"framer-development", tag:"05", name:"Framer Development", icon:"framer", feat:false,
+    slug:"framer-development", tag:"06", name:"Framer Development", icon:"framer", feat:false,
     short:"Stunning, animated Framer sites that launch fast and feel premium — ideal for launches and landing pages.",
     feats:["Rich motion &amp; interactions","Rapid launch-ready builds"],
     tagline:"High-impact, animated sites — shipped fast.",
@@ -264,7 +276,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A live, animated Framer site ready to edit and grow."
   },
   {
-    slug:"ai-web-development", tag:"06", name:"Claude AI Web Development", icon:"spark", feat:true,
+    slug:"ai-web-development", tag:"07", name:"Claude AI Web Development", icon:"spark", feat:true,
     short:"AI-assisted builds and on-site assistants that qualify leads and answer questions around the clock.",
     feats:["Ship up to 2× faster","AI lead qualification 24/7"],
     tagline:"AI-accelerated builds and round-the-clock lead assistants.",
@@ -276,7 +288,7 @@ window.VELARIS_SERVICES = [
     deliverable:"An AI-accelerated website with an optional lead-qualifying assistant."
   },
   {
-    slug:"seo-optimization", tag:"07", name:"SEO Optimization", icon:"search", feat:false,
+    slug:"seo-optimization", tag:"08", name:"SEO Optimization", icon:"search", feat:false,
     short:"Local and technical SEO that puts you in front of high-intent customers searching for you right now.",
     feats:["Local map-pack rankings","Content engineered to rank"],
     tagline:"Get found by customers searching right now.",
@@ -288,7 +300,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A ranking website with a clear monthly SEO growth report."
   },
   {
-    slug:"social-media-management", tag:"08", name:"Social Media Management", icon:"spark", feat:false,
+    slug:"social-media-management", tag:"09", name:"Social Media Management", icon:"spark", feat:false,
     short:"Strategic social content, profiles and posting systems that keep your brand visible and trusted.",
     feats:["Content strategy & calendars","Profile and post design"],
     tagline:"Social content that builds trust before buyers enquire.",
@@ -300,7 +312,7 @@ window.VELARIS_SERVICES = [
     deliverable:"A managed social media system with templates, content plans and reporting."
   },
   {
-    slug:"cold-email-marketing", tag:"09", name:"Cold Email &amp; Marketing", icon:"mail", feat:false,
+    slug:"cold-email-marketing", tag:"10", name:"Cold Email &amp; Marketing", icon:"mail", feat:false,
     short:"Deliverability-first outreach and email marketing that starts real conversations and books meetings.",
     feats:["Inbox-safe cold email","Nurture that converts"],
     tagline:"Outbound that books meetings — not spam.",
@@ -331,16 +343,17 @@ window.VELARIS_PROCESS = [
 
 /* ---- PRICING ---- */
 window.VELARIS_PRICING = [
-  {name:"Starter", price:"£2,500", per:"project", tagline:"A complete brand + website to launch with credibility.",
+  {name:"Starter", price:"£1,550", per:"project", tagline:"A focused foundation to launch with clarity and credibility.",
    feats:["Logo &amp; brand essentials","Up to 7 pages, custom designed","Webflow, Framer or custom build","On-page SEO + keyword research","Mobile responsive &amp; fast","CMS-ready content","1–2 weeks delivery"], cta:"Start with Starter", feat:false},
-  {name:"Growth", price:"£5,500", per:"project", tagline:"Our most popular — the full lead-generation system.",
+  {name:"Growth", price:"£2,500", per:"project", tagline:"Our most popular — a connected LinkedIn and website presence.",
    feats:["Everything in Starter","Full brand &amp; identity system","Up to 16 pages + UI/UX design","Local &amp; technical SEO","Lead-gen &amp; booking flows","Blog / case-study CMS","Analytics &amp; conversion tracking","2–4 weeks delivery"], cta:"Choose Growth", feat:true},
-  {name:"Scale", price:"From £9,000", per:"project", tagline:"Everything, done-for-you — brand to outreach.",
+  {name:"Scale", price:"£5,500", per:"project", tagline:"Complete positioning, brand, website and SEO support.",
    feats:["Everything in Growth","Claude AI web development","Cold email &amp; outreach setup","Advanced SEO &amp; content engine","Ongoing optimization &amp; support","Priority delivery","Custom timeline"], cta:"Talk to us", feat:false}
 ];
 
 /* ---- INDIVIDUAL SERVICE PRICING (à la carte) ---- */
 window.VELARIS_SERVICE_PRICING = [
+  {name:"LinkedIn Profile Positioning", icon:"brand", price:"From £750", note:"Positioning, copy, banner direction &amp; CTA", slug:"linkedin-positioning"},
   {name:"Logo &amp; Brand Design", icon:"brand", price:"From £600", note:"Logo, colour, type &amp; brand kit", slug:"brand-identity"},
   {name:"Web &amp; UX Design", icon:"ux", price:"From £1,200", note:"Conversion-focused design, per project", slug:"conversion-uiux"},
   {name:"Custom-Coded Development", icon:"code", price:"From £1,800", note:"Hand-built, performance-tuned", slug:"custom-development"},
