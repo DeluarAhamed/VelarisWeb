@@ -21,43 +21,43 @@
     },
     {
       "source": "/services",
-      "destination": "/velaris-design-system/ui_kits/web-app/services.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/services"
     },
     {
       "source": "/service",
-      "destination": "/velaris-design-system/ui_kits/web-app/service.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/service"
     },
     {
       "source": "/case-studies",
-      "destination": "/velaris-design-system/ui_kits/web-app/work.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/work"
     },
     {
       "source": "/case",
-      "destination": "/velaris-design-system/ui_kits/web-app/case.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/case"
     },
     {
       "source": "/pricing",
-      "destination": "/velaris-design-system/ui_kits/web-app/pricing.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/pricing"
     },
     {
       "source": "/resources",
-      "destination": "/velaris-design-system/ui_kits/web-app/resources.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/resources"
     },
     {
       "source": "/blog",
-      "destination": "/velaris-design-system/ui_kits/web-app/blog.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/blog"
     },
     {
       "source": "/post",
-      "destination": "/velaris-design-system/ui_kits/web-app/post.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/post"
     },
     {
       "source": "/about",
-      "destination": "/velaris-design-system/ui_kits/web-app/about.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/about"
     },
     {
       "source": "/playbook",
-      "destination": "/velaris-design-system/ui_kits/web-app/playbook.html"
+      "destination": "/velaris-design-system/ui_kits/web-app/playbook"
     }
   ]
 }
