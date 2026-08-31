@@ -94,7 +94,7 @@
       return '<a class="mega-link" href="/case?c='+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
     }).join('');
     return '<div class="mega"><div class="mega-inner"><div class="mega-grid one">'+links+'</div>'+
-      '<div class="mega-foot"><div><b>See every project</b><p>Browse the full Velaris portfolio.</p></div><a class="btn btn-teal" href="/work">View all</a></div></div></div>';
+      '<div class="mega-foot"><div><b>See every project</b><p>Browse the full Velaris portfolio.</p></div><a class="btn btn-teal" href="/case-studies">View all</a></div></div></div>';
   }
 
   /* mobile drawer accordion sections */
@@ -123,7 +123,7 @@
       '<nav class="nav-links" aria-label="Primary">'+
         '<div class="nav-item'+(page==='home'?' active':'')+'"><a href="/">Home</a></div>'+
         '<div class="nav-item has-mega'+(page==='services'?' active':'')+'"><a href="/services" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+svcMega()+'</div>'+
-        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/work" aria-haspopup="true">Case Studies <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
+        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/case-studies" aria-haspopup="true">Case Studies <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
         '<div class="nav-item'+(page==='pricing'?' active':'')+'"><a href="/pricing">Pricing</a></div>'+
         '<div class="nav-item'+(page==='resources'?' active':'')+'"><a href="/resources">Resources</a></div>'+
         '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
@@ -138,7 +138,7 @@
       '<nav class="drawer-nav" aria-label="Mobile">'+
         '<a class="dl" href="/" data-close>Home</a>'+
         drawerAcc('Services', svcDrawerLinks(), '/services', 'All services')+
-        drawerAcc('Case Studies', caseDrawerLinks(), '/work', 'View all work')+
+        drawerAcc('Case Studies', caseDrawerLinks(), '/case-studies', 'View all case studies')+
         '<a class="dl" href="/pricing" data-close>Pricing</a>'+
         '<a class="dl" href="/resources" data-close>Resources</a>'+
         '<a class="dl" href="/about" data-close>About</a>'+
@@ -166,7 +166,7 @@
         '<a href="/service?s=seo-optimization">Local SEO</a>'+
         '<a href="/service?s=social-media-management">Social Media Management</a></div>'+
       '<div class="foot-col"><h5>Company</h5>'+
-        '<a href="/work">Case Studies</a>'+
+        '<a href="/case-studies">Case Studies</a>'+
         '<a href="/pricing">Pricing</a>'+
         '<a href="/resources">Resources</a>'+
         '<a href="/about">About</a>'+

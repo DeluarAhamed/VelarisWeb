@@ -1,6 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/work",
+      "destination": "/case-studies",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/",
@@ -15,7 +22,7 @@
       "destination": "/velaris-design-system/ui_kits/web-app/service"
     },
     {
-      "source": "/work",
+      "source": "/case-studies",
       "destination": "/velaris-design-system/ui_kits/web-app/work"
     },
     {

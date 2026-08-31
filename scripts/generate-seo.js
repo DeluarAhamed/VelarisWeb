@@ -12,7 +12,7 @@ for (const file of ['home-data.js', 'blog-data.js']) {
 }
 
 const origin = 'https://velarisweb.com';
-const staticPaths = ['/', '/services', '/work', '/pricing', '/resources', '/blog', '/about', '/playbook'];
+const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/playbook'];
 const servicePaths = (context.window.VELARIS_SERVICES || []).map((item) => `/service?s=${item.slug}`);
 const casePaths = (context.window.VELARIS_CASES || []).map((item) => `/case?c=${item.slug}`);
 const postPaths = (context.window.VELARIS_POSTS || []).map((item) => `/post?slug=${item.slug}`);
