@@ -150,6 +150,9 @@ header.nav.solid{box-shadow:0 10px 30px -18px rgba(2,16,31,.28)}
   padding:0 .06em}
 .seg-swap .word{display:inline-block;color:var(--teal);font-style:italic;font-family:var(--font-display);font-weight:400;will-change:transform,opacity}
 .hero p.lede{font-size:18px;color:var(--ink-2);margin:22px 0 0;max-width:500px}
+.hero-services{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;max-width:520px}
+.hero-services a{font-size:14px;font-weight:600;color:var(--teal-deep);text-decoration:underline;text-decoration-color:rgba(33,114,109,.28);text-underline-offset:4px}
+.hero-services a:hover{color:var(--ink);text-decoration-color:currentColor}
 .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
 .hero-meta{display:flex;gap:30px;margin-top:36px;flex-wrap:wrap}
 .hero-meta div{display:flex;flex-direction:column;gap:3px}

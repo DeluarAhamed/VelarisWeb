@@ -20,6 +20,12 @@
     if(!link){ link=document.createElement('link'); link.rel='canonical'; document.head.appendChild(link); }
     link.href=location.origin+path;
   }
+  function setMeta(selector,content){ var el=document.querySelector(selector); if(el) el.setAttribute('content',content); }
+  function addJsonLd(id,data){
+    var node=document.getElementById(id);
+    if(!node){ node=document.createElement('script'); node.type='application/ld+json'; node.id=id; document.head.appendChild(node); }
+    node.textContent=JSON.stringify(data);
+  }
   function uns(id, w){ id=(id||'').replace('unsplash:',''); return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=80'; }
   var GRADS={ "Local SEO":'linear-gradient(135deg,#0a5d5d,#1f8a5b,#0a3d3d)',"Web Design":'linear-gradient(135deg,#1a1a2e,#3a2a4a,#0f3460)',"Conversion":'linear-gradient(135deg,#ff9a56,#a259ff,#2d9bf0)',"Lead Generation":'linear-gradient(135deg,#0f2027,#2F9B95,#203a43)',"Webflow":'linear-gradient(135deg,#11212d,#2563eb,#0b1d2a)',"Framer":'linear-gradient(135deg,#1a1a1a,#444,#0d0d0d)',"AI Web Development":'linear-gradient(135deg,#2d1b4e,#7c3aed,#1e1b4b)',"Email Marketing":'linear-gradient(135deg,#0b1d2a,#0ea5a0,#072e2c)',"Branding":'linear-gradient(135deg,#2d1b4e,#c94b9c,#f4a261)',"Analytics":'linear-gradient(135deg,#0f2027,#203a43,#2c5364)' };
   /* category -> rotating Unsplash photos so blog covers do not repeat */
@@ -111,9 +117,26 @@
     var pathIcon=function(key){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+(IC[key]||IC.spark)+'</svg>'; };
     var pick=function(map){ return (map && (map[s.slug]||map._default)) || []; };
 
-    document.title=plain(s.name)+' — Velaris Web';
+    var seo={
+      'brand-identity':['Brand Design & Logo Services for Growing Businesses | Velaris Web','Build a distinctive, consistent brand with strategy, logo design and practical identity systems created to earn trust and support business growth.'],
+      'conversion-uiux':['Conversion-Focused Web Design & UX Services | Velaris Web','Conversion-focused web design and UX services that clarify your offer, strengthen trust and turn more qualified website visitors into enquiries.'],
+      'custom-development':['Custom Web Development Services | Velaris Web','Fast, accessible custom web development for businesses that need flexible, scalable websites engineered around performance and conversion.'],
+      'webflow-development':['Webflow Design & Development Services | Velaris Web','Conversion-focused Webflow design and development with responsive builds, CMS setup, technical SEO and a maintainable editing experience.'],
+      'framer-development':['Framer Web Design & Development Services | Velaris Web','High-quality Framer web design and development for fast, responsive marketing sites that are easy to manage and built to convert.'],
+      'ai-web-development':['AI Web Development Services | Velaris Web','Practical AI web development that connects useful automation and intelligent experiences to measurable customer and business outcomes.'],
+      'seo-optimization':['SEO Services for Service Businesses | Velaris Web','Technical, on-page and local SEO services that improve search visibility, attract qualified demand and turn organic traffic into enquiries.'],
+      'social-media-management':['Social Media Management for Service Businesses | Velaris Web','Strategic social media content and management that builds a consistent brand presence, strengthens trust and supports qualified demand.'],
+      'cold-email-marketing':['Cold Email Marketing Services | Velaris Web','Targeted cold email strategy, copy and campaign management designed to start relevant conversations with qualified prospects.']
+    };
+    var seoData=seo[s.slug]||[plain(s.name)+' Services | Velaris Web',plain(s.intro)];
+    document.title=seoData[0];
     setCanonical('/service?s='+encodeURIComponent(s.slug));
-    var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',plain(s.intro));
+    setMeta('meta[name="description"]',seoData[1]);
+    setMeta('meta[property="og:title"]',seoData[0]);
+    setMeta('meta[property="og:description"]',seoData[1]);
+    setMeta('meta[name="twitter:title"]',seoData[0]);
+    setMeta('meta[name="twitter:description"]',seoData[1]);
+    addJsonLd('service-schema',{'@context':'https://schema.org','@type':'Service','name':plain(s.name),'description':seoData[1],'url':location.origin+'/service?s='+encodeURIComponent(s.slug),'provider':{'@type':'Organization','name':'Velaris Web','url':location.origin+'/'},'areaServed':'Worldwide'});
 
     // ---- hero ----
     sd.querySelector('[data-crumb]').innerHTML=s.name;
