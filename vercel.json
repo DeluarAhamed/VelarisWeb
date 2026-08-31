@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
+    { "source": "/velaris-design-system/ui_kits/web-app/home-figma", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/home-figma.html", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/home", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/home.html", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/index", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/index.html", "destination": "/", "permanent": true },
     {
       "source": "/work",
       "destination": "/case-studies",

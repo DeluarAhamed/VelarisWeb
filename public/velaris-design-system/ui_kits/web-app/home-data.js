@@ -375,12 +375,20 @@ window.VELARIS_RESOURCES = [
 
 /* ---- FAQ (buyer-intent, search-optimized) ---- */
 window.VELARIS_FAQS = [
+  {q:"What does Velaris Web do?",
+   a:"Velaris Web helps founders and consultants build a stronger online presence through LinkedIn profile positioning, personal branding, website strategy, design, development, SEO and conversion optimization. The goal is to help the right clients understand your expertise, trust your business and take the next step."},
+  {q:"Do you design LinkedIn profiles for founders and consultants?",
+   a:"Yes. We improve your LinkedIn positioning, headline, banner, About section, Featured section, service messaging, visual presentation and calls-to-action so your expertise and offer are clear within seconds."},
+  {q:"Can you redesign both my LinkedIn profile and website?",
+   a:"Yes. That connected experience is our core offer. We align your positioning, LinkedIn profile, website messaging and visual identity so prospects receive one consistent journey from discovery to enquiry."},
+  {q:"Do you build websites for consultants?",
+   a:"Yes. We design conversion-focused websites for consultants, founders, coaches, advisors, agency owners and professional service businesses, with clear positioning, proof, lead capture and SEO foundations."},
   {q:"How long does it take to build a website?",
    a:"Most projects run from 1 week for a focused landing page up to 3–6 weeks for a full website, depending on scope. You'll get a clear timeline with milestones at kickoff and updates at every stage."},
   {q:"How much does a new website cost?",
    a:"Our projects start at £1,500 for a focused launch site and scale with the work involved. Most lead-generation websites land in the £3,500 range. Book a free call for a clear, no-obligation quote."},
-  {q:"Do you only build websites, or handle SEO and leads too?",
-   a:"Both. Every build includes technical and local SEO, and we offer cold email, email marketing and ongoing optimization so your site actually generates qualified leads — not just looks good."},
+  {q:"Do you provide SEO as part of website design?",
+   a:"Yes. Website projects can include search-intent research, keyword strategy, site architecture, metadata, internal linking, technical SEO, Search Console setup, analytics and conversion tracking."},
   {q:"Will my website actually rank on Google?",
    a:"Yes — ranking is built in, not bolted on. We engineer technical SEO, local SEO and content that targets the high-intent terms your customers search, then keep optimizing after launch."},
   {q:"What platforms do you build on — Webflow, Framer or custom code?",

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 const siteBase = "/velaris-design-system/ui_kits/web-app";
-const homeUrl = `${siteBase}/home-figma.html`;
+const homeUrl = "/";
 
 const pages = [
-  ["Home", "home-figma.html"],
+  ["Home", "/"],
   ["Services", "services.html"],
   ["Service detail", "service.html?s=conversion-uiux"],
   ["Work", "work.html"],
@@ -29,7 +29,7 @@ function App() {
       <a className="primaryLink" href={homeUrl}>Open home page</a>
       <nav>
         {pages.map(([label, href]) => (
-          <a key={label} href={`${siteBase}/${href}`}>{label}</a>
+          <a key={label} href={href.startsWith("/") ? href : `${siteBase}/${href}`}>{label}</a>
         ))}
       </nav>
     </main>

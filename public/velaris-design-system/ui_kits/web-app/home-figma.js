@@ -213,8 +213,8 @@
   /* ---- WHY scroll highlight ---- */
   (function(){
     var box=document.getElementById('whyText'); if(!box) return;
-    var s="We help service businesses, founders and consultants grow online with strategic website design, local SEO, conversion-focused UX and modern development. Every site we build is engineered to rank on Google, increase trust, and turn more visitors into paying customers.";
-    var accent=["leads","Google","trust","grow","qualified","SEO","ranks","ranking,","customers."];
+    var s="We help founders and consultants turn their expertise into a connected LinkedIn and website presence that communicates value, builds trust and helps the right clients choose them. Positioning leads the strategy; branding, design, development, SEO and conversion make it perform.";
+    var accent=["founders","consultants","LinkedIn","website","value,","trust","clients","Positioning","branding,","SEO","conversion"];
     box.innerHTML=s.split(' ').map(function(w){
       var clean=w.replace(/[^A-Za-z.]/g,''); var acc=accent.indexOf(clean)>-1?' acc':'';
       return '<span class="w'+acc+'">'+w+'</span>';
