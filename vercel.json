@@ -17,47 +17,47 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/velaris-design-system/ui_kits/web-app/home-figma"
+      "destination": "/velaris-design-system/ui_kits/web-app/home-figma.html"
     },
     {
       "source": "/services",
-      "destination": "/velaris-design-system/ui_kits/web-app/services"
+      "destination": "/velaris-design-system/ui_kits/web-app/services.html"
     },
     {
       "source": "/service",
-      "destination": "/velaris-design-system/ui_kits/web-app/service"
+      "destination": "/velaris-design-system/ui_kits/web-app/service.html"
     },
     {
       "source": "/case-studies",
-      "destination": "/velaris-design-system/ui_kits/web-app/work"
+      "destination": "/velaris-design-system/ui_kits/web-app/work.html"
     },
     {
       "source": "/case",
-      "destination": "/velaris-design-system/ui_kits/web-app/case"
+      "destination": "/velaris-design-system/ui_kits/web-app/case.html"
     },
     {
       "source": "/pricing",
-      "destination": "/velaris-design-system/ui_kits/web-app/pricing"
+      "destination": "/velaris-design-system/ui_kits/web-app/pricing.html"
     },
     {
       "source": "/resources",
-      "destination": "/velaris-design-system/ui_kits/web-app/resources"
+      "destination": "/velaris-design-system/ui_kits/web-app/resources.html"
     },
     {
       "source": "/blog",
-      "destination": "/velaris-design-system/ui_kits/web-app/blog"
+      "destination": "/velaris-design-system/ui_kits/web-app/blog.html"
     },
     {
       "source": "/post",
-      "destination": "/velaris-design-system/ui_kits/web-app/post"
+      "destination": "/velaris-design-system/ui_kits/web-app/post.html"
     },
     {
       "source": "/about",
-      "destination": "/velaris-design-system/ui_kits/web-app/about"
+      "destination": "/velaris-design-system/ui_kits/web-app/about.html"
     },
     {
       "source": "/playbook",
-      "destination": "/velaris-design-system/ui_kits/web-app/playbook"
+      "destination": "/velaris-design-system/ui_kits/web-app/playbook.html"
     }
   ]
 }
