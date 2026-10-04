@@ -434,7 +434,7 @@
   function loadAva(){
     if(document.querySelector('script[data-ava]')) return;
     var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261004-ava1'; document.head.appendChild(css);
-    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261004-ava2'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
+    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261004-ava3'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
   }
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});
   else window.addEventListener('load',function(){setTimeout(loadAva,600);},{once:true});
