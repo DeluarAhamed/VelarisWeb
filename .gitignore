@@ -8,3 +8,4 @@ qa-*.png
 
 .vercel
 .env*
+!.env.example
