@@ -21,14 +21,18 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         model: process.env.VOICE_AGENT_MODEL || 'gpt-4.1-mini',
         instructions: buildSystemPrompt(),
-        input: history.concat([{ role: 'user', content: message }]),
+        input: history.concat([{ role: 'user', content: `Return JSON for this visitor message:\n${message}` }]),
         max_output_tokens: 350,
         text: { format: { type: 'json_object' } }
       })
     });
     if (!response.ok) {
-      const providerError = await response.text();
-      console.error('voice_provider_rejected', response.status, providerError.slice(0, 600));
+      const providerError = await response.json().catch(() => ({}));
+      console.error('voice_provider_rejected', response.status, {
+        type: providerError.error?.type,
+        param: providerError.error?.param,
+        code: providerError.error?.code
+      });
       throw new Error(`Provider returned ${response.status}`);
     }
     const payload = await response.json();
