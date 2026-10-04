@@ -26,7 +26,11 @@ module.exports = async function handler(req, res) {
         text: { format: { type: 'json_object' } }
       })
     });
-    if (!response.ok) throw new Error(`Provider returned ${response.status}`);
+    if (!response.ok) {
+      const providerError = await response.text();
+      console.error('voice_provider_rejected', response.status, providerError.slice(0, 600));
+      throw new Error(`Provider returned ${response.status}`);
+    }
     const payload = await response.json();
     const output = payload.output_text || payload.output?.flatMap((item) => item.content || []).find((item) => item.type === 'output_text')?.text;
     const parsed = JSON.parse(output || '{}');
