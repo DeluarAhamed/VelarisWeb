@@ -52,7 +52,9 @@ h1,h2,h3,h4{margin:0;font-family:var(--font-ui);font-weight:700;letter-spacing:-
 .topbar a{color:#fff;font-weight:600;display:inline-flex;align-items:center;gap:6px}
 .topbar a:hover{color:var(--teal-bright)}
 
-/* always-visible white nav */
+/* nav hides on scroll down, returns on scroll up (site.js onScroll).
+   #site-nav must not box the header, or sticky only works within its 107px. */
+#site-nav{display:contents}
 header.nav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);
   transition:box-shadow .3s,transform .35s var(--ease)}
 header.nav.hide{transform:translateY(-100%)}
