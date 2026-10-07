@@ -18,7 +18,7 @@
   function setCanonical(path){
     var link=document.querySelector('link[rel="canonical"]');
     if(!link){ link=document.createElement('link'); link.rel='canonical'; document.head.appendChild(link); }
-    link.href=location.origin+path;
+    link.href='https://velarisweb.com'+path;
   }
   function setMeta(selector,content){ var el=document.querySelector(selector); if(el) el.setAttribute('content',content); }
   function addJsonLd(id,data){
@@ -425,7 +425,7 @@
     // featured (first two)
     var fw=document.getElementById('blogFeatured');
     if(fw) fw.innerHTML=posts.slice(0,2).map(function(p){
-      return '<a class="feat-post" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p,900)+'"><span class="topic">'+p.cat+'</span></div>'+
+      return '<a class="feat-post" href="/blog/'+p.slug+'"><div class="thumb" style="'+thumb(p,900)+'"><span class="topic">'+p.cat+'</span></div>'+
         '<div class="fb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.date+'</span><span>'+p.read+' min read</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
     }).join('');
@@ -443,7 +443,7 @@
     function render(){
       var data=listFor(), slice=data.slice(0,shown);
       grid.innerHTML=slice.map(function(p){
-        return '<a class="pcard" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
+        return '<a class="pcard" href="/blog/'+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
           '<div class="pb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min</span></div>'+
           '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
       }).join('');
@@ -456,10 +456,15 @@
 
   /* ===== POST DETAIL ===== */
   var pd=document.getElementById('postDetail');
-  if(pd && window.VELARIS_POSTS){
-    var P=window.VELARIS_POSTS, pi=Math.max(0,P.map(function(x){return x.slug;}).indexOf(qs('slug'))), post=P[pi];
-    document.title=post.title+' — Velaris Web';
-    setCanonical('/post?slug='+encodeURIComponent(post.slug));
+  var postPathMatch=location.pathname.match(/^\/blog\/([^\/]+)/);
+  var postSlug=postPathMatch?decodeURIComponent(postPathMatch[1]):qs('slug');
+  var postIndex=pd && window.VELARIS_POSTS ? window.VELARIS_POSTS.map(function(x){return x.slug;}).indexOf(postSlug) : -1;
+  // Prerendered /blog/<slug> pages already hold the right article; only refresh them when the CMS has that slug.
+  if(pd && window.VELARIS_POSTS && (postIndex>=0 || !pd.hasAttribute('data-prerendered'))){
+    if(postIndex<0) setMeta('meta[name="robots"]','noindex, follow');
+    var P=window.VELARIS_POSTS, pi=Math.max(0,postIndex), post=P[pi];
+    document.title=post.title+' | Velaris Web';
+    setCanonical('/blog/'+encodeURIComponent(post.slug));
     var md3=document.querySelector('meta[name="description"]'); if(md3) md3.setAttribute('content',post.excerpt);
     var mk=document.querySelector('meta[name="keywords"]');
     if(!mk){ mk=document.createElement('meta'); mk.setAttribute('name','keywords'); document.head.appendChild(mk); }
@@ -477,7 +482,7 @@
     if(rel.length<3) rel=rel.concat(P.filter(function(x){return x.slug!==post.slug && rel.indexOf(x)<0;}).slice(0,3-rel.length));
     var rw=pd.querySelector('[data-related]');
     if(rw) rw.innerHTML=rel.map(function(p){
-      return '<a class="pcard" href="/post?slug='+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
+      return '<a class="pcard" href="/blog/'+p.slug+'"><div class="thumb" style="'+thumb(p)+'"><span class="topic">'+p.cat+'</span></div>'+
         '<div class="pb"><div class="tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p><span class="more">Read more '+ARROW+'</span></div></a>';
     }).join('');
