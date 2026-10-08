@@ -725,3 +725,54 @@ img{max-width:100%;height:auto}
 .v-wa-fab:hover span{opacity:1;transform:none}
 .v-wa-fab:hover{transform:translateY(-2px)}
 @media (max-width:760px){.v-wa-fab{left:14px;bottom:14px;width:52px;height:52px}.v-wa-fab span{display:none}}
+
+/* Plan "Get started" modal (site.js planModal, opened by [data-plan] buttons) */
+.pmodal{position:fixed;inset:0;z-index:130;display:flex;align-items:center;justify-content:center;padding:24px;
+  visibility:hidden;opacity:0;transition:opacity .25s,visibility .25s}
+.pmodal.on{visibility:visible;opacity:1}
+.pmodal-bg{position:absolute;inset:0;background:rgba(7,20,38,.42);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.pmodal-panel{position:relative;width:100%;max-width:480px;max-height:calc(100vh - 48px);overflow:auto;background:#fff;border-radius:24px;
+  padding:30px 30px 28px;box-shadow:0 40px 90px -30px rgba(7,20,38,.55);transform:translateY(14px) scale(.98);transition:transform .3s var(--ease)}
+.pmodal.on .pmodal-panel{transform:none}
+.pmodal-x{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:0;background:#F3F6FA;color:#0B1220;
+  display:grid;place-items:center;cursor:pointer;transition:background .2s}
+.pmodal-x:hover{background:#E6EBF2}
+.pmodal-x svg{width:16px;height:16px}
+.pmodal-badge{display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:999px;background:#EEF5FF;color:#127AFE;
+  font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.pmodal h2{font-size:27px;letter-spacing:-.03em;color:#0B1220;margin:14px 0 0;line-height:1.15}
+.pmodal-sub{font-size:15px;line-height:1.55;color:#4A5565;margin:8px 0 20px}
+.pmodal-quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pq{display:flex;align-items:center;gap:11px;padding:12px;border-radius:14px;background:#F6F8FC;border:1px solid #E4E9F1;
+  font-size:13px;line-height:1.35;color:#4A5565;transition:border-color .2s,background .2s}
+.pq b{display:block;font-size:14px;color:#0B1220}
+.pq:hover{border-color:#B9D6FF;background:#fff}
+.pq-ic{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;background:#127AFE;color:#fff}
+.pq-ic svg{width:18px;height:18px}
+.pq.wa .pq-ic{background:#25D366}
+.pq.wa:hover{border-color:#9BE7B9}
+.pmodal-or{display:flex;align-items:center;gap:12px;margin:20px 0 16px;font-size:12.5px;color:#8590A0}
+.pmodal-or::before,.pmodal-or::after{content:"";flex:1;height:1px;background:#E4E9F1}
+.pmodal-form{display:grid;gap:14px}
+.pmodal-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pf{display:grid;gap:6px;font-size:13.5px;font-weight:600;color:#0B1220}
+.pf em{font-style:normal;font-weight:400;color:#8590A0}
+.pf input,.pf textarea{width:100%;font:inherit;font-size:15px;font-weight:400;color:#0B1220;background:#F6F8FC;border:1.5px solid #EDF1F7;
+  border-radius:12px;padding:12px 14px;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;resize:vertical}
+.pf input::placeholder,.pf textarea::placeholder{color:#9AA4B2}
+.pf input:focus,.pf textarea:focus{background:#fff;border-color:#127AFE;box-shadow:0 0 0 4px rgba(18,122,254,.12)}
+.pmodal-err{margin:-4px 0 0;font-size:13.5px;color:#D9534F}
+.pmodal-form .btn{width:100%;border-radius:999px;height:52px;margin-top:4px}
+.pmodal-form .imodal-ok,.imodal-ok{font-size:14px;line-height:1.5}
+.imodal-ok a{color:#128C4A;font-weight:700;text-decoration:underline}
+.pmodal-form .imodal-ok{display:none;align-items:flex-start;gap:8px;padding:12px 14px;border-radius:12px;background:#ECFDF3;color:#0F7A43}
+.pmodal-form .imodal-ok.show{display:flex}
+.pmodal-form .imodal-ok svg{width:18px;height:18px;flex:none;margin-top:1px}
+.btn.is-busy{opacity:.7;pointer-events:none}
+@media (max-width:560px){
+  .pmodal{padding:0;align-items:flex-end}
+  .pmodal-panel{max-width:none;border-radius:22px 22px 0 0;max-height:92vh;padding:26px 18px 22px;transform:translateY(40px)}
+  .pmodal-quick,.pmodal-row{grid-template-columns:1fr}
+  .pmodal h2{font-size:24px}
+}
+.imodal-ok.warn,.pmodal-form .imodal-ok.warn{background:#FFF7E6;color:#8A5300;padding:12px 14px;border-radius:12px}

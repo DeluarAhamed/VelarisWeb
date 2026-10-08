@@ -317,8 +317,108 @@
     if(e.target.closest('[data-iclose]') || e.target.classList.contains('imodal-bg')) closeModal();
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+  /* ---- LEAD CAPTURE: POST to /api/leads; if that fails, offer the same details via WhatsApp so no lead is lost ---- */
+  function leadSummary(d){
+    return ['Hi Velaris, I\'d like to get started.',
+      d.budget ? 'Plan: '+d.budget : '', d.serviceInterest ? 'Service: '+d.serviceInterest : '',
+      'Name: '+d.name, 'Email: '+d.email, d.phone ? 'Phone: '+d.phone : '', d.company ? 'Company: '+d.company : '',
+      d.problem ? 'Project: '+d.problem : ''].filter(Boolean).join('\n');
+  }
+  function sendLead(d, done){
+    var fallback = waLink(leadSummary(d));
+    if(!window.fetch){ done(false, fallback); return; }
+    fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})
+      .then(function(r){ done(r.ok, fallback); })
+      .catch(function(){ done(false, fallback); });
+  }
+  function formData(form){
+    var v = function(n){ var el = form.querySelector('[name="'+n+'"]'); return el ? String(el.value||'').trim() : ''; };
+    return {name:v('name'), email:v('email'), phone:v('phone'), company:v('company'), serviceInterest:v('service'), budget:v('budget'), problem:v('details')};
+  }
+  function leadResult(form, ok, fallback){
+    var box = form.querySelector('.imodal-ok');
+    var btn = form.querySelector('button[type="submit"]');
+    if(btn){ btn.disabled = false; btn.classList.remove('is-busy'); }
+    if(!box) return;
+    box.innerHTML = ok
+      ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg> Thanks! We\'ll be in touch within a few hours.'
+      : 'We couldn\'t send the form just now. <a href="'+fallback+'" target="_blank" rel="noopener">Send these details on WhatsApp</a> and we\'ll reply fast.';
+    box.classList.toggle('warn', !ok);
+    box.classList.add('show');
+    if(ok) form.reset();
+  }
+  function wireLeadForm(form, source, after){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var d = formData(form); d.source = source;
+      var btn = form.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; btn.classList.add('is-busy'); }
+      sendLead(d, function(ok, fallback){ leadResult(form, ok, fallback); if(ok && after) after(); });
+    });
+  }
   var iform = document.getElementById('inquiryForm');
-  if(iform) iform.addEventListener('submit', function(e){ e.preventDefault(); iform.querySelector('.imodal-ok').classList.add('show'); setTimeout(closeModal, 1800); });
+  if(iform) wireLeadForm(iform, 'website_inquiry', function(){ setTimeout(closeModal, 2200); });
+
+  /* ---- PLAN MODAL: "Get started" on a plan card ([data-plan]) ---- */
+  function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  var pmodal = null;
+  function planModal(plan, price){
+    if(!pmodal){
+      pmodal = document.createElement('div');
+      pmodal.className = 'pmodal';
+      pmodal.innerHTML =
+        '<div class="pmodal-bg" data-pclose></div>'+
+        '<div class="pmodal-panel" role="dialog" aria-modal="true" aria-labelledby="pmodalTitle">'+
+          '<button class="pmodal-x" type="button" data-pclose aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>'+
+          '<span class="pmodal-badge" data-pm-badge></span>'+
+          '<h2 id="pmodalTitle">Let\'s build your website.</h2>'+
+          '<p class="pmodal-sub">Send us a message or reach out directly. We reply within a few hours.</p>'+
+          '<div class="pmodal-quick">'+
+            '<a class="pq wa" data-pm-wa target="_blank" rel="noopener" href="'+waLink()+'"><span class="pq-ic">'+WA_ICON+'</span><span><b>WhatsApp us</b>+880 1989-570693</span></a>'+
+            '<a class="pq" data-booking href="'+CAL_URL+'"><span class="pq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Book a call</b>Free 20-minute chat</span></a>'+
+          '</div>'+
+          '<div class="pmodal-or"><span>or send a message</span></div>'+
+          '<form class="pmodal-form" novalidate>'+
+            '<input type="hidden" name="budget">'+
+            '<div class="pmodal-row">'+
+              '<label class="pf"><span>Full name</span><input type="text" name="name" placeholder="Jane Cooper" autocomplete="name" required></label>'+
+              '<label class="pf"><span>Email</span><input type="email" name="email" placeholder="jane@company.com" autocomplete="email" required></label>'+
+            '</div>'+
+            '<label class="pf"><span>Phone / WhatsApp <em>(optional)</em></span><input type="tel" name="phone" placeholder="+1 555 000 0000" autocomplete="tel"></label>'+
+            '<label class="pf"><span>Tell us about your project</span><textarea name="details" rows="4" placeholder="New website, redesign, online store, a question..."></textarea></label>'+
+            '<p class="pmodal-err" hidden>Please add your name and a valid email.</p>'+
+            '<button class="btn btn-blue" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
+            '<div class="imodal-ok"></div>'+
+          '</form>'+
+        '</div>';
+      document.body.appendChild(pmodal);
+      var form = pmodal.querySelector('form');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var d = formData(form); d.source = 'website_plan_modal'; d.serviceInterest = 'Monthly website plan';
+        var err = form.querySelector('.pmodal-err');
+        var valid = d.name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+        err.hidden = !!valid;
+        if(!valid) return;
+        var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.classList.add('is-busy');
+        sendLead(d, function(ok, fallback){ leadResult(form, ok, fallback); });
+      });
+      pmodal.addEventListener('click', function(e){ if(e.target.closest('[data-pclose]')) closePlanModal(); });
+    }
+    var label = plan ? esc(plan)+' plan'+(price ? ' &middot; '+esc(price) : '') : 'Get started';
+    pmodal.querySelector('[data-pm-badge]').innerHTML = label;
+    pmodal.querySelector('[name="budget"]').value = plan ? plan+(price ? ' ('+price+')' : '') : '';
+    pmodal.querySelector('[data-pm-wa]').href = waLink('Hi Velaris, I\'m interested in the '+(plan || 'monthly')+' plan'+(price ? ' ('+price+')' : '')+'.');
+    var ok = pmodal.querySelector('.imodal-ok'); ok.classList.remove('show'); ok.innerHTML = '';
+    pmodal.classList.add('on'); document.body.style.overflow = 'hidden';
+    setTimeout(function(){ var f = pmodal.querySelector('[name="name"]'); if(f) f.focus(); }, 60);
+  }
+  function closePlanModal(){ if(pmodal){ pmodal.classList.remove('on'); document.body.style.overflow = ''; } }
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-plan]');
+    if(t){ e.preventDefault(); planModal(t.getAttribute('data-plan'), t.getAttribute('data-price')); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePlanModal(); });
 
   /* ---- CALENDLY booking integration ---- */
   var calendlyLoading = false;
@@ -353,7 +453,7 @@
   }
   document.addEventListener('click', function(e){
     var b = e.target.closest('[data-booking]');
-    if(b){ e.preventDefault(); closeModal(); closeDrawer(); openCalendly(); }
+    if(b){ e.preventDefault(); closeModal(); closePlanModal(); closeDrawer(); openCalendly(); }
   });
 
   /* auto-wire any existing "Book a call" CTAs across pages to Calendly */
@@ -384,10 +484,10 @@
               '<button type="button" data-contact-tab="calendar">Book a call</button>'+
             '</div>'+
             '<form class="contact-inline-form" data-panel="form">'+
-              '<div class="ifield"><label>Full name</label><input type="text" placeholder="Jane Cooper" required></div>'+
-              '<div class="ifield-row"><div class="ifield"><label>Company name</label><input type="text" placeholder="Ex. Tesla Inc"></div><div class="ifield"><label>Email *</label><input type="email" placeholder="you@example.com" required></div></div>'+
-              '<div class="ifield-row"><div class="ifield"><label>Service required *</label><select required><option value="" selected disabled>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div><div class="ifield"><label>Project budget *</label><select required><option value="" selected disabled>Select your range</option><option>&pound;1k - &pound;3k</option><option>&pound;3k - &pound;6k</option><option>&pound;6k - &pound;12k</option><option>&pound;12k+</option></select></div></div>'+
-              '<div class="ifield"><label>Project details *</label><textarea placeholder="Tell us more about your idea" required></textarea></div>'+
+              '<div class="ifield"><label>Full name</label><input type="text" name="name" placeholder="Jane Cooper" required></div>'+
+              '<div class="ifield-row"><div class="ifield"><label>Company name</label><input type="text" name="company" placeholder="Ex. Tesla Inc"></div><div class="ifield"><label>Email *</label><input type="email" name="email" placeholder="you@example.com" required></div></div>'+
+              '<div class="ifield-row"><div class="ifield"><label>Service required *</label><select name="service" required><option value="" selected disabled>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div><div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" selected disabled>Select a plan</option><option>Starter ($199/month)</option><option>Growth ($399/month)</option><option>Scale (from $699/month)</option><option>One-off project</option><option>Not sure yet</option></select></div></div>'+
+              '<div class="ifield"><label>Project details *</label><textarea name="details" placeholder="Tell us more about your idea" required></textarea></div>'+
               '<button class="btn btn-dark" type="submit">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
               '<p class="imodal-alt">Not interested in the form? <a href="#" data-contact-tab="calendar">Book a call directly</a></p>'+
               '<div class="imodal-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg> Thanks! We\'ll be in touch within one business day.</div>'+
@@ -423,7 +523,7 @@
         });
       }
       tabs.forEach(function(t){ t.addEventListener('click', function(e){ e.preventDefault(); show(t.getAttribute('data-contact-tab')); }); });
-      formPanel.addEventListener('submit', function(e){ e.preventDefault(); formPanel.querySelector('.imodal-ok').classList.add('show'); });
+      wireLeadForm(formPanel, 'website_contact');
       if(mode === 'calendly') show('calendar', false);
       else if('IntersectionObserver' in window){
         new IntersectionObserver(function(entries, obs){

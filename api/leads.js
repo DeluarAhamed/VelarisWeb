@@ -20,7 +20,8 @@ module.exports = async function handler(req, res) {
   if (rateLimit(req, 10)) return json(res, 429, { error: 'Please wait before submitting again.' });
   const input = req.body || {};
   const lead = {
-    createdAt: new Date().toISOString(), source: 'velaris_voice_agent',
+    createdAt: new Date().toISOString(),
+    source: ['website_plan_modal', 'website_inquiry', 'website_contact'].includes(input.source) ? input.source : 'velaris_voice_agent',
     name: clean(input.name, 120), email: clean(input.email, 180), phone: clean(input.phone, 50),
     company: clean(input.company, 160), website: clean(input.website, 240), industry: clean(input.industry, 160),
     country: clean(input.country, 100), timezone: clean(input.timezone, 80), serviceInterest: clean(input.serviceInterest, 200),
