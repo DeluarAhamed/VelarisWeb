@@ -343,12 +343,12 @@ window.VELARIS_PROCESS = [
 
 /* ---- PRICING ---- */
 window.VELARIS_PRICING = [
-  {name:"Starter", price:"£149", per:"/month", tagline:"Get online fast with a professional site that builds trust.",
-   feats:["Custom website, up to 5 pages","Hosting, domain, SSL &amp; security","1 business email","5 content updates a month","SEO setup &amp; analytics"], cta:"Choose Starter", feat:false},
-  {name:"Growth", price:"£299", per:"/month", tagline:"For founders who want the website and LinkedIn to bring in clients.",
-   feats:["Everything in Starter","Premium design, up to 12 pages","Unlimited content updates","2 SEO blog posts a month","Google Business Profile optimisation","LinkedIn profile positioning","Booking &amp; CRM integration"], cta:"Choose Growth", feat:true},
-  {name:"Scale", price:"£549+", per:"/month", tagline:"Your full digital team for custom builds, SEO and automation.",
-   feats:["Everything in Growth","Custom development &amp; integrations","SEO strategy &amp; reporting","AI chatbot or automation","Dedicated account manager"], cta:"Book a scoping call", feat:false}
+  {name:"Starter", price:"$199", per:"/month", tagline:"Get online fast and start getting found.",
+   feats:["Custom website, up to 5 pages","Domain, hosting, SSL &amp; security","1 business email","10 content updates a month","SEO setup &amp; map listings","Basic e-commerce"], cta:"Get started", feat:false},
+  {name:"Growth", price:"$399", per:"/month", tagline:"Everything you need to outrank local competitors.",
+   feats:["Everything in Starter","Premium design, up to 15 pages","Unlimited content updates","On-page SEO &amp; 2 blog posts a month","Google Business Profile management","Listings on 20+ directories","Booking, CRM &amp; full e-commerce"], cta:"Get started", feat:true},
+  {name:"Scale", price:"$699+", per:"/month", tagline:"Your full digital team, on demand.",
+   feats:["Everything in Growth","Custom software &amp; web apps","Custom SEO strategy","AI chatbot or automation","Dedicated account manager","Same-day support"], cta:"Get started", feat:false}
 ];
 
 
@@ -387,7 +387,7 @@ window.VELARIS_FAQS = [
   {q:"How long does it take to build a website?",
    a:"You'll see a first preview of your website within 5 business days of your kickoff call. Most sites launch within 2–3 weeks, and larger custom builds get a clear timeline at kickoff."},
   {q:"How much does a new website cost?",
-   a:"There's no big upfront cost. Websites are on monthly plans: Starter £149/month, Growth £299/month and Scale from £549/month, covering design, hosting, updates and SEO. No setup fee and no long-term contract. One-off projects are also available on request."},
+   a:"There's no big upfront cost. Websites are on monthly plans: Starter $199/month, Growth $399/month and Scale from $699/month, covering design, hosting, business email, listings, updates and SEO. No setup fee and no long-term contract. One-off projects are also available on request."},
   {q:"Do you provide SEO as part of website design?",
    a:"Yes. Website projects can include search-intent research, keyword strategy, site architecture, metadata, internal linking, technical SEO, Search Console setup, analytics and conversion tracking."},
   {q:"Will my website actually rank on Google?",

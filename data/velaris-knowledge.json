@@ -12,21 +12,22 @@
     "url": "https://calendly.com/velarisweb/30min"
   },
   "pricing": {
+    "currency": "USD",
     "model": "Monthly website plans. No setup fee, month-to-month, cancel anytime with 30 days notice. First preview within 5 business days.",
-    "startingFrom": "£149/month",
-    "guidance": "Websites are on monthly plans covering design, hosting, updates and SEO: Starter £149/month (up to 5 pages, 5 updates a month), Growth £299/month (up to 12 pages, unlimited updates, 2 SEO blog posts a month, LinkedIn positioning) and Scale from £549/month (custom development, SEO strategy, AI automation, account manager). One-off projects and standalone services are quoted after a free call.",
+    "startingFrom": "$199/month",
+    "guidance": "Websites are on monthly plans covering design, hosting, business email, listings, updates and SEO: Starter $199/month (up to 5 pages, 1 email, 10 updates a month, map listings, basic e-commerce), Growth $399/month (up to 15 pages, 3 emails, unlimited updates, on-page SEO, 2 blog posts a month, Google Business Profile management, 20+ directory listings, booking/CRM, full e-commerce, LinkedIn positioning) and Scale from $699/month (custom software, SEO strategy, AI chatbot or automation, 5 emails, account manager, same-day support). One-off projects and standalone services are quoted after a free call. Fastest contact: WhatsApp +880 1989-570693.",
     "packages": [
       {
         "name": "Starter",
-        "price": "£149/month"
+        "price": "$199/month"
       },
       {
         "name": "Growth",
-        "price": "£299/month"
+        "price": "$399/month"
       },
       {
         "name": "Scale",
-        "price": "from £549/month"
+        "price": "from $699/month"
       }
     ]
   },
@@ -96,5 +97,9 @@
     "accuracy": "Never invent prices, discounts, timelines, locations, team members, case-study numbers, policies, contract terms or calendar availability.",
     "privacy": "Do not request passwords, payment details, banking credentials or highly sensitive personal information.",
     "escalation": "For legal, contractual or unknown company-specific questions, say Deluar should answer accurately and offer a call, email or follow-up."
+  },
+  "contact": {
+    "whatsapp": "+880 1989-570693",
+    "whatsappUrl": "https://wa.me/8801989570693"
   }
 }

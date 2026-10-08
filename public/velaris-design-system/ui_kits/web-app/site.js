@@ -68,6 +68,12 @@
   /* logo mark */
   var MARK = '<img class="mk" src="/velaris-design-system/assets/velaris-icon.webp" width="32" height="32" alt="">';
   var BRAND = '<a class="brand" href="/" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
+  /* WhatsApp: +880 1989-570693. Links marked data-wa="message" get that message pre-filled. */
+  var WA_NUMBER = '8801989570693';
+  var WA_DEFAULT = "Hi Velaris, I'd like to talk about a website for my business.";
+  function waLink(text){ return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(text || WA_DEFAULT); }
+  var WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/><path d="M16.6 14.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.4-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 001.8-1.3 2.2 2.2 0 00.1-1.3c0-.1-.2-.2-.5-.3z"/></svg>';
+  window.VELARIS_WA = {number: WA_NUMBER, link: waLink, icon: WA_ICON};
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
   var LINKEDIN_ICON = ASSET_BASE+'home-img/linkedin.webp';
 
@@ -121,7 +127,7 @@
         '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
         '<div class="nav-item'+(page==='blog'?' active':'')+'"><a href="/blog">Blog</a></div>'+
       '</nav>'+
-      '<div class="nav-right"><a class="ghost" data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
+      '<div class="nav-right"><a class="ghost nav-wa" href="'+waLink()+'" target="_blank" rel="noopener">'+WA_ICON+'WhatsApp us</a>'+
         '<a class="btn btn-teal" href="/pricing">Get Started</a>'+
         '<button class="nav-burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>'+
     '</div></header>'+
@@ -136,7 +142,7 @@
         '<a class="dl" href="/blog" data-close>Blog</a>'+
       '</nav>'+
       '<div class="drawer-cta">'+
-        '<a class="btn btn-line" data-booking data-close href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
+        '<a class="btn btn-line" data-close href="'+waLink()+'" target="_blank" rel="noopener">WhatsApp us</a>'+
         '<a class="btn btn-teal" data-close href="/pricing">See Plans</a>'+
       '</div>'+
     '</div></div>';
@@ -164,6 +170,7 @@
         '<a href="/blog">Blog</a></div>'+
       '<div class="foot-col"><h5>Get started</h5>'+
         '<a href="/pricing">See Plans</a>'+
+        '<a href="'+waLink()+'" target="_blank" rel="noopener">WhatsApp +880 1989-570693</a>'+
         '<a data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
         '<a href="/playbook">Free Playbook</a></div>'+
     '</div><div class="foot-bottom"><span>© <span id="yr">2026</span> Velaris Web. All rights reserved.</span>'+
@@ -173,6 +180,19 @@
   var footMount = document.getElementById('site-footer');
   if(navMount) navMount.innerHTML = navHTML;
   if(footMount) footMount.innerHTML = footHTML;
+
+  /* WhatsApp: pre-fill marked links and add the floating button */
+  [].slice.call(document.querySelectorAll('[data-wa]')).forEach(function(a){
+    a.href = waLink(a.getAttribute('data-wa'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+  if(!document.querySelector('.v-wa-fab')){
+    var fab = document.createElement('a');
+    fab.className = 'v-wa-fab'; fab.href = waLink(); fab.target = '_blank'; fab.rel = 'noopener';
+    fab.setAttribute('aria-label','Chat with Velaris on WhatsApp');
+    fab.innerHTML = WA_ICON+'<span>WhatsApp</span>';
+    document.body.appendChild(fab);
+  }
 
   function tuneMedia(root){
     root = root || document;
@@ -278,7 +298,7 @@
           '</div>'+
           '<div class="ifield-row">'+
             '<div class="ifield"><label>Service required *</label><select name="service" required><option value="" disabled selected>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'<option>Not sure yet</option></select></div>'+
-            '<div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" disabled selected>Select a plan</option><option>Starter (£149/month)</option><option>Growth (£299/month)</option><option>Scale (from £549/month)</option><option>One-off project</option><option>Not sure yet</option></select></div>'+
+            '<div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" disabled selected>Select a plan</option><option>Starter ($199/month)</option><option>Growth ($399/month)</option><option>Scale (from $699/month)</option><option>One-off project</option><option>Not sure yet</option></select></div>'+
           '</div>'+
           '<div class="ifield"><label>Project details *</label><textarea name="details" placeholder="Tell us more about your idea" required></textarea></div>'+
           '<button class="btn btn-dark" type="submit" style="width:100%">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
@@ -424,8 +444,8 @@
   /* Ava AI assistant — lazy-loaded after the page is interactive. */
   function loadAva(){
     if(document.querySelector('script[data-ava]')) return;
-    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v3'; document.head.appendChild(css);
-    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261008-v3'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
+    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v4'; document.head.appendChild(css);
+    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261008-v4'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
   }
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});
   else window.addEventListener('load',function(){setTimeout(loadAva,600);},{once:true});

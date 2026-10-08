@@ -8,9 +8,9 @@ function scoreLead(lead) {
   else if (lead.serviceInterest) score += 10;
   if (/30 days|asap|urgent/i.test(lead.timeline)) score += 15;
   else if (/1.?3 months|month/i.test(lead.timeline)) score += 10;
-  if (/scale|one-off|549/i.test(lead.budget)) score += 20;
-  else if (/growth|299/i.test(lead.budget)) score += 15;
-  else if (/starter|149/i.test(lead.budget)) score += 10;
+  if (/scale|one-off|699/i.test(lead.budget)) score += 20;
+  else if (/growth|399/i.test(lead.budget)) score += 15;
+  else if (/starter|199/i.test(lead.budget)) score += 10;
   if (lead.wantsCall) score += 20;
   return { score, classification: score >= 60 ? 'HOT' : score >= 30 ? 'WARM' : 'EARLY-STAGE' };
 }
