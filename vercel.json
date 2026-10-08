@@ -2,27 +2,225 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/velaris-design-system/ui_kits/web-app/home-figma", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/home-figma.html", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/home", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/home.html", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/index", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/index.html", "destination": "/", "permanent": true },
-    { "source": "/velaris-design-system/ui_kits/web-app/velaris-home(\\.html)?", "destination": "/", "permanent": true },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/home-figma",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/home-figma.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/home.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/velaris-home(\\.html)?",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/post",
-      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>[A-Za-z0-9-]+)" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>[A-Za-z0-9-]+)"
+        }
+      ],
       "destination": "/blog/:slug",
       "permanent": true
     },
-    { "source": "/post", "destination": "/blog", "permanent": true },
+    {
+      "source": "/post",
+      "destination": "/blog",
+      "permanent": true
+    },
     {
       "source": "/velaris-design-system/ui_kits/web-app/post(\\.html)?",
-      "has": [{ "type": "query", "key": "slug", "value": "(?<slug>[A-Za-z0-9-]+)" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>[A-Za-z0-9-]+)"
+        }
+      ],
       "destination": "/blog/:slug",
       "permanent": true
     },
-    { "source": "/velaris-design-system/ui_kits/web-app/post(\\.html)?", "destination": "/blog", "permanent": true },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/post(\\.html)?",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<slug>web-design|seo|ai-solutions|ecommerce|business-email|local-listings)"
+        }
+      ],
+      "destination": "/services/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(conversion-uiux|webflow-development|framer-development|custom-development|brand-identity|linkedin-positioning)"
+        }
+      ],
+      "destination": "/services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "seo-optimization"
+        }
+      ],
+      "destination": "/services/seo",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "ai-web-development"
+        }
+      ],
+      "destination": "/services/ai-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/service",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service(\\.html)?",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(?<slug>web-design|seo|ai-solutions|ecommerce|business-email|local-listings)"
+        }
+      ],
+      "destination": "/services/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service(\\.html)?",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "(conversion-uiux|webflow-development|framer-development|custom-development|brand-identity|linkedin-positioning)"
+        }
+      ],
+      "destination": "/services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service(\\.html)?",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "seo-optimization"
+        }
+      ],
+      "destination": "/services/seo",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service(\\.html)?",
+      "has": [
+        {
+          "type": "query",
+          "key": "s",
+          "value": "ai-web-development"
+        }
+      ],
+      "destination": "/services/ai-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service(\\.html)?",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/case",
+      "has": [
+        {
+          "type": "query",
+          "key": "c",
+          "value": "(?<slug>[a-z0-9-]+)"
+        }
+      ],
+      "destination": "/case-studies/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/case",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/case(\\.html)?",
+      "has": [
+        {
+          "type": "query",
+          "key": "c",
+          "value": "(?<slug>[a-z0-9-]+)"
+        }
+      ],
+      "destination": "/case-studies/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/case(\\.html)?",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/services(\\.html)?",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/work(\\.html)?",
+      "destination": "/case-studies",
+      "permanent": true
+    },
     {
       "source": "/work",
       "destination": "/case-studies",
@@ -39,16 +237,8 @@
       "destination": "/velaris-design-system/ui_kits/web-app/services"
     },
     {
-      "source": "/service",
-      "destination": "/velaris-design-system/ui_kits/web-app/service"
-    },
-    {
       "source": "/case-studies",
       "destination": "/velaris-design-system/ui_kits/web-app/work"
-    },
-    {
-      "source": "/case",
-      "destination": "/velaris-design-system/ui_kits/web-app/case"
     },
     {
       "source": "/pricing",

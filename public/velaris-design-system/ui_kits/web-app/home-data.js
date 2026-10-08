@@ -9,27 +9,27 @@ window.VELARIS_HERO_SLIDES = [
   {client:"Coastal Crest Lettings", tag:"B2C · Property", img:"home-img/dev-coastal.webp",
    headline:"Lettings Made Simple, Transparent & Stress-Free",
    blurb:"A fresh, modern lettings website built exactly to brief — bringing a 20-year, family-run property business online with clarity and trust.",
-   href:"/case?c=coastal"},
+   href:"/case-studies/coastal"},
   {client:"Hazelwood Hearcare", tag:"B2C · Local Healthcare", img:"home-img/dev-hazelwood.webp",
    headline:"How Hazelwood Generated 60+ Qualified Leads in 30 Days",
    blurb:"We redesigned their digital experience with a conversion-focused website, SEO optimization and a trust-driven structure — helping generate 300+ Google reviews and over £30K in revenue.",
-   href:"/case?c=hazelwood"},
+   href:"/case-studies/hazelwood"},
   {client:"Bellavista Investments", tag:"B2B · Private Equity", img:"home-img/dev-bellavista.webp",
    headline:"An Institutional-Grade Website for a Capital Firm",
    blurb:"A disciplined, credible presence that matches the calibre of their deals — built to win the trust of investors, founders and business owners.",
-   href:"/case?c=bellavista"},
+   href:"/case-studies/bellavista"},
   {client:"Core Mechanical Design", tag:"B2B · Engineering", img:"home-img/dev-core.webp",
    headline:"From Concept to Product — A Premium Engineering Presence",
    blurb:"A confident, editorial website showcasing deep technical work and positioning the consultancy as the obvious premium choice for serious product teams.",
-   href:"/case?c=core"},
+   href:"/case-studies/core"},
   {client:"Menstruacion", tag:"B2C · Femtech", img:"home-img/dev-menstruation.webp",
    headline:"A Warm, Trusted Health Resource for Parents & Teens",
    blurb:"A reassuring, expert-led experience that parents actually feel comfortable using — pairing sensitive design with a research-backed content hub.",
-   href:"/case?c=menstruation"},
+   href:"/case-studies/menstruation"},
   {client:"Navasana", tag:"B2B · AI Cyber Insurance", img:"home-img/dev-navasana.webp",
    headline:"Clarity & Credibility for a Complex AI Cyber Platform",
    blurb:"We translated a complex, technical product into a clear, credible brand experience that turns enterprise visitors into qualified demo requests.",
-   href:"/case?c=navasana"}
+   href:"/case-studies/navasana"}
 ];
 
 /* ---- CLIENT LOGOS (marquee) ---- */
@@ -202,127 +202,152 @@ window.VELARIS_CASES = [
 
 /* ---- SERVICES (full CMS — drives home grid AND service.html?s=) ----
    Order: brand → web/UX design → build (custom/Webflow/Framer/AI) → SEO → cold email. */
+/* Core services (fallback; Sanity is the source of truth). Landing pages: /services/<slug> */
 window.VELARIS_SERVICES = [
-  {
-    slug:"linkedin-positioning", tag:"01", name:"LinkedIn Profile Positioning", icon:"brand", feat:true,
-    short:"A clear, credible LinkedIn presence that turns profile visits into relevant client conversations.",
-    feats:["Headline, About &amp; Featured strategy","Banner, offer &amp; CTA alignment"],
-    tagline:"Make your expertise clear within seconds.",
-    intro:"Your LinkedIn profile is often the first sales conversation you never get to join. We position your headline, banner, About section, Featured content and offer so founders, consultants and expert-led businesses communicate their value clearly and give the right prospects a reason to take the next step.",
-    includes:["Audience &amp; offer positioning","Headline and profile narrative","LinkedIn banner design","About section copy","Featured section strategy","Service messaging &amp; call-to-action"],
-    outcome:"A connected personal brand that builds authority on LinkedIn and guides qualified prospects toward your website or strategy call.",
-    highlights:[["5 sec","To communicate value"],["1","Connected message"],["360°","Profile alignment"]],
-    bestfor:"Founders and consultants whose expertise is stronger than their current LinkedIn presence.",
-    deliverable:"A complete LinkedIn positioning system with copy, banner direction and implementation guidance."
-  },
-  {
-    slug:"brand-identity", tag:"02", name:"Logo &amp; Brand Design", icon:"brand", feat:false,
-    short:"A distinctive identity, logo and brand kit that makes your business look credible and recognisable.",
-    feats:["Logo &amp; brand system","Guidelines that scale"],
-    tagline:"A brand that looks as good as your work.",
-    intro:"Your brand decides whether people trust you in the first three seconds. We craft a distinctive identity and brand kit that makes your business look credible, premium and recognisable — the foundation every great website is built on.",
-    includes:["Logo &amp; visual identity","Colour &amp; typography system","Brand voice &amp; messaging","Brand guidelines","Social &amp; marketing templates","Asset handover kit"],
-    outcome:"A cohesive brand that builds instant credibility and lets you charge what you're worth.",
-    highlights:[["3s","To earn trust"],["1","Cohesive system"],["∞","Scales with you"]],
-    bestfor:"Founders launching or rebranding who need a credible, premium identity.",
-    deliverable:"Logo suite, brand guidelines and a ready-to-use asset kit."
-  },
-  {
-    slug:"conversion-uiux", tag:"03", name:"Web &amp; UX Design", icon:"ux", feat:false,
-    short:"Conversion-focused web design built around your customer's journey to maximise trust and bookings.",
-    feats:["Wireframe → high-fidelity","Conversion-tested layouts"],
-    tagline:"Design that turns clicks into booked calls.",
-    intro:"Great design isn't decoration — it's persuasion. We design every page, headline and interaction around your customer's journey, using proven UX principles to build trust and guide visitors to act.",
-    includes:["UX strategy &amp; user journeys","Wireframes to high-fidelity design","Conversion-focused copywriting","Trust &amp; social-proof placement","Design system &amp; components","Usability &amp; conversion testing"],
-    outcome:"A site that feels effortless to use and consistently converts visitors into leads.",
-    highlights:[["+38%","Avg. conversion lift"],["UX","Law-led design"],["100%","Mobile-first"]],
-    bestfor:"Businesses whose site looks fine but isn't converting visitors into enquiries.",
-    deliverable:"A complete, conversion-tested design system ready to build."
-  },
-  {
-    slug:"custom-development", tag:"04", name:"Custom-Coded Development", icon:"code", feat:false,
-    short:"Hand-built, lightning-fast websites with zero template bloat — engineered for speed, SEO and longevity.",
-    feats:["Core Web Vitals optimized","Scalable, secure architecture"],
-    tagline:"Websites built by hand, engineered to perform.",
-    intro:"Templates and page builders leave you with bloated, slow, hard-to-rank websites. We write clean, custom code so your site loads instantly, ranks well and scales with your business for years.",
-    includes:["Custom front-end build (no template bloat)","Core Web Vitals &amp; performance tuning","Responsive across every device","Technical SEO foundations","CMS-ready content structure","Analytics &amp; conversion tracking"],
-    outcome:"A fast, future-proof website that search engines and customers both love.",
-    highlights:[["<1s","Load times"],["100","Lighthouse target"],["0","Template bloat"]],
-    bestfor:"Brands that want maximum speed, control and a site that's truly theirs.",
-    deliverable:"A hand-coded, SEO-ready website you fully own."
-  },
-  {
-    slug:"webflow-development", tag:"05", name:"Webflow Development", icon:"webflow", feat:false,
-    short:"Powerful, CMS-driven Webflow sites you can edit yourself — fast to launch, easy to scale.",
-    feats:["Visual CMS you control","Fast, no-dev updates"],
-    tagline:"Beautiful, editable websites — without the dev queue.",
-    intro:"Webflow gives you a fast, designer-grade website with a visual CMS your team can update without touching code. We design and build it properly so it stays fast, ranks well and grows with you.",
-    includes:["Custom Webflow design &amp; build","CMS collections (blog, cases, services)","Responsive interactions &amp; animation","On-page &amp; technical SEO setup","Editor training &amp; handover","Hosting &amp; launch support"],
-    outcome:"A polished website your team can confidently manage in-house.",
-    highlights:[["DIY","Easy edits"],["CMS","Blog &amp; cases"],["Fast","To launch"]],
-    bestfor:"Teams that want to publish and edit content without a developer.",
-    deliverable:"A live Webflow site plus editor training for your team."
-  },
-  {
-    slug:"framer-development", tag:"06", name:"Framer Development", icon:"framer", feat:false,
-    short:"Stunning, animated Framer sites that launch fast and feel premium — ideal for launches and landing pages.",
-    feats:["Rich motion &amp; interactions","Rapid launch-ready builds"],
-    tagline:"High-impact, animated sites — shipped fast.",
-    intro:"Framer is our go-to for beautiful, motion-rich websites and landing pages that need to launch quickly without sacrificing polish. We craft fast, responsive Framer builds that feel genuinely premium.",
-    includes:["Custom Framer design &amp; build","Advanced animation &amp; interactions","CMS for blog &amp; case studies","Responsive across devices","SEO &amp; performance setup","Editor training &amp; handover"],
-    outcome:"A striking, fast-to-launch site that makes the right first impression.",
-    highlights:[["Motion","Built-in"],["Days","Not months"],["Premium","Feel"]],
-    bestfor:"Launches, campaigns and brands that want standout motion design.",
-    deliverable:"A live, animated Framer site ready to edit and grow."
-  },
-  {
-    slug:"ai-web-development", tag:"07", name:"Claude AI Web Development", icon:"spark", feat:true,
-    short:"AI-assisted builds and on-site assistants that qualify leads and answer questions around the clock.",
-    feats:["Ship up to 2× faster","AI lead qualification 24/7"],
-    tagline:"AI-accelerated builds and round-the-clock lead assistants.",
-    intro:"We use Claude AI across our build process to ship faster without cutting quality — and we can add an on-site AI assistant that qualifies leads and answers customer questions 24/7.",
-    includes:["AI-accelerated design &amp; build","On-site AI chat assistant (optional)","Automated lead qualification &amp; routing","AI-assisted SEO content","Faster turnaround times","Human-reviewed quality at every step"],
-    outcome:"A modern website that works for you around the clock — and gets to market faster.",
-    highlights:[["2×","Faster builds"],["24/7","AI assistant"],["Smart","Lead routing"]],
-    bestfor:"Forward-thinking founders who want an edge and faster delivery.",
-    deliverable:"An AI-accelerated website with an optional lead-qualifying assistant."
-  },
-  {
-    slug:"seo-optimization", tag:"08", name:"SEO Optimization", icon:"search", feat:false,
-    short:"Local and technical SEO that puts you in front of high-intent customers searching for you right now.",
-    feats:["Local map-pack rankings","Content engineered to rank"],
-    tagline:"Get found by customers searching right now.",
-    intro:"A beautiful website is useless if nobody finds it. We combine local, technical and content SEO to put you in front of high-intent customers at the exact moment they're searching for what you offer.",
-    includes:["Local SEO &amp; Google Business Profile","Technical SEO &amp; site health","Keyword research &amp; mapping","On-page optimization","Content that ranks","Monthly reporting &amp; iteration"],
-    outcome:"First-page rankings that send you a steady stream of free, high-intent traffic.",
-    highlights:[["300+","Keywords ranked"],["Map","Pack rankings"],["Free","High-intent traffic"]],
-    bestfor:"Local and service businesses that want to be found on Google.",
-    deliverable:"A ranking website with a clear monthly SEO growth report."
-  },
-  {
-    slug:"social-media-management", tag:"09", name:"Social Media Management", icon:"spark", feat:false,
-    short:"Strategic social content, profiles and posting systems that keep your brand visible and trusted.",
-    feats:["Content strategy & calendars","Profile and post design"],
-    tagline:"Social content that builds trust before buyers enquire.",
-    intro:"Consistent social media builds familiarity, proof and demand. We create a practical content system for your brand so your profiles look premium, stay active and support your website, SEO and sales funnel.",
-    includes:["Social media audit","Profile optimization","Content pillars & calendar","Post templates & creative direction","Caption and campaign planning","Monthly performance reporting"],
-    outcome:"A clear social presence that supports trust, authority and qualified enquiries.",
-    highlights:[["30d","Content plan"],["Multi","Channel-ready"],["Proof","Built in"]],
-    bestfor:"Service brands that need a consistent, premium presence across social channels.",
-    deliverable:"A managed social media system with templates, content plans and reporting."
-  },
-  {
-    slug:"cold-email-marketing", tag:"10", name:"Cold Email &amp; Marketing", icon:"mail", feat:false,
-    short:"Deliverability-first outreach and email marketing that starts real conversations and books meetings.",
-    feats:["Inbox-safe cold email","Nurture that converts"],
-    tagline:"Outbound that books meetings — not spam.",
-    intro:"We run deliverability-first cold email and email marketing that lands in the inbox, starts genuine conversations and books qualified meetings directly on your calendar.",
-    includes:["Domain warm-up &amp; deliverability setup","Targeted prospect lists","High-reply cold email copy","Nurture &amp; follow-up sequences","List segmentation","Reply handling &amp; reporting"],
-    outcome:"A predictable outbound channel that fills your pipeline with qualified conversations.",
-    highlights:[["Inbox","Not spam"],["Booked","Meetings"],["Predictable","Pipeline"]],
-    bestfor:"Founders who want proactive, predictable lead flow alongside inbound.",
-    deliverable:"A running cold-email system booking qualified calls for you."
-  }
+ {
+  "slug": "web-design",
+  "tag": "01",
+  "name": "Web Design",
+  "icon": "code",
+  "feat": true,
+  "short": "Custom, mobile-friendly websites designed to turn visitors into enquiries and booked calls.",
+  "feats": [
+   "Custom design, no templates",
+   "Mobile-first &amp; fast",
+   "Conversion-focused layout"
+  ],
+  "tagline": "Custom websites that turn visitors into customers",
+  "intro": "We design and build fast, mobile-first websites for small businesses, then host, maintain and improve them for one monthly fee. No templates, no big upfront bill, and a first preview within 5 business days.",
+  "includes": [
+   "Up to 5 pages on Starter, 15 on Growth, unlimited on Scale",
+   "Hosting, domain connection, SSL &amp; daily backups",
+   "10 content updates a month on Starter, unlimited on Growth and Scale",
+   "ADA / accessibility compliant build"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "seo",
+  "tag": "02",
+  "name": "SEO",
+  "icon": "search",
+  "feat": false,
+  "short": "Get found on Google. We optimise your site so local customers find you first.",
+  "feats": [
+   "Technical SEO",
+   "Keyword research",
+   "On-page optimisation"
+  ],
+  "tagline": "Get found on Google by local customers",
+  "intro": "We optimise your website, Google Business Profile and content so you show up when people nearby search for what you offer. Technical SEO is built into every plan; on-page SEO and monthly content start on Growth.",
+  "includes": [
+   "Technical SEO &amp; Search Console on every plan",
+   "On-page SEO and 2 blog posts a month on Growth",
+   "Google Business Profile management on Growth and Scale",
+   "Custom SEO strategy &amp; execution on Scale"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "ai-solutions",
+  "tag": "03",
+  "name": "AI Solutions",
+  "icon": "spark",
+  "feat": false,
+  "short": "Chatbots, automation and AI tools that answer customers and save you hours every week.",
+  "feats": [
+   "Website AI chatbot",
+   "Lead capture &amp; qualification",
+   "Booking automation"
+  ],
+  "tagline": "Chatbots and automation that save you hours",
+  "intro": "We add practical AI to your website and workflow: a chatbot that answers customer questions 24/7, automations that handle repetitive admin, and tools that turn enquiries into booked calls while you focus on the work.",
+  "includes": [
+   "AI chatbot or workflow automation on the Scale plan",
+   "Trained on your services, pricing and FAQs",
+   "Lead capture into your email or CRM",
+   "Ongoing monitoring and improvements"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "ecommerce",
+  "tag": "04",
+  "name": "E-Commerce",
+  "icon": "cart",
+  "feat": false,
+  "short": "Online stores that sell your products 24/7 with secure checkout, inventory and payment integration.",
+  "feats": [
+   "Custom store design",
+   "Secure checkout &amp; payments",
+   "Product &amp; inventory management"
+  ],
+  "tagline": "Online stores that sell 24/7",
+  "intro": "We design and build online stores with secure checkout, easy product management and payment integration, then host and maintain them for a monthly fee. Start small on Starter or get a fully customised store on Growth and Scale.",
+  "includes": [
+   "Basic shop (up to 10 products) on Starter",
+   "Fully customised e-commerce on Growth and Scale",
+   "Secure checkout, SSL and payment integration",
+   "Product SEO and order notifications"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "business-email",
+  "tag": "05",
+  "name": "Business Email",
+  "icon": "mail",
+  "feat": false,
+  "short": "Professional email on your own domain that builds trust with every message.",
+  "feats": [
+   "Email on your domain",
+   "Setup &amp; DNS configuration",
+   "Spam &amp; security protection"
+  ],
+  "tagline": "Professional email on your own domain",
+  "intro": "Swap the free Gmail or Yahoo address for email like hello@yourbusiness.com. We set it up, connect your domain, configure security and get your team sending, all included in your website plan.",
+  "includes": [
+   "1 professional inbox on Starter",
+   "3 inboxes on Growth",
+   "5 inboxes on Scale",
+   "Domain, SPF, DKIM &amp; DMARC setup"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "local-listings",
+  "tag": "06",
+  "name": "Local Listings",
+  "icon": "pin",
+  "feat": false,
+  "short": "Google Maps, Apple Maps and 20+ directories, kept accurate so customers can find and trust you.",
+  "feats": [
+   "Google Business Profile",
+   "Apple Maps &amp; Bing Places",
+   "20+ directories"
+  ],
+  "tagline": "Google Maps, Apple Maps &amp; 20+ directories",
+  "intro": "We list your business on Google Maps, Apple Maps and the directories customers use, and keep your name, address, phone and hours consistent everywhere, so you show up in local searches and customers can trust what they find.",
+  "includes": [
+   "Google Maps &amp; Apple Maps listing on every plan",
+   "Listings on 20+ directories on Growth and Scale",
+   "Google Business Profile management on Growth and Scale",
+   "NAP consistency checks"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ }
 ];
 
 /* ---- PROCESS (used on Pricing page) ---- */

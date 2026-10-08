@@ -79,19 +79,19 @@
 
   function svcMega(){
     var S = window.VELARIS_SERVICES||[];
-    var ic = {code:'<path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/>',spark:'<path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.3 1-5.5-4-3.9L10.5 8z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>',mail:'<path d="M3 6l9 7 9-7M3 6v12h18V6"/>',ux:'<path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/>',brand:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',webflow:'<path d="M3 8l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4"/>',framer:'<path d="M6 3h12v6H12zM6 9h6l6 6h-6v6z"/>'};
+    var ic = {code:'<path d="M8 7l-4 5 4 5M16 7l4 5-4 5M13 5l-2 14"/>',spark:'<path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.3 1-5.5-4-3.9L10.5 8z"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/>',mail:'<path d="M3 6l9 7 9-7M3 6v12h18V6"/>',ux:'<path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/>',brand:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/>',webflow:'<path d="M3 8l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 16l9 4 9-4"/>',framer:'<path d="M6 3h12v6H12zM6 9h6l6 6h-6v6z"/>',cart:'<path d="M3 4h2l2.4 11.2a1 1 0 001 .8h8.8a1 1 0 001-.8L20 8H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/>',pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0112 2.5a7 7 0 017 7C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'};
     var links = S.map(function(s){
-      return '<a class="mega-link" href="/service?s='+s.slug+'"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">'+ic[s.icon]+'</svg></span><span><b>'+s.name+'</b><span>'+s.tagline+'</span></span></a>';
+      return '<a class="mega-link" href="/services/'+s.slug+'"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">'+ic[s.icon]+'</svg></span><span><b>'+s.name+'</b><span>'+s.tagline+'</span></span></a>';
     }).join('');
     return '<div class="mega wide"><div class="mega-inner"><div class="mega-grid">'+links+'</div>'+
-      '<div class="mega-foot"><div><b>Not sure what you need?</b><p>Book a free 20-min call and we\'ll map it out.</p></div><a class="btn btn-teal" href="/pricing">See pricing</a></div></div></div>';
+      '<div class="mega-foot"><div><b>All included in one monthly plan</b><p>Plans from $199/month. No setup fee, cancel anytime.</p></div><a class="btn btn-teal" href="/pricing">See plans</a></div></div></div>';
   }
   function caseMega(){
     var C = (window.VELARIS_CASES||[]).slice(0,4);
     var icons={hazelwood:'icon-hazelwood.webp',navasana:'icon-navasana.webp',core:'icon-core.webp',bellavista:'icon-bellavista.webp',coastal:'icon-coastal.webp'};
     var links = C.map(function(c){
       var ic = icons[c.slug] ? ASSET_BASE+'home-img/'+icons[c.slug] : ASSET_BASE+c.logo;
-      return '<a class="mega-link" href="/case?c='+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
+      return '<a class="mega-link" href="/case-studies/'+c.slug+'"><span class="mega-ic case-ic"><img src="'+ic+'" alt=""></span><span><b>'+c.client+'</b><span>'+c.sector+'</span></span></a>';
     }).join('');
     return '<div class="mega"><div class="mega-inner"><div class="mega-grid one">'+links+'</div>'+
       '<div class="mega-foot"><div><b>See every project</b><p>Browse the full Velaris portfolio.</p></div><a class="btn btn-teal" href="/case-studies">View all</a></div></div></div>';
@@ -107,12 +107,12 @@
   }
   function svcDrawerLinks(){
     return (window.VELARIS_SERVICES||[]).map(function(s){
-      return '<a class="dsub" href="/service?s='+s.slug+'" data-close>'+s.name+'</a>';
+      return '<a class="dsub" href="/services/'+s.slug+'" data-close>'+s.name+'</a>';
     }).join('');
   }
   function caseDrawerLinks(){
     return (window.VELARIS_CASES||[]).slice(0,5).map(function(c){
-      return '<a class="dsub" href="/case?c='+c.slug+'" data-close>'+c.client+'</a>';
+      return '<a class="dsub" href="/case-studies/'+c.slug+'" data-close>'+c.client+'</a>';
     }).join('');
   }
 

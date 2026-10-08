@@ -58,8 +58,29 @@ export const documentTypes = [
     type: 'document',
     fields: [
       defineField({name: 'name', type: 'string', validation: (Rule) => Rule.required()}),
-      defineField({name: 'slug', type: 'slug', options: {source: 'name'}, validation: (Rule) => Rule.required()}),
+      defineField({
+        name: 'slug',
+        type: 'slug',
+        description: 'Landing page URL: velarisweb.com/services/<slug>. Changing it changes the live URL.',
+        options: {source: 'name'},
+        validation: (Rule) => Rule.required(),
+      }),
+      defineField({
+        name: 'retired',
+        title: 'Retired (hide from site)',
+        description: 'Hides this service from the menu, homepage and landing pages without deleting it.',
+        type: 'boolean',
+        initialValue: false,
+      }),
       defineField({name: 'orderRank', title: 'Sort order', type: 'number'}),
+      defineField({
+        name: 'heroHeadline',
+        title: 'Landing page headline (H1)',
+        description: 'Main heading on /services/<slug>. Include the main keyword.',
+        type: 'string',
+        validation: (Rule) => Rule.max(80).warning('Keep the H1 under ~80 characters.'),
+      }),
+      defineField({name: 'accent', title: 'Accent colour (hex)', type: 'string', description: 'e.g. #127AFE'}),
       defineField({name: 'tag', type: 'string'}),
       defineField({name: 'icon', type: 'string'}),
       defineField({name: 'featured', type: 'boolean', initialValue: false}),
@@ -89,9 +110,39 @@ export const documentTypes = [
       defineField({name: 'bestFor', type: 'text', rows: 2}),
       defineField({name: 'deliverable', type: 'text', rows: 2}),
       defineField({name: 'startingPrice', type: 'string'}),
+      defineField({
+        name: 'faqs',
+        title: 'Landing page FAQs',
+        description: 'Shown on the service page and published as FAQ structured data for Google.',
+        type: 'array',
+        of: [
+          defineArrayMember({
+            type: 'object',
+            name: 'serviceFaq',
+            fields: [
+              defineField({name: 'question', type: 'string', validation: (Rule) => Rule.required()}),
+              defineField({name: 'answer', type: 'text', rows: 4, validation: (Rule) => Rule.required()}),
+            ],
+            preview: {select: {title: 'question', subtitle: 'answer'}},
+          }),
+        ],
+      }),
+      defineField({
+        name: 'relatedCases',
+        title: 'Related case studies',
+        type: 'array',
+        of: [defineArrayMember({type: 'reference', to: [{type: 'caseStudy'}]})],
+        validation: (Rule) => Rule.max(3),
+      }),
       defineField({name: 'body', type: 'portableBody'}),
       defineField({name: 'seo', type: 'object', fields: seoFields}),
     ],
+    preview: {
+      select: {title: 'name', subtitle: 'slug.current', retired: 'retired'},
+      prepare({title, subtitle, retired}) {
+        return {title: retired ? `${title} (retired)` : title, subtitle: subtitle ? `/services/${subtitle}` : ''}
+      },
+    },
   }),
   defineType({
     name: 'caseStudy',

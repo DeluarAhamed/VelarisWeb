@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
+const { buildLandingPages } = require('./landing-pages');
 
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
@@ -165,10 +166,13 @@ async function main() {
   });
 
   const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/playbook'];
-  // Services and case studies keep coming from the static files (the homepage
-  // links services that aren't in Sanity yet); posts come from Sanity.
-  const servicePaths = (fallback.VELARIS_SERVICES || []).map((item) => `/service?s=${item.slug}`);
-  const casePaths = (fallback.VELARIS_CASES || []).map((item) => `/case?c=${item.slug}`);
+  // Service and case-study landing pages (prerendered into dist/ when it exists).
+  const landing = await buildLandingPages({
+    distDir: fs.existsSync(distDir) ? distDir : null,
+    fallbackCases: fallback.VELARIS_CASES,
+  });
+  const servicePaths = landing.services;
+  const casePaths = landing.cases;
   const postPaths = posts.map((post) => postPath(post.slug));
   const paths = [...new Set([...staticPaths, ...servicePaths, ...casePaths, ...postPaths])];
 

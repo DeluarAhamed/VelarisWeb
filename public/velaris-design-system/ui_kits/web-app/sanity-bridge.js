@@ -82,7 +82,7 @@
 
   var query = encodeURIComponent([
     '{',
-    '"services":*[_type=="service"]|order(orderRank asc){name,slug,tag,icon,featured,shortDescription,tagline,intro,features,includes,highlights[]{value,label},bestFor,deliverable,startingPrice},',
+    '"services":*[_type=="service" && !(retired == true)]|order(orderRank asc){name,slug,tag,icon,featured,shortDescription,tagline,intro,features,includes,highlights[]{value,label},bestFor,deliverable,startingPrice},',
     '"cases":*[_type=="caseStudy"]|order(caseNumber asc){client,slug,caseNumber,sector,industry,projectClient,headline,summary,challenge,approach,outcome,liveUrl,featured,darkTheme,logo{asset->{url},alt,legacyPath},logoPath,heroImage{asset->{url},alt,legacyPath},heroImagePath,gallery[]{asset->{url},alt,legacyPath},galleryPaths,pageScreenshots[]{title,image{asset->{url},alt,legacyPath},legacyPath},services,deliverables,timeline,results[]{value,label},quote,quoteAuthor,quoteRole,quoteAvatar{asset->{url},alt,legacyPath},quoteAvatarPath,fonts,palette[]{hex},targetKeywords},',
     '"testimonials":*[_type=="testimonial"]|order(_createdAt asc){name,role,company,quote,stars,avatar{asset->{url},alt,legacyPath},avatarPath,featured},',
     '"logos":*[_type=="clientLogo"]|order(_createdAt asc){name,logo{asset->{url},alt,legacyPath},logoPath,website},',

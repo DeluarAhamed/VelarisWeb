@@ -100,7 +100,7 @@
   if(svcList && window.VELARIS_SERVICES){
     svcList.innerHTML=window.VELARIS_SERVICES.map(function(s){
       var feats=s.feats.map(function(f){ return '<li>'+CHECK+f+'</li>'; }).join('');
-      return '<a class="svc'+(s.feat?' feat':'')+'" href="/service?s='+s.slug+'" style="text-decoration:none;color:inherit">'+
+      return '<a class="svc'+(s.feat?' feat':'')+'" href="/services/'+s.slug+'" style="text-decoration:none;color:inherit">'+
         '<div class="svc-top"><div class="svc-ic">'+svcIcon(s)+'</div><span class="svc-n">'+s.tag+'</span></div>'+
         '<h3>'+s.name+'</h3><p>'+s.short+'</p><ul class="feats">'+feats+'</ul>'+
         '<span class="svc-link">Learn more '+ARROW+'</span></a>';
@@ -131,13 +131,13 @@
     };
     var seoData=seo[s.slug]||[plain(s.name)+' Services | Velaris Web',plain(s.intro)];
     document.title=seoData[0];
-    setCanonical('/service?s='+encodeURIComponent(s.slug));
+    setCanonical('/services/'+encodeURIComponent(s.slug));
     setMeta('meta[name="description"]',seoData[1]);
     setMeta('meta[property="og:title"]',seoData[0]);
     setMeta('meta[property="og:description"]',seoData[1]);
     setMeta('meta[name="twitter:title"]',seoData[0]);
     setMeta('meta[name="twitter:description"]',seoData[1]);
-    addJsonLd('service-schema',{'@context':'https://schema.org','@type':'Service','name':plain(s.name),'description':seoData[1],'url':location.origin+'/service?s='+encodeURIComponent(s.slug),'provider':{'@type':'Organization','name':'Velaris Web','url':location.origin+'/'},'areaServed':'Worldwide'});
+    addJsonLd('service-schema',{'@context':'https://schema.org','@type':'Service','name':plain(s.name),'description':seoData[1],'url':location.origin+'/services/'+encodeURIComponent(s.slug),'provider':{'@type':'Organization','name':'Velaris Web','url':location.origin+'/'},'areaServed':'Worldwide'});
 
     // ---- hero ----
     sd.querySelector('[data-crumb]').innerHTML=s.name;
@@ -204,7 +204,7 @@
       if(story){
         sd.querySelector('[data-story-quote]').textContent='“'+plain(story.quote)+'”';
         sd.querySelector('[data-story-who]').innerHTML='<span class="av" style="background-image:url('+story.avatar+')"></span><span><b>'+story.author+'</b><span>'+story.role+'</span></span>';
-        var sl=sd.querySelector('[data-story-link]'); if(sl) sl.href='/case?c='+story.slug;
+        var sl=sd.querySelector('[data-story-link]'); if(sl) sl.href='/case-studies/'+story.slug;
         sd.querySelector('[data-story-stats]').innerHTML=(story.stats||[]).slice(0,4).map(function(st){
           return '<div class="ss"><b>'+st[0]+'</b><small>'+st[1]+'</small></div>';
         }).join('');
@@ -229,7 +229,7 @@
       var rel=window.VELARIS_CASES.filter(function(c){ return c.services.join(' ').toLowerCase().indexOf(plain(s.name).split(' ')[0].toLowerCase())>-1; });
       if(rel.length<2) rel=window.VELARIS_CASES.slice(0,3);
       rw.innerHTML=rel.slice(0,3).map(function(c){
-        return '<a class="svw-card" href="/case?c='+c.slug+'"><div class="svw-img"><img src="'+c.img+'" alt="'+c.client+'"></div>'+
+        return '<a class="svw-card" href="/case-studies/'+c.slug+'"><div class="svw-img"><img src="'+c.img+'" alt="'+c.client+'"></div>'+
           '<div class="svw-b"><span>'+c.sector+'</span><b>'+c.client+'</b></div></a>';
       }).join('');
     }
@@ -238,7 +238,7 @@
     var others=window.VELARIS_SERVICES.filter(function(x){return x.slug!==s.slug;}).slice(0,3);
     var ow=document.getElementById('svcOther');
     if(ow) ow.innerHTML=others.map(function(o){
-      return '<a href="/service?s='+o.slug+'"><span class="ic">'+svcIcon(o)+'</span><span><b>'+o.name+'</b><span>'+o.tagline+'</span></span></a>';
+      return '<a href="/services/'+o.slug+'"><span class="ic">'+svcIcon(o)+'</span><span><b>'+o.name+'</b><span>'+o.tagline+'</span></span></a>';
     }).join('');
   }
 
@@ -251,7 +251,7 @@
       var foot = c.quote
         ? '<div class="sc-quote"><span class="av" style="background-image:url('+c.avatar+')"></span><div><p class="qt">"'+c.quote.slice(0,160)+(c.quote.length>160?'…':'')+'"</p><span class="nm">'+c.author+' <span class="rl">— '+c.role+'</span></span></div></div>'
         : '<div class="sc-outcome"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 16l5-5 4 4 7-8"/><circle cx="4" cy="16" r="1.4"/></svg></span><p><b>The outcome</b>'+c.outcome+'</p></div>';
-      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" href="/case?c='+c.slug+'">'+
+      return '<a class="stack-card'+(c.dark?' dark':'')+'" style="z-index:'+(10+idx)+'" href="/case-studies/'+c.slug+'">'+
         '<div class="sc-text"><div class="sc-top"><span class="sc-num">CASE '+c.n+'</span><span class="sc-sector">'+c.sector+'</span></div>'+
         '<img class="sc-logo" src="'+c.logo+'" alt="'+c.client+'"'+(c.logoInvert?' style="filter:brightness(0) invert(1)"':'')+'>'+
         '<h3>'+title+'</h3><p class="sum">'+c.summary+'</p>'+
@@ -275,7 +275,7 @@
       else if(c.fonts.display) cd.style.setProperty('--case-font-display', '"'+c.fonts.display+'", var(--font-display)');
     }
     document.title=c.client+' Case Study — Velaris Web';
-    setCanonical('/case?c='+encodeURIComponent(c.slug));
+    setCanonical('/case-studies/'+encodeURIComponent(c.slug));
     var md2=document.querySelector('meta[name="description"]'); if(md2) md2.setAttribute('content',c.summary);
 
     // per-case enrichment (palettes + requirement copy)
@@ -394,8 +394,8 @@
     // prev/next
     var prev=list[(i-1+list.length)%list.length], next=list[(i+1)%list.length];
     var cn=cd.querySelector('[data-casenav]');
-    if(cn) cn.innerHTML='<a href="/case?c='+prev.slug+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> '+prev.client+'</a>'+
-      '<a href="/case?c='+next.slug+'">'+next.client+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>';
+    if(cn) cn.innerHTML='<a href="/case-studies/'+prev.slug+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg> '+prev.client+'</a>'+
+      '<a href="/case-studies/'+next.slug+'">'+next.client+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></a>';
 
     // scroll reveal for case sections
     var cobs='IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); cobs.unobserve(en.target);} }); },{threshold:.12}) : {observe:function(el){el.classList.add('in');},unobserve:function(){}};
@@ -525,7 +525,7 @@
   var spg=document.getElementById('servicePricing');
   if(spg && window.VELARIS_SERVICE_PRICING){
     spg.innerHTML=window.VELARIS_SERVICE_PRICING.map(function(p){
-      return '<a class="sprice" href="/service?s='+p.slug+'">'+
+      return '<a class="sprice" href="/services/'+p.slug+'">'+
         '<span class="sp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+(IC[p.icon]||'')+'</svg></span>'+
         '<div class="sp-body"><b>'+p.name+'</b><span>'+p.note+'</span></div>'+
         '<div class="sp-price">'+p.price+'</div></a>';
