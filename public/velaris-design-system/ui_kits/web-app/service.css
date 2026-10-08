@@ -90,7 +90,7 @@
 /* ---------- SUCCESS STORY ---------- */
 .story-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
 .story-l .eyebrow{color:var(--teal-bright)}
-.story-quote{font-family:var(--font-display);font-style:italic;font-size:29px;line-height:1.36;color:#fff;margin:18px 0 0;text-wrap:pretty}
+.story-quote{font-family:var(--font-display);font-size:29px;line-height:1.36;color:#fff;margin:18px 0 0;text-wrap:pretty}
 .story-who{display:flex;align-items:center;gap:14px;margin-top:26px}
 .story-who .av{width:48px;height:48px;border-radius:50%;background-size:cover;background-position:center;flex:none;border:1px solid rgba(255,255,255,.2)}
 .story-who b{display:block;color:#fff;font-size:15px}

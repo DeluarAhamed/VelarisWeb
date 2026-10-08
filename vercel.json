@@ -8,6 +8,7 @@
     { "source": "/velaris-design-system/ui_kits/web-app/home.html", "destination": "/", "permanent": true },
     { "source": "/velaris-design-system/ui_kits/web-app/index", "destination": "/", "permanent": true },
     { "source": "/velaris-design-system/ui_kits/web-app/index.html", "destination": "/", "permanent": true },
+    { "source": "/velaris-design-system/ui_kits/web-app/velaris-home(\\.html)?", "destination": "/", "permanent": true },
     {
       "source": "/post",
       "has": [{ "type": "query", "key": "slug", "value": "(?<slug>[A-Za-z0-9-]+)" }],

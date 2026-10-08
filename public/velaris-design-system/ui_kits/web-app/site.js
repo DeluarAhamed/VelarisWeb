@@ -278,7 +278,7 @@
           '</div>'+
           '<div class="ifield-row">'+
             '<div class="ifield"><label>Service required *</label><select name="service" required><option value="" disabled selected>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'<option>Not sure yet</option></select></div>'+
-            '<div class="ifield"><label>Project budget *</label><select name="budget" required><option value="" disabled selected>Select your range</option><option>£1k – £3k</option><option>£3k – £6k</option><option>£6k – £12k</option><option>£12k+</option></select></div>'+
+            '<div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" disabled selected>Select a plan</option><option>Starter (£149/month)</option><option>Growth (£299/month)</option><option>Scale (from £549/month)</option><option>One-off project</option><option>Not sure yet</option></select></div>'+
           '</div>'+
           '<div class="ifield"><label>Project details *</label><textarea name="details" placeholder="Tell us more about your idea" required></textarea></div>'+
           '<button class="btn btn-dark" type="submit" style="width:100%">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
@@ -424,8 +424,8 @@
   /* Ava AI assistant — lazy-loaded after the page is interactive. */
   function loadAva(){
     if(document.querySelector('script[data-ava]')) return;
-    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v2'; document.head.appendChild(css);
-    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261004-ava3'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
+    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v3'; document.head.appendChild(css);
+    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261008-v3'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
   }
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});
   else window.addEventListener('load',function(){setTimeout(loadAva,600);},{once:true});

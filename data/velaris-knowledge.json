@@ -12,27 +12,83 @@
     "url": "https://calendly.com/velarisweb/30min"
   },
   "pricing": {
-    "startingFrom": "£1,550",
-    "guidance": "Complete packages currently start around £1,550. Final investment depends on scope, pages, functionality, platform and marketing requirements. Individual services are also available.",
+    "model": "Monthly website plans. No setup fee, month-to-month, cancel anytime with 30 days notice. First preview within 5 business days.",
+    "startingFrom": "£149/month",
+    "guidance": "Websites are on monthly plans covering design, hosting, updates and SEO: Starter £149/month (up to 5 pages, 5 updates a month), Growth £299/month (up to 12 pages, unlimited updates, 2 SEO blog posts a month, LinkedIn positioning) and Scale from £549/month (custom development, SEO strategy, AI automation, account manager). One-off projects and standalone services are quoted after a free call.",
     "packages": [
-      { "name": "Starter", "price": "£1,550" },
-      { "name": "Growth", "price": "£2,500" },
-      { "name": "Scale", "price": "£5,500" }
+      {
+        "name": "Starter",
+        "price": "£149/month"
+      },
+      {
+        "name": "Growth",
+        "price": "£299/month"
+      },
+      {
+        "name": "Scale",
+        "price": "from £549/month"
+      }
     ]
   },
   "services": [
-    { "name": "LinkedIn Positioning", "summary": "Profile strategy, positioning, headline, banner, About, Featured section, offer messaging, calls-to-action and personal brand alignment." },
-    { "name": "Personal Branding", "summary": "Founder positioning, messaging, visual credibility, brand consistency and authority-building assets." },
-    { "name": "Website Strategy", "summary": "Customer journeys, information architecture, conversion strategy, page structure, content hierarchy, offers, proof and calls-to-action." },
-    { "name": "UI/UX Design", "summary": "Custom responsive websites, landing pages, service websites, conversion-focused UX and design systems." },
-    { "name": "Website Development", "summary": "Webflow, Framer or custom development selected after understanding the project's requirements." },
-    { "name": "SEO", "summary": "Keyword research, on-page SEO, technical foundations, metadata, internal linking, search-focused content structure and local SEO where appropriate." }
+    {
+      "name": "LinkedIn Positioning",
+      "summary": "Profile strategy, positioning, headline, banner, About, Featured section, offer messaging, calls-to-action and personal brand alignment."
+    },
+    {
+      "name": "Personal Branding",
+      "summary": "Founder positioning, messaging, visual credibility, brand consistency and authority-building assets."
+    },
+    {
+      "name": "Website Strategy",
+      "summary": "Customer journeys, information architecture, conversion strategy, page structure, content hierarchy, offers, proof and calls-to-action."
+    },
+    {
+      "name": "UI/UX Design",
+      "summary": "Custom responsive websites, landing pages, service websites, conversion-focused UX and design systems."
+    },
+    {
+      "name": "Website Development",
+      "summary": "Webflow, Framer or custom development selected after understanding the project's requirements."
+    },
+    {
+      "name": "SEO",
+      "summary": "Keyword research, on-page SEO, technical foundations, metadata, internal linking, search-focused content structure and local SEO where appropriate."
+    }
   ],
-  "audiences": ["Founders", "Consultants", "Coaches", "Experts", "Creators", "Personal brands", "B2B businesses", "B2C service businesses", "Healthcare businesses", "Professional services", "Local service businesses"],
+  "audiences": [
+    "Founders",
+    "Consultants",
+    "Coaches",
+    "Experts",
+    "Creators",
+    "Personal brands",
+    "B2B businesses",
+    "B2C service businesses",
+    "Healthcare businesses",
+    "Professional services",
+    "Local service businesses"
+  ],
   "verifiedProof": [
-    { "client": "Hazelwood Hearcare", "summary": "A website, conversion and local SEO project.", "facts": ["60+ bookings in 30 days", "300+ Google reviews", "£30K revenue in 6 months"] },
-    { "client": "Navasana", "summary": "A clearer, more credible website experience for a complex AI cyber-insurance platform.", "facts": [] },
-    { "client": "Core Mechanical Design", "summary": "A premium editorial web presence for an engineering consultancy.", "facts": [] }
+    {
+      "client": "Hazelwood Hearcare",
+      "summary": "A website, conversion and local SEO project.",
+      "facts": [
+        "60+ bookings in 30 days",
+        "300+ Google reviews",
+        "£30K revenue in 6 months"
+      ]
+    },
+    {
+      "client": "Navasana",
+      "summary": "A clearer, more credible website experience for a complex AI cyber-insurance platform.",
+      "facts": []
+    },
+    {
+      "client": "Core Mechanical Design",
+      "summary": "A premium editorial web presence for an engineering consultancy.",
+      "facts": []
+    }
   ],
   "policies": {
     "seo": "Never guarantee a ranking. Explain that competition, authority, content and other factors affect results.",

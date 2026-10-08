@@ -343,26 +343,14 @@ window.VELARIS_PROCESS = [
 
 /* ---- PRICING ---- */
 window.VELARIS_PRICING = [
-  {name:"Starter", price:"£1,550", per:"project", tagline:"A focused foundation to launch with clarity and credibility.",
-   feats:["Logo &amp; brand essentials","Up to 7 pages, custom designed","Webflow, Framer or custom build","On-page SEO + keyword research","Mobile responsive &amp; fast","CMS-ready content","1–2 weeks delivery"], cta:"Start with Starter", feat:false},
-  {name:"Growth", price:"£2,500", per:"project", tagline:"Our most popular — a connected LinkedIn and website presence.",
-   feats:["Everything in Starter","Full brand &amp; identity system","Up to 16 pages + UI/UX design","Local &amp; technical SEO","Lead-gen &amp; booking flows","Blog / case-study CMS","Analytics &amp; conversion tracking","2–4 weeks delivery"], cta:"Choose Growth", feat:true},
-  {name:"Scale", price:"£5,500", per:"project", tagline:"Complete positioning, brand, website and SEO support.",
-   feats:["Everything in Growth","Claude AI web development","Cold email &amp; outreach setup","Advanced SEO &amp; content engine","Ongoing optimization &amp; support","Priority delivery","Custom timeline"], cta:"Talk to us", feat:false}
+  {name:"Starter", price:"£149", per:"/month", tagline:"Get online fast with a professional site that builds trust.",
+   feats:["Custom website, up to 5 pages","Hosting, domain, SSL &amp; security","1 business email","5 content updates a month","SEO setup &amp; analytics"], cta:"Choose Starter", feat:false},
+  {name:"Growth", price:"£299", per:"/month", tagline:"For founders who want the website and LinkedIn to bring in clients.",
+   feats:["Everything in Starter","Premium design, up to 12 pages","Unlimited content updates","2 SEO blog posts a month","Google Business Profile optimisation","LinkedIn profile positioning","Booking &amp; CRM integration"], cta:"Choose Growth", feat:true},
+  {name:"Scale", price:"£549+", per:"/month", tagline:"Your full digital team for custom builds, SEO and automation.",
+   feats:["Everything in Growth","Custom development &amp; integrations","SEO strategy &amp; reporting","AI chatbot or automation","Dedicated account manager"], cta:"Book a scoping call", feat:false}
 ];
 
-/* ---- INDIVIDUAL SERVICE PRICING (à la carte) ---- */
-window.VELARIS_SERVICE_PRICING = [
-  {name:"LinkedIn Profile Positioning", icon:"brand", price:"From £750", note:"Positioning, copy, banner direction &amp; CTA", slug:"linkedin-positioning"},
-  {name:"Logo &amp; Brand Design", icon:"brand", price:"From £600", note:"Logo, colour, type &amp; brand kit", slug:"brand-identity"},
-  {name:"Web &amp; UX Design", icon:"ux", price:"From £1,200", note:"Conversion-focused design, per project", slug:"conversion-uiux"},
-  {name:"Custom-Coded Development", icon:"code", price:"From £1,800", note:"Hand-built, performance-tuned", slug:"custom-development"},
-  {name:"Webflow Development", icon:"webflow", price:"From £1,500", note:"CMS-driven, editable build", slug:"webflow-development"},
-  {name:"Framer Development", icon:"framer", price:"From £1,400", note:"Animated, launch-ready build", slug:"framer-development"},
-  {name:"Claude AI Web Development", icon:"spark", price:"From £2,200", note:"AI-accelerated build + assistant", slug:"ai-web-development"},
-  {name:"SEO Optimization", icon:"search", price:"From £300/mo", note:"Keyword research + on-page + local", slug:"seo-optimization"},
-  {name:"Cold Email &amp; Marketing", icon:"mail", price:"From £600/mo", note:"Deliverability, copy &amp; sequences", slug:"cold-email-marketing"}
-];
 
 /* ---- RESOURCES (ebooks, PDFs, digital products, guides) ---- */
 window.VELARIS_RESOURCES = [
@@ -397,9 +385,9 @@ window.VELARIS_FAQS = [
   {q:"Do you build websites for consultants?",
    a:"Yes. We design conversion-focused websites for consultants, founders, coaches, advisors, agency owners and professional service businesses, with clear positioning, proof, lead capture and SEO foundations."},
   {q:"How long does it take to build a website?",
-   a:"Most projects run from 1 week for a focused landing page up to 3–6 weeks for a full website, depending on scope. You'll get a clear timeline with milestones at kickoff and updates at every stage."},
+   a:"You'll see a first preview of your website within 5 business days of your kickoff call. Most sites launch within 2–3 weeks, and larger custom builds get a clear timeline at kickoff."},
   {q:"How much does a new website cost?",
-   a:"Our current packages start at £1,550, with £2,500 and £5,500 options for broader scopes. The right fit depends on your goals, required pages and growth support, so we confirm the final scope and price before work begins."},
+   a:"There's no big upfront cost. Websites are on monthly plans: Starter £149/month, Growth £299/month and Scale from £549/month, covering design, hosting, updates and SEO. No setup fee and no long-term contract. One-off projects are also available on request."},
   {q:"Do you provide SEO as part of website design?",
    a:"Yes. Website projects can include search-intent research, keyword strategy, site architecture, metadata, internal linking, technical SEO, Search Console setup, analytics and conversion tracking."},
   {q:"Will my website actually rank on Google?",

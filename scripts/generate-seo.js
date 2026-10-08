@@ -57,6 +57,25 @@ function isoDate(value) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
+const SHARE_IMAGE = 'https://velarisweb.com/velaris-design-system/assets/og-velaris.png';
+const LOGO_IMAGE = 'https://velarisweb.com/velaris-design-system/assets/velaris-icon.png';
+
+// Search results show ~155 characters; short CMS excerpts get topped up from the article's opening paragraph.
+function metaDescription(post) {
+  const clean = (value) => decodeAmp(value).replace(/<[^>]+>/g, ' ').replace(/&[a-z#0-9]+;/gi, ' ').replace(/\s+/g, ' ').trim();
+  let text = clean(post.excerpt);
+  if (text.length < 120) {
+    const title = clean(post.title).toLowerCase();
+    const para = [...String(post.body || '').matchAll(/<p>([\s\S]*?)<\/p>/gi)]
+      .map((m) => clean(m[1]))
+      .find((p) => p.length > 40 && !p.toLowerCase().startsWith(title));
+    if (para) text = `${text.replace(/[.!?]?$/, '.')} ${para}`.trim();
+  }
+  if (text.length <= 158) return text;
+  const cut = text.slice(0, 155);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:\s]+$/, '')}…`;
+}
+
 function replaceRequired(html, search, replacement, all = false) {
   if (!html.includes(search)) throw new Error(`post.html template no longer contains: ${search}`);
   return all ? html.split(search).join(replacement) : html.replace(search, () => replacement);
@@ -86,12 +105,12 @@ function renderPost(template, posts, post) {
       ...(post.kw && { keywords: decodeAmp(post.kw) }),
       mainEntityOfPage: url,
       url,
-      image: 'https://www.velarisweb.com/assets/velaris-main-logo.webp',
+      image: SHARE_IMAGE,
       author: { '@type': 'Organization', name: 'Velaris Web', url: `${origin}/` },
       publisher: {
         '@type': 'Organization',
         name: 'Velaris Web',
-        logo: { '@type': 'ImageObject', url: 'https://www.velarisweb.com/assets/velaris-main-logo.webp' },
+        logo: { '@type': 'ImageObject', url: LOGO_IMAGE },
       },
     },
     {
@@ -118,7 +137,7 @@ function renderPost(template, posts, post) {
 
   let html = template;
   html = replaceRequired(html, 'Blog Article | Velaris Web', escapeHtml(title), true);
-  html = replaceRequired(html, 'Read a Velaris Web article on web design, SEO, conversion strategy, lead generation and online growth.', escapeHtml(post.excerpt), true);
+  html = replaceRequired(html, 'Read a Velaris Web article on web design, SEO, conversion strategy, lead generation and online growth.', escapeHtml(metaDescription(post)), true);
   html = replaceRequired(html, '<meta property="og:type" content="website">', '<meta property="og:type" content="article">');
   html = replaceRequired(html, '<meta name="robots" content="index, follow">', `<meta name="robots" content="index, follow">\n${head}`);
   html = replaceRequired(html, '<div id="postDetail">', '<div id="postDetail" data-prerendered>');
