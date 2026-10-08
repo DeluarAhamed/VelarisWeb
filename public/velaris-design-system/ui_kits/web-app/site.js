@@ -65,14 +65,8 @@
     layout();
   };
 
-  /* gradient logo mark (from brand SVG) */
-  var MARK = '<svg class="mk" width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">'+
-    '<rect width="32" height="32" rx="4.57" fill="url(#vlg)"></rect>'+
-    '<path d="M16.81 23.58c-.02.12-.05.23-.1.34-.45.96-.83 1.95-1.21 2.94-.03.07-.04.16-.13.18-.11.02-.14-.08-.18-.14-1.8-2.39-3.6-4.78-5.4-7.17-1.64-2.18-3.27-4.37-4.9-6.56l-1.91-2.57c-.02-.02-.04-.05-.06-.08-.03-.05-.09-.09-.05-.15.03-.05.1-.02.15-.01.47.07.95.13 1.42.22 1.04.2 2.06.5 3.05.88 1.36.54 2.39 1.43 3.16 2.68 1.04 1.69 2.14 3.33 3.23 4.99.94 1.42 1.88 2.83 2.82 4.25.05.07.1.13.11.21z" fill="white"></path>'+
-    '<path d="M25.79 10.7c-.07.11-.1.12-.16.18-2.2 2.09-4.12 4.45-5.73 7.03-.84 1.35-1.62 2.74-2.34 4.16-.11.22-.14.22-.28.02-.65-.99-1.31-1.97-1.96-2.96-.2-.3-.19-.3.06-.57.92-.99 1.88-1.95 2.9-2.85 1.44-1.28 2.96-2.45 4.6-3.48.81-.52 1.66-.99 2.52-1.42.22-.11.27-.11.39-.12z" fill="white"></path>'+
-    '<path d="M21.93 11.83c-.21.12-.37.22-.54.31-1.36.77-2.58 1.73-3.75 2.76-1.04.92-2.01 1.91-2.92 2.96-.13.15-.18.15-.3 0-.37-.5-.7-1.03-1.02-1.56-.09-.15-.06-.23.07-.33 1.88-1.4 3.92-2.51 6.08-3.4.68-.28 1.39-.54 2.1-.74.07-.02.15-.05.27 0z" fill="white"></path>'+
-    '<path d="M27.36 7.36c-.02.06-.08.07-.13.08-.38.11-.75.23-1.14.31-.33.07-.53.25-.61.61-.1.43-.23.86-.34 1.29-.01.04-.01.11-.07.1-.05 0-.04-.06-.05-.1-.1-.42-.22-.84-.32-1.26-.08-.35-.26-.57-.6-.64-.4-.08-.79-.19-1.17-.32-.05-.02-.12-.01-.12-.08 0-.06.06-.05.11-.07.4-.12.81-.25 1.22-.35.32-.08.49-.28.56-.6.09-.4.18-.81.28-1.21.02-.07.01-.19.1-.19.09 0 .08.12.1.19.11.41.22.82.31 1.24.07.31.24.48.53.56.41.1.81.23 1.22.35.05.01.11 0 .12.08z" fill="white"></path>'+
-    '<defs><linearGradient id="vlg" x1="16" y1="0" x2="16" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2B8B8D"></stop><stop offset=".89" stop-color="#1A283F"></stop></linearGradient></defs></svg>';
+  /* logo mark */
+  var MARK = '<img class="mk" src="/velaris-design-system/assets/velaris-icon.webp" width="32" height="32" alt="">';
   var BRAND = '<a class="brand" href="/" aria-label="Velaris Web home">'+MARK+'<span class="brand-name">Velaris<span>Web</span></span></a>';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
   var LINKEDIN_ICON = ASSET_BASE+'home-img/linkedin.webp';
@@ -117,20 +111,18 @@
   }
 
   var navHTML =
-    '<div class="topbar"><div class="wrap"><span>New — The 2026 Lead Generation Playbook for B2B &amp; B2C founders.</span>'+
-    '<a href="/playbook">Download Free Playbook <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg></a></div></div>'+
+    '<div class="topbar"><div class="wrap"><span>Your website on one simple monthly plan. No upfront cost, cancel anytime.</span>'+
+    '<a href="/pricing">See plans <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>'+
     '<header class="nav"><div class="wrap nav-inner">'+BRAND+
       '<nav class="nav-links" aria-label="Primary">'+
-        '<div class="nav-item'+(page==='home'?' active':'')+'"><a href="/">Home</a></div>'+
         '<div class="nav-item has-mega'+(page==='services'?' active':'')+'"><a href="/services" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+svcMega()+'</div>'+
-        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/case-studies" aria-haspopup="true">Case Studies <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
         '<div class="nav-item'+(page==='pricing'?' active':'')+'"><a href="/pricing">Pricing</a></div>'+
-        '<div class="nav-item'+(page==='resources'?' active':'')+'"><a href="/resources">Resources</a></div>'+
+        '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/case-studies" aria-haspopup="true">Our Work <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
         '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
         '<div class="nav-item'+(page==='blog'?' active':'')+'"><a href="/blog">Blog</a></div>'+
       '</nav>'+
       '<div class="nav-right"><a class="ghost" data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
-        '<a class="btn btn-teal" data-inquiry href="#start">Start a Project</a>'+
+        '<a class="btn btn-teal" href="/pricing">Get Started</a>'+
         '<button class="nav-burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>'+
     '</div></header>'+
     '<div class="drawer" id="drawer"><div class="drawer-bg" data-close></div><div class="drawer-panel">'+
@@ -138,33 +130,32 @@
       '<nav class="drawer-nav" aria-label="Mobile">'+
         '<a class="dl" href="/" data-close>Home</a>'+
         drawerAcc('Services', svcDrawerLinks(), '/services', 'All services')+
-        drawerAcc('Case Studies', caseDrawerLinks(), '/case-studies', 'View all case studies')+
+        drawerAcc('Our Work', caseDrawerLinks(), '/case-studies', 'View all case studies')+
         '<a class="dl" href="/pricing" data-close>Pricing</a>'+
-        '<a class="dl" href="/resources" data-close>Resources</a>'+
         '<a class="dl" href="/about" data-close>About</a>'+
         '<a class="dl" href="/blog" data-close>Blog</a>'+
       '</nav>'+
       '<div class="drawer-cta">'+
         '<a class="btn btn-line" data-booking data-close href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
-        '<a class="btn btn-teal" data-inquiry data-close href="#start">Start a Project</a>'+
+        '<a class="btn btn-teal" data-close href="/pricing">See Plans</a>'+
       '</div>'+
     '</div></div>';
 
   var footHTML =
     '<footer class="site"><div class="wrap"><div class="foot-grid">'+
       '<div class="foot-brand">'+BRAND+
-        '<p>We help B2B &amp; B2C founders grow online with strategic design, local SEO, custom development and outreach that actually performs.</p>'+
+        '<p>Professionally designed, fully managed websites for founders, consultants and service businesses, all for one simple monthly fee.</p>'+
         '<div class="foot-social">'+
           '<a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H2l8-9L2 2h6l4 6z"/></svg></a>'+
           '<a href="'+LINKEDIN_URL+'" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="'+LINKEDIN_ICON+'" alt=""></a>'+
           '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>'+
         '</div></div>'+
-      '<div class="foot-col"><h5>Services</h5>'+
-        '<a href="/service?s=brand-identity">Logo &amp; Brand Design</a>'+
-        '<a href="/service?s=conversion-uiux">UI/UX Design</a>'+
-        '<a href="/service?s=webflow-development">Webflow Development</a>'+
-        '<a href="/service?s=seo-optimization">Local SEO</a>'+
-        '<a href="/service?s=social-media-management">Social Media Management</a></div>'+
+      '<div class="foot-col"><h5>Plans</h5>'+
+        '<a href="/pricing#plans">Starter</a>'+
+        '<a href="/pricing#plans">Growth</a>'+
+        '<a href="/pricing#plans">Scale</a>'+
+        '<a href="/pricing#included">What&rsquo;s included</a>'+
+        '<a href="/services">All services</a></div>'+
       '<div class="foot-col"><h5>Company</h5>'+
         '<a href="/case-studies">Case Studies</a>'+
         '<a href="/pricing">Pricing</a>'+
@@ -172,7 +163,7 @@
         '<a href="/about">About</a>'+
         '<a href="/blog">Blog</a></div>'+
       '<div class="foot-col"><h5>Get started</h5>'+
-        '<a data-inquiry href="#start">Start a Project</a>'+
+        '<a href="/pricing">See Plans</a>'+
         '<a data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
         '<a href="/playbook">Free Playbook</a></div>'+
     '</div><div class="foot-bottom"><span>© <span id="yr">2026</span> Velaris Web. All rights reserved.</span>'+
@@ -433,7 +424,7 @@
   /* Ava AI assistant — lazy-loaded after the page is interactive. */
   function loadAva(){
     if(document.querySelector('script[data-ava]')) return;
-    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261004-ava1'; document.head.appendChild(css);
+    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v2'; document.head.appendChild(css);
     var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261004-ava3'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
   }
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});

@@ -3,7 +3,7 @@
    ----------------------------------------------------------------------------
    Foundation: Ant Design token architecture, rebranded to the Velaris Web
    brand. Primary hue swapped from Ant blue (#1677FF) to Velaris teal, derived
-   from the logo gradient (teal #34979C → deep navy #1A2940). Neutrals and
+   from the logo gradient (teal #127AFE → deep navy #0B1B33). Neutrals and
    functional/semantic colors follow Ant Design defaults.
    ========================================================================== */
 
@@ -50,16 +50,16 @@
   /* BRAND — Velaris teal scale (primary). 6 = brand primary.              */
   /* Ramps from a pale teal wash up into the logo's deep navy at 10.        */
   /* ---------------------------------------------------------------------- */
-  --teal-1:  #E9F6F6;   /* lightest bg wash (Tag / Alert / hover surfaces)  */
-  --teal-2:  #C5E8E9;
-  --teal-3:  #9BD7D9;
-  --teal-4:  #6AC1C4;
-  --teal-5:  #41A8AC;
-  --teal-6:  #2A8F94;   /* ◆ PRIMARY — brand teal                           */
-  --teal-7:  #1E7378;   /* hover-dark / active border                        */
-  --teal-8:  #155A60;
-  --teal-9:  #0F424A;
-  --teal-10: #1A2940;   /* logo gradient terminus — deep brand navy          */
+  --teal-1:  #EAF3FF;   /* lightest bg wash (Tag / Alert / hover surfaces)  */
+  --teal-2:  #CFE3FF;
+  --teal-3:  #A9CDFF;
+  --teal-4:  #5AA6FF;
+  --teal-5:  #127AFE;
+  --teal-6:  #127AFE;   /* ◆ PRIMARY — brand teal                           */
+  --teal-7:  #0B5FD6;   /* hover-dark / active border                        */
+  --teal-8:  #0A3F8F;
+  --teal-9:  #0A3F8F;
+  --teal-10: #0B1B33;   /* logo gradient terminus — deep brand navy          */
 
   /* Semantic primary aliases (Ant naming) */
   --color-primary:           var(--teal-6);
@@ -72,9 +72,9 @@
   --color-primary-text-hover:var(--teal-5);
 
   /* Brand gradient (logo mark) */
-  --brand-gradient: linear-gradient(155deg, #34979C 0%, #277E84 38%, #1A2940 100%); /* @kind color */
-  --brand-navy: #1A2940;
-  --brand-teal: #34979C;
+  --brand-gradient: linear-gradient(155deg, #127AFE 0%, #0B5FD6 38%, #0B1B33 100%); /* @kind color */
+  --brand-navy: #0B1B33;
+  --brand-teal: #127AFE;
 
   /* ---------------------------------------------------------------------- */
   /* FUNCTIONAL / SEMANTIC (Ant defaults)                                   */
@@ -157,7 +157,7 @@
     0 3px 6px -4px rgba(0,0,0,0.12),
     0 9px 28px 8px rgba(0,0,0,0.05);
   --shadow-primary:                  /* teal-tinted, for branded CTAs       */
-    0 4px 14px 0 rgba(42,143,148,0.28);
+    0 4px 14px 0 rgba(18,122,254,0.28);
 
   /* ---------------------------------------------------------------------- */
   /* RADIUS — Ant radius scale                                              */

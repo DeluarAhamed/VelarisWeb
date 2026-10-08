@@ -27,7 +27,7 @@
     node.textContent=JSON.stringify(data);
   }
   function uns(id, w){ id=(id||'').replace('unsplash:',''); return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+(w||800)+'&q=80'; }
-  var GRADS={ "Local SEO":'linear-gradient(135deg,#0a5d5d,#1f8a5b,#0a3d3d)',"Web Design":'linear-gradient(135deg,#1a1a2e,#3a2a4a,#0f3460)',"Conversion":'linear-gradient(135deg,#ff9a56,#a259ff,#2d9bf0)',"Lead Generation":'linear-gradient(135deg,#0f2027,#2F9B95,#203a43)',"Webflow":'linear-gradient(135deg,#11212d,#2563eb,#0b1d2a)',"Framer":'linear-gradient(135deg,#1a1a1a,#444,#0d0d0d)',"AI Web Development":'linear-gradient(135deg,#2d1b4e,#7c3aed,#1e1b4b)',"Email Marketing":'linear-gradient(135deg,#0b1d2a,#0ea5a0,#072e2c)',"Branding":'linear-gradient(135deg,#2d1b4e,#c94b9c,#f4a261)',"Analytics":'linear-gradient(135deg,#0f2027,#203a43,#2c5364)' };
+  var GRADS={ "Local SEO":'linear-gradient(135deg,#0a5d5d,#1f8a5b,#0a3d3d)',"Web Design":'linear-gradient(135deg,#1a1a2e,#3a2a4a,#0f3460)',"Conversion":'linear-gradient(135deg,#ff9a56,#a259ff,#2d9bf0)',"Lead Generation":'linear-gradient(135deg,#0f2027,#127AFE,#203a43)',"Webflow":'linear-gradient(135deg,#11212d,#2563eb,#0b1d2a)',"Framer":'linear-gradient(135deg,#1a1a1a,#444,#0d0d0d)',"AI Web Development":'linear-gradient(135deg,#2d1b4e,#7c3aed,#1e1b4b)',"Email Marketing":'linear-gradient(135deg,#0b1d2a,#0ea5a0,#072e2c)',"Branding":'linear-gradient(135deg,#2d1b4e,#c94b9c,#f4a261)',"Analytics":'linear-gradient(135deg,#0f2027,#203a43,#2c5364)' };
   /* category -> rotating Unsplash photos so blog covers do not repeat */
   var PIMG={
     "Local SEO":["photo-1524661135-423995f22d0b","photo-1486406146926-c627a92ad1ab","photo-1497366811353-6870744d04b2","photo-1500530855697-b586d89ba3ee","photo-1516321318423-f06f85e504b3"],
@@ -46,10 +46,10 @@
   function wrapWords(s,max){ var words=String(s||'').split(/\s+/), lines=[], line=''; words.forEach(function(w){ if((line+' '+w).trim().length>max&&line){ lines.push(line); line=w; } else line=(line+' '+w).trim(); }); if(line) lines.push(line); return lines.slice(0,3); }
   function coverSvg(p){
     var palettes={
-      "Local SEO":['#0A5D5D','#2F9B95','#7FD3D6','#06111C'],
-      "Web Design":['#1A2940','#6A4CF6','#49C9C0','#07111E'],
-      "Conversion":['#1A2940','#F97316','#A259FF','#07111E'],
-      "Lead Generation":['#07111E','#2F9B95','#D6F7F6','#0F424A'],
+      "Local SEO":['#0A5D5D','#127AFE','#7FD3D6','#06111C'],
+      "Web Design":['#0B1B33','#6A4CF6','#5AA6FF','#07111E'],
+      "Conversion":['#0B1B33','#F97316','#A259FF','#07111E'],
+      "Lead Generation":['#07111E','#127AFE','#D6F7F6','#0A3F8F'],
       "Webflow":['#0B1D2A','#2563EB','#7FD3D6','#07111E'],
       "Framer":['#111111','#4B5563','#F5F5F5','#050505'],
       "AI Web Development":['#22163F','#7C3AED','#7FD3D6','#0F172A'],
@@ -57,7 +57,7 @@
       "Branding":['#2D1B4E','#C94B9C','#F4A261','#160A22'],
       "Analytics":['#0F2027','#2C5364','#7FD3D6','#07111E']
     };
-    var pal=palettes[p.cat]||['#07111E','#2F9B95','#7FD3D6','#0F424A'];
+    var pal=palettes[p.cat]||['#07111E','#127AFE','#7FD3D6','#0A3F8F'];
     var seed=seedFor(p), angle=115+(seed%50), x=8+(seed%72), y=16+(seed%54), lines=wrapWords(p.title,24), kw=esc(p.kw||p.cat||'SEO strategy');
     var bars=[0,1,2,3,4].map(function(i){ var h=38+((seed+i*17)%72), bx=654+i*38, by=314-h; return '<rect x="'+bx+'" y="'+by+'" width="22" height="'+h+'" rx="11" fill="'+(i%2?pal[2]:pal[1])+'" opacity="'+(.45+i*.08).toFixed(2)+'"/>'; }).join('');
     var title=lines.map(function(l,i){ return '<text x="64" y="'+(150+i*54)+'" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="800" fill="#FFFFFF">'+esc(l)+'</text>'; }).join('');
@@ -303,7 +303,7 @@
       coastal:["letting agents [city]","property management near me","landlord services","rent my property","residential lettings","trusted letting agent","tenant find service"],
       menstruation:["first period guide","talking to teens about periods","period education for parents","menstrual health resource","period products guide","puberty support for parents","femtech health platform"]
     };
-    var pal=c.palette||PAL[c.slug]||['#2F9B95','#49C9C0','#02101F','#F5F3EE'];
+    var pal=c.palette||PAL[c.slug]||['#127AFE','#5AA6FF','#02101F','#F6F8FB'];
     var industry=(c.sector.split('·')[1]||c.sector).trim();
     var gal=c.gallery&&c.gallery.length?c.gallery:[c.img];
     var pageImgs=(c.pages&&c.pages.length)?c.pages.map(function(p){ return p.img; }):[];

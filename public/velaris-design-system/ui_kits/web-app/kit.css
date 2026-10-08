@@ -52,7 +52,7 @@ body {
 }
 .input input { border: 0; outline: 0; background: transparent; flex: 1; font: inherit; color: inherit; }
 .input input::placeholder { color: var(--text-tertiary); }
-.input:focus-within { border-color: var(--teal-6); box-shadow: 0 0 0 2px rgba(42,143,148,.12); }
+.input:focus-within { border-color: var(--teal-6); box-shadow: 0 0 0 2px rgba(18,122,254,.12); }
 .input .vicon { color: var(--text-tertiary); }
 
 /* ---- Card ---- */
@@ -117,7 +117,7 @@ body {
 .topbar-sub { font-size: 13px; color: var(--text-tertiary); margin-top: 3px; }
 .topbar-actions { display: flex; align-items: center; gap: 12px; }
 .topbar-search { display: flex; align-items: center; gap: 8px; height: 36px; width: 280px; padding: 0 12px; border: 1px solid var(--border-secondary); border-radius: var(--radius); background: var(--gray-2); transition: all .2s; }
-.topbar-search:focus-within { background: #fff; border-color: var(--teal-6); box-shadow: 0 0 0 2px rgba(42,143,148,.1); }
+.topbar-search:focus-within { background: #fff; border-color: var(--teal-6); box-shadow: 0 0 0 2px rgba(18,122,254,.1); }
 .topbar-search input { border: 0; outline: 0; background: transparent; flex: 1; font: inherit; font-size: 13.5px; color: var(--text-primary); }
 .topbar-search input::placeholder { color: var(--text-tertiary); }
 .kbd { font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); border: 1px solid var(--border-secondary); border-radius: 4px; padding: 1px 5px; }
@@ -173,7 +173,7 @@ body {
 .login-brand-side { flex: 1; background: var(--brand-gradient); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 56px; color: #fff; }
 .login-brand-side .glow { position: absolute; border-radius: 50%; filter: blur(60px); }
 .login-quote { font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1.18; letter-spacing: -.01em; position: relative; }
-.login-quote em { font-style: italic; color: #C5E8E9; }
+.login-quote em { font-style: italic; color: #CFE3FF; }
 .login-sub { position: relative; margin-top: 22px; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.8); max-width: 420px; }
 .login-stats { position: relative; display: flex; gap: 36px; margin-top: 48px; }
 .login-stats .v { font-family: var(--font-mono); font-size: 26px; font-weight: 700; }
