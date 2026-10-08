@@ -5,30 +5,185 @@ const vm = require('vm');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const publicDir = path.join(root, 'public');
-const context = { window: {} };
+const distDir = path.join(root, 'dist');
+const origin = 'https://velarisweb.com';
 
-for (const file of ['home-data.js', 'blog-data.js']) {
-  vm.runInNewContext(fs.readFileSync(path.join(appDir, file), 'utf8'), context);
+// Runs the same data files + Sanity bridge the browser runs, so prerendered
+// pages match what visitors see. `sanityResponse` is the raw query response,
+// or null to get the static fallback data (and the query URL to fetch).
+function runSiteData(sanityResponse) {
+  const context = {
+    document: { body: { getAttribute: () => '' } },
+    XMLHttpRequest: class {
+      open(method, url) { context.sanityUrl = url; }
+      send() {
+        this.status = sanityResponse == null ? 0 : 200;
+        this.responseText = sanityResponse || '';
+      }
+    },
+  };
+  context.window = context;
+  for (const file of ['home-data.js', 'blog-data.js', 'sanity-config.js', 'sanity-bridge.js']) {
+    vm.runInNewContext(fs.readFileSync(path.join(appDir, file), 'utf8'), context, { filename: file });
+  }
+  return context;
 }
 
-const origin = 'https://velarisweb.com';
-const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/playbook'];
-const servicePaths = (context.window.VELARIS_SERVICES || []).map((item) => `/service?s=${item.slug}`);
-const casePaths = (context.window.VELARIS_CASES || []).map((item) => `/case?c=${item.slug}`);
-const postPaths = (context.window.VELARIS_POSTS || []).map((item) => `/post?slug=${item.slug}`);
-const paths = [...new Set([...staticPaths, ...servicePaths, ...casePaths, ...postPaths])];
+async function loadSiteData() {
+  const fallback = runSiteData(null);
+  if (!fallback.sanityUrl) return { data: fallback, fallback, source: 'static files (Sanity not configured)' };
+  try {
+    const res = await fetch(fallback.sanityUrl, { signal: AbortSignal.timeout(30000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = runSiteData(await res.text());
+    if (!data.VELARIS_CMS_LOADED) throw new Error(String(data.VELARIS_CMS_ERROR || 'bridge did not load'));
+    return { data, fallback, source: 'Sanity' };
+  } catch (error) {
+    console.warn(`WARNING: Sanity fetch failed (${error.message}); using static blog-data.js`);
+    return { data: fallback, fallback, source: 'static files (Sanity fetch failed)' };
+  }
+}
 
+const decodeAmp = (value) => String(value == null ? '' : value).replace(/&amp;/g, '&');
+const escapeHtml = (value) => decodeAmp(value)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const escapeXml = (value) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const sitemap = [
-  '<?xml version="1.0" encoding="UTF-8"?>',
-  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ...paths.map((urlPath) => `  <url><loc>${escapeXml(origin + urlPath)}</loc></url>`),
-  '</urlset>',
-  '',
-].join('\n');
+const postPath = (slug) => `/blog/${slug}`;
 
-const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${origin}/sitemap.xml`, ''].join('\n');
+function isoDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
 
-fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
-fs.writeFileSync(path.join(publicDir, 'robots.txt'), robots);
-console.log(`Generated sitemap.xml with ${paths.length} canonical URLs and robots.txt`);
+function replaceRequired(html, search, replacement, all = false) {
+  if (!html.includes(search)) throw new Error(`post.html template no longer contains: ${search}`);
+  return all ? html.split(search).join(replacement) : html.replace(search, () => replacement);
+}
+
+function relatedPosts(posts, post) {
+  const related = posts.filter((p) => p.cat === post.cat && p.slug !== post.slug).slice(0, 3);
+  for (const p of posts) {
+    if (related.length >= 3) break;
+    if (p.slug !== post.slug && !related.includes(p)) related.push(p);
+  }
+  return related;
+}
+
+function renderPost(template, posts, post) {
+  const title = `${decodeAmp(post.title)} | Velaris Web`;
+  const url = origin + postPath(post.slug);
+  const published = isoDate(post.date);
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: decodeAmp(post.title),
+      description: decodeAmp(post.excerpt),
+      ...(published && { datePublished: published }),
+      articleSection: decodeAmp(post.cat),
+      ...(post.kw && { keywords: decodeAmp(post.kw) }),
+      mainEntityOfPage: url,
+      url,
+      image: 'https://www.velarisweb.com/assets/velaris-main-logo.webp',
+      author: { '@type': 'Organization', name: 'Velaris Web', url: `${origin}/` },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Velaris Web',
+        logo: { '@type': 'ImageObject', url: 'https://www.velarisweb.com/assets/velaris-main-logo.webp' },
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${origin}/blog` },
+        { '@type': 'ListItem', position: 3, name: decodeAmp(post.title), item: url },
+      ],
+    },
+  ];
+  const head = [
+    `<link rel="canonical" href="${url}">`,
+    `<meta property="og:url" content="${url}">`,
+    published ? `<meta property="article:published_time" content="${published}">` : '',
+    `<script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>`,
+  ].filter(Boolean).join('\n');
+  const related = relatedPosts(posts, post).map((p) =>
+    `<a class="pcard" href="${postPath(p.slug)}"><div class="thumb"><span class="topic">${escapeHtml(p.cat)}</span></div>` +
+    `<div class="pb"><div class="tags"><span class="cat">${escapeHtml(p.cat)}</span><span>${escapeHtml(p.read)} min</span></div>` +
+    `<h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.excerpt)}</p><span class="more">Read more</span></div></a>`
+  ).join('');
+
+  let html = template;
+  html = replaceRequired(html, 'Blog Article | Velaris Web', escapeHtml(title), true);
+  html = replaceRequired(html, 'Read a Velaris Web article on web design, SEO, conversion strategy, lead generation and online growth.', escapeHtml(post.excerpt), true);
+  html = replaceRequired(html, '<meta property="og:type" content="website">', '<meta property="og:type" content="article">');
+  html = replaceRequired(html, '<meta name="robots" content="index, follow">', `<meta name="robots" content="index, follow">\n${head}`);
+  html = replaceRequired(html, '<div id="postDetail">', '<div id="postDetail" data-prerendered>');
+  html = replaceRequired(html, '<span data-crumb>Article</span>', `<span data-crumb>${escapeHtml(post.cat)}</span>`);
+  html = replaceRequired(html, '<span class="cat" data-cat>Category</span>', `<span class="cat" data-cat>${escapeHtml(post.cat)}</span>`);
+  html = replaceRequired(html, '<span data-date>—</span>', `<span data-date>${escapeHtml(post.date)}</span>`);
+  html = replaceRequired(html, '<span data-read>—</span>', `<span data-read>${escapeHtml(post.read)} min read</span>`);
+  html = replaceRequired(html, '<h1 data-title>Article title</h1>', `<h1 data-title>${escapeHtml(post.title)}</h1>`);
+  html = replaceRequired(html, '<span class="topic" data-topic>Category</span>', `<span class="topic" data-topic>${escapeHtml(post.cat)}</span>`);
+  html = replaceRequired(html, '<article class="prose" data-body></article>', `<article class="prose" data-body>${post.body || ''}</article>`);
+  html = replaceRequired(html, '<div class="posts-grid" data-related></div>', `<div class="posts-grid" data-related>${related}</div>`);
+  return html;
+}
+
+async function main() {
+  const { data, fallback, source } = await loadSiteData();
+  const seen = new Set();
+  const posts = (data.VELARIS_POSTS || []).filter((post) => {
+    if (!post.slug || !/^[a-z0-9-]+$/i.test(post.slug) || seen.has(post.slug)) {
+      console.warn(`WARNING: skipping post with missing, unsafe or duplicate slug: ${JSON.stringify(post.slug)}`);
+      return false;
+    }
+    seen.add(post.slug);
+    return true;
+  });
+
+  const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/playbook'];
+  // Services and case studies keep coming from the static files (the homepage
+  // links services that aren't in Sanity yet); posts come from Sanity.
+  const servicePaths = (fallback.VELARIS_SERVICES || []).map((item) => `/service?s=${item.slug}`);
+  const casePaths = (fallback.VELARIS_CASES || []).map((item) => `/case?c=${item.slug}`);
+  const postPaths = posts.map((post) => postPath(post.slug));
+  const paths = [...new Set([...staticPaths, ...servicePaths, ...casePaths, ...postPaths])];
+
+  const sitemap = [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...paths.map((urlPath) => `  <url><loc>${escapeXml(origin + urlPath)}</loc></url>`),
+    '</urlset>',
+    '',
+  ].join('\n');
+  const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${origin}/sitemap.xml`, ''].join('\n');
+
+  const outDirs = [publicDir, ...(fs.existsSync(distDir) ? [distDir] : [])];
+  for (const dir of outDirs) {
+    fs.writeFileSync(path.join(dir, 'sitemap.xml'), sitemap);
+    fs.writeFileSync(path.join(dir, 'robots.txt'), robots);
+  }
+  console.log(`Generated sitemap.xml with ${paths.length} canonical URLs and robots.txt`);
+
+  if (!fs.existsSync(distDir)) {
+    console.log('No dist/ folder yet; skipped prerendering blog posts.');
+    return;
+  }
+  const template = fs.readFileSync(path.join(appDir, 'post.html'), 'utf8');
+  const blogDir = path.join(distDir, 'blog');
+  fs.rmSync(blogDir, { recursive: true, force: true });
+  fs.mkdirSync(blogDir, { recursive: true });
+  for (const post of posts) {
+    fs.writeFileSync(path.join(blogDir, `${post.slug}.html`), renderPost(template, posts, post));
+  }
+  console.log(`Prerendered ${posts.length} blog posts to dist/blog/ from ${source}`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

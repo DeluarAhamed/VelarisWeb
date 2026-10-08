@@ -232,7 +232,7 @@
     var track=document.getElementById('artTrack'); if(!track||!window.VELARIS_POSTS) return;
     var posts=window.VELARIS_POSTS.slice(0,8);
     track.innerHTML=posts.map(function(p,i){
-      return '<a class="art-card" href="/post?slug='+p.slug+'"><div class="art-thumb"><div class="ph" style="background:'+thumb(p)+'"></div><span class="art-topic">'+p.cat+'</span></div>'+
+      return '<a class="art-card" href="/blog/'+p.slug+'"><div class="art-thumb"><div class="ph" style="background:'+thumb(p)+'"></div><span class="art-topic">'+p.cat+'</span></div>'+
         '<div class="art-body"><div class="art-tags"><span class="cat">'+p.cat+'</span><span>'+p.read+' min read</span></div>'+
         '<h3>'+p.title+'</h3><p>'+p.excerpt+'</p>'+
         '<span class="art-read">Read more '+ARROW+'</span></div></a>';
