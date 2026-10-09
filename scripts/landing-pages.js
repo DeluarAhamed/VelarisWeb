@@ -1,5 +1,5 @@
 // Prerenders CMS-driven landing pages into dist/:
-//   /services/<slug>, /case-studies/<slug>, plus the /services and /case-studies index pages.
+//   /services/<slug>, /case-studies/<slug>, /solutions/<slug>, plus their index pages.
 // Content comes from Sanity at build time; data/service-pages.json and home-data.js are fallbacks.
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const ORIGIN = 'https://velarisweb.com';
-const V = '20261010-v8';
+const V = '20261010-v9';
 const WA = 'https://wa.me/8801989570693';
 const SHARE_IMAGE = `${ORIGIN}/velaris-design-system/assets/og-velaris.png`;
 const LOGO = `${ORIGIN}/velaris-design-system/assets/velaris-icon.png`;
@@ -74,6 +74,20 @@ async function loadCases(fallbackCases) {
       shots: (c.pages || []).map((p) => ({ title: p.title, src: p.img })), seo: null,
     })),
   };
+}
+
+async function loadIndustries() {
+  try {
+    const rows = await sanityQuery(`*[_type=="industry" && !(hidden==true) && defined(slug.current) && !(_id in path("drafts.**"))]|order(orderRank asc){
+      name,"slug":slug.current,accent,heroHeadline,shortDescription,intro,example,recommendedPlan,
+      painPoints[]{title,description},systems[]{title,description},faqs[]{question,answer},
+      "relatedServices":relatedServices[]->slug.current,seo{metaTitle,metaDescription,keywords}}`);
+    if (rows && rows.length) return { industries: rows, source: 'Sanity' };
+    console.warn('WARNING: no industry pages in Sanity yet; using data/industry-pages.json');
+  } catch (err) {
+    console.warn(`WARNING: Sanity industries fetch failed (${err.message}); using data/industry-pages.json`);
+  }
+  return { industries: JSON.parse(fs.readFileSync(path.join(root, 'data', 'industry-pages.json'), 'utf8')), source: 'data/industry-pages.json' };
 }
 
 // Local legacy paths are relative to the web-app <base>; prefer the optimised .webp when it exists.
@@ -331,6 +345,96 @@ ${ctaBlock('Your project next', 'Want results like these for your business?', 'T
   return shell({ title, description, canonical: url, page: 'cases', ogType: 'article', jsonLd, body });
 }
 
+/* ---------- industry pages ---------- */
+const PLAN_PRICE = { Starter: '$199/month', Growth: '$399/month', Scale: 'from $699/month' };
+const X_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+
+function industryPage(d, services) {
+  const url = `${ORIGIN}/solutions/${d.slug}`;
+  const title = (d.seo && d.seo.metaTitle) || `Websites & Software for ${d.name} | Velaris Web`;
+  const description = (d.seo && d.seo.metaDescription) || d.shortDescription;
+  const accent = d.accent || '#127AFE';
+  const low = d.name.toLowerCase();
+  const trail = [{ name: 'Home', href: '/' }, { name: 'Industries', href: '/solutions' }, { name: d.name, href: `/solutions/${d.slug}` }];
+  const related = (d.relatedServices || []).map((slug) => services.find((s) => s.slug === slug)).filter(Boolean).slice(0, 4);
+  const plan = PLAN_PRICE[d.recommendedPlan] ? d.recommendedPlan : 'Growth';
+  const waMsg = `Hi Velaris, I run a ${low} business and I'd like to grow it.`;
+  const tick = CHECK.replace('<svg', '<svg class="v-check"');
+  const body = `
+<section class="lp-hero" style="--accent:${e(accent)}">
+  <div class="wrap lp-hero-grid">
+    <div>
+      ${crumbs(trail)}
+      <span class="v-kicker">For ${e(low)}</span>
+      <h1>${e(d.heroHeadline || d.name)}</h1>
+      <p class="lede">${e(d.intro)}</p>
+      <div class="v-hero-cta">${waBtn(waMsg)}<a class="btn btn-quiet" href="/pricing">See plans from $199/mo</a></div>
+      <ul class="v-ticks"><li>${tick}No upfront cost</li><li>${tick}Preview in 5 business days</li><li>${tick}Cancel anytime</li></ul>
+    </div>
+    ${d.example ? `<div class="lp-day"><small>How it works day to day</small><p>${e(d.example)}</p><div class="lp-day-plan"><span>Most ${e(low)} businesses choose</span><b>${plan} &middot; ${PLAN_PRICE[plan]}</b></div></div>` : ''}
+  </div>
+</section>
+${(d.painPoints || []).length ? `
+<section class="v-section soft">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">The problem</span><h2>Where ${e(low)} businesses <span class="serif">lose revenue</span></h2></div>
+    <div class="lp-pains">${d.painPoints.map((p) => `<div class="lp-pain"><span class="x">${X_ICON}</span><h3>${e(p.title)}</h3><p>${e(p.description)}</p></div>`).join('')}</div>
+  </div>
+</section>` : ''}
+
+<section class="v-section">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">What we build</span><h2>The system that <span class="serif">fixes it</span></h2><p>Built around how ${e(low)} businesses work, and run for you on one monthly plan.</p></div>
+    <div class="lp-caps">${(d.systems || []).map((c, i) => `<div class="v-feat"><span class="ic lp-num" style="color:${e(accent)}">${String(i + 1).padStart(2, '0')}</span><h3>${e(c.title)}</h3><p>${e(c.description)}</p></div>`).join('')}</div>
+  </div>
+</section>
+${related.length ? `
+<section class="v-section soft">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Services</span><h2>What&rsquo;s included</h2></div>
+    <div class="lp-links">${related.map((s) => `<a class="lp-link" href="/services/${s.slug}"><b>${e(s.name)}</b><span>${e(s.shortDescription)}</span><em>Learn more &rarr;</em></a>`).join('')}</div>
+  </div>
+</section>` : ''}
+${(d.faqs || []).length ? faqBlock(d.faqs, `Questions from <span class="serif">${e(low)}</span> businesses`, `Common questions we get. Can't find yours? Message us.`, `Hi Velaris, I have a question about a system for my ${low} business.`) : ''}
+${ctaBlock('Get started', `Ready to grow your ${low} business?`, 'Message us on WhatsApp. If we are a fit, your preview is ready within 5 business days.', waMsg)}`;
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org', '@type': 'Service', name: `Websites and software for ${d.name}`, serviceType: 'Website and business software',
+      description, url, audience: { '@type': 'BusinessAudience', name: d.name },
+      provider: { '@type': 'Organization', name: 'Velaris Web', url: `${ORIGIN}/`, logo: LOGO }, areaServed: 'Worldwide',
+      offers: { '@type': 'AggregateOffer', lowPrice: '199', priceCurrency: 'USD', offerCount: 3, url: `${ORIGIN}/pricing` },
+    },
+    crumbLd(trail),
+  ];
+  if ((d.faqs || []).length) jsonLd.push(faqLd(d.faqs));
+  return shell({ title, description, canonical: url, page: 'industries', jsonLd, body });
+}
+
+function industriesIndex(industries) {
+  const trail = [{ name: 'Home', href: '/' }, { name: 'Industries', href: '/solutions' }];
+  const body = `
+<section class="v-phero">
+  <div class="wrap">
+    ${crumbs(trail)}
+    <span class="v-pill"><b>Industries</b> Systems built for how you work</span>
+    <h1>Growth systems for <span class="serif">your industry</span></h1>
+    <p>Websites, booking, rebooking and lead follow-up designed around how your type of business wins and keeps customers. One monthly plan from $199/month.</p>
+    <div class="v-hero-cta"><a class="btn btn-blue" href="/pricing">See plans &amp; pricing ${ARROW}</a>${waBtn('Hi Velaris, what would you build for my business?')}</div>
+  </div>
+</section>
+<section class="v-section" style="padding-top:64px">
+  <div class="wrap lp-ind-grid">${industries.map((d) => `<a class="lp-ind" href="/solutions/${d.slug}" style="--accent:${e(d.accent || '#127AFE')}"><h2>${e(d.name)}</h2><p>${e(d.shortDescription)}</p><span class="more">See the system ${ARROW}</span></a>`).join('')}</div>
+</section>
+${ctaBlock("Don't see your industry?", 'We build for most service businesses', 'Tell us how your business gets and keeps customers, and we will show you what we would build.', 'Hi Velaris, my industry is not listed. Can you help?')}`;
+  return shell({
+    title: 'Websites & Software by Industry | Velaris Web',
+    description: 'Websites, booking systems and lead follow-up for clinics, salons, detailers, cleaners, trades and consultants. Monthly plans from $199, no upfront cost.',
+    canonical: `${ORIGIN}/solutions`, page: 'industries',
+    jsonLd: [crumbLd(trail), { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: industries.map((d, i) => ({ '@type': 'ListItem', position: i + 1, name: d.name, url: `${ORIGIN}/solutions/${d.slug}` })) }],
+    body,
+  });
+}
+
 /* ---------- index pages ---------- */
 function servicesIndex(services, art) {
   const trail = [{ name: 'Home', href: '/' }, { name: 'Services', href: '/services' }];
@@ -385,15 +489,17 @@ ${ctaBlock('Your project next', 'Want a website like these?', 'Message us on Wha
 
 /* ---------- build ---------- */
 async function buildLandingPages({ distDir, fallbackCases }) {
-  const [{ services, source: svcSource }, { cases, source: caseSource }] = await Promise.all([loadServices(), loadCases(fallbackCases)]);
+  const [{ services, source: svcSource }, { cases, source: caseSource }, { industries, source: indSource }] =
+    await Promise.all([loadServices(), loadCases(fallbackCases), loadIndustries()]);
   const safe = (list) => list.filter((x) => x.slug && /^[a-z0-9-]+$/.test(x.slug));
   const svc = safe(services);
   const cs = safe(cases);
-  const paths = { services: svc.map((s) => `/services/${s.slug}`), cases: cs.map((c) => `/case-studies/${c.slug}`) };
+  const ind = safe(industries);
+  const paths = { services: svc.map((s) => `/services/${s.slug}`), cases: cs.map((c) => `/case-studies/${c.slug}`), industries: ['/solutions', ...ind.map((d) => `/solutions/${d.slug}`)] };
   if (!distDir) return paths;
 
   const art = serviceArt();
-  for (const [dir, list, render] of [['services', svc, (s) => servicePage(s, cs, art)], ['case-studies', cs, (c) => casePage(c, cs)]]) {
+  for (const [dir, list, render] of [['services', svc, (s) => servicePage(s, cs, art)], ['case-studies', cs, (c) => casePage(c, cs)], ['solutions', ind, (d) => industryPage(d, svc)]]) {
     const out = path.join(distDir, dir);
     fs.rmSync(out, { recursive: true, force: true });
     fs.mkdirSync(out, { recursive: true });
@@ -403,7 +509,8 @@ async function buildLandingPages({ distDir, fallbackCases }) {
   const distApp = path.join(distDir, 'velaris-design-system', 'ui_kits', 'web-app');
   fs.writeFileSync(path.join(distApp, 'services.html'), servicesIndex(svc, art));
   fs.writeFileSync(path.join(distApp, 'work.html'), casesIndex(cs));
-  console.log(`Prerendered ${svc.length} service pages (${svcSource}) and ${cs.length} case studies (${caseSource})`);
+  fs.writeFileSync(path.join(distApp, 'industries.html'), industriesIndex(ind));
+  console.log(`Prerendered ${svc.length} service pages (${svcSource}), ${cs.length} case studies (${caseSource}) and ${ind.length} industry pages (${indSource})`);
   return paths;
 }
 

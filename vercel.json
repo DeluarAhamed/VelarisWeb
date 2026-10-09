@@ -247,8 +247,13 @@
       "permanent": true
     },
     {
-      "source": "/solutions/:slug*",
-      "destination": "/services/web-design",
+      "source": "/solutions/web-design-for-(coaches|consultants|founders)",
+      "destination": "/solutions/coaches-and-consultants",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/web-design-for-service-businesses",
+      "destination": "/solutions/home-services",
       "permanent": true
     },
     {
@@ -269,6 +274,10 @@
     {
       "source": "/case-studies",
       "destination": "/velaris-design-system/ui_kits/web-app/work"
+    },
+    {
+      "source": "/solutions",
+      "destination": "/velaris-design-system/ui_kits/web-app/industries"
     },
     {
       "source": "/pricing",

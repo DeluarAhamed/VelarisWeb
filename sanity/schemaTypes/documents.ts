@@ -145,6 +145,92 @@ export const documentTypes = [
     },
   }),
   defineType({
+    name: 'industry',
+    title: 'Industry Pages',
+    type: 'document',
+    fields: [
+      defineField({name: 'name', title: 'Industry name', type: 'string', validation: (Rule) => Rule.required()}),
+      defineField({
+        name: 'slug',
+        type: 'slug',
+        description: 'Landing page URL: velarisweb.com/solutions/<slug>. Changing it changes the live URL.',
+        options: {source: 'name'},
+        validation: (Rule) => Rule.required(),
+      }),
+      defineField({
+        name: 'hidden',
+        title: 'Hidden (remove from site)',
+        type: 'boolean',
+        initialValue: false,
+      }),
+      defineField({name: 'orderRank', title: 'Sort order', type: 'number'}),
+      defineField({name: 'accent', title: 'Accent colour (hex)', type: 'string', description: 'e.g. #127AFE'}),
+      defineField({
+        name: 'heroHeadline',
+        title: 'Headline (H1)',
+        description: 'Main heading on /solutions/<slug>. Include the main keyword.',
+        type: 'string',
+        validation: (Rule) => Rule.max(80).warning('Keep the H1 under ~80 characters.'),
+      }),
+      defineField({name: 'shortDescription', description: 'Shown on the /solutions index card.', type: 'text', rows: 2}),
+      defineField({name: 'intro', type: 'text', rows: 4}),
+      defineField({
+        name: 'painPoints',
+        title: 'Problems we solve',
+        type: 'array',
+        of: [defineArrayMember({type: 'processStep'})],
+      }),
+      defineField({
+        name: 'systems',
+        title: 'Systems we build',
+        type: 'array',
+        of: [defineArrayMember({type: 'processStep'})],
+      }),
+      defineField({
+        name: 'example',
+        title: 'How it works day to day',
+        description: 'A short, concrete story of the system working for a business like this.',
+        type: 'text',
+        rows: 5,
+      }),
+      defineField({
+        name: 'recommendedPlan',
+        type: 'string',
+        options: {list: ['Starter', 'Growth', 'Scale']},
+      }),
+      defineField({
+        name: 'relatedServices',
+        type: 'array',
+        of: [defineArrayMember({type: 'reference', to: [{type: 'service'}]})],
+        validation: (Rule) => Rule.max(4),
+      }),
+      defineField({
+        name: 'faqs',
+        title: 'FAQs',
+        description: 'Shown on the page and published as FAQ structured data for Google.',
+        type: 'array',
+        of: [
+          defineArrayMember({
+            type: 'object',
+            name: 'industryFaq',
+            fields: [
+              defineField({name: 'question', type: 'string', validation: (Rule) => Rule.required()}),
+              defineField({name: 'answer', type: 'text', rows: 4, validation: (Rule) => Rule.required()}),
+            ],
+            preview: {select: {title: 'question', subtitle: 'answer'}},
+          }),
+        ],
+      }),
+      defineField({name: 'seo', type: 'object', fields: seoFields}),
+    ],
+    preview: {
+      select: {title: 'name', subtitle: 'slug.current', hidden: 'hidden'},
+      prepare({title, subtitle, hidden}) {
+        return {title: hidden ? `${title} (hidden)` : title, subtitle: subtitle ? `/solutions/${subtitle}` : ''}
+      },
+    },
+  }),
+  defineType({
     name: 'caseStudy',
     title: 'Case Studies',
     type: 'document',

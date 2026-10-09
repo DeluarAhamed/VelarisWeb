@@ -1,5 +1,6 @@
 const { rateLimit, clean, validEmail, json } = require('../lib/voice/security');
 const store = require('../lib/admin/store');
+const { notifyNewLead } = require('../lib/admin/notify');
 
 function scoreLead(lead) {
   let score = 5;
@@ -59,7 +60,10 @@ module.exports = async function handler(req, res) {
       console.error('lead_webhook_failed', error.message);
     }
   }
-  if (saved) return json(res, 201, { ok: true, status: lead.status });
+  if (saved) {
+    await notifyNewLead(lead);
+    return json(res, 201, { ok: true, status: lead.status });
+  }
   if (!store.configured() && !process.env.CRM_WEBHOOK_URL) return json(res, 503, { error: 'Lead storage is not configured. Please message us on WhatsApp.' });
   return json(res, 502, { error: "I couldn't save those details. Please message us on WhatsApp or use the booking page." });
 };

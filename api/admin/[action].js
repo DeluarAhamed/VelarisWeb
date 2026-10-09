@@ -1,10 +1,12 @@
 // Admin API for /dashboard (one function to stay within Vercel's function limit).
 //   POST /api/admin/login {password}   POST /api/admin/logout   GET /api/admin/session
 //   GET  /api/admin/leads   POST /api/admin/leads {name, ...}   PATCH /api/admin/leads {id, status?, notes?, monthlyValue?}
-//   GET  /api/admin/stats?days=30      GET /api/admin/export  (CSV)
+//   GET  /api/admin/stats?days=30      GET /api/admin/search?days=28 (Search Console)   GET /api/admin/export  (CSV)
 const { rateLimit, json } = require('../../lib/voice/security');
 const auth = require('../../lib/admin/auth');
 const store = require('../../lib/admin/store');
+const gsc = require('../../lib/admin/gsc');
+const notify = require('../../lib/admin/notify');
 
 function body(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -37,11 +39,16 @@ module.exports = async function handler(req, res) {
     if (action === 'session') {
       return json(res, 200, {
         authed: auth.isAuthed(req),
-        setup: { password: auth.passwordConfigured(), storage: store.configured(), devMemory: store.MEMORY },
+        setup: { password: auth.passwordConfigured(), storage: store.configured(), devMemory: store.MEMORY, notify: notify.channels(), searchConsole: gsc.configured() },
       });
     }
 
     if (!auth.isAuthed(req)) return json(res, 401, { error: 'Please sign in.' });
+    if (action === 'search') {
+      if (!gsc.configured()) return json(res, 503, { error: 'Search Console is not connected yet.', code: 'NO_GSC' });
+      const days = Math.max(7, Math.min(90, Number(req.query.days) || 28));
+      try { return json(res, 200, await gsc.searchData(days)); } catch (err) { return json(res, 502, { error: err.message }); }
+    }
     if (!store.configured()) return json(res, 503, { error: 'Storage is not connected yet.', code: 'NO_STORAGE' });
 
     if (action === 'leads') {
@@ -74,7 +81,7 @@ module.exports = async function handler(req, res) {
     }
     if (action === 'export') {
       const leads = await store.listLeads(5000);
-      const cols = ['createdAt', 'status', 'name', 'email', 'phone', 'company', 'budget', 'monthlyValue', 'serviceInterest', 'problem', 'source', 'notes'];
+      const cols = ['createdAt', 'status', 'followUp', 'name', 'email', 'phone', 'company', 'budget', 'monthlyValue', 'serviceInterest', 'problem', 'source', 'notes'];
       const csv = [cols.join(','), ...leads.map((l) => cols.map((c) => csvCell(l[c])).join(','))].join('\n');
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/csv; charset=utf-8');

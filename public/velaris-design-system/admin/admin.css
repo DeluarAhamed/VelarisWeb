@@ -166,3 +166,17 @@ td .who small,td small{color:var(--ink-3)}
 .top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .top-actions small{color:var(--ink-3);font-size:12.5px}
 @media (max-width:520px){.top-actions small{display:none}}
+/* follow-ups, revenue, search (v3) */
+.pill.red{background:#FDECEC;color:#C03434}
+.metric em.down{background:#FDECEC;color:#C03434}
+.fu{font-weight:600;color:var(--ink-2)}
+.fu.today{color:#B76E00}
+.fu.late{color:#C03434}
+.fu.late::before{content:"Overdue \00B7  ";font-weight:700}
+.chip.due{border-color:#F5C2C2;color:#C03434}
+.chip.due.on{background:#C03434;border-color:#C03434;color:#fff}
+.fu-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.fu-row input{flex:1 1 160px;width:auto}
+.fu-row .btn{padding:9px 11px;font-size:13px}
+.due-card{border-color:#F5C2C2;margin-bottom:8px}
+table.static tbody tr{cursor:default}

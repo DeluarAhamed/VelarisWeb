@@ -1,0 +1,218 @@
+[
+  {
+    "slug": "clinics",
+    "name": "Clinics & Healthcare",
+    "orderRank": 1,
+    "accent": "#0E9F6E",
+    "heroHeadline": "Websites and booking systems for clinics that fill the diary",
+    "shortDescription": "Online booking, automatic recalls and reminders that cut no-shows and bring patients back on schedule.",
+    "intro": "Dental, physio, aesthetics, chiropractic and private medical clinics lose revenue to empty slots, no-shows and patients who simply forget to come back. We build the website, booking system and recall engine that fixes all three, and run it for you on one monthly plan.",
+    "painPoints": [
+      {"title": "Empty slots and no-shows", "description": "Missed appointments cost you the slot and the staff time. Without reminders, a few no-shows a week adds up fast."},
+      {"title": "Patients who never rebook", "description": "Check-ups, follow-ups and treatment courses slip when nobody prompts the patient at the right time."},
+      {"title": "The phone does all the work", "description": "Reception spends the day answering the same questions and taking bookings by hand instead of looking after patients."}
+    ],
+    "systems": [
+      {"title": "Online booking", "description": "Patients book the right treatment and practitioner 24/7, synced to your calendar."},
+      {"title": "Recall & rebooking engine", "description": "Automatic messages when a check-up, follow-up or next session is due, with a one-tap link to book."},
+      {"title": "Reminders that cut no-shows", "description": "Confirmation and reminder messages by email or WhatsApp before every appointment."},
+      {"title": "AI front desk", "description": "An assistant that answers common questions about prices, opening hours and treatments, and books the appointment."},
+      {"title": "Local SEO for treatments", "description": "Treatment pages and a Google Business Profile set up to rank for \"[treatment] near me\" searches."},
+      {"title": "Practice dashboard", "description": "New patients, bookings, recall rate and where enquiries come from, in one screen."}
+    ],
+    "example": "A patient finishes a hygiene appointment. Five months later they get a friendly message: \"You're due for your check-up, here are three times that work.\" They tap one and they're booked. Reception never picked up the phone, and the slot that would have stayed empty is filled.",
+    "recommendedPlan": "Growth",
+    "relatedServices": ["custom-software", "ai-solutions", "seo", "web-design"],
+    "faqs": [
+      {"question": "Can the booking system work with our existing practice software?", "answer": "Often, yes. Many practice systems have an API or calendar sync we can connect to. If yours doesn't, we build booking and recalls as a standalone system and export what your team needs."},
+      {"question": "Do you handle patient data securely?", "answer": "We only collect what the booking needs, use encrypted connections, and keep clinical records out of the website entirely. Your clinical notes stay in your practice software."},
+      {"question": "How much does a clinic website and booking system cost?", "answer": "Most clinics are on our Growth plan at $399/month, which covers the website, booking, reminders, hosting and updates. There is no upfront build fee and no long contract."},
+      {"question": "How long does it take to go live?", "answer": "You see a working preview within 5 business days. Most clinic sites with booking go live in 2 to 3 weeks."}
+    ],
+    "seo": {
+      "metaTitle": "Clinic Websites & Online Booking Systems | Velaris Web",
+      "metaDescription": "Websites, online booking and automatic patient recalls for clinics. Fewer no-shows, more rebookings. Monthly plans from $199, no upfront cost.",
+      "keywords": ["clinic website design", "clinic booking system", "patient recall system", "dental website", "physio booking software"]
+    }
+  },
+  {
+    "slug": "salons-and-spas",
+    "name": "Salons & Spas",
+    "orderRank": 2,
+    "accent": "#DB2777",
+    "heroHeadline": "Booking and rebooking systems for salons and spas",
+    "shortDescription": "Online booking, rebooking reminders and a loyal client list that keeps the chairs full.",
+    "intro": "Hair salons, barbers, nail studios, beauty and day spas run on repeat visits. We build the website, booking system and rebooking engine that brings clients back at the right time, so you stop relying on walk-ins and expensive booking marketplaces.",
+    "painPoints": [
+      {"title": "Clients drift to other salons", "description": "If nobody reminds a client that their colour or cut is due, the next salon that messages them wins the booking."},
+      {"title": "Marketplace fees eat your margin", "description": "Third-party booking apps take a cut and own the relationship with your client."},
+      {"title": "Gaps in the column", "description": "Last-minute cancellations leave empty time that's hard to fill."}
+    ],
+    "systems": [
+      {"title": "Your own booking system", "description": "Clients book services and stylists on your website, with no marketplace commission."},
+      {"title": "Rebooking reminders", "description": "Automatic \"you're due\" messages based on each service's usual interval."},
+      {"title": "Waitlist & gap filler", "description": "When someone cancels, clients on the waitlist get offered the slot automatically."},
+      {"title": "Reviews on autopilot", "description": "A review request after every visit, so your Google rating keeps climbing."},
+      {"title": "Gift cards & packages", "description": "Sell vouchers and treatment bundles online, around the clock."},
+      {"title": "Client & revenue dashboard", "description": "Rebooking rate, top services and busiest days, at a glance."}
+    ],
+    "example": "A client has highlights every eight weeks. In week seven they get a message from your salon with their usual stylist's free slots. They book in one tap, and get a review request after the appointment. You didn't lift a finger, and they never thought about going anywhere else.",
+    "recommendedPlan": "Growth",
+    "relatedServices": ["custom-software", "web-design", "local-listings", "seo"],
+    "faqs": [
+      {"question": "Can clients pay a deposit when they book?", "answer": "Yes. We can take deposits or full payment at booking, which cuts no-shows significantly."},
+      {"question": "Do I have to leave my current booking app?", "answer": "No. We can start with your website and reminders and link to your current app, then move bookings in-house when you're ready."},
+      {"question": "What does it cost?", "answer": "Salons usually start on Starter at $199/month or Growth at $399/month with booking and rebooking. No upfront cost and you can cancel anytime."},
+      {"question": "Can you manage our Google Business Profile too?", "answer": "Yes. Local listings and review requests are part of the Growth plan."}
+    ],
+    "seo": {
+      "metaTitle": "Salon & Spa Websites with Online Booking | Velaris Web",
+      "metaDescription": "Salon and spa websites with your own online booking, rebooking reminders and review requests. No marketplace fees. Monthly plans from $199.",
+      "keywords": ["salon website design", "salon booking system", "spa booking software", "barber booking website", "salon rebooking reminders"]
+    }
+  },
+  {
+    "slug": "car-detailing",
+    "name": "Car Detailing",
+    "orderRank": 3,
+    "accent": "#2563EB",
+    "heroHeadline": "Websites and booking systems for car detailing businesses",
+    "shortDescription": "Instant quotes, online booking and maintenance-wash reminders that turn one-off jobs into regulars.",
+    "intro": "Mobile and studio detailers win on reputation and repeat work. We build the website with instant pricing, online booking and maintenance reminders that turn a one-off ceramic coating or valet into a customer for years.",
+    "painPoints": [
+      {"title": "Quoting by message all day", "description": "Every enquiry starts with \"how much for my car?\" and a back-and-forth that eats your evenings."},
+      {"title": "One-off customers", "description": "A customer gets a full detail, loves it, and you never hear from them again."},
+      {"title": "Hard to show your work", "description": "Your best before-and-after photos are buried in Instagram instead of selling for you."}
+    ],
+    "systems": [
+      {"title": "Instant quote calculator", "description": "Customers pick vehicle size and package and see a price before they enquire."},
+      {"title": "Online booking", "description": "Book a slot, add the address for mobile jobs, and take a deposit."},
+      {"title": "Maintenance reminders", "description": "Automatic reminders for maintenance washes and coating top-ups."},
+      {"title": "Before & after gallery", "description": "A fast gallery that shows your work and ranks in local search."},
+      {"title": "Local SEO", "description": "Pages for each service and area you cover, plus a Google Business Profile that gets found."},
+      {"title": "Job & revenue dashboard", "description": "Bookings, repeat customers and revenue by package."}
+    ],
+    "example": "Someone searches \"ceramic coating near me\", finds your page, prices their SUV in the calculator and books with a deposit. Six weeks after the coating, they get a reminder for a maintenance wash. One search became a customer who comes back every couple of months.",
+    "recommendedPlan": "Starter",
+    "relatedServices": ["web-design", "custom-software", "seo", "local-listings"],
+    "faqs": [
+      {"question": "Does it work for mobile detailers?", "answer": "Yes. Booking collects the address and can limit bookings to the areas and days you cover."},
+      {"question": "Can customers see prices online?", "answer": "Yes. The quote calculator shows prices by vehicle size and package, and you can update prices anytime."},
+      {"question": "What does it cost?", "answer": "Most detailers start on Starter at $199/month. Adding the quote calculator and reminders moves you to Growth at $399/month. No upfront cost."},
+      {"question": "How fast can we launch?", "answer": "You see a preview within 5 business days and most detailing sites go live within 2 weeks."}
+    ],
+    "seo": {
+      "metaTitle": "Car Detailing Websites & Booking Systems | Velaris Web",
+      "metaDescription": "Car detailing websites with instant quotes, online booking and maintenance reminders that bring customers back. Monthly plans from $199.",
+      "keywords": ["car detailing website", "detailing booking system", "mobile detailing website", "auto detailing website design"]
+    }
+  },
+  {
+    "slug": "cleaning-services",
+    "name": "Cleaning Services",
+    "orderRank": 4,
+    "accent": "#0891B2",
+    "heroHeadline": "Websites that win recurring clients for cleaning companies",
+    "shortDescription": "Instant quotes, recurring bookings and automatic follow-ups for residential and commercial cleaners.",
+    "intro": "Residential and commercial cleaning companies grow on recurring contracts. We build the website, quote tool and booking system that turns searches into weekly and fortnightly clients, and keeps them.",
+    "painPoints": [
+      {"title": "Quotes that go cold", "description": "You send a quote and never follow up because you're out cleaning."},
+      {"title": "Too many one-off cleans", "description": "End-of-tenancy and deep cleans pay, but recurring clients are what make the business stable."},
+      {"title": "Scheduling by hand", "description": "Recurring bookings, changes and cancellations live in your phone and your head."}
+    ],
+    "systems": [
+      {"title": "Instant quote tool", "description": "Property size, frequency and extras turn into a price in seconds."},
+      {"title": "Recurring booking", "description": "Clients choose weekly, fortnightly or monthly and the schedule runs itself."},
+      {"title": "Quote follow-up", "description": "Automatic, polite follow-ups on every quote that hasn't been accepted."},
+      {"title": "Commercial enquiry pages", "description": "Pages that win office, retail and Airbnb contracts, not just homes."},
+      {"title": "Local SEO by area", "description": "Rank for \"cleaners in [area]\" across the towns you cover."},
+      {"title": "Client & revenue dashboard", "description": "Recurring revenue, new quotes and conversion rate in one view."}
+    ],
+    "example": "A homeowner gets an instant quote at 10pm, isn't ready to book, and closes the tab. Two days later they get a follow-up with a first-clean offer, and book fortnightly cleans. That's a recurring client you would have lost to a slow reply.",
+    "recommendedPlan": "Growth",
+    "relatedServices": ["web-design", "custom-software", "seo", "ai-solutions"],
+    "faqs": [
+      {"question": "Can the quote tool handle our pricing?", "answer": "Yes. We build it around how you actually price: rooms, square footage, frequency, extras and minimum charges."},
+      {"question": "Will it work for commercial cleaning?", "answer": "Yes. We add commercial service pages and an enquiry flow for site visits and contract quotes."},
+      {"question": "What does it cost?", "answer": "Most cleaning companies choose Growth at $399/month with the quote tool and follow-ups. No upfront cost, cancel anytime."},
+      {"question": "Can it connect to our scheduling app?", "answer": "In many cases, yes. If not, we build lightweight scheduling into your system."}
+    ],
+    "seo": {
+      "metaTitle": "Cleaning Company Websites & Quote Tools | Velaris Web",
+      "metaDescription": "Websites for cleaning companies with instant quotes, recurring bookings and automatic follow-ups that win regular clients. Plans from $199/month.",
+      "keywords": ["cleaning company website", "cleaning business website design", "cleaning quote calculator", "cleaning booking software"]
+    }
+  },
+  {
+    "slug": "home-services",
+    "name": "Trades & Home Services",
+    "orderRank": 5,
+    "accent": "#EA580C",
+    "heroHeadline": "Lead generation websites for trades and home service businesses",
+    "shortDescription": "For remodelers, plumbers, electricians, roofers and landscapers: more quote requests and faster follow-up.",
+    "intro": "Remodelers, plumbers, electricians, roofers, HVAC and landscaping companies don't need a pretty brochure. They need the phone to ring with the right jobs. We build the website, quote flow and follow-up system that does that, and run it monthly.",
+    "painPoints": [
+      {"title": "Paying for shared leads", "description": "Lead marketplaces sell the same job to five contractors, so you're racing on price."},
+      {"title": "Slow replies lose jobs", "description": "You're on a job site when the enquiry comes in, and by evening they've hired someone else."},
+      {"title": "Invisible on Google Maps", "description": "If you're not in the local 3-pack for your trade, most of the calls go to whoever is."}
+    ],
+    "systems": [
+      {"title": "Quote request flow", "description": "Job type, photos, postcode and budget captured in one short form, so you can price fast."},
+      {"title": "Instant reply & AI assistant", "description": "Every enquiry gets an immediate response and answers to common questions while you're on site."},
+      {"title": "Google Maps ranking", "description": "Google Business Profile, service-area pages and reviews built to get you into the local 3-pack."},
+      {"title": "Project gallery", "description": "Before-and-after projects that sell your quality and rank for local searches."},
+      {"title": "Review engine", "description": "Automatic review requests when a job is marked complete."},
+      {"title": "Lead dashboard", "description": "Every enquiry, its value and its status, so nothing slips through."}
+    ],
+    "example": "A homeowner searching \"kitchen remodel near me\" finds you in the map pack, sends photos and a budget through your quote form at lunchtime, and gets an instant reply with your next available survey dates. You're still on site, but the job is already on your calendar.",
+    "recommendedPlan": "Growth",
+    "relatedServices": ["web-design", "seo", "ai-solutions", "local-listings"],
+    "faqs": [
+      {"question": "Will this replace paying for leads?", "answer": "For many trades, yes, over time. Your own website and Google ranking bring exclusive leads that aren't sold to competitors."},
+      {"question": "Do you cover service-area businesses without an office?", "answer": "Yes. We set up your Google Business Profile as a service-area business and build pages for each town you cover."},
+      {"question": "What does it cost?", "answer": "Most trades are on Growth at $399/month including SEO and review requests. No setup fee, no long contract."},
+      {"question": "How soon will I see leads?", "answer": "Your site is live within weeks. Google rankings usually build over 2 to 4 months, so we also make sure every visitor today has an easy way to enquire."}
+    ],
+    "seo": {
+      "metaTitle": "Websites for Contractors, Trades & Home Services | Velaris Web",
+      "metaDescription": "Lead generation websites for remodelers, plumbers, electricians and roofers: quote forms, instant replies and Google Maps ranking. From $199/month.",
+      "keywords": ["contractor website design", "remodeling company website", "plumber website", "home services lead generation", "roofing website design"]
+    }
+  },
+  {
+    "slug": "coaches-and-consultants",
+    "name": "Coaches & Consultants",
+    "orderRank": 6,
+    "accent": "#7C3AED",
+    "heroHeadline": "Websites and booking funnels for coaches and consultants",
+    "shortDescription": "A credible website, discovery-call booking and automatic follow-up that turn visitors into clients.",
+    "intro": "Coaches, consultants and solo founders sell trust. We build a website that positions you clearly, a booking funnel for discovery calls, and the follow-up system that turns interested visitors into paying clients.",
+    "painPoints": [
+      {"title": "A website that doesn't sell", "description": "Visitors can't tell in five seconds who you help and why you, so they leave."},
+      {"title": "Calendar ping-pong", "description": "Booking a first call takes four emails."},
+      {"title": "Leads go quiet", "description": "People download your guide or book a call, then nothing happens next."}
+    ],
+    "systems": [
+      {"title": "Positioning-first website", "description": "Clear offer, proof and a single next step on every page."},
+      {"title": "Discovery-call booking", "description": "Qualifying questions and calendar booking in one flow."},
+      {"title": "Lead magnet & email follow-up", "description": "Capture emails with a useful guide and follow up automatically."},
+      {"title": "Client portal", "description": "Session notes, resources and invoices in one private place for each client."},
+      {"title": "Content & SEO", "description": "Articles that answer your clients' questions and bring in search traffic."},
+      {"title": "Pipeline dashboard", "description": "Calls booked, proposals sent and revenue won, in one view."}
+    ],
+    "example": "A potential client reads one of your articles, downloads your guide, and gets three short follow-up emails over a week. The last one links to your calendar. They book a discovery call, answering your qualifying questions on the way, so you go in already knowing they're a fit.",
+    "recommendedPlan": "Starter",
+    "relatedServices": ["web-design", "custom-software", "seo", "business-email"],
+    "faqs": [
+      {"question": "I already have a website. Can you improve it rather than start over?", "answer": "Yes. We often keep your content and brand and rebuild the structure, booking and follow-up around it."},
+      {"question": "Can you connect my calendar?", "answer": "Yes. Google Calendar and Outlook both work, with buffers and availability rules."},
+      {"question": "What does it cost?", "answer": "Most coaches and consultants start on Starter at $199/month. The client portal and automations move you to Growth. No upfront cost."},
+      {"question": "Do you write the copy?", "answer": "We write it with you, starting from a short call about who you help and how."}
+    ],
+    "seo": {
+      "metaTitle": "Websites for Coaches & Consultants | Velaris Web",
+      "metaDescription": "Websites for coaches and consultants with discovery-call booking, lead magnets and automatic follow-up. Monthly plans from $199, no upfront cost.",
+      "keywords": ["coach website design", "consultant website design", "coaching website", "discovery call booking"]
+    }
+  }
+]

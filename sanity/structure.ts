@@ -29,6 +29,14 @@ export const structure: StructureResolver = (S) =>
             .defaultOrdering([{field: 'orderRank', direction: 'asc'}]),
         ),
       S.listItem()
+        .title('Industry Pages')
+        .child(
+          S.documentTypeList('industry')
+            .title('Industry Pages')
+            .filter('_type == "industry"')
+            .defaultOrdering([{field: 'orderRank', direction: 'asc'}]),
+        ),
+      S.listItem()
         .title('Case Studies')
         .child(
           S.documentTypeList('caseStudy')

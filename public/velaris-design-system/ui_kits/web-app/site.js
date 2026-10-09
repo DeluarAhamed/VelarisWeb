@@ -149,6 +149,7 @@
     '<header class="nav"><div class="wrap nav-inner">'+BRAND+
       '<nav class="nav-links" aria-label="Primary">'+
         '<div class="nav-item has-mega'+(page==='services'?' active':'')+'"><a href="/services" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+svcMega()+'</div>'+
+        '<div class="nav-item'+(page==='industries'?' active':'')+'"><a href="/solutions">Industries</a></div>'+
         '<div class="nav-item'+(page==='pricing'?' active':'')+'"><a href="/pricing">Pricing</a></div>'+
         '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/case-studies" aria-haspopup="true">Our Work <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
         '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
@@ -164,6 +165,7 @@
         '<a class="dl" href="/" data-close>Home</a>'+
         drawerAcc('Services', svcDrawerLinks(), '/services', 'All services')+
         drawerAcc('Our Work', caseDrawerLinks(), '/case-studies', 'View all case studies')+
+        '<a class="dl" href="/solutions" data-close>Industries</a>'+
         '<a class="dl" href="/pricing" data-close>Pricing</a>'+
         '<a class="dl" href="/about" data-close>About</a>'+
         '<a class="dl" href="/blog" data-close>Blog</a>'+
@@ -189,6 +191,13 @@
         '<a href="/pricing#plans">Scale</a>'+
         '<a href="/pricing#included">What&rsquo;s included</a>'+
         '<a href="/services">All services</a></div>'+
+      '<div class="foot-col"><h5>Industries</h5>'+
+        '<a href="/solutions/clinics">Clinics</a>'+
+        '<a href="/solutions/salons-and-spas">Salons &amp; spas</a>'+
+        '<a href="/solutions/car-detailing">Car detailing</a>'+
+        '<a href="/solutions/cleaning-services">Cleaning services</a>'+
+        '<a href="/solutions/home-services">Trades &amp; home services</a>'+
+        '<a href="/solutions/coaches-and-consultants">Coaches &amp; consultants</a></div>'+
       '<div class="foot-col"><h5>Company</h5>'+
         '<a href="/case-studies">Case Studies</a>'+
         '<a href="/pricing">Pricing</a>'+
