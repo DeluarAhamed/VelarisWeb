@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const ORIGIN = 'https://velarisweb.com';
-const V = '20261009-v6';
+const V = '20261010-v7';
 const WA = 'https://wa.me/8801989570693';
 const SHARE_IMAGE = `${ORIGIN}/velaris-design-system/assets/og-velaris.png`;
 const LOGO = `${ORIGIN}/velaris-design-system/assets/velaris-icon.png`;
@@ -338,9 +338,9 @@ function servicesIndex(services, art) {
 <section class="v-phero">
   <div class="wrap">
     ${crumbs(trail)}
-    <span class="v-pill"><b>Services</b> All included in one monthly plan</span>
-    <h1>Everything your business needs <span class="serif">to get found online</span></h1>
-    <p>Web design, SEO, AI, e-commerce, business email and local listings, managed for you on one monthly plan from $199/month.</p>
+    <span class="v-pill"><b>Services</b> Websites, software &amp; AI on one plan</span>
+    <h1>The systems that <span class="serif">grow your business</span></h1>
+    <p>Custom software, websites, AI automation, SEO and more, built to work together and run for you on one monthly plan from $199/month.</p>
     <div class="v-hero-cta"><a class="btn btn-blue" href="/pricing">See plans &amp; pricing ${ARROW}</a>${waBtn('Hi Velaris, I would like to know which service fits my business.')}</div>
   </div>
 </section>
@@ -351,8 +351,8 @@ function servicesIndex(services, art) {
 </section>
 ${ctaBlock('Not sure where to start?', 'Tell us about your business and we will recommend the right plan', 'No sales pitch. Message us on WhatsApp and we will reply within a few hours.', 'Hi Velaris, can you recommend the right service for my business?')}`;
   return shell({
-    title: 'Web Design, SEO & AI Services | Velaris Web',
-    description: 'Web design, SEO, AI chatbots, e-commerce, business email and local listings for small businesses, managed for you on monthly plans from $199/month.',
+    title: 'Software, Web Design & AI Services | Velaris Web',
+    description: 'Custom software, CRMs, websites, AI automation, SEO and e-commerce for small businesses, built and run for you on monthly plans from $199/month.',
     canonical: `${ORIGIN}/services`, page: 'services',
     jsonLd: [crumbLd(trail), { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.name, url: `${ORIGIN}/services/${s.slug}` })) }],
     body,

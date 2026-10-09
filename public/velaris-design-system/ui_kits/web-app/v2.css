@@ -433,3 +433,88 @@
   .lp-shot{margin-top:40px;border-radius:16px 16px 0 0}
   .lp-shots .frame{aspect-ratio:4/3}
 }
+
+/* ===== Growth-systems homepage (Oct 2026) ===== */
+/* hero dashboard mock */
+.v-site-dash .v-site-body{padding:18px}
+.vd-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.vd-head b{font-size:13px;color:var(--v-ink)}
+.vd-head em{font-style:normal;font-size:10.5px;font-weight:700;color:#0F9F5A;background:#E7F8EF;padding:2px 7px;border-radius:999px}
+.vd-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.vd-cards div{border:1px solid var(--v-line);border-radius:10px;padding:9px 10px}
+.vd-cards small{display:block;font-size:9.5px;color:var(--v-ink-3);line-height:1.2}
+.vd-cards b{display:block;font-size:17px;letter-spacing:-.03em;color:var(--v-ink);margin-top:4px}
+.vd-bars{display:flex;align-items:flex-end;gap:5px;height:84px;margin-top:14px;padding:10px;border:1px solid var(--v-line);border-radius:10px}
+.vd-bars i{flex:1;border-radius:3px 3px 1px 1px;background:var(--blue)}
+.vd-bars i:nth-child(odd){background:#5AA6FF}
+/* outcomes */
+.v-outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.v-out{padding:30px;border-radius:var(--v-r);background:#fff;border:1px solid var(--v-line);transition:border-color .2s,transform .2s var(--ease)}
+.v-out:hover{border-color:var(--blue-wash-2);transform:translateY(-3px)}
+.v-out .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--blue-wash);color:var(--blue);margin-bottom:18px}
+.v-out .ic svg{width:22px;height:22px}
+.v-out h3{font-size:20px;letter-spacing:-.02em;color:var(--v-ink)}
+.v-out p{font-size:15.5px;line-height:1.6;color:var(--v-ink-2);margin:8px 0 0}
+/* the question / story */
+.v-story{display:grid;grid-template-columns:.95fr 1.05fr;gap:20px;align-items:stretch}
+.v-story-intro{padding:40px;border-radius:24px;background:var(--v-navy);color:#fff}
+.v-story-intro .tag{display:inline-flex;height:26px;align-items:center;padding:0 11px;border-radius:999px;background:rgba(90,166,255,.16);color:#8EC2FF;font-size:12.5px;font-weight:600}
+.v-story-intro h3{font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.03em;color:#fff;margin:18px 0 0}
+.v-story-intro p{font-size:16.5px;line-height:1.6;color:rgba(255,255,255,.72);margin:16px 0 0}
+.v-story-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:st}
+.v-story-steps li{position:relative;padding:24px 24px 24px 76px;border-radius:20px;background:#fff;border:1px solid var(--v-line)}
+.v-story-steps li::before{counter-increment:st;content:counter(st);position:absolute;left:24px;top:24px;width:34px;height:34px;border-radius:50%;
+  background:var(--blue);color:#fff;font-weight:800;display:grid;place-items:center}
+.v-story-steps b{display:block;font-size:18px;letter-spacing:-.015em;color:var(--v-ink)}
+.v-story-steps span{display:block;margin-top:4px;font-size:15px;line-height:1.55;color:var(--v-ink-2)}
+.v-examples{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.v-ex{padding:20px;border-radius:16px;background:#fff;border:1px dashed #C9D6EA}
+.v-ex b{display:block;font-size:15px;color:var(--v-ink)}
+.v-ex span{display:block;margin-top:4px;font-size:14px;line-height:1.5;color:var(--v-ink-2)}
+/* dashboard showcase */
+.v-dash-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+.v-dash-wrap h2{font-size:clamp(30px,3.6vw,44px);letter-spacing:-.035em;line-height:1.08;color:var(--v-ink)}
+.v-dash-wrap > div > p{font-size:17px;line-height:1.65;color:var(--v-ink-2);margin:16px 0 0}
+.v-list{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:12px}
+.v-list li{display:flex;gap:10px;align-items:flex-start;font-size:16px;color:var(--v-ink)}
+.v-list svg{width:20px;height:20px;flex:none;color:var(--blue);margin-top:1px}
+.v-dash{display:grid;grid-template-columns:56px 1fr;border-radius:22px;overflow:hidden;border:1px solid var(--v-line);background:#F5F7FB;
+  box-shadow:0 40px 80px -44px rgba(11,27,51,.5)}
+.vdd-side{background:var(--v-navy);padding:18px 12px;display:grid;align-content:start;gap:10px}
+.vdd-side i{height:10px;border-radius:5px;background:#24395C}
+.vdd-side i.on{background:#fff}
+.vdd-main{padding:20px;display:grid;gap:10px;min-width:0}
+.vdd-title{font-weight:800;font-size:17px;color:var(--v-ink)}
+.vdd-title small{display:block;font-weight:500;font-size:11.5px;color:var(--v-ink-3)}
+.vdd-row{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px}
+.vdd-row.four{grid-template-columns:repeat(4,1fr)}
+.vdd-card{background:#fff;border:1px solid var(--v-line);border-radius:12px;padding:12px;min-width:0}
+.vdd-card b{display:block;font-size:20px;letter-spacing:-.03em;color:var(--v-ink)}
+.vdd-card small{display:block;font-size:10.5px;color:var(--v-ink-3);margin-top:2px}
+.vdd-card.list small{font-weight:700;letter-spacing:.06em;margin:0 0 6px}
+.vdd-card.list p{display:flex;justify-content:space-between;gap:6px;margin:4px 0 0;font-size:10.5px;color:var(--v-ink-2)}
+.vdd-card.list p span:last-child{color:#0F9F5A;font-weight:700}
+.vdd-card.chart .vd-bars{height:90px;border:0;padding:6px 0 0;margin-top:4px}
+/* philosophy */
+.v-philo{margin:0 auto;max-width:880px;text-align:center}
+.v-philo blockquote{margin:6px 0 0;font-size:clamp(26px,3.4vw,40px);line-height:1.25;letter-spacing:-.03em;font-weight:700;color:var(--v-ink);text-wrap:balance}
+.v-philo p{font-size:17px;line-height:1.7;color:var(--v-ink-2);margin:22px auto 0;max-width:720px}
+.v-philo figcaption{display:inline-flex;align-items:center;gap:12px;margin-top:26px;text-align:left;font-size:14px;color:var(--v-ink-3)}
+.v-philo figcaption img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.v-philo figcaption b{display:block;font-size:15px;color:var(--v-ink)}
+@media (max-width:1080px){
+  .v-outcomes{grid-template-columns:repeat(2,1fr)}
+  .v-story,.v-dash-wrap{grid-template-columns:1fr}
+  .v-examples{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .v-outcomes,.v-examples{grid-template-columns:1fr}
+  .v-out{padding:24px}
+  .v-story-intro{padding:28px}
+  .v-story-steps li{padding:20px 20px 20px 66px}
+  .v-story-steps li::before{left:18px;top:20px}
+  .v-dash{grid-template-columns:1fr}
+  .vdd-side{display:none}
+  .vdd-row,.vdd-row.four{grid-template-columns:1fr 1fr}
+  .vdd-row .list{grid-column:span 2}
+}

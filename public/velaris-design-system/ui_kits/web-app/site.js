@@ -74,6 +74,25 @@
   function waLink(text){ return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(text || WA_DEFAULT); }
   var WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/><path d="M16.6 14.1c-.3-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.4-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 001.8-1.3 2.2 2.2 0 00.1-1.3c0-.1-.2-.2-.5-.3z"/></svg>';
   window.VELARIS_WA = {number: WA_NUMBER, link: waLink, icon: WA_ICON};
+
+  /* ---- First-party analytics: anonymous daily counters for the owner dashboard (no cookies, no personal data) ---- */
+  function vwTrack(type, extra){
+    try {
+      var payload = JSON.stringify(Object.assign({t: type, p: location.pathname}, extra || {}));
+      if(navigator.sendBeacon) navigator.sendBeacon('/api/track', new Blob([payload], {type: 'text/plain'}));
+      else if(window.fetch) fetch('/api/track', {method: 'POST', body: payload, keepalive: true});
+    } catch(e){}
+  }
+  (function trackPageview(){
+    var today = new Date().toISOString().slice(0, 10), visit = 0, firstEver = 0, ref = '';
+    try {
+      if(localStorage.getItem('vw_day') !== today){ visit = 1; localStorage.setItem('vw_day', today); }
+      if(!localStorage.getItem('vw_seen')){ firstEver = 1; localStorage.setItem('vw_seen', '1'); }
+    } catch(e){ visit = 1; }
+    try { var r = document.referrer && new URL(document.referrer); if(r && r.host !== location.host) ref = r.host; } catch(e){}
+    vwTrack('pv', {v: visit, n: firstEver, r: ref});
+  })();
+  document.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a[href*="wa.me/"]')) vwTrack('wa'); }, true);
   var LINKEDIN_URL = 'https://www.linkedin.com/in/deluar-ahamed/';
   var LINKEDIN_ICON = ASSET_BASE+'home-img/linkedin.webp';
 
@@ -117,7 +136,7 @@
   }
 
   var navHTML =
-    '<div class="topbar"><div class="wrap"><span>Your website on one simple monthly plan. No upfront cost, cancel anytime.</span>'+
+    '<div class="topbar"><div class="wrap"><span>Websites, software &amp; AI automation on one monthly plan. No upfront cost, no contract.</span>'+
     '<a href="/pricing">See plans <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>'+
     '<header class="nav"><div class="wrap nav-inner">'+BRAND+
       '<nav class="nav-links" aria-label="Primary">'+
@@ -150,7 +169,7 @@
   var footHTML =
     '<footer class="site"><div class="wrap"><div class="foot-grid">'+
       '<div class="foot-brand">'+BRAND+
-        '<p>Professionally designed, fully managed websites for founders, consultants and service businesses, all for one simple monthly fee.</p>'+
+        '<p>We build the websites, software and AI automation that help small businesses grow, on one simple monthly plan.</p>'+
         '<div class="foot-social">'+
           '<a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H2l8-9L2 2h6l4 6z"/></svg></a>'+
           '<a href="'+LINKEDIN_URL+'" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="'+LINKEDIN_ICON+'" alt=""></a>'+
@@ -328,7 +347,7 @@
     var fallback = waLink(leadSummary(d));
     if(!window.fetch){ done(false, fallback); return; }
     fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})
-      .then(function(r){ done(r.ok, fallback); })
+      .then(function(r){ if(r.ok) vwTrack('form'); done(r.ok, fallback); })
       .catch(function(){ done(false, fallback); });
   }
   function formData(form){

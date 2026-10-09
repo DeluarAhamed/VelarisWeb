@@ -205,19 +205,43 @@ window.VELARIS_CASES = [
 /* Core services (fallback; Sanity is the source of truth). Landing pages: /services/<slug> */
 window.VELARIS_SERVICES = [
  {
-  "slug": "web-design",
+  "slug": "custom-software",
   "tag": "01",
-  "name": "Web Design",
+  "name": "Custom Software &amp; CRM",
   "icon": "code",
   "feat": true,
+  "short": "Rebooking engines, CRMs, quote tools and revenue dashboards built around how your business actually runs.",
+  "feats": [
+   "Booking &amp; rebooking engines",
+   "Custom CRM",
+   "Revenue dashboards"
+  ],
+  "tagline": "Booking systems, CRMs and dashboards that keep clients coming back",
+  "intro": "Off-the-shelf tools make you work their way. We build the booking system, CRM, rebooking engine or dashboard your business actually needs, in days rather than months, and run it for you on a monthly plan with no build fee.",
+  "includes": [
+   "Custom software &amp; CRM on the Scale plan",
+   "Client results dashboard on Growth and Scale",
+   "Hosting, security, backups and updates included",
+   "No build fee, no long contract"
+  ],
+  "highlights": [],
+  "bestfor": "",
+  "deliverable": ""
+ },
+ {
+  "slug": "web-design",
+  "tag": "02",
+  "name": "Web Design",
+  "icon": "code",
+  "feat": false,
   "short": "Custom, mobile-friendly websites designed to turn visitors into enquiries and booked calls.",
   "feats": [
    "Custom design, no templates",
    "Mobile-first &amp; fast",
    "Conversion-focused layout"
   ],
-  "tagline": "Custom websites that turn visitors into customers",
-  "intro": "We design and build fast, mobile-first websites for small businesses, then host, maintain and improve them for one monthly fee. No templates, no big upfront bill, and a first preview within 5 business days.",
+  "tagline": "Websites built to win customers, not just look good",
+  "intro": "A pretty website is not the goal. More enquiries, more bookings and fewer headaches are. We design, build and run conversion-focused websites with booking, WhatsApp and lead capture built in, for one monthly fee with no upfront cost.",
   "includes": [
    "Up to 5 pages on Starter, 15 on Growth, unlimited on Scale",
    "Hosting, domain connection, SSL &amp; daily backups",
@@ -230,7 +254,7 @@ window.VELARIS_SERVICES = [
  },
  {
   "slug": "seo",
-  "tag": "02",
+  "tag": "03",
   "name": "SEO",
   "icon": "search",
   "feat": false,
@@ -240,8 +264,8 @@ window.VELARIS_SERVICES = [
    "Keyword research",
    "On-page optimisation"
   ],
-  "tagline": "Get found on Google by local customers",
-  "intro": "We optimise your website, Google Business Profile and content so you show up when people nearby search for what you offer. Technical SEO is built into every plan; on-page SEO and monthly content start on Growth.",
+  "tagline": "More of the right customers finding you on Google",
+  "intro": "Customers who search are already looking to buy. We optimise your website, Google Business Profile and content so you show up first when people nearby search for what you do, and we report results in enquiries, not jargon.",
   "includes": [
    "Technical SEO &amp; Search Console on every plan",
    "On-page SEO and 2 blog posts a month on Growth",
@@ -254,7 +278,7 @@ window.VELARIS_SERVICES = [
  },
  {
   "slug": "ai-solutions",
-  "tag": "03",
+  "tag": "04",
   "name": "AI Solutions",
   "icon": "spark",
   "feat": false,
@@ -264,8 +288,8 @@ window.VELARIS_SERVICES = [
    "Lead capture &amp; qualification",
    "Booking automation"
   ],
-  "tagline": "Chatbots and automation that save you hours",
-  "intro": "We add practical AI to your website and workflow: a chatbot that answers customer questions 24/7, automations that handle repetitive admin, and tools that turn enquiries into booked calls while you focus on the work.",
+  "tagline": "AI that answers customers and does the admin for you",
+  "intro": "We put AI to work where it pays: a chatbot that answers and books customers at any hour, automations that handle repetitive admin, and tools like AI design previews that help customers say yes faster.",
   "includes": [
    "AI chatbot or workflow automation on the Scale plan",
    "Trained on your services, pricing and FAQs",
@@ -278,7 +302,7 @@ window.VELARIS_SERVICES = [
  },
  {
   "slug": "ecommerce",
-  "tag": "04",
+  "tag": "05",
   "name": "E-Commerce",
   "icon": "cart",
   "feat": false,
@@ -288,8 +312,8 @@ window.VELARIS_SERVICES = [
    "Secure checkout &amp; payments",
    "Product &amp; inventory management"
   ],
-  "tagline": "Online stores that sell 24/7",
-  "intro": "We design and build online stores with secure checkout, easy product management and payment integration, then host and maintain them for a monthly fee. Start small on Starter or get a fully customised store on Growth and Scale.",
+  "tagline": "Online stores built to sell more, every day",
+  "intro": "We build online stores with fast checkout, easy product management and automated order emails, then keep improving conversion month after month, all on a monthly plan with no upfront build fee.",
   "includes": [
    "Basic shop (up to 10 products) on Starter",
    "Fully customised e-commerce on Growth and Scale",
@@ -302,7 +326,7 @@ window.VELARIS_SERVICES = [
  },
  {
   "slug": "business-email",
-  "tag": "05",
+  "tag": "06",
   "name": "Business Email",
   "icon": "mail",
   "feat": false,
@@ -312,8 +336,8 @@ window.VELARIS_SERVICES = [
    "Setup &amp; DNS configuration",
    "Spam &amp; security protection"
   ],
-  "tagline": "Professional email on your own domain",
-  "intro": "Swap the free Gmail or Yahoo address for email like hello@yourbusiness.com. We set it up, connect your domain, configure security and get your team sending, all included in your website plan.",
+  "tagline": "Look established in every message you send",
+  "intro": "Customers trust hello@yourbusiness.com more than a free Gmail address. We set up professional email on your domain, secure it so it lands in the inbox, and support it as part of your plan.",
   "includes": [
    "1 professional inbox on Starter",
    "3 inboxes on Growth",
@@ -326,7 +350,7 @@ window.VELARIS_SERVICES = [
  },
  {
   "slug": "local-listings",
-  "tag": "06",
+  "tag": "07",
   "name": "Local Listings",
   "icon": "pin",
   "feat": false,
@@ -336,8 +360,8 @@ window.VELARIS_SERVICES = [
    "Apple Maps &amp; Bing Places",
    "20+ directories"
   ],
-  "tagline": "Google Maps, Apple Maps &amp; 20+ directories",
-  "intro": "We list your business on Google Maps, Apple Maps and the directories customers use, and keep your name, address, phone and hours consistent everywhere, so you show up in local searches and customers can trust what they find.",
+  "tagline": "Be the business customers find on the map",
+  "intro": "When someone nearby searches for what you do, you need to be on the map with the right details and great reviews. We list you on Google Maps, Apple Maps and 20+ directories and keep everything accurate.",
   "includes": [
    "Google Maps &amp; Apple Maps listing on every plan",
    "Listings on 20+ directories on Growth and Scale",

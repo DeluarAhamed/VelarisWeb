@@ -1,4 +1,5 @@
 const { rateLimit, clean, validEmail, json } = require('../lib/voice/security');
+const store = require('../lib/admin/store');
 
 function scoreLead(lead) {
   let score = 5;
@@ -17,7 +18,7 @@ function scoreLead(lead) {
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed' });
-  if (rateLimit(req, 10)) return json(res, 429, { error: 'Please wait before submitting again.' });
+  if (rateLimit(req, 10, 10 * 60 * 1000, 'leads')) return json(res, 429, { error: 'Please wait before submitting again.' });
   const input = req.body || {};
   const lead = {
     createdAt: new Date().toISOString(),
@@ -33,17 +34,31 @@ module.exports = async function handler(req, res) {
   if (!lead.name) return json(res, 400, { error: 'Please provide your name.' });
   Object.assign(lead, scoreLead(lead));
 
-  if (!process.env.CRM_WEBHOOK_URL) return json(res, 503, { error: 'Lead storage is not configured. Please email hello@velarisweb.com.' });
-  try {
-    const response = await fetch(process.env.CRM_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...(process.env.CRM_WEBHOOK_SECRET ? { 'X-Velaris-Signature': process.env.CRM_WEBHOOK_SECRET } : {}) },
-      body: JSON.stringify(lead)
-    });
-    if (!response.ok) throw new Error(`CRM returned ${response.status}`);
-    return json(res, 201, { ok: true, status: lead.status });
-  } catch (error) {
-    console.error('lead_capture_failed', error.message);
-    return json(res, 502, { error: "I couldn't save those details. Please use hello@velarisweb.com or the booking page." });
+  // Save to the private dashboard store and/or the optional CRM webhook; succeed if either works.
+  let saved = false;
+  if (store.configured()) {
+    try {
+      await store.saveLead(lead);
+      await store.track({ type: 'lead' });
+      saved = true;
+    } catch (error) {
+      console.error('lead_store_failed', error.message);
+    }
   }
+  if (process.env.CRM_WEBHOOK_URL) {
+    try {
+      const response = await fetch(process.env.CRM_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...(process.env.CRM_WEBHOOK_SECRET ? { 'X-Velaris-Signature': process.env.CRM_WEBHOOK_SECRET } : {}) },
+        body: JSON.stringify(lead)
+      });
+      if (!response.ok) throw new Error(`CRM returned ${response.status}`);
+      saved = true;
+    } catch (error) {
+      console.error('lead_webhook_failed', error.message);
+    }
+  }
+  if (saved) return json(res, 201, { ok: true, status: lead.status });
+  if (!store.configured() && !process.env.CRM_WEBHOOK_URL) return json(res, 503, { error: 'Lead storage is not configured. Please message us on WhatsApp.' });
+  return json(res, 502, { error: "I couldn't save those details. Please message us on WhatsApp or use the booking page." });
 };

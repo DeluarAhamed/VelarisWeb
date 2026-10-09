@@ -183,7 +183,7 @@ async function main() {
     '</urlset>',
     '',
   ].join('\n');
-  const robots = ['User-agent: *', 'Allow: /', '', `Sitemap: ${origin}/sitemap.xml`, ''].join('\n');
+  const robots = ['User-agent: *', 'Allow: /', 'Disallow: /admin', 'Disallow: /dashboard', 'Disallow: /api/', '', `Sitemap: ${origin}/sitemap.xml`, ''].join('\n');
 
   const outDirs = [publicDir, ...(fs.existsSync(distDir) ? [distDir] : [])];
   for (const dir of outDirs) {

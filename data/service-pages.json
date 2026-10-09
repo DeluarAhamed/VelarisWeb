@@ -1,262 +1,772 @@
 [
   {
-    "slug": "web-design",
-    "name": "Web Design",
+    "slug": "custom-software",
+    "name": "Custom Software & CRM",
     "orderRank": 1,
     "icon": "code",
-    "accent": "#127AFE",
-    "tagline": "Custom websites that turn visitors into customers",
-    "shortDescription": "Custom, mobile-friendly websites designed to turn visitors into enquiries and booked calls.",
-    "heroHeadline": "Custom web design that turns visitors into customers",
-    "intro": "We design and build fast, mobile-first websites for small businesses, then host, maintain and improve them for one monthly fee. No templates, no big upfront bill, and a first preview within 5 business days.",
+    "accent": "#1D4ED8",
+    "tagline": "Booking systems, CRMs and dashboards that keep clients coming back",
+    "shortDescription": "Rebooking engines, CRMs, quote tools and revenue dashboards built around how your business actually runs.",
+    "heroHeadline": "Custom software and CRM systems that grow your revenue",
+    "intro": "Off-the-shelf tools make you work their way. We build the booking system, CRM, rebooking engine or dashboard your business actually needs, in days rather than months, and run it for you on a monthly plan with no build fee.",
     "capabilities": [
-      {"title": "Custom design, no templates", "description": "Every page is designed around your brand, your services and the questions your customers ask before they buy."},
-      {"title": "Mobile-first & fast", "description": "Built to load quickly and work perfectly on phones, where most of your visitors arrive."},
-      {"title": "Conversion-focused layout", "description": "Clear calls to action, trust signals and contact options on every page so visitors become enquiries."},
-      {"title": "Accessible by default", "description": "Built to ADA and WCAG accessibility standards, so everyone can use your site."},
-      {"title": "SEO-ready structure", "description": "Clean code, fast load times, metadata and page structure that Google can understand from day one."},
-      {"title": "Hosting, security & updates", "description": "Hosting, SSL, backups and monthly content updates are included, so your site never goes stale."}
+      {
+        "title": "Booking & rebooking engines",
+        "description": "Online booking with automatic reminders that bring customers back before they think about a competitor."
+      },
+      {
+        "title": "Custom CRM",
+        "description": "Every lead, customer and job in one place, with the fields and stages your business uses."
+      },
+      {
+        "title": "Revenue dashboards",
+        "description": "See enquiries, bookings, traffic and the value your website generates, live, in one screen."
+      },
+      {
+        "title": "Quote & pricing calculators",
+        "description": "Let customers price a job in seconds and send you a qualified enquiry."
+      },
+      {
+        "title": "Client portals",
+        "description": "Give customers a place to see bookings, documents, invoices and progress."
+      },
+      {
+        "title": "Integrations",
+        "description": "Connect your website, WhatsApp, email, calendar, payments and spreadsheets so data flows by itself."
+      }
     ],
     "benefits": [
-      {"title": "Look established from day one", "description": "A professional website is often the first thing a customer checks. Make that first impression count."},
-      {"title": "Get more enquiries", "description": "Pages are planned around what your customers need to know, with a clear next step at every scroll."},
-      {"title": "Never pay for a rebuild again", "description": "Your site is updated and improved every month, so it stays current instead of ageing out."}
+      {
+        "title": "Customers who come back",
+        "description": "Automated rebooking and follow-ups turn one-off customers into regulars."
+      },
+      {
+        "title": "Know your numbers",
+        "description": "A live dashboard shows what your website and marketing are worth, in money, not vanity metrics."
+      },
+      {
+        "title": "Hours back every week",
+        "description": "Admin that used to take evenings happens automatically."
+      }
     ],
     "process": [
-      {"title": "Discovery", "description": "A short call or WhatsApp chat about your business, customers and goals."},
-      {"title": "Homepage preview", "description": "We design your homepage and share a live preview within 5 business days."},
-      {"title": "Build & launch", "description": "We build the remaining pages, connect your domain and go live, usually within 2–3 weeks."},
-      {"title": "Improve monthly", "description": "Updates, fixes and improvements every month, included in your plan."}
+      {
+        "title": "Find the bottleneck",
+        "description": "We map where you lose time, leads or repeat customers today."
+      },
+      {
+        "title": "Design the tool",
+        "description": "A simple plan and screens for the system that fixes it, agreed with you."
+      },
+      {
+        "title": "Build in days",
+        "description": "AI-assisted development means most tools are live within 1–2 weeks."
+      },
+      {
+        "title": "Run & improve",
+        "description": "We host, maintain and improve it every month as your business grows."
+      }
     ],
-    "includes": ["Up to 5 pages on Starter, 15 on Growth, unlimited on Scale", "Hosting, domain connection, SSL & daily backups", "10 content updates a month on Starter, unlimited on Growth and Scale", "ADA / accessibility compliant build"],
+    "includes": [
+      "Custom software & CRM on the Scale plan",
+      "Client results dashboard on Growth and Scale",
+      "Hosting, security, backups and updates included",
+      "No build fee, no long contract"
+    ],
     "faqs": [
-      {"question": "How much does a small business website cost?", "answer": "Our websites are on monthly plans from $199/month, which includes design, hosting, security and updates. There is no upfront fee. A traditional agency build typically costs $5,000–$15,000 upfront, plus hosting and maintenance."},
-      {"question": "How long does it take to design a website?", "answer": "You'll see your homepage preview within 5 business days. Most small business websites launch within 2–3 weeks."},
-      {"question": "Will my website work on mobile?", "answer": "Yes. Every site is designed mobile-first and tested on phones, tablets and desktops before launch."},
-      {"question": "Can you redesign my existing website?", "answer": "Yes. We redesign your current site and keep your important URLs and redirects in place so you keep the Google rankings you already have."},
-      {"question": "Do I need to write the content myself?", "answer": "No. We can write and structure your page copy for you, based on a short conversation about your business."}
+      {
+        "question": "How much does custom software cost for a small business?",
+        "answer": "Traditionally a custom CRM or booking system costs $20,000–$100,000 upfront. We build and run it as part of our Scale plan from $699/month, with no build fee and no long contract."
+      },
+      {
+        "question": "How can you build custom tools so quickly?",
+        "answer": "We use AI-assisted development on proven building blocks, so a booking system, CRM or dashboard that once took months is usually live within 1–2 weeks."
+      },
+      {
+        "question": "What is a rebooking engine?",
+        "answer": "It is a system that remembers when each customer is due again and sends them a timely reminder with a one-tap booking link, so repeat business happens automatically."
+      },
+      {
+        "question": "Do I own my data?",
+        "answer": "Yes. Your customer data is yours. If you ever leave, we export it for you in a standard format."
+      },
+      {
+        "question": "Can it work with the tools I already use?",
+        "answer": "Usually yes. We connect common tools like Google Calendar, WhatsApp, email, payment providers and spreadsheets."
+      }
     ],
-    "relatedCases": ["hazelwood", "coastal", "bellavista"],
+    "relatedCases": [
+      "hazelwood",
+      "navasana",
+      "core"
+    ],
+    "seo": {
+      "metaTitle": "Custom Software & CRM for Small Business | Velaris Web",
+      "metaDescription": "Custom booking systems, CRMs, rebooking engines and revenue dashboards for small businesses. Built in days, run for you from $699/month.",
+      "keywords": [
+        "custom software for small business",
+        "custom crm",
+        "booking system",
+        "rebooking automation",
+        "business dashboard"
+      ]
+    }
+  },
+  {
+    "slug": "web-design",
+    "name": "Web Design",
+    "orderRank": 2,
+    "icon": "code",
+    "accent": "#127AFE",
+    "tagline": "Websites built to win customers, not just look good",
+    "shortDescription": "Custom, mobile-friendly websites designed to turn visitors into enquiries and booked calls.",
+    "heroHeadline": "Website design that turns visitors into paying customers",
+    "intro": "A pretty website is not the goal. More enquiries, more bookings and fewer headaches are. We design, build and run conversion-focused websites with booking, WhatsApp and lead capture built in, for one monthly fee with no upfront cost.",
+    "capabilities": [
+      {
+        "title": "Custom design, no templates",
+        "description": "Every page is designed around your brand, your services and the questions your customers ask before they buy."
+      },
+      {
+        "title": "Mobile-first & fast",
+        "description": "Built to load quickly and work perfectly on phones, where most of your visitors arrive."
+      },
+      {
+        "title": "Conversion-focused layout",
+        "description": "Clear calls to action, trust signals and contact options on every page so visitors become enquiries."
+      },
+      {
+        "title": "Accessible by default",
+        "description": "Built to ADA and WCAG accessibility standards, so everyone can use your site."
+      },
+      {
+        "title": "SEO-ready structure",
+        "description": "Clean code, fast load times, metadata and page structure that Google can understand from day one."
+      },
+      {
+        "title": "Hosting, security & updates",
+        "description": "Hosting, SSL, backups and monthly content updates are included, so your site never goes stale."
+      }
+    ],
+    "benefits": [
+      {
+        "title": "Look established from day one",
+        "description": "A professional website is often the first thing a customer checks. Make that first impression count."
+      },
+      {
+        "title": "Get more enquiries",
+        "description": "Pages are planned around what your customers need to know, with a clear next step at every scroll."
+      },
+      {
+        "title": "Never pay for a rebuild again",
+        "description": "Your site is updated and improved every month, so it stays current instead of ageing out."
+      }
+    ],
+    "process": [
+      {
+        "title": "Discovery",
+        "description": "A short call or WhatsApp chat about your business, customers and goals."
+      },
+      {
+        "title": "Homepage preview",
+        "description": "We design your homepage and share a live preview within 5 business days."
+      },
+      {
+        "title": "Build & launch",
+        "description": "We build the remaining pages, connect your domain and go live, usually within 2–3 weeks."
+      },
+      {
+        "title": "Improve monthly",
+        "description": "Updates, fixes and improvements every month, included in your plan."
+      }
+    ],
+    "includes": [
+      "Up to 5 pages on Starter, 15 on Growth, unlimited on Scale",
+      "Hosting, domain connection, SSL & daily backups",
+      "10 content updates a month on Starter, unlimited on Growth and Scale",
+      "ADA / accessibility compliant build"
+    ],
+    "faqs": [
+      {
+        "question": "How much does a small business website cost?",
+        "answer": "Our websites are on monthly plans from $199/month, which includes design, hosting, security and updates. There is no upfront fee. A traditional agency build typically costs $5,000–$15,000 upfront, plus hosting and maintenance."
+      },
+      {
+        "question": "How long does it take to design a website?",
+        "answer": "You'll see your homepage preview within 5 business days. Most small business websites launch within 2–3 weeks."
+      },
+      {
+        "question": "Will my website work on mobile?",
+        "answer": "Yes. Every site is designed mobile-first and tested on phones, tablets and desktops before launch."
+      },
+      {
+        "question": "Can you redesign my existing website?",
+        "answer": "Yes. We redesign your current site and keep your important URLs and redirects in place so you keep the Google rankings you already have."
+      },
+      {
+        "question": "Do I need to write the content myself?",
+        "answer": "No. We can write and structure your page copy for you, based on a short conversation about your business."
+      }
+    ],
+    "relatedCases": [
+      "hazelwood",
+      "coastal",
+      "bellavista"
+    ],
     "seo": {
       "metaTitle": "Custom Web Design for Small Businesses | Velaris Web",
       "metaDescription": "Custom, mobile-first website design for small businesses from $199/month. Hosting, updates and SEO included. Preview in 5 business days.",
-      "keywords": ["small business web design", "custom website design", "website design subscription", "mobile-friendly website", "website redesign"]
+      "keywords": [
+        "small business web design",
+        "custom website design",
+        "website design subscription",
+        "mobile-friendly website",
+        "website redesign"
+      ]
     }
   },
   {
     "slug": "seo",
     "name": "SEO",
-    "orderRank": 2,
+    "orderRank": 3,
     "icon": "search",
     "accent": "#10B981",
-    "tagline": "Get found on Google by local customers",
+    "tagline": "More of the right customers finding you on Google",
     "shortDescription": "Get found on Google. We optimise your site so local customers find you first.",
-    "heroHeadline": "SEO services that help local customers find you first",
-    "intro": "We optimise your website, Google Business Profile and content so you show up when people nearby search for what you offer. Technical SEO is built into every plan; on-page SEO and monthly content start on Growth.",
+    "heroHeadline": "SEO that brings ready-to-buy local customers to you",
+    "intro": "Customers who search are already looking to buy. We optimise your website, Google Business Profile and content so you show up first when people nearby search for what you do, and we report results in enquiries, not jargon.",
     "capabilities": [
-      {"title": "Technical SEO", "description": "Fast pages, clean structure, sitemaps and Search Console set up so Google can crawl and index your site."},
-      {"title": "Keyword research", "description": "We find the searches your customers actually use, including high-intent local and 'near me' terms."},
-      {"title": "On-page optimisation", "description": "Titles, descriptions, headings, internal links and copy tuned for the keywords that bring in business."},
-      {"title": "Local SEO", "description": "Google Business Profile optimisation and consistent listings to help you appear in the local map pack."},
-      {"title": "SEO blog content", "description": "Helpful, search-focused articles every month that build authority and bring in new visitors."},
-      {"title": "Reporting", "description": "A plain-English monthly report showing rankings, traffic and enquiries, and what we'll do next."}
+      {
+        "title": "Technical SEO",
+        "description": "Fast pages, clean structure, sitemaps and Search Console set up so Google can crawl and index your site."
+      },
+      {
+        "title": "Keyword research",
+        "description": "We find the searches your customers actually use, including high-intent local and 'near me' terms."
+      },
+      {
+        "title": "On-page optimisation",
+        "description": "Titles, descriptions, headings, internal links and copy tuned for the keywords that bring in business."
+      },
+      {
+        "title": "Local SEO",
+        "description": "Google Business Profile optimisation and consistent listings to help you appear in the local map pack."
+      },
+      {
+        "title": "SEO blog content",
+        "description": "Helpful, search-focused articles every month that build authority and bring in new visitors."
+      },
+      {
+        "title": "Reporting",
+        "description": "A plain-English monthly report showing rankings, traffic and enquiries, and what we'll do next."
+      }
     ],
     "benefits": [
-      {"title": "Customers who are ready to buy", "description": "Search traffic comes from people actively looking for your service, the warmest leads you can get."},
-      {"title": "Compounding results", "description": "Unlike ads, rankings keep working for you month after month once they're earned."},
-      {"title": "Less reliance on paid ads", "description": "Steady organic visibility lowers your cost per enquiry over time."}
+      {
+        "title": "Customers who are ready to buy",
+        "description": "Search traffic comes from people actively looking for your service, the warmest leads you can get."
+      },
+      {
+        "title": "Compounding results",
+        "description": "Unlike ads, rankings keep working for you month after month once they're earned."
+      },
+      {
+        "title": "Less reliance on paid ads",
+        "description": "Steady organic visibility lowers your cost per enquiry over time."
+      }
     ],
     "process": [
-      {"title": "Audit", "description": "We review your site, competitors and current rankings to find quick wins."},
-      {"title": "Fix the foundations", "description": "Technical issues, speed, structure and Google Business Profile get sorted first."},
-      {"title": "Optimise & publish", "description": "We optimise key pages and publish new content targeting the right searches."},
-      {"title": "Measure & improve", "description": "Monthly reporting and adjustments based on what's moving the needle."}
+      {
+        "title": "Audit",
+        "description": "We review your site, competitors and current rankings to find quick wins."
+      },
+      {
+        "title": "Fix the foundations",
+        "description": "Technical issues, speed, structure and Google Business Profile get sorted first."
+      },
+      {
+        "title": "Optimise & publish",
+        "description": "We optimise key pages and publish new content targeting the right searches."
+      },
+      {
+        "title": "Measure & improve",
+        "description": "Monthly reporting and adjustments based on what's moving the needle."
+      }
     ],
-    "includes": ["Technical SEO & Search Console on every plan", "On-page SEO and 2 blog posts a month on Growth", "Google Business Profile management on Growth and Scale", "Custom SEO strategy & execution on Scale"],
+    "includes": [
+      "Technical SEO & Search Console on every plan",
+      "On-page SEO and 2 blog posts a month on Growth",
+      "Google Business Profile management on Growth and Scale",
+      "Custom SEO strategy & execution on Scale"
+    ],
     "faqs": [
-      {"question": "How long does SEO take to work?", "answer": "Most businesses see early movement within 2–3 months and stronger results within 4–6 months. Local SEO for less competitive areas can be faster."},
-      {"question": "How much do SEO services cost per month?", "answer": "Technical SEO is included in every plan from $199/month. On-page SEO, monthly blog content and Google Business Profile management are included on Growth at $399/month, and custom SEO strategy on Scale from $699/month."},
-      {"question": "Can you guarantee first-page rankings?", "answer": "No honest agency can guarantee rankings, because Google controls them. We follow proven best practices and report on progress every month."},
-      {"question": "What is local SEO?", "answer": "Local SEO helps your business appear in searches with local intent, like 'plumber near me' or 'dentist in Miami', including the Google Maps results."},
-      {"question": "Do you write the SEO content?", "answer": "Yes. On Growth and Scale we research, write and publish search-optimised articles for you every month."}
+      {
+        "question": "How long does SEO take to work?",
+        "answer": "Most businesses see early movement within 2–3 months and stronger results within 4–6 months. Local SEO for less competitive areas can be faster."
+      },
+      {
+        "question": "How much do SEO services cost per month?",
+        "answer": "Technical SEO is included in every plan from $199/month. On-page SEO, monthly blog content and Google Business Profile management are included on Growth at $399/month, and custom SEO strategy on Scale from $699/month."
+      },
+      {
+        "question": "Can you guarantee first-page rankings?",
+        "answer": "No honest agency can guarantee rankings, because Google controls them. We follow proven best practices and report on progress every month."
+      },
+      {
+        "question": "What is local SEO?",
+        "answer": "Local SEO helps your business appear in searches with local intent, like 'plumber near me' or 'dentist in Miami', including the Google Maps results."
+      },
+      {
+        "question": "Do you write the SEO content?",
+        "answer": "Yes. On Growth and Scale we research, write and publish search-optimised articles for you every month."
+      }
     ],
-    "relatedCases": ["hazelwood", "coastal"],
+    "relatedCases": [
+      "hazelwood",
+      "coastal"
+    ],
     "seo": {
       "metaTitle": "SEO Services for Small Businesses | Velaris Web",
       "metaDescription": "Local and technical SEO for small businesses. Rank higher on Google with on-page SEO, monthly content and Google Business Profile management.",
-      "keywords": ["seo services for small business", "local seo", "google business profile optimization", "seo company", "monthly seo services"]
+      "keywords": [
+        "seo services for small business",
+        "local seo",
+        "google business profile optimization",
+        "seo company",
+        "monthly seo services"
+      ]
     }
   },
   {
     "slug": "ai-solutions",
     "name": "AI Solutions",
-    "orderRank": 3,
+    "orderRank": 4,
     "icon": "spark",
     "accent": "#8B5CF6",
-    "tagline": "Chatbots and automation that save you hours",
+    "tagline": "AI that answers customers and does the admin for you",
     "shortDescription": "Chatbots, automation and AI tools that answer customers and save you hours every week.",
-    "heroHeadline": "AI chatbots and automation for small businesses",
-    "intro": "We add practical AI to your website and workflow: a chatbot that answers customer questions 24/7, automations that handle repetitive admin, and tools that turn enquiries into booked calls while you focus on the work.",
+    "heroHeadline": "AI automation that saves time and wins customers 24/7",
+    "intro": "We put AI to work where it pays: a chatbot that answers and books customers at any hour, automations that handle repetitive admin, and tools like AI design previews that help customers say yes faster.",
     "capabilities": [
-      {"title": "Website AI chatbot", "description": "An assistant trained on your services, pricing and FAQs that answers visitors instantly, day or night."},
-      {"title": "Lead capture & qualification", "description": "The chatbot collects contact details and project info, then hands warm leads to you."},
-      {"title": "Booking automation", "description": "Visitors can book calls or appointments straight from the conversation."},
-      {"title": "Workflow automation", "description": "Connect forms, email, CRM and spreadsheets so routine admin happens automatically."},
-      {"title": "AI content tools", "description": "Faster drafting of emails, posts and product descriptions in your brand voice."},
-      {"title": "Safe & on-brand", "description": "Guardrails so your assistant only answers from approved information and never invents prices or promises."}
+      {
+        "title": "Website AI chatbot",
+        "description": "An assistant trained on your services, pricing and FAQs that answers visitors instantly, day or night."
+      },
+      {
+        "title": "Lead capture & qualification",
+        "description": "The chatbot collects contact details and project info, then hands warm leads to you."
+      },
+      {
+        "title": "Booking automation",
+        "description": "Visitors can book calls or appointments straight from the conversation."
+      },
+      {
+        "title": "Workflow automation",
+        "description": "Connect forms, email, CRM and spreadsheets so routine admin happens automatically."
+      },
+      {
+        "title": "AI visual previews",
+        "description": "Let customers upload a photo and see the result, like a remodelled kitchen or a finished detail, before they buy."
+      },
+      {
+        "title": "Safe & on-brand",
+        "description": "Guardrails so your assistant only answers from approved information and never invents prices or promises."
+      }
     ],
     "benefits": [
-      {"title": "Never miss an enquiry", "description": "Questions get answered at 2am and on weekends, so leads don't go to a competitor."},
-      {"title": "Save hours every week", "description": "Automate the repetitive tasks that eat into your time."},
-      {"title": "Faster response, more sales", "description": "Instant answers keep visitors engaged and move them toward booking."}
+      {
+        "title": "Never miss an enquiry",
+        "description": "Questions get answered at 2am and on weekends, so leads don't go to a competitor."
+      },
+      {
+        "title": "Save hours every week",
+        "description": "Automate the repetitive tasks that eat into your time."
+      },
+      {
+        "title": "Faster response, more sales",
+        "description": "Instant answers keep visitors engaged and move them toward booking."
+      }
     ],
     "process": [
-      {"title": "Map the workflow", "description": "We identify the questions and tasks that cost you the most time."},
-      {"title": "Build & train", "description": "We build the assistant or automation and train it on your business information."},
-      {"title": "Test & launch", "description": "We test real scenarios, add guardrails and go live on your site."},
-      {"title": "Monitor & refine", "description": "We review conversations and results, then keep improving."}
+      {
+        "title": "Map the workflow",
+        "description": "We identify the questions and tasks that cost you the most time."
+      },
+      {
+        "title": "Build & train",
+        "description": "We build the assistant or automation and train it on your business information."
+      },
+      {
+        "title": "Test & launch",
+        "description": "We test real scenarios, add guardrails and go live on your site."
+      },
+      {
+        "title": "Monitor & refine",
+        "description": "We review conversations and results, then keep improving."
+      }
     ],
-    "includes": ["AI chatbot or workflow automation on the Scale plan", "Trained on your services, pricing and FAQs", "Lead capture into your email or CRM", "Ongoing monitoring and improvements"],
+    "includes": [
+      "AI chatbot or workflow automation on the Scale plan",
+      "Trained on your services, pricing and FAQs",
+      "Lead capture into your email or CRM",
+      "Ongoing monitoring and improvements"
+    ],
     "faqs": [
-      {"question": "What can an AI chatbot do for my business website?", "answer": "It can answer common questions, explain your services and pricing, collect visitor details and help people book a call, 24 hours a day."},
-      {"question": "Will the chatbot give wrong answers?", "answer": "We train it only on your approved information and add guardrails, so it says it doesn't know rather than guessing about prices, availability or guarantees."},
-      {"question": "How much does an AI chatbot cost?", "answer": "AI chatbots and automation are included in our Scale plan from $699/month, alongside your website, SEO and support. Standalone AI projects can be quoted on a free call."},
-      {"question": "Can AI connect to my CRM or booking system?", "answer": "Usually, yes. We connect to common tools like email, Google Sheets, CRMs and booking platforms such as Calendly."}
+      {
+        "question": "What can an AI chatbot do for my business website?",
+        "answer": "It can answer common questions, explain your services and pricing, collect visitor details and help people book a call, 24 hours a day."
+      },
+      {
+        "question": "Will the chatbot give wrong answers?",
+        "answer": "We train it only on your approved information and add guardrails, so it says it doesn't know rather than guessing about prices, availability or guarantees."
+      },
+      {
+        "question": "How much does an AI chatbot cost?",
+        "answer": "AI chatbots and automation are included in our Scale plan from $699/month, alongside your website, SEO and support. Standalone AI projects can be quoted on a free call."
+      },
+      {
+        "question": "Can AI connect to my CRM or booking system?",
+        "answer": "Usually, yes. We connect to common tools like email, Google Sheets, CRMs and booking platforms such as Calendly."
+      }
     ],
-    "relatedCases": ["navasana", "core"],
+    "relatedCases": [
+      "navasana",
+      "core"
+    ],
     "seo": {
       "metaTitle": "AI Chatbots & Automation for Small Business | Velaris Web",
       "metaDescription": "AI chatbots and workflow automation for small businesses. Answer customers 24/7, capture leads and save hours every week. Included on our Scale plan.",
-      "keywords": ["ai chatbot for small business", "website chatbot", "business automation", "ai lead generation", "ai customer service"]
+      "keywords": [
+        "ai chatbot for small business",
+        "website chatbot",
+        "business automation",
+        "ai lead generation",
+        "ai customer service"
+      ]
     }
   },
   {
     "slug": "ecommerce",
     "name": "E-Commerce",
-    "orderRank": 4,
+    "orderRank": 5,
     "icon": "cart",
     "accent": "#6366F1",
-    "tagline": "Online stores that sell 24/7",
+    "tagline": "Online stores built to sell more, every day",
     "shortDescription": "Online stores that sell your products 24/7 with secure checkout, inventory and payment integration.",
-    "heroHeadline": "E-commerce websites that sell your products 24/7",
-    "intro": "We design and build online stores with secure checkout, easy product management and payment integration, then host and maintain them for a monthly fee. Start small on Starter or get a fully customised store on Growth and Scale.",
+    "heroHeadline": "E-commerce websites that sell more with less work",
+    "intro": "We build online stores with fast checkout, easy product management and automated order emails, then keep improving conversion month after month, all on a monthly plan with no upfront build fee.",
     "capabilities": [
-      {"title": "Custom store design", "description": "A storefront designed around your products and brand, not a generic theme."},
-      {"title": "Secure checkout & payments", "description": "Card payments and popular payment providers with SSL-secured checkout."},
-      {"title": "Product & inventory management", "description": "Add products, update stock and manage orders without touching code."},
-      {"title": "Mobile shopping", "description": "Fast, thumb-friendly product pages and checkout for shoppers on phones."},
-      {"title": "Product SEO", "description": "Optimised product and category pages so shoppers can find you on Google."},
-      {"title": "Shipping, tax & email", "description": "Shipping rules, tax settings and order confirmation emails set up for you."}
+      {
+        "title": "Custom store design",
+        "description": "A storefront designed around your products and brand, not a generic theme."
+      },
+      {
+        "title": "Secure checkout & payments",
+        "description": "Card payments and popular payment providers with SSL-secured checkout."
+      },
+      {
+        "title": "Product & inventory management",
+        "description": "Add products, update stock and manage orders without touching code."
+      },
+      {
+        "title": "Mobile shopping",
+        "description": "Fast, thumb-friendly product pages and checkout for shoppers on phones."
+      },
+      {
+        "title": "Product SEO",
+        "description": "Optimised product and category pages so shoppers can find you on Google."
+      },
+      {
+        "title": "Shipping, tax & email",
+        "description": "Shipping rules, tax settings and order confirmation emails set up for you."
+      }
     ],
     "benefits": [
-      {"title": "Sell while you sleep", "description": "Your store takes orders around the clock, with no extra staff."},
-      {"title": "Launch without a big bill", "description": "Start selling on a monthly plan instead of a large upfront build."},
-      {"title": "Grow when you're ready", "description": "Start with a few products and upgrade as your range grows."}
+      {
+        "title": "Sell while you sleep",
+        "description": "Your store takes orders around the clock, with no extra staff."
+      },
+      {
+        "title": "Launch without a big bill",
+        "description": "Start selling on a monthly plan instead of a large upfront build."
+      },
+      {
+        "title": "Grow when you're ready",
+        "description": "Start with a few products and upgrade as your range grows."
+      }
     ],
     "process": [
-      {"title": "Plan your store", "description": "Products, payments, shipping and the way your customers like to buy."},
-      {"title": "Design preview", "description": "A homepage and product page preview within 5 business days."},
-      {"title": "Build & test checkout", "description": "We add products, connect payments and test every step of checkout."},
-      {"title": "Launch & optimise", "description": "Go live, then improve conversion and SEO month by month."}
+      {
+        "title": "Plan your store",
+        "description": "Products, payments, shipping and the way your customers like to buy."
+      },
+      {
+        "title": "Design preview",
+        "description": "A homepage and product page preview within 5 business days."
+      },
+      {
+        "title": "Build & test checkout",
+        "description": "We add products, connect payments and test every step of checkout."
+      },
+      {
+        "title": "Launch & optimise",
+        "description": "Go live, then improve conversion and SEO month by month."
+      }
     ],
-    "includes": ["Basic shop (up to 10 products) on Starter", "Fully customised e-commerce on Growth and Scale", "Secure checkout, SSL and payment integration", "Product SEO and order notifications"],
+    "includes": [
+      "Basic shop (up to 10 products) on Starter",
+      "Fully customised e-commerce on Growth and Scale",
+      "Secure checkout, SSL and payment integration",
+      "Product SEO and order notifications"
+    ],
     "faqs": [
-      {"question": "How much does an e-commerce website cost?", "answer": "A simple store for up to 10 products is included in Starter at $199/month. Fully customised online stores are included in Growth at $399/month and Scale from $699/month, with no upfront build fee."},
-      {"question": "Which payment methods can I accept?", "answer": "We set up card payments and popular payment providers, depending on your country and the platform that suits your store."},
-      {"question": "Can I manage products myself?", "answer": "Yes. You can add products, change prices and manage orders yourself, and we're on hand for anything bigger."},
-      {"question": "Can you move my existing store?", "answer": "Yes. We can migrate products and important pages from your current store and set up redirects to protect your rankings."}
+      {
+        "question": "How much does an e-commerce website cost?",
+        "answer": "A simple store for up to 10 products is included in Starter at $199/month. Fully customised online stores are included in Growth at $399/month and Scale from $699/month, with no upfront build fee."
+      },
+      {
+        "question": "Which payment methods can I accept?",
+        "answer": "We set up card payments and popular payment providers, depending on your country and the platform that suits your store."
+      },
+      {
+        "question": "Can I manage products myself?",
+        "answer": "Yes. You can add products, change prices and manage orders yourself, and we're on hand for anything bigger."
+      },
+      {
+        "question": "Can you move my existing store?",
+        "answer": "Yes. We can migrate products and important pages from your current store and set up redirects to protect your rankings."
+      }
     ],
-    "relatedCases": ["menstruation", "bellavista"],
+    "relatedCases": [
+      "menstruation",
+      "bellavista"
+    ],
     "seo": {
       "metaTitle": "E-Commerce Website Design for Small Business | Velaris Web",
       "metaDescription": "Custom e-commerce websites with secure checkout and easy product management, from $199/month. Launch your online store without a big upfront bill.",
-      "keywords": ["ecommerce website design", "online store design", "small business ecommerce", "ecommerce website cost", "shopify alternative"]
+      "keywords": [
+        "ecommerce website design",
+        "online store design",
+        "small business ecommerce",
+        "ecommerce website cost",
+        "shopify alternative"
+      ]
     }
   },
   {
     "slug": "business-email",
     "name": "Business Email",
-    "orderRank": 5,
+    "orderRank": 6,
     "icon": "mail",
     "accent": "#0EA5E9",
-    "tagline": "Professional email on your own domain",
+    "tagline": "Look established in every message you send",
     "shortDescription": "Professional email on your own domain that builds trust with every message.",
-    "heroHeadline": "Professional business email on your own domain",
-    "intro": "Swap the free Gmail or Yahoo address for email like hello@yourbusiness.com. We set it up, connect your domain, configure security and get your team sending, all included in your website plan.",
+    "heroHeadline": "Professional business email that builds trust",
+    "intro": "Customers trust hello@yourbusiness.com more than a free Gmail address. We set up professional email on your domain, secure it so it lands in the inbox, and support it as part of your plan.",
     "capabilities": [
-      {"title": "Email on your domain", "description": "Addresses like hello@, info@ or yourname@yourbusiness.com that look professional."},
-      {"title": "Setup & DNS configuration", "description": "We handle the technical records so email is delivered reliably."},
-      {"title": "Spam & security protection", "description": "SPF, DKIM and DMARC configured to protect your domain and keep you out of spam folders."},
-      {"title": "Works on every device", "description": "Use your email on desktop, phone and tablet with the apps you already know."},
-      {"title": "Shared inboxes & aliases", "description": "Route sales@, support@ or bookings@ to the right people."},
-      {"title": "Migration help", "description": "We help move your existing contacts and messages over."}
+      {
+        "title": "Email on your domain",
+        "description": "Addresses like hello@, info@ or yourname@yourbusiness.com that look professional."
+      },
+      {
+        "title": "Setup & DNS configuration",
+        "description": "We handle the technical records so email is delivered reliably."
+      },
+      {
+        "title": "Spam & security protection",
+        "description": "SPF, DKIM and DMARC configured to protect your domain and keep you out of spam folders."
+      },
+      {
+        "title": "Works on every device",
+        "description": "Use your email on desktop, phone and tablet with the apps you already know."
+      },
+      {
+        "title": "Shared inboxes & aliases",
+        "description": "Route sales@, support@ or bookings@ to the right people."
+      },
+      {
+        "title": "Migration help",
+        "description": "We help move your existing contacts and messages over."
+      }
     ],
     "benefits": [
-      {"title": "Look more credible", "description": "Customers trust businesses with professional email more than free addresses."},
-      {"title": "Better deliverability", "description": "Properly configured email is less likely to land in spam."},
-      {"title": "One less thing to manage", "description": "Email is set up and supported as part of your website plan."}
+      {
+        "title": "Look more credible",
+        "description": "Customers trust businesses with professional email more than free addresses."
+      },
+      {
+        "title": "Better deliverability",
+        "description": "Properly configured email is less likely to land in spam."
+      },
+      {
+        "title": "One less thing to manage",
+        "description": "Email is set up and supported as part of your website plan."
+      }
     ],
     "process": [
-      {"title": "Choose your addresses", "description": "Tell us the names and inboxes you need."},
-      {"title": "Connect your domain", "description": "We configure DNS records and security settings."},
-      {"title": "Set up your devices", "description": "We help you sign in on your computer and phone."},
-      {"title": "Ongoing support", "description": "Need another inbox or alias? Just message us."}
+      {
+        "title": "Choose your addresses",
+        "description": "Tell us the names and inboxes you need."
+      },
+      {
+        "title": "Connect your domain",
+        "description": "We configure DNS records and security settings."
+      },
+      {
+        "title": "Set up your devices",
+        "description": "We help you sign in on your computer and phone."
+      },
+      {
+        "title": "Ongoing support",
+        "description": "Need another inbox or alias? Just message us."
+      }
     ],
-    "includes": ["1 professional inbox on Starter", "3 inboxes on Growth", "5 inboxes on Scale", "Domain, SPF, DKIM & DMARC setup"],
+    "includes": [
+      "1 professional inbox on Starter",
+      "3 inboxes on Growth",
+      "5 inboxes on Scale",
+      "Domain, SPF, DKIM & DMARC setup"
+    ],
     "faqs": [
-      {"question": "How do I get a professional email address for my business?", "answer": "You need your own domain name and an email service connected to it. On any Velaris plan we set this up for you, including the technical DNS records."},
-      {"question": "Is business email included in the website plan?", "answer": "Yes. Starter includes 1 inbox, Growth includes 3 and Scale includes 5. Extra inboxes can be added if you need more."},
-      {"question": "Can I keep using Gmail or Outlook apps?", "answer": "Yes. You can read and send your business email from the apps you already use on desktop and mobile."},
-      {"question": "Will my emails go to spam?", "answer": "We configure SPF, DKIM and DMARC records, which are the main settings that help your emails reach the inbox."}
+      {
+        "question": "How do I get a professional email address for my business?",
+        "answer": "You need your own domain name and an email service connected to it. On any Velaris plan we set this up for you, including the technical DNS records."
+      },
+      {
+        "question": "Is business email included in the website plan?",
+        "answer": "Yes. Starter includes 1 inbox, Growth includes 3 and Scale includes 5. Extra inboxes can be added if you need more."
+      },
+      {
+        "question": "Can I keep using Gmail or Outlook apps?",
+        "answer": "Yes. You can read and send your business email from the apps you already use on desktop and mobile."
+      },
+      {
+        "question": "Will my emails go to spam?",
+        "answer": "We configure SPF, DKIM and DMARC records, which are the main settings that help your emails reach the inbox."
+      }
     ],
-    "relatedCases": ["coastal", "hazelwood"],
+    "relatedCases": [
+      "coastal",
+      "hazelwood"
+    ],
     "seo": {
       "metaTitle": "Professional Business Email Setup | Velaris Web",
       "metaDescription": "Professional email on your own domain, set up and secured for you. Included in every Velaris website plan from $199/month.",
-      "keywords": ["professional business email", "business email address", "email with custom domain", "business email setup", "domain email"]
+      "keywords": [
+        "professional business email",
+        "business email address",
+        "email with custom domain",
+        "business email setup",
+        "domain email"
+      ]
     }
   },
   {
     "slug": "local-listings",
     "name": "Local Listings",
-    "orderRank": 6,
+    "orderRank": 7,
     "icon": "pin",
     "accent": "#F59E0B",
-    "tagline": "Google Maps, Apple Maps & 20+ directories",
+    "tagline": "Be the business customers find on the map",
     "shortDescription": "Google Maps, Apple Maps and 20+ directories, kept accurate so customers can find and trust you.",
-    "heroHeadline": "Local listings that put your business on the map",
-    "intro": "We list your business on Google Maps, Apple Maps and the directories customers use, and keep your name, address, phone and hours consistent everywhere, so you show up in local searches and customers can trust what they find.",
+    "heroHeadline": "Local listings that bring calls, visits and bookings",
+    "intro": "When someone nearby searches for what you do, you need to be on the map with the right details and great reviews. We list you on Google Maps, Apple Maps and 20+ directories and keep everything accurate.",
     "capabilities": [
-      {"title": "Google Business Profile", "description": "Set up, verified and optimised with categories, services, photos and posts."},
-      {"title": "Apple Maps & Bing Places", "description": "Listed where iPhone and Bing users search for local businesses."},
-      {"title": "20+ directories", "description": "Consistent listings across trusted directories and review sites."},
-      {"title": "NAP consistency", "description": "Your name, address and phone number matched everywhere, a key local ranking factor."},
-      {"title": "Review strategy", "description": "Simple ways to ask happy customers for reviews and respond to them."},
-      {"title": "Ongoing updates", "description": "Hours, services and holiday changes updated across your listings."}
+      {
+        "title": "Google Business Profile",
+        "description": "Set up, verified and optimised with categories, services, photos and posts."
+      },
+      {
+        "title": "Apple Maps & Bing Places",
+        "description": "Listed where iPhone and Bing users search for local businesses."
+      },
+      {
+        "title": "20+ directories",
+        "description": "Consistent listings across trusted directories and review sites."
+      },
+      {
+        "title": "NAP consistency",
+        "description": "Your name, address and phone number matched everywhere, a key local ranking factor."
+      },
+      {
+        "title": "Review strategy",
+        "description": "Simple ways to ask happy customers for reviews and respond to them."
+      },
+      {
+        "title": "Ongoing updates",
+        "description": "Hours, services and holiday changes updated across your listings."
+      }
     ],
     "benefits": [
-      {"title": "Show up in the map pack", "description": "Accurate, complete listings help you appear in Google's local results."},
-      {"title": "More calls & directions", "description": "Customers can call, get directions or visit your site straight from search."},
-      {"title": "Build trust", "description": "Consistent information and reviews make customers confident to choose you."}
+      {
+        "title": "Show up in the map pack",
+        "description": "Accurate, complete listings help you appear in Google's local results."
+      },
+      {
+        "title": "More calls & directions",
+        "description": "Customers can call, get directions or visit your site straight from search."
+      },
+      {
+        "title": "Build trust",
+        "description": "Consistent information and reviews make customers confident to choose you."
+      }
     ],
     "process": [
-      {"title": "Listing audit", "description": "We check where you're listed and fix inconsistent details."},
-      {"title": "Claim & optimise", "description": "We claim, verify and complete your key profiles."},
-      {"title": "Expand coverage", "description": "We add you to the directories that matter for your industry."},
-      {"title": "Maintain", "description": "We keep everything accurate as your business changes."}
+      {
+        "title": "Listing audit",
+        "description": "We check where you're listed and fix inconsistent details."
+      },
+      {
+        "title": "Claim & optimise",
+        "description": "We claim, verify and complete your key profiles."
+      },
+      {
+        "title": "Expand coverage",
+        "description": "We add you to the directories that matter for your industry."
+      },
+      {
+        "title": "Maintain",
+        "description": "We keep everything accurate as your business changes."
+      }
     ],
-    "includes": ["Google Maps & Apple Maps listing on every plan", "Listings on 20+ directories on Growth and Scale", "Google Business Profile management on Growth and Scale", "NAP consistency checks"],
+    "includes": [
+      "Google Maps & Apple Maps listing on every plan",
+      "Listings on 20+ directories on Growth and Scale",
+      "Google Business Profile management on Growth and Scale",
+      "NAP consistency checks"
+    ],
     "faqs": [
-      {"question": "How do I get my business on Google Maps?", "answer": "You need a verified Google Business Profile. We create or claim it, complete every section and verify it for you on any Velaris plan."},
-      {"question": "Why are consistent business listings important?", "answer": "Google cross-checks your name, address and phone across the web. Consistent details build trust and help you rank in local results."},
-      {"question": "Which directories will my business be listed on?", "answer": "Google, Apple Maps and Bing on every plan, plus 20+ relevant directories and review sites on Growth and Scale, depending on your industry and country."},
-      {"question": "Can you help us get more Google reviews?", "answer": "Yes. We set up an easy review link and a simple process for asking happy customers to leave a review."}
+      {
+        "question": "How do I get my business on Google Maps?",
+        "answer": "You need a verified Google Business Profile. We create or claim it, complete every section and verify it for you on any Velaris plan."
+      },
+      {
+        "question": "Why are consistent business listings important?",
+        "answer": "Google cross-checks your name, address and phone across the web. Consistent details build trust and help you rank in local results."
+      },
+      {
+        "question": "Which directories will my business be listed on?",
+        "answer": "Google, Apple Maps and Bing on every plan, plus 20+ relevant directories and review sites on Growth and Scale, depending on your industry and country."
+      },
+      {
+        "question": "Can you help us get more Google reviews?",
+        "answer": "Yes. We set up an easy review link and a simple process for asking happy customers to leave a review."
+      }
     ],
-    "relatedCases": ["hazelwood", "coastal"],
+    "relatedCases": [
+      "hazelwood",
+      "coastal"
+    ],
     "seo": {
       "metaTitle": "Local Business Listings & Google Maps | Velaris Web",
       "metaDescription": "Get your business on Google Maps, Apple Maps and 20+ directories with consistent details. Local listings included in every Velaris plan.",
-      "keywords": ["local business listings", "google maps listing", "google business profile", "local citations", "business directory listings"]
+      "keywords": [
+        "local business listings",
+        "google maps listing",
+        "google business profile",
+        "local citations",
+        "business directory listings"
+      ]
     }
   }
 ]

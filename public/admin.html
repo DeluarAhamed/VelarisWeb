@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sign in | Velaris Dashboard</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/velaris-design-system/assets/favicon-32.png">
+<link rel="stylesheet" href="/velaris-design-system/colors_and_type.css?v=20261010-a1">
+<link rel="stylesheet" href="/velaris-design-system/admin/admin.css?v=20261010-a1">
+</head>
+<body>
+<main class="login">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <div class="brand"><img src="/velaris-design-system/assets/velaris-icon.webp" alt="">Velaris</div>
+    <h1>Owner dashboard</h1>
+    <p>Sign in to see your leads, pipeline and website traffic.</p>
+    <label class="field"><span>Password</span><input type="password" name="password" autocomplete="current-password" required autofocus></label>
+    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+    <div class="msg" id="msg" role="alert"></div>
+  </form>
+</main>
+<script>
+(function(){
+  var form = document.getElementById('loginForm'), msg = document.getElementById('msg');
+  function show(text, kind){ msg.textContent = text; msg.className = 'msg show ' + (kind || 'err'); }
+  fetch('/api/admin/session', {credentials: 'same-origin'}).then(function(r){ return r.json(); }).then(function(s){
+    if(s.authed){ location.replace('/dashboard'); return; }
+    if(!s.setup.password) show('Admin password is not set up yet. Add ADMIN_PASSWORD (8+ characters) in Vercel, then redeploy.', 'info');
+  }).catch(function(){});
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button'); btn.disabled = true; msg.className = 'msg';
+    fetch('/api/admin/login', {method: 'POST', credentials: 'same-origin', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({password: form.password.value})})
+      .then(function(r){ return r.json().then(function(b){ return {ok: r.ok, b: b}; }); })
+      .then(function(res){ if(res.ok) location.replace('/dashboard'); else { show(res.b.error || 'Sign in failed.'); btn.disabled = false; form.password.select(); } })
+      .catch(function(){ show('Network error. Try again.'); btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
