@@ -17,7 +17,10 @@ module.exports = async function handler(req, res) {
   const path = String(b.p || '').split('?')[0].slice(0, 120).replace(/[^\w\-/.]/g, '') || '/';
   const ref = String(b.r || '').toLowerCase().replace(/^www\./, '').replace(/[^a-z0-9.\-]/g, '').slice(0, 60);
   try {
-    await store.track({ type, path: type === 'pv' ? path : '', visit: Boolean(b.v), firstEver: Boolean(b.n), ref: ref && ref !== 'velarisweb.com' ? ref : '' });
+    const ua = String(req.headers['user-agent'] || '');
+    const device = /iPad|Tablet/i.test(ua) ? 'tablet' : /Mobi|Android|iPhone/i.test(ua) ? 'mobile' : 'desktop';
+    const country = String(req.headers['x-vercel-ip-country'] || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
+    await store.track({ type, path: type === 'pv' ? path : '', visit: Boolean(b.v), firstEver: Boolean(b.n), ref: ref && ref !== 'velarisweb.com' ? ref : '', device, country });
   } catch (err) {
     console.error('track_failed', err.message);
   }

@@ -176,10 +176,13 @@ async function main() {
   const postPaths = posts.map((post) => postPath(post.slug));
   const paths = [...new Set([...staticPaths, ...servicePaths, ...casePaths, ...postPaths])];
 
+  // lastmod helps Google decide what to recrawl: articles use their publish date, generated pages the build date.
+  const buildDate = new Date().toISOString().slice(0, 10);
+  const lastmod = Object.fromEntries(posts.map((post) => [postPath(post.slug), [isoDate(post.date), buildDate].sort()[0]]));
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...paths.map((urlPath) => `  <url><loc>${escapeXml(origin + urlPath)}</loc></url>`),
+    ...paths.map((urlPath) => `  <url><loc>${escapeXml(origin + urlPath)}</loc><lastmod>${lastmod[urlPath] || buildDate}</lastmod></url>`),
     '</urlset>',
     '',
   ].join('\n');

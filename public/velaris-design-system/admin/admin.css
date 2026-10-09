@@ -163,3 +163,6 @@ td .who small,td small{color:var(--ink-3)}
   .links{grid-template-columns:1fr}
 }
 @media (max-width:520px){ .g4{grid-template-columns:1fr 1fr} .card{padding:18px} .search{min-width:0;width:100%} }
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.top-actions small{color:var(--ink-3);font-size:12.5px}
+@media (max-width:520px){.top-actions small{display:none}}

@@ -28,6 +28,7 @@ module.exports = async function handler(req, res) {
     country: clean(input.country, 100), timezone: clean(input.timezone, 80), serviceInterest: clean(input.serviceInterest, 200),
     problem: clean(input.problem, 700), goal: clean(input.goal, 700), budget: clean(input.budget, 80),
     timeline: clean(input.timeline, 100), conversationSummary: clean(input.conversationSummary, 1600),
+    page: clean(input.page, 160), landingPage: clean(input.landingPage, 160), referrer: clean(input.referrer, 80), utm: clean(input.utm, 160),
     wantsCall: Boolean(input.wantsCall), meetingBooked: false, status: input.wantsCall ? 'qualified' : 'new'
   };
   if (!lead.email || !validEmail(lead.email)) return json(res, 400, { error: 'Please provide a valid email address.' });

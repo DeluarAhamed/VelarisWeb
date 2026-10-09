@@ -1,6 +1,6 @@
 // Admin API for /dashboard (one function to stay within Vercel's function limit).
 //   POST /api/admin/login {password}   POST /api/admin/logout   GET /api/admin/session
-//   GET  /api/admin/leads              PATCH /api/admin/leads {id, status?, notes?, monthlyValue?}
+//   GET  /api/admin/leads   POST /api/admin/leads {name, ...}   PATCH /api/admin/leads {id, status?, notes?, monthlyValue?}
 //   GET  /api/admin/stats?days=30      GET /api/admin/export  (CSV)
 const { rateLimit, json } = require('../../lib/voice/security');
 const auth = require('../../lib/admin/auth');
@@ -46,6 +46,20 @@ module.exports = async function handler(req, res) {
 
     if (action === 'leads') {
       if (req.method === 'GET') return json(res, 200, { leads: await store.listLeads(), statuses: store.STATUSES });
+      if (req.method === 'POST') {
+        // Manually added lead (e.g. an enquiry that arrived on WhatsApp or by phone).
+        const b = body(req);
+        const s = (v, n) => (typeof v === 'string' ? v.trim().slice(0, n) : '');
+        if (!s(b.name, 120)) return json(res, 400, { error: 'Name is required.' });
+        const status = store.STATUSES.includes(b.status) ? b.status : 'new';
+        const lead = await store.saveLead({
+          createdAt: new Date().toISOString(), source: 'manual', channel: s(b.channel, 40) || 'Other',
+          name: s(b.name, 120), email: s(b.email, 180), phone: s(b.phone, 50), company: s(b.company, 160),
+          budget: s(b.budget, 80), problem: s(b.problem, 700), notes: s(b.notes, 4000),
+        });
+        const saved = status === 'new' ? lead : await store.updateLead(lead.id, { status });
+        return json(res, 201, { lead: saved });
+      }
       if (req.method === 'PATCH') {
         const b = body(req);
         if (!b.id) return json(res, 400, { error: 'Missing lead id' });

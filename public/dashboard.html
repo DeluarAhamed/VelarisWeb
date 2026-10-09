@@ -7,7 +7,7 @@
 <title>Dashboard | Velaris</title>
 <link rel="icon" type="image/png" sizes="32x32" href="/velaris-design-system/assets/favicon-32.png">
 <link rel="stylesheet" href="/velaris-design-system/colors_and_type.css?v=20261010-a1">
-<link rel="stylesheet" href="/velaris-design-system/admin/admin.css?v=20261010-a1">
+<link rel="stylesheet" href="/velaris-design-system/admin/admin.css?v=20261010-a2">
 </head>
 <body>
 <div class="app">
@@ -34,8 +34,12 @@
         <button class="btn btn-ghost menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
         <div><h1 id="viewTitle">Overview</h1><p id="viewSub">Leads, pipeline and website insights</p></div>
       </div>
-      <div class="range" id="range" role="group" aria-label="Date range">
-        <button data-days="7">7d</button><button data-days="30" class="on">30d</button><button data-days="90">90d</button>
+      <div class="top-actions">
+        <small id="updated"></small>
+        <button class="btn btn-ghost" id="refresh" type="button">Refresh</button>
+        <div class="range" id="range" role="group" aria-label="Date range">
+          <button data-days="7">7d</button><button data-days="30" class="on">30d</button><button data-days="90">90d</button>
+        </div>
       </div>
     </div>
     <div id="banner"></div>
@@ -48,6 +52,6 @@
   <aside class="drawer-panel" role="dialog" aria-modal="true" aria-label="Lead details" id="drawerPanel"></aside>
 </div>
 
-<script src="/velaris-design-system/admin/admin.js?v=20261010-a1"></script>
+<script src="/velaris-design-system/admin/admin.js?v=20261010-a2"></script>
 </body>
 </html>

@@ -86,10 +86,18 @@
   (function trackPageview(){
     var today = new Date().toISOString().slice(0, 10), visit = 0, firstEver = 0, ref = '';
     try {
-      if(localStorage.getItem('vw_day') !== today){ visit = 1; localStorage.setItem('vw_day', today); }
+      if(localStorage.getItem('vw_d') !== today){ visit = 1; localStorage.setItem('vw_d', today); }
       if(!localStorage.getItem('vw_seen')){ firstEver = 1; localStorage.setItem('vw_seen', '1'); }
     } catch(e){ visit = 1; }
     try { var r = document.referrer && new URL(document.referrer); if(r && r.host !== location.host) ref = r.host; } catch(e){}
+    // Remember where this visit started so a lead can be attributed to its landing page, referrer and campaign.
+    try {
+      if(!sessionStorage.getItem('vw_src')){
+        var q = new URLSearchParams(location.search);
+        var utm = ['utm_source','utm_medium','utm_campaign'].map(function(k){ return q.get(k); }).filter(Boolean).join(' / ');
+        sessionStorage.setItem('vw_src', JSON.stringify({landingPage: location.pathname, referrer: ref || 'direct', utm: utm}));
+      }
+    } catch(e){}
     vwTrack('pv', {v: visit, n: firstEver, r: ref});
   })();
   document.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a[href*="wa.me/"]')) vwTrack('wa'); }, true);
@@ -344,6 +352,8 @@
       d.problem ? 'Project: '+d.problem : ''].filter(Boolean).join('\n');
   }
   function sendLead(d, done){
+    d.page = location.pathname;
+    try { var src = JSON.parse(sessionStorage.getItem('vw_src') || '{}'); d.landingPage = src.landingPage || ''; d.referrer = src.referrer || ''; d.utm = src.utm || ''; } catch(e){}
     var fallback = waLink(leadSummary(d));
     if(!window.fetch){ done(false, fallback); return; }
     fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})

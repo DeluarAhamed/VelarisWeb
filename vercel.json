@@ -222,6 +222,36 @@
       "permanent": true
     },
     {
+      "source": "/services/(local-seo|seo-optimization)",
+      "destination": "/services/seo",
+      "permanent": true
+    },
+    {
+      "source": "/services/(webflow-development|framer-development|conversion-uiux|ux-design|website-design|brand-identity|linkedin-profile-design|linkedin-positioning)",
+      "destination": "/services/web-design",
+      "permanent": true
+    },
+    {
+      "source": "/services/(custom-development|crm|booking-systems)",
+      "destination": "/services/custom-software",
+      "permanent": true
+    },
+    {
+      "source": "/services/(ai-web-development|ai|ai-automation)",
+      "destination": "/services/ai-solutions",
+      "permanent": true
+    },
+    {
+      "source": "/services/(social-media-management|cold-email-marketing)",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/:slug*",
+      "destination": "/services/web-design",
+      "permanent": true
+    },
+    {
       "source": "/work",
       "destination": "/case-studies",
       "permanent": true
