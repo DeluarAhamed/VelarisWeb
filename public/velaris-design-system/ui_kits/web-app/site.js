@@ -588,3 +588,113 @@
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});
   else window.addEventListener('load',function(){setTimeout(loadAva,600);},{once:true});
 })();
+
+/* ============================================================================
+   Motion: Lenis smooth scrolling + GSAP ScrollTrigger reveals on every page.
+   Content is fully visible without JS; nothing is hidden until GSAP has loaded,
+   and elements already on screen at start-up are left alone (the hero entrance is CSS).
+   ========================================================================== */
+(function(){
+  'use strict';
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var LIBS = [
+    'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js',
+    'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'
+  ];
+  var HERO = '.v-hero,.v-phero,.lp-hero,.phero,.post-hero';
+  var BLOCKS = '.v-head,.v-faq-intro,.lp-story-row,.lp-plan,.v-cta-card,.lp-quote,.v-compare,.v-dash,.v-story-intro,.v-philo';
+  var CARDS = '.v-feat,.v-out,.v-svc,.v-case,.v-step,.v-review,.v-plan,.v-stat,.v-ex,.lp-pain,.lp-benefit,.lp-link,.lp-ind,.lp-shots figure,.v-faq details,.pcard,.res-card,.v-logo-row img';
+
+  function load(src){
+    return new Promise(function(ok, fail){
+      var s = document.createElement('script'); s.src = src; s.async = false; s.crossOrigin = 'anonymous';
+      s.onload = ok; s.onerror = fail; document.head.appendChild(s);
+    });
+  }
+  function ready(){ return new Promise(function(ok){ document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', ok, {once: true}) : ok(); }); }
+
+  // Scrollable panels (modals, drawers, the Ava chat, the stacked case-study text) keep native scrolling.
+  function inScrollable(node){
+    for(var el = node; el && el !== document.body && el.nodeType === 1; el = el.parentElement){
+      if(el.hasAttribute('data-lenis-prevent')) return true;
+      var oy = getComputedStyle(el).overflowY;
+      if((oy === 'auto' || oy === 'scroll') && el.scrollHeight > el.clientHeight + 1) return true;
+    }
+    return false;
+  }
+
+  function smoothScroll(gsap, ScrollTrigger){
+    if(!window.Lenis) return null;
+    var lenis = new window.Lenis({lerp: 0.1, smoothWheel: true, prevent: inScrollable});
+    window.velarisLenis = lenis;
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    // Pause while a modal or the mobile menu locks the page (site.js sets body overflow:hidden).
+    new MutationObserver(function(){ document.body.style.overflow === 'hidden' ? lenis.stop() : lenis.start(); })
+      .observe(document.body, {attributes: true, attributeFilter: ['style']});
+    // Same-page anchors glide instead of jumping, clearing the sticky header.
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if(!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      var url = new URL(a.href, location.href);
+      if(url.pathname !== location.pathname || !url.hash || url.hash.length < 2) return;
+      var target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+      if(!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, {offset: -96, duration: 1.2});
+      history.pushState(null, '', url.hash);
+    });
+    return lenis;
+  }
+
+  function reveals(gsap, ScrollTrigger){
+    var vh = window.innerHeight;
+    var pick = function(sel){
+      return [].slice.call(document.querySelectorAll(sel)).filter(function(el){
+        if(el.closest(HERO) || el.closest('.reveal') || el.closest('#site-nav,#site-footer,.drawer,.modal,.plan-modal')) return false;
+        return el.getBoundingClientRect().top > vh * 0.92; // already visible: leave as is
+      });
+    };
+    var show = function(batch, y){
+      gsap.to(batch, {opacity: 1, y: 0, scale: 1, duration: 0.9, ease: 'power3.out', stagger: 0.08, overwrite: true, clearProps: 'opacity,transform'});
+    };
+    var blocks = pick(BLOCKS), cards = pick(CARDS).filter(function(el){ return blocks.indexOf(el) < 0; });
+    if(blocks.length){
+      gsap.set(blocks, {opacity: 0, y: 36});
+      ScrollTrigger.batch(blocks, {start: 'top 88%', once: true, onEnter: show, onLeave: show});
+    }
+    if(cards.length){
+      gsap.set(cards, {opacity: 0, y: 44});
+      ScrollTrigger.batch(cards, {start: 'top 90%', once: true, interval: 0.12, batchMax: 6, onEnter: show, onLeave: show});
+    }
+    // Gentle depth: hero visuals drift up as you scroll past, screenshots settle into place.
+    gsap.utils.toArray('.v-hero .v-visual, .lp-hero .lp-art, .lp-hero .lp-day').forEach(function(el){
+      gsap.to(el, {yPercent: -8, ease: 'none', scrollTrigger: {trigger: el.closest(HERO), start: 'top top', end: 'bottom top', scrub: true}});
+    });
+    gsap.utils.toArray('.lp-shot img').forEach(function(el){
+      gsap.fromTo(el, {scale: 1.06}, {scale: 1, ease: 'none', scrollTrigger: {trigger: el, start: 'top bottom', end: 'top 35%', scrub: true}});
+    });
+    // Recalculate trigger positions whenever the page grows (images, CMS content, the stacked case studies).
+    var timer = 0, refresh = function(){ clearTimeout(timer); timer = setTimeout(function(){ ScrollTrigger.refresh(); }, 150); };
+    if(document.readyState === 'complete') refresh(); else window.addEventListener('load', refresh, {once: true});
+    if('ResizeObserver' in window) new ResizeObserver(refresh).observe(document.body);
+    // Safety net: never leave content hidden if a trigger misses.
+    setTimeout(function(){
+      var stuck = blocks.concat(cards).filter(function(el){ return el.style.opacity === '0' && el.getBoundingClientRect().top < window.innerHeight; });
+      if(stuck.length) show(stuck);
+    }, 4000);
+  }
+
+  LIBS.reduce(function(p, src){ return p.then(function(){ return load(src); }); }, Promise.resolve())
+    .then(ready)
+    .then(function(){
+      var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+      if(!gsap || !ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      smoothScroll(gsap, ScrollTrigger);
+      reveals(gsap, ScrollTrigger);
+    })
+    .catch(function(){ /* CDN unavailable: the site works exactly as before, with native scrolling. */ });
+})();
