@@ -597,3 +597,21 @@
   .legal p,.legal li{font-size:15.5px}
   .legal-contact{padding:22px}
 }
+
+/* ===== Contact page ===== */
+.contact-hero{padding-bottom:40px}
+.contact-ways-wrap{padding-top:8px;padding-bottom:72px}
+.contact-ways{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact-way{display:flex;flex-direction:column;gap:8px;padding:28px;border-radius:var(--v-r);background:#fff;border:1px solid var(--v-line);transition:border-color .2s,transform .2s var(--ease),box-shadow .2s}
+.contact-way:hover{border-color:var(--blue-wash-2);transform:translateY(-3px);box-shadow:0 24px 48px -32px rgba(11,27,51,.35)}
+.contact-way .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--blue-wash);color:var(--blue);margin-bottom:10px}
+.contact-way .ic svg{width:22px;height:22px}
+.contact-way.wa .ic{background:#E7F8EF;color:#1DA851}
+.contact-way b{font-size:19px;letter-spacing:-.02em;color:var(--v-ink)}
+.contact-way>span:not(.ic){font-size:15px;line-height:1.55;color:var(--v-ink-2)}
+.contact-way em{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:12px;font-style:normal;font-size:15px;font-weight:700;color:var(--blue)}
+.contact-way.wa em{color:#1DA851}
+.contact-way em svg{width:16px;height:16px;transition:transform .2s}
+.contact-way:hover em svg{transform:translateX(3px)}
+.v-faq-intro p a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:900px){.contact-ways{grid-template-columns:1fr}.contact-way{padding:22px}}

@@ -794,3 +794,7 @@ html.lenis,html.lenis body{height:auto}
   :is(.v-hero .v-hero-grid>div:first-child,.v-phero>.wrap,.lp-hero-grid>div:first-child,.lp-hero.case>.wrap:first-child,.phero>.wrap,.post-hero>.wrap)>:nth-child(n+6){animation-delay:.35s}
   :is(.v-hero .v-visual,.lp-art,.lp-day,.lp-shot){animation:vmIn 1.1s cubic-bezier(.16,1,.3,1) .3s backwards}
 }
+/* Nav fits 7 items on smaller laptops */
+.nav-item>a{white-space:nowrap}
+@media (max-width:1280px){.nav-item>a{padding:10px 11px}.nav-right{gap:10px}.nav-right .btn{padding:0 18px}}
+@media (max-width:1180px){.nav-right .nav-wa{display:none}.nav-item>a{padding:10px 9px;font-size:14.5px}}

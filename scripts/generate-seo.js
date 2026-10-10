@@ -165,7 +165,7 @@ async function main() {
     return true;
   });
 
-  const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/privacy', '/terms'];
+  const staticPaths = ['/', '/services', '/case-studies', '/pricing', '/resources', '/blog', '/about', '/contact', '/privacy', '/terms'];
   // Service and case-study landing pages (prerendered into dist/ when it exists).
   const landing = await buildLandingPages({
     distDir: fs.existsSync(distDir) ? distDir : null,

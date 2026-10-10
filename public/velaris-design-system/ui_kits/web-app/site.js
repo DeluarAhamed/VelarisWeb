@@ -154,6 +154,7 @@
         '<div class="nav-item has-mega'+(page==='cases'?' active':'')+'"><a href="/case-studies" aria-haspopup="true">Our Work <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></a>'+caseMega()+'</div>'+
         '<div class="nav-item'+(page==='about'?' active':'')+'"><a href="/about">About</a></div>'+
         '<div class="nav-item'+(page==='blog'?' active':'')+'"><a href="/blog">Blog</a></div>'+
+        '<div class="nav-item'+(page==='contact'?' active':'')+'"><a href="/contact">Contact</a></div>'+
       '</nav>'+
       '<div class="nav-right"><a class="ghost nav-wa" href="'+waLink()+'" target="_blank" rel="noopener">'+WA_ICON+'WhatsApp us</a>'+
         '<a class="btn btn-teal" href="/pricing">Get Started</a>'+
@@ -169,6 +170,7 @@
         '<a class="dl" href="/pricing" data-close>Pricing</a>'+
         '<a class="dl" href="/about" data-close>About</a>'+
         '<a class="dl" href="/blog" data-close>Blog</a>'+
+        '<a class="dl" href="/contact" data-close>Contact</a>'+
       '</nav>'+
       '<div class="drawer-cta">'+
         '<a class="btn btn-line" data-close href="'+waLink()+'" target="_blank" rel="noopener">WhatsApp us</a>'+
@@ -201,7 +203,8 @@
         '<a href="/pricing">Pricing</a>'+
         '<a href="/resources">Resources</a>'+
         '<a href="/about">About</a>'+
-        '<a href="/blog">Blog</a></div>'+
+        '<a href="/blog">Blog</a>'+
+        '<a href="/contact">Contact</a></div>'+
       '<div class="foot-col"><h5>Get started</h5>'+
         '<a href="/pricing">See Plans</a>'+
         '<a href="'+waLink()+'" target="_blank" rel="noopener">WhatsApp +880 1989-570693</a>'+

@@ -297,7 +297,7 @@
       "permanent": true
     },
     {
-      "source": "/velaris-design-system/ui_kits/web-app/:page(pricing|about|resources|blog|privacy|terms|services)",
+      "source": "/velaris-design-system/ui_kits/web-app/:page(pricing|about|resources|blog|privacy|terms|services|contact)",
       "destination": "/:page",
       "permanent": true
     },
@@ -342,6 +342,11 @@
       "source": "/velaris-design-system/:dir(preview|scraps)/:path*",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -384,6 +389,10 @@
     {
       "source": "/terms",
       "destination": "/velaris-design-system/ui_kits/web-app/terms"
+    },
+    {
+      "source": "/contact",
+      "destination": "/velaris-design-system/ui_kits/web-app/contact"
     }
   ],
   "headers": [
