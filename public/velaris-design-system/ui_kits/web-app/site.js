@@ -181,9 +181,7 @@
       '<div class="foot-brand">'+BRAND+
         '<p>We build the websites, software and AI automation that help small businesses grow, on one simple monthly plan.</p>'+
         '<div class="foot-social">'+
-          '<a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-5 7H2l8-9L2 2h6l4 6z"/></svg></a>'+
           '<a href="'+LINKEDIN_URL+'" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="'+LINKEDIN_ICON+'" alt=""></a>'+
-          '<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>'+
         '</div></div>'+
       '<div class="foot-col"><h5>Plans</h5>'+
         '<a href="/pricing#plans">Starter</a>'+
@@ -208,9 +206,9 @@
         '<a href="/pricing">See Plans</a>'+
         '<a href="'+waLink()+'" target="_blank" rel="noopener">WhatsApp +880 1989-570693</a>'+
         '<a data-booking href="https://calendly.com/velarisweb/30min">Book a Call</a>'+
-        '<a href="/playbook">Free Playbook</a></div>'+
+        '<a href="/resources">Free resources</a></div>'+
     '</div><div class="foot-bottom"><span>© <span id="yr">2026</span> Velaris Web. All rights reserved.</span>'+
-      '<div class="links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>';
+      '<div class="links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div></div></div></footer>';
 
   var navMount = document.getElementById('site-nav');
   var footMount = document.getElementById('site-footer');
@@ -527,7 +525,7 @@
               '<div class="ifield-row"><div class="ifield"><label>Service required *</label><select name="service" required><option value="" selected disabled>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div><div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" selected disabled>Select a plan</option><option>Starter ($199/month)</option><option>Growth ($399/month)</option><option>Scale (from $699/month)</option><option>One-off project</option><option>Not sure yet</option></select></div></div>'+
               '<div class="ifield"><label>Project details *</label><textarea name="details" placeholder="Tell us more about your idea" required></textarea></div>'+
               '<button class="btn btn-dark" type="submit">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
-              '<p class="imodal-alt">Not interested in the form? <a href="#" data-contact-tab="calendar">Book a call directly</a></p>'+
+              '<p class="imodal-alt">Not interested in the form? <a href="https://calendly.com/velarisweb/30min" data-contact-tab="calendar">Book a call directly</a></p>'+
               '<div class="imodal-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg> Thanks! We\'ll be in touch within one business day.</div>'+
             '</form>'+
             '<div class="contact-calendar" data-panel="calendar" hidden><div class="calendly-inline-widget" data-url="'+CAL_URL+'" style="min-width:320px;height:700px;"></div></div>'+
@@ -578,6 +576,30 @@
     });
   }
   renderContactSections();
+
+  /* Pages use <base href="/velaris-design-system/ui_kits/web-app/">, so a bare "#id" link would point at that folder.
+     Point in-page links at the current clean URL instead. */
+  function fixHashLinks(root){
+    [].slice.call((root || document).querySelectorAll('a[href^="#"]')).forEach(function(a){
+      var h = a.getAttribute('href'); a.setAttribute('href', h.length > 1 ? location.pathname + h : location.pathname);
+    });
+  }
+  fixHashLinks();
+  window.addEventListener('load', function(){ fixHashLinks(); });
+
+  /* Share links on articles: LinkedIn share and copy-link use the page's canonical URL. */
+  (function(){
+    var canon = document.querySelector('link[rel="canonical"]');
+    var url = canon ? canon.href : location.origin + location.pathname;
+    document.querySelectorAll('[data-share="linkedin"]').forEach(function(a){ a.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url); });
+    document.querySelectorAll('[data-share="copy"]').forEach(function(a){
+      a.href = url;
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        if(navigator.clipboard) navigator.clipboard.writeText(url).then(function(){ a.setAttribute('aria-label', 'Link copied'); a.classList.add('copied'); setTimeout(function(){ a.setAttribute('aria-label', 'Copy link'); a.classList.remove('copied'); }, 1800); });
+      });
+    });
+  })();
 
   /* Ava AI assistant — lazy-loaded after the page is interactive. */
   function loadAva(){

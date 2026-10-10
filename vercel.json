@@ -260,6 +260,88 @@
       "source": "/work",
       "destination": "/case-studies",
       "permanent": true
+    },
+    {
+      "source": "/playbook",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/:page(home-figma|home|index|velaris-home)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/playbook",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/:page(pricing|about|resources|blog|privacy|terms|services)",
+      "destination": "/:page",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/work",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/industries",
+      "destination": "/solutions",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/post",
+      "has": [
+        {
+          "type": "query",
+          "key": "slug",
+          "value": "(?<slug>[A-Za-z0-9-]+)"
+        }
+      ],
+      "destination": "/blog/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/post",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/service",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/ui_kits/web-app/case",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/velaris-design-system/:dir(preview|scraps)/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -296,8 +378,12 @@
       "destination": "/velaris-design-system/ui_kits/web-app/about"
     },
     {
-      "source": "/playbook",
-      "destination": "/velaris-design-system/ui_kits/web-app/playbook"
+      "source": "/privacy",
+      "destination": "/velaris-design-system/ui_kits/web-app/privacy"
+    },
+    {
+      "source": "/terms",
+      "destination": "/velaris-design-system/ui_kits/web-app/terms"
     }
   ],
   "headers": [
