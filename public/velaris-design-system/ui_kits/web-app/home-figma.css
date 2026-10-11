@@ -798,3 +798,7 @@ html.lenis,html.lenis body{height:auto}
 .nav-item>a{white-space:nowrap}
 @media (max-width:1280px){.nav-item>a{padding:10px 11px}.nav-right{gap:10px}.nav-right .btn{padding:0 18px}}
 @media (max-width:1180px){.nav-right .nav-wa{display:none}.nav-item>a{padding:10px 9px;font-size:14.5px}}
+/* Lead form spam protection: honeypot field is invisible to people; Turnstile slot when enabled */
+.hp-wrap{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
+.ts-slot{margin:4px 0 10px;min-height:0}
+.ts-slot:empty{display:none}

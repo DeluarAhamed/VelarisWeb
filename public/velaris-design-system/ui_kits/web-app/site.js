@@ -331,8 +331,9 @@
           '<div class="ifield"><label>Full name</label><input type="text" name="name" placeholder="Jane Cooper" required></div>'+
           '<div class="ifield-row">'+
             '<div class="ifield"><label>Company name</label><input type="text" name="company" placeholder="Ex. Tesla Inc"></div>'+
-            '<div class="ifield"><label>Email *</label><input type="email" name="email" placeholder="you@example.com" required></div>'+
+            '<div class="ifield"><label>Email *</label><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required></div>'+
           '</div>'+
+          '<div class="ifield"><label>Phone / WhatsApp *</label><input type="tel" name="phone" placeholder="+1 555 000 0000" autocomplete="tel" required title="Phone or WhatsApp number with country code, e.g. +1 555 000 0000"></div>'+
           '<div class="ifield-row">'+
             '<div class="ifield"><label>Service required *</label><select name="service" required><option value="" disabled selected>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'<option>Not sure yet</option></select></div>'+
             '<div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" disabled selected>Select a plan</option><option>Starter ($199/month)</option><option>Growth ($399/month)</option><option>Scale (from $699/month)</option><option>One-off project</option><option>Not sure yet</option></select></div>'+
@@ -361,38 +362,104 @@
       'Name: '+d.name, 'Email: '+d.email, d.phone ? 'Phone: '+d.phone : '', d.company ? 'Company: '+d.company : '',
       d.problem ? 'Project: '+d.problem : ''].filter(Boolean).join('\n');
   }
-  function sendLead(d, done){
+  /* ---- Spam protection: signed form token (fetched early), hidden honeypot field, optional Cloudflare Turnstile ---- */
+  var LeadGuard = (function(){
+    var tokenP = null, gotAt = 0, siteKey = null, tsP = null;
+    function token(){
+      if(!tokenP && window.fetch){
+        tokenP = fetch('/api/leads', {credentials: 'same-origin'}).then(function(r){ return r.json(); }).then(function(j){
+          gotAt = Date.now(); siteKey = j.turnstileSiteKey || null;
+          if(siteKey) loadTurnstile();
+          return j.token || '';
+        }).catch(function(){ tokenP = null; return ''; });
+      }
+      return tokenP || Promise.resolve('');
+    }
+    function loadTurnstile(){
+      if(!tsP) tsP = new Promise(function(ok){
+        var sc = document.createElement('script'); sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; sc.async = true;
+        sc.onload = function(){ ok(window.turnstile); }; sc.onerror = function(){ ok(null); }; document.head.appendChild(sc);
+      });
+      return tsP;
+    }
+    function renderTurnstile(form){
+      if(!siteKey || form._tsSlot) return;
+      loadTurnstile().then(function(ts){
+        if(!ts || form._tsSlot) return;
+        var slot = document.createElement('div'); slot.className = 'ts-slot'; form._tsSlot = slot;
+        var btn = form.querySelector('button[type="submit"],button:not([type])'); btn ? btn.parentNode.insertBefore(slot, btn) : form.appendChild(slot);
+        form._tsId = ts.render(slot, {sitekey: siteKey, appearance: 'interaction-only', callback: function(t){ form._ts = t; }, 'expired-callback': function(){ form._ts = ''; }});
+      });
+    }
+    function prepare(form){
+      if(!form || form._lg) return; form._lg = true;
+      var hp = document.createElement('div'); hp.className = 'hp-wrap'; hp.setAttribute('aria-hidden', 'true');
+      hp.innerHTML = '<label>Leave this field empty <input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label>';
+      form.appendChild(hp);
+      form.addEventListener('focusin', function(){ token().then(function(){ renderTurnstile(form); }); });
+    }
+    // Resolves with the anti-spam fields; waits so that at least 3.2s pass between getting the token and sending.
+    function extras(form){
+      return token().then(function(t){
+        var wait = Math.max(0, 3200 - (Date.now() - gotAt));
+        return new Promise(function(ok){ setTimeout(function(){
+          var hp = form && form.querySelector('[name="hp_field"]');
+          ok({formToken: t, hp_field: hp ? hp.value : '', turnstileToken: (form && form._ts) || ''});
+        }, wait); });
+      });
+    }
+    function reset(form){ if(form && form._tsId != null && window.turnstile) try { window.turnstile.reset(form._tsId); form._ts = ''; } catch(e){} }
+    return {token: token, prepare: prepare, extras: extras, reset: reset};
+  })();
+  window.VelarisLead = LeadGuard;
+  function validPhone(p){ var dg = String(p || '').replace(/\D/g, ''); return /^\+?[\d\s().-]{7,25}$/.test(String(p || '').trim()) && dg.length >= 8 && dg.length <= 15 && !/^(\d)\1+$/.test(dg); }
+  // Fetch the token once the page is idle, so it is ready long before anyone submits.
+  if('requestIdleCallback' in window) requestIdleCallback(function(){ if(document.querySelector('form')) LeadGuard.token(); }, {timeout: 4000});
+  else setTimeout(function(){ if(document.querySelector('form')) LeadGuard.token(); }, 2500);
+
+  function sendLead(d, done, form){
     d.page = location.pathname;
     try { var src = JSON.parse(sessionStorage.getItem('vw_src') || '{}'); d.landingPage = src.landingPage || ''; d.referrer = src.referrer || ''; d.utm = src.utm || ''; } catch(e){}
     var fallback = waLink(leadSummary(d));
     if(!window.fetch){ done(false, fallback); return; }
-    fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)})
-      .then(function(r){ if(r.ok) vwTrack('form'); done(r.ok, fallback); })
-      .catch(function(){ done(false, fallback); });
+    LeadGuard.extras(form).then(function(x){
+      for(var k in x) d[k] = x[k];
+      return fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)});
+    }).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(j){
+        if(r.ok) vwTrack('form');
+        LeadGuard.reset(form);
+        // 400/429: show the server's message (e.g. invalid phone) so the visitor can fix it.
+        done(r.ok, fallback, (r.status === 400 || r.status === 429) ? j.error : '');
+      });
+    }).catch(function(){ done(false, fallback); });
   }
   function formData(form){
     var v = function(n){ var el = form.querySelector('[name="'+n+'"]'); return el ? String(el.value||'').trim() : ''; };
     return {name:v('name'), email:v('email'), phone:v('phone'), company:v('company'), serviceInterest:v('service'), budget:v('budget'), problem:v('details')};
   }
-  function leadResult(form, ok, fallback){
+  function leadResult(form, ok, fallback, msg){
     var box = form.querySelector('.imodal-ok');
     var btn = form.querySelector('button[type="submit"]');
     if(btn){ btn.disabled = false; btn.classList.remove('is-busy'); }
     if(!box) return;
     box.innerHTML = ok
       ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-11"/></svg> Thanks! We\'ll be in touch within a few hours.'
+      : msg ? esc(msg)
       : 'We couldn\'t send the form just now. <a href="'+fallback+'" target="_blank" rel="noopener">Send these details on WhatsApp</a> and we\'ll reply fast.';
     box.classList.toggle('warn', !ok);
     box.classList.add('show');
     if(ok) form.reset();
   }
   function wireLeadForm(form, source, after){
+    LeadGuard.prepare(form);
     form.addEventListener('submit', function(e){
       e.preventDefault();
       var d = formData(form); d.source = source;
+      if(!validPhone(d.phone)){ leadResult(form, false, '', 'Please enter a valid phone or WhatsApp number, including the country code.'); return; }
       var btn = form.querySelector('button[type="submit"]');
       if(btn){ btn.disabled = true; btn.classList.add('is-busy'); }
-      sendLead(d, function(ok, fallback){ leadResult(form, ok, fallback); if(ok && after) after(); });
+      sendLead(d, function(ok, fallback, msg){ leadResult(form, ok, fallback, msg); if(ok && after) after(); }, form);
     });
   }
   var iform = document.getElementById('inquiryForm');
@@ -423,24 +490,25 @@
               '<label class="pf"><span>Full name</span><input type="text" name="name" placeholder="Jane Cooper" autocomplete="name" required></label>'+
               '<label class="pf"><span>Email</span><input type="email" name="email" placeholder="jane@company.com" autocomplete="email" required></label>'+
             '</div>'+
-            '<label class="pf"><span>Phone / WhatsApp <em>(optional)</em></span><input type="tel" name="phone" placeholder="+1 555 000 0000" autocomplete="tel"></label>'+
+            '<label class="pf"><span>Phone / WhatsApp</span><input type="tel" name="phone" placeholder="+1 555 000 0000" autocomplete="tel" required title="Phone or WhatsApp number with country code, e.g. +1 555 000 0000"></label>'+
             '<label class="pf"><span>Tell us about your project</span><textarea name="details" rows="4" placeholder="New website, redesign, online store, a question..."></textarea></label>'+
-            '<p class="pmodal-err" hidden>Please add your name and a valid email.</p>'+
+            '<p class="pmodal-err" hidden>Please add your name, a valid email and a phone number with country code.</p>'+
             '<button class="btn btn-blue" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
             '<div class="imodal-ok"></div>'+
           '</form>'+
         '</div>';
       document.body.appendChild(pmodal);
       var form = pmodal.querySelector('form');
+      LeadGuard.prepare(form);
       form.addEventListener('submit', function(e){
         e.preventDefault();
         var d = formData(form); d.source = 'website_plan_modal'; d.serviceInterest = 'Monthly website plan';
         var err = form.querySelector('.pmodal-err');
-        var valid = d.name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+        var valid = d.name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email) && validPhone(d.phone);
         err.hidden = !!valid;
         if(!valid) return;
         var btn = form.querySelector('button[type="submit"]'); btn.disabled = true; btn.classList.add('is-busy');
-        sendLead(d, function(ok, fallback){ leadResult(form, ok, fallback); });
+        sendLead(d, function(ok, fallback, msg){ leadResult(form, ok, fallback, msg); }, form);
       });
       pmodal.addEventListener('click', function(e){ if(e.target.closest('[data-pclose]')) closePlanModal(); });
     }
@@ -524,7 +592,8 @@
             '</div>'+
             '<form class="contact-inline-form" data-panel="form">'+
               '<div class="ifield"><label>Full name</label><input type="text" name="name" placeholder="Jane Cooper" required></div>'+
-              '<div class="ifield-row"><div class="ifield"><label>Company name</label><input type="text" name="company" placeholder="Ex. Tesla Inc"></div><div class="ifield"><label>Email *</label><input type="email" name="email" placeholder="you@example.com" required></div></div>'+
+              '<div class="ifield-row"><div class="ifield"><label>Company name</label><input type="text" name="company" placeholder="Ex. Tesla Inc"></div><div class="ifield"><label>Email *</label><input type="email" name="email" placeholder="you@example.com" autocomplete="email" required></div></div>'+
+              '<div class="ifield"><label>Phone / WhatsApp *</label><input type="tel" name="phone" placeholder="+1 555 000 0000" autocomplete="tel" required title="Phone or WhatsApp number with country code, e.g. +1 555 000 0000"></div>'+
               '<div class="ifield-row"><div class="ifield"><label>Service required *</label><select name="service" required><option value="" selected disabled>Select your service</option>'+SVC_OPTS.map(function(o){return '<option>'+o+'</option>';}).join('')+'</select></div><div class="ifield"><label>Plan of interest *</label><select name="budget" required><option value="" selected disabled>Select a plan</option><option>Starter ($199/month)</option><option>Growth ($399/month)</option><option>Scale (from $699/month)</option><option>One-off project</option><option>Not sure yet</option></select></div></div>'+
               '<div class="ifield"><label>Project details *</label><textarea name="details" placeholder="Tell us more about your idea" required></textarea></div>'+
               '<button class="btn btn-dark" type="submit">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>'+
@@ -607,8 +676,8 @@
   /* Ava AI assistant — lazy-loaded after the page is interactive. */
   function loadAva(){
     if(document.querySelector('script[data-ava]')) return;
-    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261008-v4'; document.head.appendChild(css);
-    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261008-v4'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
+    var css=document.createElement('link'); css.rel='stylesheet'; css.href=ASSET_BASE+'voice-agent.css?v=20261011-v5'; document.head.appendChild(css);
+    var script=document.createElement('script'); script.src=ASSET_BASE+'voice-agent.js?v=20261011-v5'; script.async=true; script.setAttribute('data-ava',''); document.body.appendChild(script);
   }
   if('requestIdleCallback' in window) requestIdleCallback(loadAva,{timeout:2500});
   else window.addEventListener('load',function(){setTimeout(loadAva,600);},{once:true});

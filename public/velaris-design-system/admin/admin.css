@@ -180,3 +180,9 @@ td .who small,td small{color:var(--ink-3)}
 .fu-row .btn{padding:9px 11px;font-size:13px}
 .due-card{border-color:#F5C2C2;margin-bottom:8px}
 table.static tbody tr{cursor:default}
+/* spam handling */
+.status.s-spam{background:#F1F3F7;color:#6B7686}
+.btn.danger{color:#C03434;border-color:#F5C2C2}
+.btn.danger:hover{background:#FDECEC}
+.spam-note{margin-top:14px;padding:12px 14px;border-radius:12px;background:#FFF7E6;border:1px solid #FBE3B0;font-size:13.5px;color:#7A5200;line-height:1.5}
+.spam-note b{display:block;margin-bottom:2px;color:#5C3D00}

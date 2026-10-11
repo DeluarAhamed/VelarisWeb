@@ -44,7 +44,8 @@
   }
 
   var today = function(){ var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
-  function isOpen(l){ return l.status !== 'won' && l.status !== 'lost'; }
+  function isOpen(l){ return l.status !== 'won' && l.status !== 'lost' && l.status !== 'spam'; }
+  function real(){ return state.leads.filter(function(l){ return l.status !== 'spam'; }); }
   function due(l){ return isOpen(l) && l.followUp && l.followUp <= today(); }
   function followLabel(l){
     if(!l.followUp || !isOpen(l)) return '&ndash;';
@@ -88,7 +89,7 @@
 
   /* ---------- views ---------- */
   function overview(){
-    var d = state.days, L = state.leads, S = (state.stats && state.stats.daily) || [];
+    var d = state.days, L = real(), S = (state.stats && state.stats.daily) || [];
     var inRange = L.filter(function(l){ return within(l, d); });
     var open = L.filter(function(l){ return l.status !== 'won' && l.status !== 'lost'; });
     var won = L.filter(function(l){ return l.status === 'won'; });
@@ -159,12 +160,13 @@
   }
 
   function leadsView(){
-    var counts = {all: state.leads.length, due: state.leads.filter(due).length};
+    var counts = {all: real().length, due: state.leads.filter(due).length};
     state.statuses.forEach(function(s){ counts[s] = state.leads.filter(function(l){ return l.status === s; }).length; });
     var q = state.q.toLowerCase();
     var rows = state.leads.filter(function(l){
       if(state.filter === 'due'){ if(!due(l)) return false; }
-      else if(state.filter !== 'all' && l.status !== state.filter) return false;
+      else if(state.filter === 'all'){ if(l.status === 'spam') return false; }
+      else if(l.status !== state.filter) return false;
       return !q || [l.name, l.email, l.phone, l.company, l.problem, l.budget].join(' ').toLowerCase().indexOf(q) >= 0;
     });
     return '<div class="card"><div class="toolbar"><div class="chips">' +
@@ -175,7 +177,7 @@
 
   function analyticsView(){
     var S = (state.stats && state.stats.daily) || [];
-    var vis = sum(S, 'vis'), leads = state.leads.filter(function(l){ return within(l, state.days); }).length;
+    var vis = sum(S, 'vis'), leads = real().filter(function(l){ return within(l, state.days); }).length;
     var tops = (state.stats && state.stats.topPages) || [], refs = (state.stats && state.stats.topReferrers) || [];
     var list = function(items, empty){ return items.length ? items.map(function(t){ return '<div class="kv"><span>' + esc(t.key) + '</span><b>' + num(t.count) + '</b></div>'; }).join('') : '<div class="empty" style="padding:12px 0">' + empty + '</div>'; };
     return '<div class="grid g4">' +
@@ -270,7 +272,10 @@
       '<div class="actions" style="margin-top:16px">' +
         (lead.email ? '<a class="btn btn-ghost" href="mailto:' + esc(lead.email) + '">Email</a>' : '') +
         (phone ? '<a class="btn btn-wa" href="https://wa.me/' + phone + '" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="tel:+' + phone + '">Call</a>' : '') +
+        (lead.status === 'spam' ? '<button class="btn btn-ghost" type="button" data-lead-status="new">Not spam</button>' : '<button class="btn btn-ghost" type="button" data-lead-status="spam">Mark as spam</button>') +
+        '<button class="btn btn-ghost danger" type="button" data-lead-delete>Delete</button>' +
       '</div>' +
+      ((lead.spamReasons || []).length ? '<div class="spam-note"><b>' + (lead.status === 'spam' ? 'Flagged as likely spam' : 'Spam checks') + '</b>' + esc(lead.spamReasons.join(' · ')) + '</div>' : '') +
       '<dl class="dl"><dt>Email</dt><dd>' + (lead.email ? esc(lead.email) : '&ndash;') + '</dd><dt>Phone</dt><dd>' + (lead.phone ? esc(lead.phone) : '&ndash;') + '</dd>' +
         (lead.company ? '<dt>Company</dt><dd>' + esc(lead.company) + '</dd>' : '') +
         '<dt>Plan</dt><dd>' + esc(lead.budget || 'Not specified') + '</dd>' +
@@ -290,6 +295,22 @@
         '<div><button class="btn btn-primary" type="submit">Save changes</button><span class="saved" id="saved">Saved</span></div>' +
       '</form>';
     $('#drawer').classList.add('on'); $('#drawer').setAttribute('aria-hidden', 'false');
+    $('#drawerPanel').querySelectorAll('[data-lead-status]').forEach(function(b){
+      b.addEventListener('click', function(){
+        b.disabled = true;
+        api('leads', {method: 'PATCH', body: JSON.stringify({id: lead.id, status: b.getAttribute('data-lead-status')})})
+          .then(function(r){ var i = state.leads.findIndex(function(l){ return l.id === lead.id; }); if(i >= 0) state.leads[i] = r.lead; render(); drawer(r.lead); })
+          .catch(function(err){ alert(err.message); b.disabled = false; });
+      });
+    });
+    var del = $('#drawerPanel [data-lead-delete]');
+    if(del) del.addEventListener('click', function(){
+      if(!confirm('Delete this lead permanently? This cannot be undone.')) return;
+      del.disabled = true;
+      api('leads?id=' + encodeURIComponent(lead.id), {method: 'DELETE'})
+        .then(function(){ state.leads = state.leads.filter(function(l){ return l.id !== lead.id; }); closeDrawer(); render(); })
+        .catch(function(err){ alert(err.message); del.disabled = false; });
+    });
     $('#leadForm').addEventListener('click', function(e){
       var b = e.target.closest('[data-fu]'); if(!b) return;
       var n = Number(b.getAttribute('data-fu')), inp = $('#leadForm').followUp;

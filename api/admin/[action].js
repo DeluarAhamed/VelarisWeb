@@ -1,8 +1,9 @@
 // Admin API for /dashboard (one function to stay within Vercel's function limit).
 //   POST /api/admin/login {password}   POST /api/admin/logout   GET /api/admin/session
-//   GET  /api/admin/leads   POST /api/admin/leads {name, ...}   PATCH /api/admin/leads {id, status?, notes?, monthlyValue?}
+//   GET  /api/admin/leads   POST /api/admin/leads {name, ...}   PATCH /api/admin/leads {id, status?, notes?, followUp?, monthlyValue?}
+//   DELETE /api/admin/leads?id=...
 //   GET  /api/admin/stats?days=30      GET /api/admin/search?days=28 (Search Console)   GET /api/admin/export  (CSV)
-const { rateLimit, json } = require('../../lib/voice/security');
+const { rateLimit, clientIp, json } = require('../../lib/voice/security');
 const auth = require('../../lib/admin/auth');
 const store = require('../../lib/admin/store');
 const gsc = require('../../lib/admin/gsc');
@@ -19,16 +20,40 @@ const csvCell = (v) => {
   return `"${(/^[=+\-@]/.test(s) ? `'${s}` : s).replace(/"/g, '""')}"`;
 };
 
+// State-changing requests must come from our own pages (defence in depth on top of SameSite=Strict cookies).
+function sameOrigin(req) {
+  const src = req.headers.origin || req.headers.referer || '';
+  if (!src) return false;
+  try {
+    const host = new URL(src).host;
+    return host === req.headers.host || host === 'velarisweb.com';
+  } catch { return false; }
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.setHeader('Cache-Control', 'no-store');
   const action = String((req.query && req.query.action) || '').toLowerCase();
+  if (req.method !== 'GET' && req.method !== 'HEAD' && !sameOrigin(req)) return json(res, 403, { error: 'Forbidden' });
 
   try {
     if (action === 'login') {
       if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed' });
       if (rateLimit(req, 8, 10 * 60 * 1000, 'admin-login')) return json(res, 429, { error: 'Too many attempts. Try again in 10 minutes.' });
+      // Shared limits across all instances: 8 tries per IP per 15 minutes, and 30 per hour in total (stops distributed guessing).
+      if (store.configured()) {
+        try {
+          const ip = clientIp(req);
+          if (await store.overLimit(`login:${ip}`, 8, 15 * 60) || await store.overLimit('login:all', 30, 60 * 60)) {
+            return json(res, 429, { error: 'Too many attempts. Try again later.' });
+          }
+        } catch (err) { console.error('login_ratelimit_failed', err.message); }
+      }
       if (!auth.passwordConfigured()) return json(res, 503, { error: 'Admin password is not set up yet (ADMIN_PASSWORD in Vercel).' });
-      if (!auth.checkPassword(body(req).password)) return json(res, 401, { error: 'Wrong password.' });
+      if (!auth.checkPassword(body(req).password)) {
+        await new Promise((r) => setTimeout(r, 600)); // slow down guessing
+        return json(res, 401, { error: 'Wrong password.' });
+      }
       auth.setSession(res);
       return json(res, 200, { ok: true });
     }
@@ -72,6 +97,11 @@ module.exports = async function handler(req, res) {
         if (!b.id) return json(res, 400, { error: 'Missing lead id' });
         const lead = await store.updateLead(String(b.id), b);
         return lead ? json(res, 200, { lead }) : json(res, 404, { error: 'Lead not found' });
+      }
+      if (req.method === 'DELETE') {
+        const id = String((req.query && req.query.id) || '');
+        if (!/^L[a-z0-9]{6,30}$/.test(id)) return json(res, 400, { error: 'Missing lead id' });
+        return (await store.deleteLead(id)) ? json(res, 200, { ok: true }) : json(res, 404, { error: 'Lead not found' });
       }
       return json(res, 405, { error: 'Method not allowed' });
     }

@@ -1,9 +1,18 @@
 const { buildSystemPrompt } = require('../../lib/voice/prompt');
-const { rateLimit, clean, json } = require('../../lib/voice/security');
+const { rateLimit, clientIp, clean, json } = require('../../lib/voice/security');
+const store = require('../../lib/admin/store');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return json(res, 405, { error: 'Method not allowed' });
   if (rateLimit(req, 36)) return json(res, 429, { error: 'Please wait a moment before trying again.' });
+  // Shared cap so the OpenAI bill can't be run up: 60 messages per visitor per hour, 1,500 per day in total.
+  if (store.configured()) {
+    try {
+      if (await store.overLimit(`ava:${clientIp(req)}`, 60, 60 * 60) || await store.overLimit('ava:all', 1500, 24 * 60 * 60)) {
+        return json(res, 429, { error: 'Ava is taking a short break. Please book a call or message us on WhatsApp.' });
+      }
+    } catch (err) { console.error('ava_ratelimit_failed', err.message); }
+  }
   if (!process.env.OPENAI_API_KEY) return json(res, 503, { error: 'Ava is temporarily unavailable. You can still book a call or email hello@velarisweb.com.' });
 
   const body = req.body || {};
