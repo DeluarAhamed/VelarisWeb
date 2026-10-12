@@ -79,7 +79,7 @@ async function loadCases(fallbackCases) {
 async function loadIndustries() {
   try {
     const rows = await sanityQuery(`*[_type=="industry" && !(hidden==true) && defined(slug.current) && !(_id in path("drafts.**"))]|order(orderRank asc){
-      name,"slug":slug.current,accent,heroHeadline,shortDescription,intro,example,recommendedPlan,
+      name,"slug":slug.current,accent,audience,audienceSingular,heroHeadline,shortDescription,intro,example,recommendedPlan,
       painPoints[]{title,description},systems[]{title,description},faqs[]{question,answer},
       "relatedServices":relatedServices[]->slug.current,seo{metaTitle,metaDescription,keywords}}`);
     if (rows && rows.length) return { industries: rows, source: 'Sanity' };
@@ -195,7 +195,7 @@ const caseCard = (c) => `<a class="v-case" href="/case-studies/${c.slug}"><div c
 // Keyword-led anchor text for links to industry pages (see the SEO keyword strategy).
 const INDUSTRY_ANCHOR = {
   'cleaning-services': 'Cleaning company websites', 'car-detailing': 'Car detailing websites', 'salons-and-spas': 'Salon and spa websites',
-  clinics: 'Clinic websites', 'home-services': 'Contractor websites', 'coaches-and-consultants': 'Coach and consultant websites',
+  clinics: 'Clinic websites', 'home-services': 'Contractor websites', 'ai-receptionist-for-medical-practices': 'AI receptionist for medical practices', 'coaches-and-consultants': 'Coach and consultant websites',
 };
 const industryLinks = (industries, heading) => (industries || []).length ? `
 <section class="v-section">
@@ -368,36 +368,39 @@ function industryPage(d, services) {
   const description = (d.seo && d.seo.metaDescription) || d.shortDescription;
   const accent = d.accent || '#127AFE';
   const low = d.name.toLowerCase();
+  // Who the page is for: "medical practices" reads better than "ai receptionist for medical practices businesses".
+  const who = d.audience || `${low} businesses`;
+  const whoOne = d.audienceSingular || `${low} business`;
   const trail = [{ name: 'Home', href: '/' }, { name: 'Industries', href: '/solutions' }, { name: d.name, href: `/solutions/${d.slug}` }];
   const related = (d.relatedServices || []).map((slug) => services.find((s) => s.slug === slug)).filter(Boolean).slice(0, 4);
   const plan = PLAN_PRICE[d.recommendedPlan] ? d.recommendedPlan : 'Growth';
-  const waMsg = `Hi Velaris, I run a ${low} business and I'd like to grow it.`;
+  const waMsg = `Hi Velaris, I run a ${whoOne} and I'd like to grow it.`;
   const tick = CHECK.replace('<svg', '<svg class="v-check"');
   const body = `
 <section class="lp-hero" style="--accent:${e(accent)}">
   <div class="wrap lp-hero-grid">
     <div>
       ${crumbs(trail)}
-      <span class="v-kicker">For ${e(low)}</span>
+      <span class="v-kicker">For ${e(d.audience || low)}</span>
       <h1>${e(d.heroHeadline || d.name)}</h1>
       <p class="lede">${e(d.intro)}</p>
       <div class="v-hero-cta">${waBtn(waMsg)}<a class="btn btn-quiet" href="/pricing">See plans from $199/mo</a></div>
       <ul class="v-ticks"><li>${tick}No upfront cost</li><li>${tick}Preview in 5 business days</li><li>${tick}Cancel anytime</li></ul>
     </div>
-    ${d.example ? `<div class="lp-day"><small>How it works day to day</small><p>${e(d.example)}</p><div class="lp-day-plan"><span>Most ${e(low)} businesses choose</span><b>${plan} &middot; ${PLAN_PRICE[plan]}</b></div></div>` : ''}
+    ${d.example ? `<div class="lp-day"><small>How it works day to day</small><p>${e(d.example)}</p><div class="lp-day-plan"><span>Most ${e(who)} choose</span><b>${plan} &middot; ${PLAN_PRICE[plan]}</b></div></div>` : ''}
   </div>
 </section>
 ${(d.painPoints || []).length ? `
 <section class="v-section soft">
   <div class="wrap">
-    <div class="v-head"><span class="v-kicker">The problem</span><h2>Where ${e(low)} businesses <span class="serif">lose revenue</span></h2></div>
+    <div class="v-head"><span class="v-kicker">The problem</span><h2>Where ${e(who)} <span class="serif">lose revenue</span></h2></div>
     <div class="lp-pains">${d.painPoints.map((p) => `<div class="lp-pain"><span class="x">${X_ICON}</span><h3>${e(p.title)}</h3><p>${e(p.description)}</p></div>`).join('')}</div>
   </div>
 </section>` : ''}
 
 <section class="v-section">
   <div class="wrap">
-    <div class="v-head"><span class="v-kicker">What we build</span><h2>The system that <span class="serif">fixes it</span></h2><p>Built around how ${e(low)} businesses work, and run for you on one monthly plan.</p></div>
+    <div class="v-head"><span class="v-kicker">What we build</span><h2>The system that <span class="serif">fixes it</span></h2><p>Built around how ${e(who)} work, and run for you on one monthly plan.</p></div>
     <div class="lp-caps">${(d.systems || []).map((c, i) => `<div class="v-feat"><span class="ic lp-num" style="color:${e(accent)}">${String(i + 1).padStart(2, '0')}</span><h3>${e(c.title)}</h3><p>${e(c.description)}</p></div>`).join('')}</div>
   </div>
 </section>
@@ -408,8 +411,8 @@ ${related.length ? `
     <div class="lp-links">${related.map((s) => `<a class="lp-link" href="/services/${s.slug}"><b>${e(s.name)}</b><span>${e(s.shortDescription)}</span><em>Learn more &rarr;</em></a>`).join('')}</div>
   </div>
 </section>` : ''}
-${(d.faqs || []).length ? faqBlock(d.faqs, `Questions from <span class="serif">${e(low)}</span> businesses`, `Common questions we get. Can't find yours? Message us.`, `Hi Velaris, I have a question about a system for my ${low} business.`) : ''}
-${ctaBlock('Get started', `Ready to grow your ${low} business?`, 'Message us on WhatsApp. If we are a fit, your preview is ready within 5 business days.', waMsg)}`;
+${(d.faqs || []).length ? faqBlock(d.faqs, `Questions from <span class="serif">${e(who)}</span>`, `Common questions we get. Can't find yours? Message us.`, `Hi Velaris, I have a question about a system for my ${low} business.`) : ''}
+${ctaBlock('Get started', `Ready to grow your ${whoOne}?`, 'Message us on WhatsApp. If we are a fit, your preview is ready within 5 business days.', waMsg)}`;
   const jsonLd = [
     {
       '@context': 'https://schema.org', '@type': 'Service', name: `Websites and software for ${d.name}`, serviceType: 'Website and business software',

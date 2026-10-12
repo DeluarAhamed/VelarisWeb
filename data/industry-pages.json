@@ -514,5 +514,106 @@
         "business consultant website design"
       ]
     }
+  },
+  {
+    "slug": "ai-receptionist-for-medical-practices",
+    "name": "AI Receptionist for Medical Practices",
+    "audience": "medical practices",
+    "audienceSingular": "medical practice",
+    "orderRank": 1.5,
+    "accent": "#0284C7",
+    "heroHeadline": "AI receptionist for medical offices and clinics",
+    "shortDescription": "A 24/7 AI front desk for medical offices, dental, chiropractic, physio and orthopedic practices that answers patients and books appointments.",
+    "intro": "An AI receptionist for medical offices and clinics that answers patient questions and books appointments around the clock, so your front desk stops drowning in calls and messages. Built for family practices, dental offices, chiropractors, physical therapists, orthopedic and specialist clinics, and set up and run for you on a monthly plan.",
+    "painPoints": [
+      {
+        "title": "Missed calls are missed patients",
+        "description": "When the front desk is busy or closed, new patients contact the next practice on the list instead of leaving a voicemail."
+      },
+      {
+        "title": "The same questions all day",
+        "description": "Opening hours, insurance, prices, parking and what to bring: your team answers them dozens of times a day instead of looking after the patients in front of them."
+      },
+      {
+        "title": "Booking and rescheduling eat staff time",
+        "description": "Every booking, reschedule and cancellation is handled by hand, and no-shows leave gaps nobody fills."
+      }
+    ],
+    "systems": [
+      {
+        "title": "24/7 patient questions",
+        "description": "Answers questions about services, hours, insurance and preparation from information you approve, in plain language."
+      },
+      {
+        "title": "Appointment booking",
+        "description": "Offers real available times from your calendar and books, reschedules or cancels without staff involvement."
+      },
+      {
+        "title": "New-patient intake",
+        "description": "Collects contact details and the reason for the visit in a short form, so your team calls back prepared."
+      },
+      {
+        "title": "Safe hand-off to your team",
+        "description": "Anything clinical, urgent or unclear goes straight to your staff with the conversation attached. The assistant never gives medical advice."
+      },
+      {
+        "title": "Reminders that cut no-shows",
+        "description": "Confirmation and reminder messages before every appointment, with an easy way to reschedule."
+      },
+      {
+        "title": "Practice dashboard",
+        "description": "See the questions patients ask, bookings made and new-patient enquiries each week."
+      }
+    ],
+    "example": "It's 9pm and a patient with knee pain finds your orthopedic clinic online. Instead of a closed phone line, the AI receptionist answers their questions about consultations and insurance, offers three appointment times for next week and books one. In the morning your front desk sees the booking and the patient's notes, with nothing to call back.",
+    "recommendedPlan": "Growth",
+    "relatedServices": [
+      "ai-solutions",
+      "custom-software",
+      "web-design",
+      "seo"
+    ],
+    "faqs": [
+      {
+        "question": "Will the AI receptionist give medical advice?",
+        "answer": "No. It answers practical questions from information you approve, such as hours, services, prices and insurance, and books appointments. Anything clinical or urgent is handed straight to your team, and it directs patients to emergency services when appropriate."
+      },
+      {
+        "question": "Is it HIPAA compliant?",
+        "answer": "For US practices we scope the setup with you before launch, so the assistant collects only what booking needs and no protected health information is handled without the right agreements in place. Clinical records stay in your practice software, never in the website assistant."
+      },
+      {
+        "question": "Can it work with our scheduling or practice management software?",
+        "answer": "Often, yes. Many systems offer calendar sync or an API we can connect to. If yours doesn't, the assistant collects booking requests for your team to confirm."
+      },
+      {
+        "question": "Which practices is it for?",
+        "answer": "Family and general practices, dental offices, chiropractors, physical therapists, orthopedic and other specialist clinics, med spas and aesthetic clinics."
+      },
+      {
+        "question": "How much does an AI receptionist cost?",
+        "answer": "It's included from our Growth plan at $399/month, together with your website, hosting and updates. There is no setup fee and no long contract."
+      },
+      {
+        "question": "Can we try it first?",
+        "answer": "Yes. The assistant on this website, Ava, runs on the same technology. Ask it a question to see how it answers, then we set up a version trained on your practice."
+      }
+    ],
+    "seo": {
+      "metaTitle": "AI Receptionist for Medical Offices & Clinics | Velaris Web",
+      "metaDescription": "An AI receptionist for medical offices, dental and physio clinics: answers patient questions and books appointments 24/7, then hands off to your team.",
+      "keywords": [
+        "ai receptionist for medical office",
+        "ai receptionist for medical practice",
+        "ai receptionist for doctors",
+        "medical ai receptionist",
+        "ai front desk for medical office",
+        "ai receptionist for clinics",
+        "ai receptionist for healthcare",
+        "ai receptionist for dental office",
+        "ai receptionist for chiropractors",
+        "ai receptionist for physical therapy"
+      ]
+    }
   }
 ]

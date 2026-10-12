@@ -172,6 +172,13 @@ export const documentTypes = [
         type: 'string',
         validation: (Rule) => Rule.max(80).warning('Keep the H1 under ~80 characters.'),
       }),
+      defineField({
+        name: 'audience',
+        title: 'Audience (plural)',
+        description: 'Optional, e.g. "medical practices". Used in headings like "Where medical practices lose revenue". Defaults to "<name> businesses".',
+        type: 'string',
+      }),
+      defineField({name: 'audienceSingular', title: 'Audience (singular)', description: 'Optional, e.g. "medical practice".', type: 'string'}),
       defineField({name: 'shortDescription', description: 'Shown on the /solutions index card.', type: 'text', rows: 2}),
       defineField({name: 'intro', type: 'text', rows: 4}),
       defineField({
