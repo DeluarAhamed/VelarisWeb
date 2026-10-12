@@ -1,4 +1,4 @@
-@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+/* General Sans import removed (render-blocking, only used by the retired case template; falls back to system-ui). */
 
 /* ============================================================================
    VELARIS WEB — sub-page styles (services, service detail, case detail,

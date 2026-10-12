@@ -202,6 +202,8 @@ function optimiseHtml() {
     '<link rel="preload" href="/velaris-design-system/fonts/CabinetGrotesk-Regular.woff2" as="font" type="font/woff2" crossorigin>',
     '<link rel="preload" href="/velaris-design-system/fonts/CabinetGrotesk-Bold.woff2" as="font" type="font/woff2" crossorigin>',
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
+    '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>',
+    '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>',
     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" media="print" onload="this.media=\'all\'">',
   ].join('\n');
   let changed = 0;
