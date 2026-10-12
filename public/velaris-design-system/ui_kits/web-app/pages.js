@@ -460,7 +460,7 @@
   var postSlug=postPathMatch?decodeURIComponent(postPathMatch[1]):qs('slug');
   var postIndex=pd && window.VELARIS_POSTS ? window.VELARIS_POSTS.map(function(x){return x.slug;}).indexOf(postSlug) : -1;
   // Prerendered /blog/<slug> pages already hold the right article; only refresh them when the CMS has that slug.
-  if(pd && window.VELARIS_POSTS && (postIndex>=0 || !pd.hasAttribute('data-prerendered'))){
+  if(pd && window.VELARIS_POSTS && !pd.hasAttribute('data-prerendered')){
     if(postIndex<0) setMeta('meta[name="robots"]','noindex, follow');
     var P=window.VELARIS_POSTS, pi=Math.max(0,postIndex), post=P[pi];
     document.title=post.title+' | Velaris Web';

@@ -96,9 +96,10 @@
   var url = 'https://' + cfg.projectId + '.api.sanity.io/v' + (cfg.apiVersion || '2026-07-03') + '/data/query/' + (cfg.dataset || 'production') + '?query=' + query;
 
   try {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false);
-    xhr.send(null);
+    // Production pages ship cms-snapshot.js (built from Sanity at deploy time), so no request blocks the page.
+    var snap = window.VELARIS_CMS_SNAPSHOT;
+    var xhr = snap ? { status: 200, responseText: JSON.stringify(snap) } : new XMLHttpRequest();
+    if (!snap) { xhr.open('GET', url, false); xhr.send(null); }
     if (xhr.status < 200 || xhr.status >= 300) return;
     var result = JSON.parse(xhr.responseText).result || {};
 

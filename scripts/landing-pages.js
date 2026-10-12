@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const ORIGIN = 'https://velarisweb.com';
-const V = '20261011-m4';
+const V = '20261012-s1';
 const WA = 'https://wa.me/8801989570693';
 const SHARE_IMAGE = `${ORIGIN}/velaris-design-system/assets/og-velaris.png`;
 const LOGO = `${ORIGIN}/velaris-design-system/assets/velaris-icon.png`;
@@ -192,7 +192,19 @@ const ctaBlock = (kicker, heading, text, waMsg) => `
 const caseCard = (c) => `<a class="v-case" href="/case-studies/${c.slug}"><div class="shot" role="img" aria-label="${e(c.client)} website" style="background-image:url('${e(img(c.hero))}')"></div><div class="meta"><div><b>${e(c.client)}</b><small>${e(c.sector)}</small></div><span class="go">${ARROW}</span></div></a>`;
 
 /* ---------- service page ---------- */
-function servicePage(s, cases, art) {
+// Keyword-led anchor text for links to industry pages (see the SEO keyword strategy).
+const INDUSTRY_ANCHOR = {
+  'cleaning-services': 'Cleaning company websites', 'car-detailing': 'Car detailing websites', 'salons-and-spas': 'Salon and spa websites',
+  clinics: 'Clinic websites', 'home-services': 'Contractor websites', 'coaches-and-consultants': 'Coach and consultant websites',
+};
+const industryLinks = (industries, heading) => (industries || []).length ? `
+<section class="v-section">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Industries</span><h2>${heading}</h2></div>
+    <div class="lp-links">${industries.map((d) => `<a class="lp-link" href="/solutions/${d.slug}"><b>${e(INDUSTRY_ANCHOR[d.slug] || d.name)}</b><span>${e(d.shortDescription)}</span><em>See how it works &rarr;</em></a>`).join('')}</div>
+  </div>
+</section>` : '';
+function servicePage(s, cases, art, industries) {
   const url = `${ORIGIN}/services/${s.slug}`;
   const title = (s.seo && s.seo.metaTitle) || `${s.name} | Velaris Web`;
   const description = (s.seo && s.seo.metaDescription) || s.shortDescription;
@@ -257,6 +269,7 @@ function servicePage(s, cases, art) {
     </div>
   </div>
 </section>
+${industryLinks(industries, `${e(s.name)} for <span class="serif">your industry</span>`)}
 ${related.length ? `
 <section class="v-section">
   <div class="wrap">
@@ -417,7 +430,7 @@ function industriesIndex(industries) {
   <div class="wrap">
     ${crumbs(trail)}
     <span class="v-pill"><b>Industries</b> Systems built for how you work</span>
-    <h1>Growth systems for <span class="serif">your industry</span></h1>
+    <h1>Web design for service businesses, <span class="serif">built for your industry</span></h1>
     <p>Websites, booking, rebooking and lead follow-up designed around how your type of business wins and keeps customers. One monthly plan from $199/month.</p>
     <div class="v-hero-cta"><a class="btn btn-blue" href="/pricing">See plans &amp; pricing ${ARROW}</a>${waBtn('Hi Velaris, what would you build for my business?')}</div>
   </div>
@@ -425,10 +438,16 @@ function industriesIndex(industries) {
 <section class="v-section" style="padding-top:64px">
   <div class="wrap lp-ind-grid">${industries.map((d) => `<a class="lp-ind" href="/solutions/${d.slug}" style="--accent:${e(d.accent || '#127AFE')}"><h2>${e(d.name)}</h2><p>${e(d.shortDescription)}</p><span class="more">See the system ${ARROW}</span></a>`).join('')}</div>
 </section>
+
+<section class="v-section soft">
+  <div class="wrap lp-story">
+    <div class="lp-story-row"><h2>Why industry-specific websites win more customers</h2><div><p>A cleaning company, a clinic and a roofing contractor all need a website, but they win customers in completely different ways. Cleaners grow on recurring contracts, so the website needs instant quotes and repeat bookings. Clinics lose money to no-shows, so it needs online booking, reminders and recalls. Contractors live and die by how fast they reply, so it needs a quote form and an instant response.</p><p>That is why we build web design for service businesses around the way each industry works. Every system starts with a fast, mobile-first website that ranks in local search, then adds the tools your type of business actually uses: booking, quote calculators, follow-up messages, review requests and a dashboard that shows the enquiries and revenue it brings in.</p><p>Everything runs on one monthly plan from $199/month, with no upfront build fee. You see a working preview within 5 business days, and we keep improving it every month based on what brings you customers.</p></div></div>
+  </div>
+</section>
 ${ctaBlock("Don't see your industry?", 'We build for most service businesses', 'Tell us how your business gets and keeps customers, and we will show you what we would build.', 'Hi Velaris, my industry is not listed. Can you help?')}`;
   return shell({
-    title: 'Websites & Software by Industry | Velaris Web',
-    description: 'Websites, booking systems and lead follow-up for clinics, salons, detailers, cleaners, trades and consultants. Monthly plans from $199, no upfront cost.',
+    title: 'Web Design for Service Businesses by Industry | Velaris Web',
+    description: 'Websites, booking systems and follow-up built for cleaners, detailers, salons, clinics, trades and coaches. Monthly plans from $199.',
     canonical: `${ORIGIN}/solutions`, page: 'industries',
     jsonLd: [crumbLd(trail), { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: industries.map((d, i) => ({ '@type': 'ListItem', position: i + 1, name: d.name, url: `${ORIGIN}/solutions/${d.slug}` })) }],
     body,
@@ -443,14 +462,20 @@ function servicesIndex(services, art) {
   <div class="wrap">
     ${crumbs(trail)}
     <span class="v-pill"><b>Services</b> Websites, software &amp; AI on one plan</span>
-    <h1>The systems that <span class="serif">grow your business</span></h1>
-    <p>Custom software, websites, AI automation, SEO and more, built to work together and run for you on one monthly plan from $199/month.</p>
+    <h1>Web design, software and AI services <span class="serif">for small businesses</span></h1>
+    <p>Custom websites, booking systems, AI automation, local SEO and more, built to work together and run for you on one monthly plan from $199/month.</p>
     <div class="v-hero-cta"><a class="btn btn-blue" href="/pricing">See plans &amp; pricing ${ARROW}</a>${waBtn('Hi Velaris, I would like to know which service fits my business.')}</div>
   </div>
 </section>
 <section class="v-section" style="padding-top:64px">
   <div class="wrap lp-svc-grid">
     ${services.map((s) => `<a class="v-svc" href="/services/${s.slug}" style="--accent:${e(s.accent || '#127AFE')}"><h2 class="lp-svc-name">${e(s.name)}</h2><p>${e(s.shortDescription)}</p><span class="more" style="color:${e(s.accent || '#127AFE')}">Explore ${e(lc(s.name))} ${ARROW}</span><div class="art" aria-hidden="true">${art[s.slug] || ''}</div></a>`).join('\n    ')}
+  </div>
+</section>
+
+<section class="v-section soft">
+  <div class="wrap lp-story">
+    <div class="lp-story-row"><h2>One team for your whole growth system</h2><div><p>Most small businesses end up with a website from one freelancer, a booking app from another company, an SEO contractor and a pile of logins. Nothing talks to anything else, and nobody is responsible for whether it brings in customers. We build and run all of it together, so every piece is aimed at the same result: more enquiries, more bookings and more repeat customers.</p><p>Start with <a href="/services/web-design">custom website design for small business</a>, then add a <a href="/services/custom-software">booking system or CRM</a>, an <a href="/services/ai-solutions">AI receptionist</a> that answers and books customers at any hour, <a href="/services/seo">local SEO</a> and <a href="/services/local-listings">Google Business Profile management</a> to get found, plus <a href="/services/ecommerce">ecommerce</a> and <a href="/services/business-email">business email</a> when you need them.</p><p>Every service is included in a monthly plan with no setup fee and no long contract. <a href="/pricing">Compare the plans</a> or message us and we will tell you honestly which pieces your business needs first.</p></div></div>
   </div>
 </section>
 ${ctaBlock('Not sure where to start?', 'Tell us about your business and we will recommend the right plan', 'No sales pitch. Message us on WhatsApp and we will reply within a few hours.', 'Hi Velaris, can you recommend the right service for my business?')}`;
@@ -470,17 +495,23 @@ function casesIndex(cases) {
   <div class="wrap">
     ${crumbs(trail)}
     <span class="v-pill"><b>Our work</b> Real websites, real businesses</span>
-    <h1>Website case studies <span class="serif">from real businesses</span></h1>
-    <p>Healthcare, property, finance, engineering and tech brands we've designed and built websites for, and the results they've seen.</p>
+    <h1>Small business website examples <span class="serif">and case studies</span></h1>
+    <p>Real small business website examples from healthcare, property, finance, engineering and tech, with what we built and the results each business saw after launch.</p>
   </div>
 </section>
 <section class="v-section" style="padding-top:64px">
   <div class="wrap"><div class="v-work">${cases.map(caseCard).join('')}</div></div>
 </section>
+
+<section class="v-section soft">
+  <div class="wrap lp-story">
+    <div class="lp-story-row"><h2>What these small business websites have in common</h2><div><p>Every project here started with the same question: what does this business need its website to do? For some it was more enquiries from local search, for others a booking flow that cut admin, or a site that finally matched the quality of their work so they could charge what they are worth.</p><p>Each case study shows the challenge, what we built and the results after launch. If you run a service business, look for the one closest to yours, then see what we build for your industry on our <a href="/solutions">industry pages</a> or compare <a href="/pricing">monthly plans</a>.</p></div></div>
+  </div>
+</section>
 ${ctaBlock('Your project next', 'Want a website like these?', 'Message us on WhatsApp. Your website preview is ready within 5 business days.', 'Hi Velaris, I saw your case studies and would like a website for my business.')}`;
   return shell({
-    title: 'Website Case Studies & Portfolio | Velaris Web',
-    description: 'Website design case studies from Velaris Web: healthcare, property, finance, engineering and tech businesses, with the results they achieved.',
+    title: 'Small Business Website Examples & Case Studies | Velaris Web',
+    description: 'Real small business website examples and case studies from Velaris Web, with the results each business saw after launch.',
     canonical: `${ORIGIN}/case-studies`, page: 'cases',
     jsonLd: [crumbLd(trail), { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: cases.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.client, url: `${ORIGIN}/case-studies/${c.slug}` })) }],
     body,
@@ -499,7 +530,7 @@ async function buildLandingPages({ distDir, fallbackCases }) {
   if (!distDir) return paths;
 
   const art = serviceArt();
-  for (const [dir, list, render] of [['services', svc, (s) => servicePage(s, cs, art)], ['case-studies', cs, (c) => casePage(c, cs)], ['solutions', ind, (d) => industryPage(d, svc)]]) {
+  for (const [dir, list, render] of [['services', svc, (s) => servicePage(s, cs, art, ind)], ['case-studies', cs, (c) => casePage(c, cs)], ['solutions', ind, (d) => industryPage(d, svc)]]) {
     const out = path.join(distDir, dir);
     fs.rmSync(out, { recursive: true, force: true });
     fs.mkdirSync(out, { recursive: true });

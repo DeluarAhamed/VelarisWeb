@@ -1,0 +1,192 @@
+{
+  "_note": "SEO targets per landing page (Oct 2026 keyword strategy). Applied to Sanity by sanity/scripts/apply-seo-targets.mjs. Keyword research: Google Autocomplete; see the SEO audit Google Sheet.",
+  "services": {
+    "custom-software": {
+      "primary": "booking system for small business",
+      "keywords": [
+        "booking system for small business",
+        "custom crm for small business",
+        "client portal for small business",
+        "instant quote calculator for website",
+        "appointment booking website design"
+      ],
+      "metaTitle": "Booking Systems & CRM for Small Business | Velaris Web",
+      "metaDescription": "Custom booking systems, CRMs, client portals and quote calculators for small businesses. Built around how you work, run for you monthly.",
+      "heroHeadline": "Booking systems, CRMs and client portals for small businesses",
+      "intro": "We build the booking system for small business owners who are tired of bending their work around generic apps: online booking, a custom CRM, client portals, rebooking reminders and quote calculators shaped around how you actually run. It is built in days rather than months and run for you on a monthly plan with no build fee."
+    },
+    "web-design": {
+      "primary": "custom website design for small business",
+      "keywords": [
+        "custom website design for small business",
+        "web design service for small business",
+        "affordable web design for small business",
+        "website redesign for small business",
+        "small business web design services"
+      ],
+      "metaTitle": "Custom Website Design for Small Businesses | Velaris Web",
+      "metaDescription": "Custom website design for small businesses: fast, mobile-first sites built to win enquiries, with hosting and updates included from $199/month.",
+      "heroHeadline": "Custom website design for small businesses",
+      "intro": "Custom website design for small business owners who need more enquiries, not just a prettier homepage. We design, build and run fast, mobile-first websites that turn visitors into calls, bookings and quote requests, with hosting, security and updates included in one monthly plan."
+    },
+    "seo": {
+      "primary": "local seo services for small business",
+      "keywords": [
+        "local seo services for small business",
+        "local seo services for plumbers",
+        "local seo services for hvac contractors",
+        "local seo services for dentists"
+      ],
+      "metaTitle": "Local SEO Services for Small Businesses | Velaris Web",
+      "metaDescription": "Local SEO services for small businesses: Google Maps rankings, service-area pages and reviews that bring in local enquiries. Included from $399/month.",
+      "heroHeadline": "Local SEO services for small businesses",
+      "intro": "Our local SEO services for small business owners put you in front of customers who are already searching to buy. We optimise your website, Google Business Profile and content so you show up in Google Maps and local results, then report on the enquiries it brings in."
+    },
+    "ai-solutions": {
+      "primary": "ai receptionist for small business",
+      "keywords": [
+        "ai receptionist for small business",
+        "ai chatbot for small business",
+        "ai chatbot setup for small businesses",
+        "ai chatbot for website customer service",
+        "ai receptionist for small business cost"
+      ],
+      "metaTitle": "AI Receptionist & Chatbot for Small Business | Velaris Web",
+      "metaDescription": "An AI receptionist for your website that answers questions, books appointments and captures leads 24/7. Set up and run for you, from $399/month.",
+      "heroHeadline": "An AI receptionist for small businesses",
+      "intro": "An AI receptionist for small business websites that answers questions, books appointments and captures leads at any hour, even when you are on a job. We also automate the busywork around it, like lead follow-up and reminders, so your team spends its time on customers instead of admin."
+    },
+    "ecommerce": {
+      "primary": "ecommerce website for small business",
+      "keywords": [
+        "ecommerce website for small business",
+        "online store website for small business",
+        "create an online store for small business"
+      ],
+      "metaTitle": "Ecommerce Websites for Small Businesses | Velaris Web",
+      "metaDescription": "Ecommerce websites for small businesses: a fast online store with payments, shipping and stock set up for you, run on a monthly plan.",
+      "heroHeadline": "Ecommerce websites for small businesses",
+      "intro": "We build an ecommerce website for small business owners who want to sell online without the headaches: fast checkout, easy product management and automated order emails, then we keep improving the store every month."
+    },
+    "business-email": {
+      "primary": "business email setup",
+      "keywords": [
+        "business email setup",
+        "business email for small business",
+        "google business email for small business",
+        "professional email setup"
+      ],
+      "metaTitle": "Business Email Setup for Small Businesses | Velaris Web",
+      "metaDescription": "Professional business email setup on your own domain with Google Workspace or Microsoft 365, plus deliverability fixes so emails reach the inbox.",
+      "heroHeadline": "Business email setup for small businesses",
+      "intro": "Business email setup on your own domain, done properly. Customers trust hello@yourbusiness.com more than a free Gmail address, so we set up Google Workspace or Microsoft 365, move your old mail across and fix deliverability so your emails land in the inbox."
+    },
+    "local-listings": {
+      "primary": "google business profile management services",
+      "keywords": [
+        "google business profile management services",
+        "google business profile optimization service",
+        "google business profile management cost",
+        "google business profile management agency"
+      ],
+      "metaTitle": "Google Business Profile Management Services | Velaris Web",
+      "metaDescription": "Google Business Profile management: setup, optimization, posts and review requests that move you up Google Maps. Included in monthly plans.",
+      "heroHeadline": "Google Business Profile management services",
+      "intro": "Google Business Profile management services that keep you on the map with the right details and a steady flow of great reviews. When someone nearby searches for what you do, we make sure they find you, trust you and call."
+    }
+  },
+  "industries": {
+    "clinics": {
+      "primary": "clinic website design",
+      "keywords": [
+        "clinic website design",
+        "physiotherapy website design",
+        "chiropractic website design",
+        "clinic web design",
+        "dental website design service"
+      ],
+      "metaTitle": "Clinic Website Design with Online Booking | Velaris Web",
+      "metaDescription": "Clinic website design for physio, chiropractic, dental and aesthetics clinics: online booking, recalls and reminders that cut no-shows.",
+      "heroHeadline": "Clinic website design that fills your diary",
+      "intro": "Clinic website design for dental, physio, aesthetics, chiropractic and private medical clinics that lose revenue to empty slots, no-shows and patients who forget to come back. We build the website, booking system and recall engine that fixes all three, and run it for you on one monthly plan."
+    },
+    "salons-and-spas": {
+      "primary": "salon website design",
+      "keywords": [
+        "salon website design",
+        "salon booking website",
+        "spa website design",
+        "med spa website design",
+        "salon website examples"
+      ],
+      "metaTitle": "Salon Website Design with Online Booking | Velaris Web",
+      "metaDescription": "Salon and spa website design with your own online booking, rebooking reminders and review requests. No marketplace fees. From $199/month.",
+      "heroHeadline": "Salon and spa website design with online booking",
+      "intro": "Salon website design with your own online booking, built for hair salons, barbers, nail studios, beauty and day spas that run on repeat visits. We build the website, booking system and rebooking engine that brings clients back at the right time, so you stop relying on walk-ins and expensive booking marketplaces."
+    },
+    "car-detailing": {
+      "primary": "car detailing website design",
+      "keywords": [
+        "car detailing website design",
+        "auto detailing website design",
+        "auto detailing web design",
+        "car detailing website examples",
+        "best auto detailing website designer"
+      ],
+      "metaTitle": "Car Detailing Website Design | Velaris Web",
+      "metaDescription": "Car detailing website design with instant quotes, online booking with deposits and maintenance reminders. Built and run for you from $199/month.",
+      "heroHeadline": "Car detailing website design with online booking",
+      "intro": "Car detailing website design for mobile and studio detailers who win on reputation and repeat work. We build the website with instant pricing, online booking and maintenance reminders that turn a one-off ceramic coating or valet into a customer for years."
+    },
+    "cleaning-services": {
+      "primary": "cleaning company website design",
+      "keywords": [
+        "cleaning company website design",
+        "cleaning business website design",
+        "cleaning service website",
+        "cleaning business website examples",
+        "cleaning company website ideas"
+      ],
+      "metaTitle": "Cleaning Company Website Design | Velaris Web",
+      "metaDescription": "Cleaning company website design with instant quotes, recurring bookings and follow-ups that win regular clients. From $199/month, no upfront cost.",
+      "heroHeadline": "Cleaning company website design that wins recurring clients",
+      "intro": "Cleaning company website design for residential and commercial cleaners who grow on recurring contracts. We build the website, quote tool and booking system that turns searches into weekly and fortnightly clients, and keeps them."
+    },
+    "home-services": {
+      "primary": "contractor website design",
+      "keywords": [
+        "contractor website design",
+        "plumber website design",
+        "hvac website design",
+        "roofing website design",
+        "landscaping website design"
+      ],
+      "metaTitle": "Contractor Website Design for Trades | Velaris Web",
+      "metaDescription": "Contractor website design for plumbers, HVAC, roofers and landscapers: quote forms, instant replies and Google Maps ranking. From $199/month.",
+      "heroHeadline": "Contractor website design for trades and home services",
+      "intro": "Contractor website design for remodelers, plumbers, electricians, roofers, HVAC and landscaping companies that need the phone to ring with the right jobs, not a pretty brochure. We build the website, quote flow and follow-up system that does that, and run it monthly."
+    },
+    "coaches-and-consultants": {
+      "primary": "coach website design",
+      "keywords": [
+        "coach website design",
+        "consultant website design",
+        "life coach website design",
+        "business coach website design",
+        "business consultant website design"
+      ],
+      "metaTitle": "Coach Website Design for Coaches & Consultants | Velaris Web",
+      "metaDescription": "Website design for coaches and consultants with discovery-call booking, lead magnets and automatic follow-up. From $199/month, no upfront cost.",
+      "heroHeadline": "Website design for coaches and consultants",
+      "intro": "Coach website design for coaches, consultants and solo founders who sell trust. We build a website that positions you clearly, a booking funnel for discovery calls, and the follow-up system that turns interested visitors into paying clients."
+    }
+  },
+  "indexedPosts": [
+    "how-to-rank-in-the-google-map-pack-local-3-pack",
+    "why-your-business-isn-t-showing-up-on-google-maps",
+    "how-to-get-more-google-reviews-without-begging",
+    "booking-systems-that-reduce-no-shows",
+    "building-ai-chat-assistants-into-your-website",
+    "automating-lead-follow-up-with-ai"
+  ]
+}

@@ -615,3 +615,8 @@
 .contact-way:hover em svg{transform:translateX(3px)}
 .v-faq-intro p a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 @media (max-width:900px){.contact-ways{grid-template-columns:1fr}.contact-way{padding:22px}}
+
+/* Keyword line inside the H1 (SEO), styled as a small label above the headline */
+.v-h1-kicker{display:block;margin:0 0 14px;font-size:clamp(14px,1.2vw,16px);font-weight:700;letter-spacing:.01em;line-height:1.35;color:var(--blue);text-wrap:balance}
+.v-phero h1 .v-h1-kicker{margin-bottom:16px}
+.lp-ind-name{font-size:21px;letter-spacing:-.02em;color:var(--v-ink);margin:0}
