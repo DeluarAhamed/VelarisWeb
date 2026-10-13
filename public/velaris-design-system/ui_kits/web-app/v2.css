@@ -394,6 +394,7 @@
 .lp-story-row:first-child{border-top:0;padding-top:0}
 .lp-story-row h2{font-size:22px;letter-spacing:-.02em;color:var(--v-ink)}
 .lp-story-row p{margin:0;font-size:18px;line-height:1.7;color:var(--v-ink-2)}
+.lp-story-row p+p{margin-top:16px}
 .lp-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .lp-chips li{padding:8px 14px;border-radius:999px;background:var(--v-bg);border:1px solid var(--v-line);font-size:14px;font-weight:600;color:var(--v-ink)}
 .lp-quote{margin:0 auto;max-width:860px;text-align:center}

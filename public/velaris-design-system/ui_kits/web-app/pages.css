@@ -77,6 +77,13 @@
   background-size:13px;background-repeat:no-repeat;background-position:center}
 .prose blockquote{margin:24px 0;padding:20px 26px;border-left:3px solid var(--teal);background:var(--cream);
   border-radius:0 12px 12px 0;font-family:var(--font-display);font-size:19px;color:var(--ink)}
+.prose a{color:var(--blue,#127AFE);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.prose ol{margin:0 0 18px;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.prose .tbl{overflow-x:auto;margin:24px 0;border:1px solid var(--line);border-radius:14px;background:#fff}
+.prose table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;min-width:560px}
+.prose th,.prose td{padding:12px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.prose thead th{background:var(--cream);color:var(--ink);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.prose tr:last-child td{border-bottom:0}
 .prose .blog-visual{margin:30px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 28px 70px -54px rgba(2,16,31,.45)}
 .blog-visual .bv-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;background:linear-gradient(135deg,var(--navy),#103c42);color:#fff}
 .blog-visual .bv-head b{font-size:15px;color:#fff}

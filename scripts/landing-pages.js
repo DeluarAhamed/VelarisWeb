@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const ORIGIN = 'https://velarisweb.com';
-const V = '20261012-s2';
+const V = '20261014-p1';
 const WA = 'https://wa.me/8801989570693';
 const SHARE_IMAGE = `${ORIGIN}/velaris-design-system/assets/og-velaris.png`;
 const LOGO = `${ORIGIN}/velaris-design-system/assets/velaris-icon.png`;
@@ -628,7 +628,7 @@ function websiteSubscriptionPage(cases) {
   ${storyRows([
     ['Who owns the website?', "<p>Your domain is registered in your name, and your business name, logo, content and data always belong to you. What happens to the website itself if you leave, including any option to transfer or buy it out, is written into your proposal before work starts, so there are no surprises. If you would rather own everything outright from day one, we also build <a href=\"/pricing#custom\">one-off website projects</a>.</p>"],
     ['Cancelling', "<p>Every plan is month-to-month. You can cancel anytime with 30 days' notice by email or WhatsApp, with no exit fee. Most clients stay because the website keeps bringing in work, not because they are locked in.</p>"],
-    ['Is a subscription right for you?', `<p>A web design subscription suits service businesses that want a professional website without a large upfront bill, and want someone to keep it fast, secure and up to date. If you only need a simple page you will never change, a DIY builder may be enough. If you are in the UK, see our <a href="/pay-monthly-website">pay monthly websites for UK small businesses</a>. Compare every plan on our <a href="/pricing">small business web design packages</a> page, or see which system fits <a href="/solutions">your industry</a>.</p>`],
+    ['Is a subscription right for you?', `<p>A web design subscription suits service businesses that want a professional website without a large upfront bill, and want someone to keep it fast, secure and up to date. If you only need a simple page you will never change, a DIY builder may be enough. Read <a href="/blog/website-cost-per-month-small-business">how much a website costs per month for a small business</a> and our honest comparison of a <a href="/blog/web-design-subscription-vs-one-time">web design subscription vs a one-time payment</a>. If you are in the UK, see our <a href="/pay-monthly-website">pay monthly websites for UK small businesses</a>. Compare every plan on our <a href="/pricing">small business web design packages</a> page, or see which system fits <a href="/solutions">your industry</a>.</p>`],
   ])}
 </section>
 ${casesStrip(cases)}
@@ -707,7 +707,7 @@ function payMonthlyPage(cases) {
   ${storyRows([
     ['Built for UK customers', '<p>We write your website in UK English, with pound prices, local phone numbers and the towns you cover, so it reads like a local business, because it is one. Service-area pages help you show up for searches like &ldquo;plumber in Leeds&rdquo; or &ldquo;cleaner near me&rdquo;, and your Google Business Profile is set up to match.</p>'],
     ['Ownership and leaving', "<p>Your domain is registered in your name and your content is always yours. Plans run month to month with 30 days' notice to cancel, and what happens to the website itself if you leave is agreed in writing before we start. If you prefer to buy a website outright, we build <a href=\"/pricing#custom\">one-off projects</a> too.</p>"],
-    ['Not in the UK?', '<p>See our <a href="/website-subscription">web design subscription</a> page for US and Canadian businesses, compare <a href="/pricing">all plans and features</a>, or find the system built for <a href="/solutions">your industry</a>.</p>'],
+    ['Not in the UK?', '<p>See our <a href="/website-subscription">web design subscription</a> page for US and Canadian businesses, compare <a href="/pricing">all plans and features</a>, or find the system built for <a href="/solutions">your industry</a>.</p><p>Still weighing it up? Read <a href="/blog/website-cost-per-month-small-business">how much a website costs per month</a> and <a href="/blog/web-design-subscription-vs-one-time">pay monthly vs a one-off payment</a>.</p>'],
   ])}
 </section>
 ${casesStrip(cases)}
