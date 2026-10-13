@@ -242,7 +242,7 @@ async function main() {
   const servicePaths = landing.services;
   const casePaths = landing.cases;
   const postPaths = posts.filter(isIndexed).map((post) => postPath(post.slug));
-  const paths = [...new Set([...staticPaths, ...servicePaths, ...(landing.industries || []), ...casePaths, ...postPaths])];
+  const paths = [...new Set([...staticPaths, ...servicePaths, ...(landing.industries || []), ...(landing.pages || []), ...casePaths, ...postPaths])];
 
   // lastmod helps Google decide what to recrawl: articles use their publish date, generated pages the build date.
   const buildDate = new Date().toISOString().slice(0, 10);

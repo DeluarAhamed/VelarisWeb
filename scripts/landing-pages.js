@@ -109,7 +109,7 @@ function serviceArt() {
 }
 
 /* ---------- shell ---------- */
-function shell({ title, description, canonical, page, ogType = 'website', jsonLd = [], body }) {
+function shell({ title, description, canonical, page, ogType = 'website', jsonLd = [], head = '', body }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +121,7 @@ function shell({ title, description, canonical, page, ogType = 'website', jsonLd
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 <meta name="description" content="${e(description)}">
 <link rel="canonical" href="${canonical}">
-<meta name="robots" content="index, follow">
+${head ? `${head}\n` : ''}<meta name="robots" content="index, follow">
 <meta property="og:type" content="${ogType}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:title" content="${e(title)}">
@@ -521,6 +521,201 @@ ${ctaBlock('Your project next', 'Want a website like these?', 'Message us on Wha
   });
 }
 
+/* ---------- subscription pages ---------- */
+// /website-subscription (US/international) and /pay-monthly-website (UK). Static copy, written for each audience.
+const tick = CHECK.replace('<svg', '<svg class="v-check"');
+const PLANS = [
+  { name: 'Starter', usd: '199', gbp: '150', for: 'Get online fast and start winning enquiries.', items: ['Custom website, up to 5 pages', 'Domain, hosting, SSL &amp; security', '10 content updates a month', 'SEO setup &amp; Google Maps listing', '1 business email'] },
+  { name: 'Growth', usd: '399', gbp: '300', pop: true, for: 'More leads, repeat customers and clear numbers.', items: ['Premium custom design, up to 15 pages', 'Online booking with reminders', 'Unlimited content updates', 'On-page SEO &amp; 2 blog posts a month', 'Google Business Profile management'] },
+  { name: 'Scale', usd: '699', gbp: '525', plus: true, for: 'Your own software and AI, built and run for you.', items: ['Everything in Growth', 'CRM, client portal or rebooking engine', 'AI chatbot or workflow automation', 'Integrations with your tools', 'Dedicated account manager'] },
+];
+function planCards(uk) {
+  return `<div class="v-plans">${PLANS.map((p) => {
+    const price = p.plus ? `from $${p.usd}/month` : `$${p.usd}/month`;
+    const amt = uk
+      ? `<div class="amt"><sup>£</sup><b>${p.gbp}</b><span>${p.plus ? '+' : ''}/month*</span></div><p class="setup">Billed as ${price} &middot; no setup fee</p>`
+      : `<div class="amt"><sup>$</sup><b>${p.usd}</b><span>${p.plus ? '+' : ''}/month</span></div><p class="setup">No setup fee &middot; cancel anytime</p>`;
+    return `<div class="v-plan${p.pop ? ' pop' : ''}">${p.pop ? '<span class="badge">MOST POPULAR</span>' : ''}<h3>${p.name}</h3><p class="for">${p.for}</p>${amt}<a class="btn ${p.pop ? 'btn-blue' : 'btn-quiet'}" href="${WA}" data-plan="${p.name}" data-price="${price}" data-wa="Hi Velaris, I'm interested in the ${p.name} plan (${price})${uk ? ' for my UK business' : ''}.">Get started</a><ul>${p.items.map((t) => `<li>${CHECK}${t}</li>`).join('')}</ul></div>`;
+  }).join('')}</div>`;
+}
+const costTable = (cols, rows, caption) => `<div class="v-table-wrap"><table class="v-table"><thead><tr><th scope="col">&nbsp;</th>${cols.map((c, i) => `<th scope="col"${i === cols.length - 1 ? ' class="pop"' : ''}>${c}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr><td>${r[0]}</td>${r.slice(1).map((v) => `<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const storyRows = (rows) => `<div class="wrap lp-story">${rows.map(([h, html]) => `<div class="lp-story-row"><h2>${h}</h2><div>${html}</div></div>`).join('')}</div>`;
+const subscriptionLd = (url, name, description, faqs, trail) => [
+  {
+    '@context': 'https://schema.org', '@type': 'Service', name, serviceType: 'Website design, hosting and maintenance subscription', description, url,
+    provider: { '@type': 'Organization', name: 'Velaris Web', url: `${ORIGIN}/`, logo: LOGO },
+    offers: PLANS.map((p) => ({ '@type': 'Offer', name: p.name, price: p.usd, priceCurrency: 'USD', url: `${ORIGIN}/pricing`,
+      priceSpecification: { '@type': 'UnitPriceSpecification', price: p.usd, priceCurrency: 'USD', unitText: 'MONTH' } })),
+  },
+  crumbLd(trail),
+  faqLd(faqs),
+];
+const hreflang = `<link rel="alternate" hreflang="en" href="${ORIGIN}/website-subscription">
+<link rel="alternate" hreflang="en-GB" href="${ORIGIN}/pay-monthly-website">
+<link rel="alternate" hreflang="x-default" href="${ORIGIN}/website-subscription">`;
+const casesStrip = (cases) => cases.length ? `
+<section class="v-section">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Examples</span><h2>Websites we build and run <span class="serif">every month</span></h2></div>
+    <div class="v-work">${cases.slice(0, 3).map(caseCard).join('')}</div>
+    <div class="v-more"><a class="btn btn-quiet" href="/case-studies">See all case studies</a></div>
+  </div>
+</section>` : '';
+
+function websiteSubscriptionPage(cases) {
+  const url = `${ORIGIN}/website-subscription`;
+  const title = 'Web Design Subscription for Small Businesses | Velaris Web';
+  const description = 'A web design subscription from $199/month: custom website, hosting, updates and support with no upfront cost. See what each plan includes.';
+  const trail = [{ name: 'Home', href: '/' }, { name: 'Pricing', href: '/pricing' }, { name: 'Web design subscription', href: '/website-subscription' }];
+  const waMsg = "Hi Velaris, I'd like to know more about your web design subscription.";
+  const faqs = [
+    { question: 'What is a web design subscription?', answer: 'A web design subscription replaces the big upfront cost of a website with one monthly fee. The fee covers the custom design and build, hosting, security, backups, content updates and support, so your website keeps improving instead of going out of date.' },
+    { question: 'What is website as a service?', answer: 'Website as a service is another name for the same model: you pay monthly for a website that is built, hosted and maintained for you, rather than buying it once and looking after it yourself.' },
+    { question: 'How much does a web design subscription cost?', answer: 'Our plans are $199, $399 and from $699 a month. Starter covers a custom website up to 5 pages; Growth adds booking, unlimited updates and SEO; Scale adds custom software and AI. There is no setup fee.' },
+    { question: 'Who owns the website and domain?', answer: 'Your domain is registered in your name, and your business name, logo, content and data are always yours. What happens to the website itself if you cancel, including any option to transfer or buy it out, is agreed with you in writing before work starts.' },
+    { question: 'Can I cancel my subscription?', answer: "Yes. Plans are month-to-month and you can cancel anytime with 30 days' notice by email or WhatsApp. There is no long contract." },
+    { question: 'Is a subscription cheaper than a one-off website?', answer: 'In the first year, almost always: you pay nothing upfront. Over three years the total is similar to a mid-priced agency build plus hosting and maintenance, but the subscription includes updates, fixes and SEO work that a one-off build charges for separately.' },
+    { question: 'How long does it take to launch?', answer: 'You see a working preview within 5 business days of our kick-off call. Most sites go live within two to three weeks, depending on how quickly content and feedback come back.' },
+    { question: 'Can I change plans later?', answer: 'Yes. You can upgrade or downgrade at the start of any billing month. We add the new features to your existing site, with no rebuild and no downtime.' },
+  ];
+  const body = `
+<section class="v-phero">
+  <div class="wrap">
+    ${crumbs(trail)}
+    <span class="v-pill"><b>Website as a service</b> From $199/month &middot; no upfront cost</span>
+    <h1>Web design subscription <span class="serif">for small businesses</span></h1>
+    <p>Our web design subscription gives your small business a custom website, hosting, security, updates and support for one monthly fee, with no upfront cost and no long contract. We design and build the site, then keep running and improving it every month, so it keeps bringing in enquiries instead of going stale.</p>
+    <div class="v-hero-cta"><a class="btn btn-blue" href="#plans">See subscription plans ${ARROW}</a>${waBtn(waMsg)}</div>
+    <ul class="v-ticks"><li>${tick}No setup fee</li><li>${tick}Preview in 5 business days</li><li>${tick}Cancel with 30 days' notice</li></ul>
+  </div>
+</section>
+
+<section class="v-section" style="padding-top:72px">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">How it works</span><h2>How our website subscription <span class="serif">works</span></h2></div>
+    <div class="v-steps">
+      <div class="v-step"><h3>Free call</h3><p>We learn how your business wins customers and recommend a plan. No obligation.</p></div>
+      <div class="v-step"><h3>Preview in 5 days</h3><p>You see a working preview of your custom site within 5 business days, then we refine it with you.</p></div>
+      <div class="v-step"><h3>Launch</h3><p>We connect your domain, set up hosting, email, analytics and Google listings, and go live.</p></div>
+      <div class="v-step"><h3>Monthly care</h3><p>Send changes on WhatsApp or email. We make updates, fix issues and improve what brings in enquiries.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="v-section soft" id="plans">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Plans</span><h2>Monthly website packages, <span class="serif">everything included</span></h2><p>Every plan includes design, hosting, SSL, backups, security and support. <a href="/pricing#compare">Compare every feature</a>.</p></div>
+    ${planCards(false)}
+  </div>
+</section>
+
+<section class="v-section">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">The numbers</span><h2>Three-year cost: subscription vs <span class="serif">a one-off build</span></h2><p>Typical ranges for a small business website, so you can compare honestly.</p></div>
+    ${costTable(['One-off agency build', 'DIY website builder', 'Velaris subscription'], [
+      ['Upfront cost', '$5,000&ndash;$15,000', '$0', '<b>$0</b>'],
+      ['Monthly cost', '$50&ndash;$200 for hosting and maintenance', '$30&ndash;$60 plan', '<b>$199</b> (Starter) or <b>$399</b> (Growth)'],
+      ['Content updates', 'Billed per change', 'You do them yourself', 'Included'],
+      ['Security, fixes and backups', 'Often extra', 'Basic', 'Included'],
+      ['SEO and Google listings', 'Extra', 'You do them yourself', 'Included'],
+      ['Custom design', 'Yes', 'Template', 'Yes'],
+      ['Typical 3-year total', '$6,800&ndash;$22,200', '$1,080&ndash;$2,160 plus your time', '<b>$7,164</b> (Starter) or <b>$14,364</b> (Growth)'],
+    ], 'Three-year cost comparison of website options')}
+  </div>
+</section>
+
+<section class="v-section soft">
+  ${storyRows([
+    ['Who owns the website?', "<p>Your domain is registered in your name, and your business name, logo, content and data always belong to you. What happens to the website itself if you leave, including any option to transfer or buy it out, is written into your proposal before work starts, so there are no surprises. If you would rather own everything outright from day one, we also build <a href=\"/pricing#custom\">one-off website projects</a>.</p>"],
+    ['Cancelling', "<p>Every plan is month-to-month. You can cancel anytime with 30 days' notice by email or WhatsApp, with no exit fee. Most clients stay because the website keeps bringing in work, not because they are locked in.</p>"],
+    ['Is a subscription right for you?', `<p>A web design subscription suits service businesses that want a professional website without a large upfront bill, and want someone to keep it fast, secure and up to date. If you only need a simple page you will never change, a DIY builder may be enough. If you are in the UK, see our <a href="/pay-monthly-website">pay monthly websites for UK small businesses</a>. Compare every plan on our <a href="/pricing">small business web design packages</a> page, or see which system fits <a href="/solutions">your industry</a>.</p>`],
+  ])}
+</section>
+${casesStrip(cases)}
+${faqBlock(faqs, 'Web design subscription <span class="serif">questions</span>', "Common questions about website subscriptions. Can't find yours? Message us.", waMsg)}
+${ctaBlock('Get started', 'Start your web design subscription', 'Message us on WhatsApp. If we are a fit, your preview is ready within 5 business days.', waMsg)}`;
+  return shell({ title, description, canonical: url, page: 'pricing', head: hreflang, jsonLd: subscriptionLd(url, 'Web design subscription', description, faqs, trail), body });
+}
+
+function payMonthlyPage(cases) {
+  const url = `${ORIGIN}/pay-monthly-website`;
+  const title = 'Pay Monthly Websites for Small Businesses (UK) | Velaris Web';
+  const description = 'Pay monthly websites for UK small businesses: design, hosting and updates in one monthly fee, no upfront cost and no long contract. Guide prices in £.';
+  const trail = [{ name: 'Home', href: '/' }, { name: 'Pricing', href: '/pricing' }, { name: 'Pay monthly websites (UK)', href: '/pay-monthly-website' }];
+  const waMsg = "Hi Velaris, I run a UK business and I'm interested in a pay monthly website.";
+  const faqs = [
+    { question: 'How much is a pay monthly website in the UK?', answer: 'Our plans are billed at $199, $399 and from $699 a month, which is roughly £150, £300 and from £525 at current exchange rates. There is no setup fee, and hosting, security and updates are included.' },
+    { question: 'Why are your prices in US dollars?', answer: 'We work with small businesses in the UK, US and Canada and bill every client in US dollars by card or bank transfer. The pound amount you pay moves slightly with the exchange rate, and your bank may add a small conversion fee.' },
+    { question: 'Do your prices include VAT?', answer: 'No VAT is added to our invoices. If your business is VAT-registered, ask your accountant whether you need to account for VAT under the reverse charge.' },
+    { question: 'Is there a minimum contract?', answer: "No. Plans are month-to-month and you can cancel anytime with 30 days' notice. There are no 12 or 24-month tie-ins." },
+    { question: 'Who owns my domain and content?', answer: 'Your domain, whether .co.uk or .com, is registered in your name, and your logo, content and customer data are always yours. What happens to the website itself if you cancel, including transfer or buy-out options, is agreed in writing before we start.' },
+    { question: 'Can you help my business show up on Google Maps?', answer: 'Yes. Every plan includes Google Maps and Apple Maps listings, and Growth includes ongoing Google Business Profile management to help you appear in local searches in your town.' },
+    { question: 'Pay monthly or a one-off website: which is better?', answer: 'Pay monthly is better if you want no upfront cost and someone to keep the site updated and secure. A one-off build suits businesses that want to own everything outright and are happy to manage hosting and changes themselves. We offer both.' },
+    { question: 'How quickly can my website go live?', answer: 'You see a working preview within 5 business days of our first call, and most sites launch within two to three weeks.' },
+  ];
+  const body = `
+<section class="v-phero">
+  <div class="wrap">
+    ${crumbs(trail)}
+    <span class="v-pill"><b>For UK businesses</b> No upfront cost &middot; no tie-in</span>
+    <h1>Pay monthly websites <span class="serif">for UK small businesses</span></h1>
+    <p>Our pay monthly websites give UK small businesses a professionally designed website, hosting, security and updates for one monthly fee, with nothing to pay upfront and no long contract. Ideal for tradespeople, salons, clinics, cleaners and consultants who want a site that wins enquiries without a £3,000 bill on day one.</p>
+    <div class="v-hero-cta"><a class="btn btn-blue" href="#plans">See monthly prices ${ARROW}</a>${waBtn(waMsg)}</div>
+    <ul class="v-ticks"><li>${tick}No setup fee</li><li>${tick}Preview in 5 working days</li><li>${tick}Cancel with 30 days' notice</li></ul>
+  </div>
+</section>
+
+<section class="v-section" style="padding-top:72px">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">What's included</span><h2>Everything your website needs, <span class="serif">in one monthly fee</span></h2></div>
+    <div class="v-grid">
+      <div class="v-feat"><h3>Bespoke design</h3><p>Designed around your business and customers. No off-the-shelf templates.</p></div>
+      <div class="v-feat"><h3>Hosting &amp; security</h3><p>Fast hosting, SSL certificate, daily backups and security monitoring.</p></div>
+      <div class="v-feat"><h3>Your .co.uk domain</h3><p>Registered in your name and connected for you, with a business email address.</p></div>
+      <div class="v-feat"><h3>Changes when you need them</h3><p>Send updates by WhatsApp or email. No invoice for every small change.</p></div>
+      <div class="v-feat"><h3>Local SEO</h3><p>Set up to rank in your town, with Google Maps and Apple Maps listings.</p></div>
+      <div class="v-feat"><h3>Enquiry capture</h3><p>Quote forms, WhatsApp and click-to-call on every page, so visitors get in touch.</p></div>
+      <div class="v-feat"><h3>Online booking</h3><p>Bookings with automatic reminders on the Growth plan, so fewer no-shows.</p></div>
+      <div class="v-feat"><h3>Plain-English reports</h3><p>See visitors, enquiries and what's working each month.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="v-section soft" id="plans">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Prices</span><h2>Pay monthly website packages <span class="serif">for the UK</span></h2><p>Guide prices in pounds. No setup fee on any plan.</p></div>
+    ${planCards(true)}
+    <p class="v-plans-foot">*Plans are billed in US dollars; pound amounts are approximate and move with the exchange rate. No VAT is added to our invoices. <a href="/pricing#compare">Compare every feature</a></p>
+  </div>
+</section>
+
+<section class="v-section">
+  <div class="wrap">
+    <div class="v-head"><span class="v-kicker">Compare</span><h2>Pay monthly vs a one-off website <span class="serif">in the UK</span></h2></div>
+    ${costTable(['One-off website from a UK agency', 'Velaris pay monthly'], [
+      ['Upfront cost', 'Often £2,000&ndash;£10,000', '<b>£0</b>'],
+      ['Hosting, SSL and backups', 'Usually billed yearly on top', 'Included'],
+      ['Updates and changes', 'Charged per change or by the hour', 'Included (10 a month, or unlimited on Growth)'],
+      ['Local SEO and Google listings', 'Usually a separate service', 'Included'],
+      ['Contract', 'Paid in full', "Monthly, 30 days' notice"],
+      ['Best for', 'Owning everything outright and managing it yourself', 'No upfront cost and a site that keeps improving'],
+    ], 'Pay monthly versus one-off website comparison for UK businesses')}
+  </div>
+</section>
+
+<section class="v-section soft">
+  ${storyRows([
+    ['Built for UK customers', '<p>We write your website in UK English, with pound prices, local phone numbers and the towns you cover, so it reads like a local business, because it is one. Service-area pages help you show up for searches like &ldquo;plumber in Leeds&rdquo; or &ldquo;cleaner near me&rdquo;, and your Google Business Profile is set up to match.</p>'],
+    ['Ownership and leaving', "<p>Your domain is registered in your name and your content is always yours. Plans run month to month with 30 days' notice to cancel, and what happens to the website itself if you leave is agreed in writing before we start. If you prefer to buy a website outright, we build <a href=\"/pricing#custom\">one-off projects</a> too.</p>"],
+    ['Not in the UK?', '<p>See our <a href="/website-subscription">web design subscription</a> page for US and Canadian businesses, compare <a href="/pricing">all plans and features</a>, or find the system built for <a href="/solutions">your industry</a>.</p>'],
+  ])}
+</section>
+${casesStrip(cases)}
+${faqBlock(faqs, 'Pay monthly website <span class="serif">questions</span>', "Common questions from UK businesses. Can't find yours? Message us.", waMsg)}
+${ctaBlock('Get started', 'Get your pay monthly website', 'Message us on WhatsApp. Your preview is ready within 5 working days.', waMsg)}`;
+  return shell({ title, description, canonical: url, page: 'pricing', head: hreflang, jsonLd: subscriptionLd(url, 'Pay monthly websites for UK small businesses', description, faqs, trail), body });
+}
+
 /* ---------- build ---------- */
 async function buildLandingPages({ distDir, fallbackCases }) {
   const [{ services, source: svcSource }, { cases, source: caseSource }, { industries, source: indSource }] =
@@ -529,7 +724,7 @@ async function buildLandingPages({ distDir, fallbackCases }) {
   const svc = safe(services);
   const cs = safe(cases);
   const ind = safe(industries);
-  const paths = { services: svc.map((s) => `/services/${s.slug}`), cases: cs.map((c) => `/case-studies/${c.slug}`), industries: ['/solutions', ...ind.map((d) => `/solutions/${d.slug}`)] };
+  const paths = { services: svc.map((s) => `/services/${s.slug}`), cases: cs.map((c) => `/case-studies/${c.slug}`), industries: ['/solutions', ...ind.map((d) => `/solutions/${d.slug}`)], pages: ['/website-subscription', '/pay-monthly-website'] };
   if (!distDir) return paths;
 
   const art = serviceArt();
@@ -544,6 +739,8 @@ async function buildLandingPages({ distDir, fallbackCases }) {
   fs.writeFileSync(path.join(distApp, 'services.html'), servicesIndex(svc, art));
   fs.writeFileSync(path.join(distApp, 'work.html'), casesIndex(cs));
   fs.writeFileSync(path.join(distApp, 'industries.html'), industriesIndex(ind));
+  fs.writeFileSync(path.join(distDir, 'website-subscription.html'), websiteSubscriptionPage(cs));
+  fs.writeFileSync(path.join(distDir, 'pay-monthly-website.html'), payMonthlyPage(cs));
   console.log(`Prerendered ${svc.length} service pages (${svcSource}), ${cs.length} case studies (${caseSource}) and ${ind.length} industry pages (${indSource})`);
   return paths;
 }

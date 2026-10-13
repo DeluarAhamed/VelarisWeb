@@ -190,6 +190,8 @@
         '<a href="/pricing#plans">Growth</a>'+
         '<a href="/pricing#plans">Scale</a>'+
         '<a href="/pricing#included">What&rsquo;s included</a>'+
+        '<a href="/website-subscription">Web design subscription</a>'+
+        '<a href="/pay-monthly-website">Pay monthly websites (UK)</a>'+
         '<a href="/services">All services</a></div>'+
       '<div class="foot-col"><h5>Industries</h5>'+
         '<a href="/solutions/clinics">Clinics</a>'+
