@@ -1,3 +1,4 @@
+:root{--v-card-shadow:0 1px 2px rgba(11,27,51,.05),0 14px 36px -18px rgba(11,27,51,.18);--v-card-shadow-hover:0 2px 4px rgba(11,27,51,.05),0 26px 52px -24px rgba(11,27,51,.28)}
 /* Velaris v2: clean, minimal layouts for the monthly-plan model.
    Loads after home-figma.css (tokens, nav, footer, buttons) and only styles .v-* blocks. */
 :root{
@@ -106,10 +107,10 @@
 
 /* SERVICES BENTO */
 .v-bento{display:grid;grid-auto-flow:dense;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(232px,auto);gap:16px}
-.v-svc{position:relative;display:flex;flex-direction:column;padding:28px 28px 0;border-radius:22px;background:#fff;border:1px solid var(--v-line);
+.v-svc{position:relative;display:flex;flex-direction:column;padding:28px 28px 0;border-radius:22px;background:#fff;border:0;box-shadow:var(--v-card-shadow);
   overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s,border-color .25s;color:inherit}
-.v-svc::before{content:"";position:absolute;left:28px;right:28px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--accent,var(--blue))}
-.v-svc:hover{transform:translateY(-4px);box-shadow:var(--v-shadow);border-color:#d6deea}
+
+.v-svc:hover{transform:translateY(-4px);box-shadow:var(--v-card-shadow-hover)}
 .v-svc.wide{grid-column:span 2}
 .v-svc.tall{grid-row:span 2}
 .v-svc h3{font-size:21px;letter-spacing:-.02em;color:var(--v-ink)}
@@ -277,7 +278,7 @@
 .v-phero{padding:84px 0 24px;text-align:center;background:linear-gradient(180deg,#fff,var(--v-bg))}
 .v-phero h1{font-size:clamp(38px,5.4vw,64px);letter-spacing:-.04em;line-height:1.04;color:var(--v-ink);max-width:900px;margin:20px auto 0;text-wrap:balance}
 .v-phero p{font-size:19px;color:var(--v-ink-2);max-width:660px;margin:22px auto 0;line-height:1.6}
-.v-phero .v-hero-cta{justify-content:center}
+.v-phero .v-hero-cta,.v-phero .v-ticks{justify-content:center}
 
 /* PRICING TABLE */
 .v-table-wrap{border:1px solid var(--v-line);border-radius:var(--v-r);overflow:auto;background:#fff}
@@ -535,14 +536,14 @@
 .lp-pain h3{font-size:19px;letter-spacing:-.02em;color:var(--v-ink)}
 .lp-pain p{font-size:15.5px;line-height:1.6;color:var(--v-ink-2);margin:8px 0 0}
 .lp-links{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.lp-link{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--v-line);transition:border-color .2s,transform .2s var(--ease)}
-.lp-link:hover{border-color:var(--blue);transform:translateY(-2px)}
+.lp-link{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:18px;background:#fff;border:0;box-shadow:var(--v-card-shadow);transition:box-shadow .2s,transform .2s var(--ease)}
+.lp-link:hover{box-shadow:var(--v-card-shadow-hover);transform:translateY(-2px)}
 .lp-link b{font-size:16px;color:var(--v-ink)}
 .lp-link span{font-size:14px;line-height:1.5;color:var(--v-ink-2)}
 .lp-link em{font-style:normal;font-size:13.5px;font-weight:700;color:var(--blue);margin-top:auto}
 .lp-ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.lp-ind{display:flex;flex-direction:column;gap:10px;padding:30px;border-radius:var(--v-r);background:#fff;border:1px solid var(--v-line);border-top:4px solid var(--accent,var(--blue));transition:transform .2s var(--ease),box-shadow .2s}
-.lp-ind:hover{transform:translateY(-3px);box-shadow:0 24px 48px -32px rgba(11,27,51,.4)}
+.lp-ind{display:flex;flex-direction:column;gap:10px;padding:30px;border-radius:var(--v-r);background:#fff;border:0;box-shadow:var(--v-card-shadow);transition:transform .2s var(--ease),box-shadow .2s}
+.lp-ind:hover{transform:translateY(-3px);box-shadow:var(--v-card-shadow-hover)}
 .lp-ind h2{font-size:22px;letter-spacing:-.02em;color:var(--v-ink)}
 .lp-ind p{margin:0;font-size:15.5px;line-height:1.6;color:var(--v-ink-2)}
 .lp-ind .more{margin-top:auto;padding-top:10px;display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:700;color:var(--accent,var(--blue))}
