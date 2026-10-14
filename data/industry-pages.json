@@ -566,7 +566,7 @@
       }
     ],
     "example": "It's 9pm and a patient with knee pain finds your orthopedic clinic online. Instead of a closed phone line, the AI receptionist answers their questions about consultations and insurance, offers three appointment times for next week and books one. In the morning your front desk sees the booking and the patient's notes, with nothing to call back.",
-    "recommendedPlan": "Growth",
+    "recommendedPlan": "Scale",
     "relatedServices": [
       "ai-solutions",
       "custom-software",
@@ -592,7 +592,7 @@
       },
       {
         "question": "How much does an AI receptionist cost?",
-        "answer": "It's included from our Growth plan at $399/month, together with your website, hosting and updates. There is no setup fee and no long contract."
+        "answer": "It's included in our Scale plan from $699/month, together with your website, hosting, updates, SEO and integrations. There is no setup fee and no long contract."
       },
       {
         "question": "Can we try it first?",

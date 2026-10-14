@@ -1,0 +1,85 @@
+{
+  "_note": "In-depth sections and extra FAQs for service pages (SEO plan week 3). Apply with: cd sanity && npx sanity exec scripts/apply-service-sections.mjs --with-user-token. Body paragraphs are separated by a blank line; links use [text](/path).",
+  "web-design": {
+    "sectionsHeading": "Custom website design for small business, explained",
+    "sections": [
+      {
+        "heading": "How our web design process works",
+        "body": "Every project starts with a short call about how your business wins customers: what people search for, the questions they ask before they buy and what makes them choose you over a competitor. From that we plan the pages, write or polish the copy, and design a homepage preview you see within 5 business days.\n\nOnce you are happy with the direction, we design the remaining pages, connect your domain, business email, Google Search Console and analytics, and test everything on phones, tablets and desktops. Most small business websites launch within two to three weeks. After launch the work does not stop: on a monthly plan we keep making updates, fixing issues and improving the pages that bring in enquiries."
+      },
+      {
+        "heading": "What makes a small business website convert",
+        "body": "A good-looking website is not enough. The sites that win enquiries share a few things: a headline that says exactly what you do and where, a clear next step on every screen (call, WhatsApp, book or request a quote), real photos and reviews near the top, and pages that answer the questions customers ask before they get in touch, such as price ranges, service areas and how long things take.\n\nSpeed matters too. Most local customers visit on a phone, often on mobile data, and many leave if a page takes more than a few seconds to load. We build lightweight pages, compress images and avoid heavy page builders, so your site feels instant and ranks better in Google."
+      },
+      {
+        "heading": "Website redesign for small businesses",
+        "body": "If you already have a website that looks dated, loads slowly or brings in few enquiries, a redesign is often the fastest win. We start by checking which pages already rank and get traffic, then keep those URLs or redirect them properly, so you keep the Google rankings you have earned while everything around them improves.\n\nWe can usually reuse your existing content, photos and domain, and rewrite the parts that are not working. You see the new design before anything goes live, and the switch happens with no downtime."
+      },
+      {
+        "heading": "What a custom website costs",
+        "body": "A custom small business website from an agency usually costs $2,000 to $15,000 upfront, plus hosting, maintenance and charges for changes. With us there is no upfront build fee: a custom website of up to 5 pages, with hosting, security, a business email and 10 updates a month, is $199 a month on our Starter plan. Growth at $399 a month adds up to 15 pages, online booking, unlimited updates and on-page SEO.\n\nCompare the options in [how much a website costs per month](/blog/website-cost-per-month-small-business), see how our [web design subscription](/website-subscription) works, or compare every feature on the [pricing page](/pricing)."
+      }
+    ],
+    "faqs": [
+      { "question": "Do you use templates or page builders?", "answer": "No. Every site is designed for your business and built with clean, lightweight code, which keeps it fast and easy for Google to understand." },
+      { "question": "Can I update the website myself?", "answer": "You can, but you do not have to. Send changes by WhatsApp or email and we make them for you. Starter includes 10 updates a month and Growth includes unlimited updates." },
+      { "question": "Will my website help me show up on Google?", "answer": "Yes. Every site is built with SEO foundations: fast loading, clean page structure, metadata, Search Console and a Google Maps listing. Growth adds on-page SEO, blog posts and Google Business Profile management." }
+    ]
+  },
+  "custom-software": {
+    "sectionsHeading": "Booking systems and CRMs for small business, explained",
+    "sections": [
+      {
+        "heading": "When custom software beats an off-the-shelf app",
+        "body": "Apps like Calendly, Square Appointments or a generic CRM are a great start, and we often recommend them. Custom software makes sense when you are paying for several apps that do not talk to each other, when a marketplace takes a commission on every booking, or when your process has steps no app handles well, such as quotes that depend on property size, deposits for certain services or recurring visits on different schedules.\n\nBecause we build on proven components with AI-assisted development, a custom booking system or CRM is usually live in days or weeks rather than months, and it runs on your monthly plan rather than a large project fee."
+      },
+      {
+        "heading": "Online booking systems that reduce no-shows",
+        "body": "A good booking system for a small business does more than show a calendar. It offers only the times you actually have free, takes deposits where you need them, and sends confirmation and reminder messages by email or WhatsApp so fewer customers forget. After the appointment it can ask for a review and prompt the customer to book again at the right time, which is how salons, clinics and detailers keep their diaries full.\n\nRead more in [booking systems that reduce no-shows](/blog/booking-systems-that-reduce-no-shows)."
+      },
+      {
+        "heading": "CRMs, client portals and quote calculators",
+        "body": "A custom CRM for small business keeps every enquiry, customer and job in one place, with reminders for follow-ups so leads stop slipping through the cracks. A client portal gives customers one login to see quotes, invoices, documents and progress, which cuts down on emails and phone calls.\n\nAn instant quote calculator on your website lets visitors price a job in seconds, for example a cleaning visit by home size or a detail by vehicle type, and sends the quote straight to your CRM so you can follow up while they are still interested."
+      },
+      {
+        "heading": "What custom software costs",
+        "body": "Custom software such as a CRM, rebooking engine or client portal is included in our Scale plan from $699 a month, together with your website, hosting, SEO and support. Online booking with automated reminders is already included on Growth at $399 a month. Larger systems are scoped on a free call and always quoted before we start.\n\nSee how this works for [clinics](/solutions/clinics), [salons and spas](/solutions/salons-and-spas) and [cleaning companies](/solutions/cleaning-services), or compare plans on the [pricing page](/pricing)."
+      }
+    ],
+    "faqs": [
+      { "question": "What is a client portal?", "answer": "A private area of your website where each customer logs in to see their quotes, invoices, documents, bookings or project progress, instead of searching through emails." },
+      { "question": "Can you add a quote calculator to my website?", "answer": "Yes. We build instant quote calculators around how you price, such as by size, service or extras, and send each quote to your inbox or CRM." },
+      { "question": "Is a custom booking system better than Calendly?", "answer": "Not always. For simple appointments, Calendly or a similar app is often enough and we will tell you so. Custom booking is worth it when you need deposits, complex pricing, recurring visits or no marketplace commission." }
+    ]
+  },
+  "ai-solutions": {
+    "sectionsHeading": "AI receptionist for small business, explained",
+    "sections": [
+      {
+        "heading": "What an AI receptionist answers",
+        "body": "An AI receptionist on your website answers the questions your team hears every day: opening hours, prices and packages, service areas, availability, what to bring and how to prepare. It answers in plain language, at any hour, and only from information you approve, so it stays accurate and on brand.\n\nWhen a question needs a person, such as a complaint, a complex quote or anything sensitive, it hands the conversation to your team with the details attached, rather than guessing."
+      },
+      {
+        "heading": "Booking and lead capture, 24/7",
+        "body": "Many customers browse in the evening and at weekends, when nobody is there to answer. An AI receptionist turns those visits into bookings and enquiries: it offers available times from your calendar, takes the booking or collects the customer's details and what they need, and sends everything to your inbox or CRM. You start the next morning with leads ready to call back instead of missed messages.\n\nWe also automate the follow-up around it, such as instant replies to new enquiries and reminders for quotes that have not been answered. Read more in [automating lead follow-up with AI](/blog/automating-lead-follow-up-with-ai)."
+      },
+      {
+        "heading": "Try it: Ava on this website",
+        "body": "The assistant on this website, Ava, runs on the same technology we set up for clients. Ask it about our plans, how long a website takes or what we would build for your business, and see how it answers and when it offers to connect you with a person. Your version is trained on your services, prices and policies instead of ours."
+      },
+      {
+        "heading": "AI receptionist cost and privacy",
+        "body": "AI chatbots and receptionists are included in our Scale plan from $699 a month, together with your website, hosting, SEO, integrations and ongoing monitoring. There is no setup fee, and we review conversations regularly to improve answers. Standalone AI projects for an existing website can be quoted on a free call.\n\nThe assistant only collects what it needs to help, such as a name, contact details and the reason for the enquiry, and that information goes to you, not into public data. For healthcare, see our [AI receptionist for medical practices](/solutions/ai-receptionist-for-medical-practices)."
+      },
+      {
+        "heading": "Industries that get the most from AI",
+        "body": "Dental offices and clinics use an AI receptionist to answer patient questions and book appointments out of hours. HVAC companies, plumbers and other trades use it to capture emergency and quote requests while the team is on jobs, see [contractor websites](/solutions/home-services). Salons and spas use it to handle availability questions and rebookings without interrupting appointments, see [salon and spa websites](/solutions/salons-and-spas)."
+      }
+    ],
+    "faqs": [
+      { "question": "How is an AI receptionist different from a chatbot?", "answer": "A basic chatbot follows fixed scripts. An AI receptionist understands questions written in everyday language, answers from your approved information, books appointments and hands off to your team when needed." },
+      { "question": "Can the AI receptionist book appointments?", "answer": "Yes. It can offer real available times from your calendar and book, or collect booking requests for your team to confirm if your system does not allow direct booking." },
+      { "question": "Can I try an AI receptionist before buying?", "answer": "Yes. Ava, the assistant on this website, uses the same technology. Ask it a few questions, then we can show you a version trained on your business." }
+    ]
+  }
+}

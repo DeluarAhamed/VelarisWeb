@@ -42,7 +42,7 @@ async function loadServices() {
     const rows = await sanityQuery(`*[_type=="service" && !(retired==true) && defined(heroHeadline) && !(_id in path("drafts.**"))]|order(orderRank asc){
       name,"slug":slug.current,orderRank,icon,accent,tagline,shortDescription,heroHeadline,intro,includes,
       capabilities[]{title,description},benefits[]{title,description},process[]{title,description},
-      faqs[]{question,answer},"relatedCases":relatedCases[]->slug.current,seo{metaTitle,metaDescription,keywords}}`);
+      faqs[]{question,answer},sectionsHeading,sections[]{heading,body},"relatedCases":relatedCases[]->slug.current,seo{metaTitle,metaDescription,keywords}}`);
     if (rows && rows.length) return { services: rows, source: 'Sanity' };
     console.warn('WARNING: no landing-page services in Sanity yet; using data/service-pages.json');
   } catch (err) {
@@ -189,6 +189,16 @@ const ctaBlock = (kicker, heading, text, waMsg) => `
     </div>
   </div>
 </section>`;
+// In-depth CMS copy: paragraphs split on blank lines, [text](/path) links to this site only.
+const richText = (text) => String(text || '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
+  .map((p) => `<p>${e(p).replace(/\[([^\]]+)\]\((\/[a-z0-9/#-]*)\)/g, '<a href="$2">$1</a>')}</p>`).join('');
+const sectionsBlock = (s) => (s.sections || []).length ? `
+<section class="v-section">
+  <div class="wrap">
+    ${s.sectionsHeading ? `<div class="v-head"><span class="v-kicker">In depth</span><h2>${e(s.sectionsHeading)}</h2></div>` : ''}
+    <div class="lp-story" style="margin:0 auto">${s.sections.map((x) => `<div class="lp-story-row"><h2>${e(x.heading)}</h2><div>${richText(x.body)}</div></div>`).join('')}</div>
+  </div>
+</section>` : '';
 const caseCard = (c) => `<a class="v-case" href="/case-studies/${c.slug}"><div class="shot" role="img" aria-label="${e(c.client)} website" style="background-image:url('${e(img(c.hero))}')"></div><div class="meta"><div><b>${e(c.client)}</b><small>${e(c.sector)}</small></div><span class="go">${ARROW}</span></div></a>`;
 
 /* ---------- service page ---------- */
@@ -278,6 +288,7 @@ ${related.length ? `
     <div class="v-more"><a class="btn btn-quiet" href="/case-studies">View all case studies</a></div>
   </div>
 </section>` : ''}
+${sectionsBlock(s)}
 ${(s.faqs || []).length ? faqBlock(s.faqs, `${e(s.name)} <span class="serif">questions</span>`, `Common questions about ${lc(s.name)}. Can't find yours? Message us.`, `Hi Velaris, I have a question about ${s.name}.`) : ''}
 ${ctaBlock('Get started', `Ready to get started with ${lc(s.name)}?`, 'Message us on WhatsApp. If we are a fit, your preview is ready within 5 business days.', waMsg)}`;
   const jsonLd = [

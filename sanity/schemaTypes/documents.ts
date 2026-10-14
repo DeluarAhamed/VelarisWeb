@@ -94,6 +94,29 @@ export const documentTypes = [
       defineField({name: 'benefits', type: 'array', of: [defineArrayMember({type: 'processStep'})]}),
       defineField({name: 'process', type: 'array', of: [defineArrayMember({type: 'processStep'})]}),
       defineField({
+        name: 'sectionsHeading',
+        title: 'In-depth heading',
+        description: 'Optional heading above the in-depth sections, e.g. "Custom website design for small business, explained".',
+        type: 'string',
+      }),
+      defineField({
+        name: 'sections',
+        title: 'In-depth sections',
+        description: 'Long-form SEO copy shown as heading + text rows. Separate paragraphs with a blank line; write links as [text](/path).',
+        type: 'array',
+        of: [
+          defineArrayMember({
+            type: 'object',
+            name: 'serviceSection',
+            fields: [
+              defineField({name: 'heading', type: 'string', validation: (Rule) => Rule.required()}),
+              defineField({name: 'body', type: 'text', rows: 8, validation: (Rule) => Rule.required()}),
+            ],
+            preview: {select: {title: 'heading'}},
+          }),
+        ],
+      }),
+      defineField({
         name: 'capabilities',
         type: 'array',
         of: [
