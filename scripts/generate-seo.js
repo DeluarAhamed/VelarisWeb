@@ -216,6 +216,14 @@ function optimiseHtml() {
       html = html.replace(/<script src="[^"]*blog-data\.js[^"]*"><\/script>\n?/g, '');
     }
     if (!html.includes('CabinetGrotesk-Regular.woff2')) html = html.replace(/(<meta name="viewport"[^>]*>)/, `$1\n${fontHead}`);
+    // Defer the site scripts so the page paints before ~190 KB of JS runs (LCP). Order is kept by defer;
+    // skipped on pages with inline scripts in the body, which may expect those globals to exist already.
+    const bodyAt = html.indexOf('<body');
+    const body = html.slice(bodyAt);
+    const inlineScript = /<script(?![^>]*\bsrc=)(?![^>]*application\/ld\+json)[^>]*>/i.test(body);
+    if (bodyAt > 0 && !inlineScript) {
+      html = html.slice(0, bodyAt) + body.replace(/<script src="([^"]+)"><\/script>/g, '<script src="$1" defer></script>');
+    }
     if (html !== before) { fs.writeFileSync(file, html); changed++; }
   }
   console.log(`Optimised ${changed} HTML pages (CMS snapshot, fonts)`);
