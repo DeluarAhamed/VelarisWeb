@@ -21,9 +21,18 @@
       }
     ],
     "faqs": [
-      { "question": "Do you use templates or page builders?", "answer": "No. Every site is designed for your business and built with clean, lightweight code, which keeps it fast and easy for Google to understand." },
-      { "question": "Can I update the website myself?", "answer": "You can, but you do not have to. Send changes by WhatsApp or email and we make them for you. Starter includes 10 updates a month and Growth includes unlimited updates." },
-      { "question": "Will my website help me show up on Google?", "answer": "Yes. Every site is built with SEO foundations: fast loading, clean page structure, metadata, Search Console and a Google Maps listing. Growth adds on-page SEO, blog posts and Google Business Profile management." }
+      {
+        "question": "Do you use templates or page builders?",
+        "answer": "No. Every site is designed for your business and built with clean, lightweight code, which keeps it fast and easy for Google to understand."
+      },
+      {
+        "question": "Can I update the website myself?",
+        "answer": "You can, but you do not have to. Send changes by WhatsApp or email and we make them for you. Starter includes 10 updates a month and Growth includes unlimited updates."
+      },
+      {
+        "question": "Will my website help me show up on Google?",
+        "answer": "Yes. Every site is built with SEO foundations: fast loading, clean page structure, metadata, Search Console and a Google Maps listing. Growth adds on-page SEO, blog posts and Google Business Profile management."
+      }
     ]
   },
   "custom-software": {
@@ -47,9 +56,18 @@
       }
     ],
     "faqs": [
-      { "question": "What is a client portal?", "answer": "A private area of your website where each customer logs in to see their quotes, invoices, documents, bookings or project progress, instead of searching through emails." },
-      { "question": "Can you add a quote calculator to my website?", "answer": "Yes. We build instant quote calculators around how you price, such as by size, service or extras, and send each quote to your inbox or CRM." },
-      { "question": "Is a custom booking system better than Calendly?", "answer": "Not always. For simple appointments, Calendly or a similar app is often enough and we will tell you so. Custom booking is worth it when you need deposits, complex pricing, recurring visits or no marketplace commission." }
+      {
+        "question": "What is a client portal?",
+        "answer": "A private area of your website where each customer logs in to see their quotes, invoices, documents, bookings or project progress, instead of searching through emails."
+      },
+      {
+        "question": "Can you add a quote calculator to my website?",
+        "answer": "Yes. We build instant quote calculators around how you price, such as by size, service or extras, and send each quote to your inbox or CRM."
+      },
+      {
+        "question": "Is a custom booking system better than Calendly?",
+        "answer": "Not always. For simple appointments, Calendly or a similar app is often enough and we will tell you so. Custom booking is worth it when you need deposits, complex pricing, recurring visits or no marketplace commission."
+      }
     ]
   },
   "ai-solutions": {
@@ -77,9 +95,92 @@
       }
     ],
     "faqs": [
-      { "question": "How is an AI receptionist different from a chatbot?", "answer": "A basic chatbot follows fixed scripts. An AI receptionist understands questions written in everyday language, answers from your approved information, books appointments and hands off to your team when needed." },
-      { "question": "Can the AI receptionist book appointments?", "answer": "Yes. It can offer real available times from your calendar and book, or collect booking requests for your team to confirm if your system does not allow direct booking." },
-      { "question": "Can I try an AI receptionist before buying?", "answer": "Yes. Ava, the assistant on this website, uses the same technology. Ask it a few questions, then we can show you a version trained on your business." }
+      {
+        "question": "How is an AI receptionist different from a chatbot?",
+        "answer": "A basic chatbot follows fixed scripts. An AI receptionist understands questions written in everyday language, answers from your approved information, books appointments and hands off to your team when needed."
+      },
+      {
+        "question": "Can the AI receptionist book appointments?",
+        "answer": "Yes. It can offer real available times from your calendar and book, or collect booking requests for your team to confirm if your system does not allow direct booking."
+      },
+      {
+        "question": "Can I try an AI receptionist before buying?",
+        "answer": "Yes. Ava, the assistant on this website, uses the same technology. Ask it a few questions, then we can show you a version trained on your business."
+      }
+    ]
+  },
+  "seo": {
+    "sectionsHeading": "Local SEO services for small business, explained",
+    "sections": [
+      {
+        "heading": "How we get you into the Google map pack",
+        "body": "Google ranks local businesses on three things: relevance, distance and prominence. We cannot move your premises, so we work on everything else. That starts with your Google Business Profile: the right primary and secondary categories, every service listed, accurate hours and service areas, and fresh photos. Then we build prominence through reviews, consistent listings across directories and links from relevant local and industry websites.\n\nAt the same time we make sure your website backs up your profile, with your name, address or service area and phone number shown consistently, LocalBusiness structured data and pages that match what people search for. Our guide on [how to rank on Google Maps](/blog/how-to-rank-in-the-google-map-pack-local-3-pack) explains each step in detail."
+      },
+      {
+        "heading": "Service and service-area pages that rank",
+        "body": "Most local searches combine a service and a place, such as \"emergency plumber Leeds\" or \"teeth whitening Austin\". A single homepage cannot rank for all of them. We create a dedicated page for each main service and for the key towns or neighbourhoods you cover, each with genuinely useful local detail: the areas you serve, typical jobs, prices or price ranges, reviews from customers nearby and answers to local questions.\n\nWe never publish thin copies with the town name swapped. Pages like that rarely rank and can drag the whole site down."
+      },
+      {
+        "heading": "Reviews, content and links",
+        "body": "Reviews are one of the strongest local ranking signals and the main reason customers pick one business in the map pack over another. We set up a simple review request after every job and help you reply to every review.\n\nOn Growth we also publish two search-optimised blog posts a month, answering the questions your customers type into Google, and build links from local directories, suppliers, associations and community sites. Scale adds a custom SEO strategy for more competitive markets."
+      },
+      {
+        "heading": "Monthly reporting you can understand",
+        "body": "Every month you see what changed and what it brought in: where you rank for your main searches, how many people found your Google Business Profile, calls and direction requests, website visits from Google and the enquiries they produced. Growth and Scale clients also get a live dashboard with leads and traffic, so you never have to guess whether SEO is working."
+      },
+      {
+        "heading": "Local SEO for plumbers, HVAC companies and dentists",
+        "body": "For plumbers and HVAC contractors, the money is in urgent searches like \"boiler repair near me\" or \"AC not cooling\", so we focus on the map pack, click-to-call and service-area pages for every town you cover. See our [contractor websites](/solutions/home-services).\n\nFor dentists and clinics, patients compare reviews, treatments and availability, so we build treatment pages, highlight reviews and make online booking easy to find. See our [clinic websites](/solutions/clinics). The same approach works for cleaners, salons, detailers and other local service businesses."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What is included in local SEO services?",
+        "answer": "Google Business Profile optimisation, service and service-area pages, on-page SEO, citations and directory listings, review requests, local links, content and monthly reporting. The exact mix depends on your plan and market."
+      },
+      {
+        "question": "Do I need a website for local SEO?",
+        "answer": "You can appear on Google Maps with only a Business Profile, but a fast website with service and location pages makes it much easier to rank and gives Google more reasons to trust you."
+      },
+      {
+        "question": "Can you do local SEO for several locations?",
+        "answer": "Yes. Each location gets its own Business Profile and location page, with consistent details. Multi-location SEO is usually scoped on our Scale plan."
+      }
+    ]
+  },
+  "local-listings": {
+    "sectionsHeading": "Google Business Profile management services, explained",
+    "sections": [
+      {
+        "heading": "What we manage every month",
+        "body": "Your Google Business Profile is often the first thing a local customer sees, before your website. We keep it accurate and active: updating hours and holiday hours, adding services and photos, publishing posts and offers, replying to reviews, watching for unwanted edits from the public and fixing problems such as duplicate listings or suspensions.\n\nWe also keep your details consistent on Apple Maps, Bing Places and, on Growth and Scale, 20+ relevant directories, because mismatched names, addresses or phone numbers weaken your rankings."
+      },
+      {
+        "heading": "Our Google Business Profile optimisation checklist",
+        "body": "Every profile we manage is checked against the same list: verified ownership; the most specific primary category plus relevant secondary categories; real business name with no keyword stuffing; correct address or hidden address with accurate service areas; every service listed with a description; opening hours and special hours; attributes such as online appointments or accessibility; a clear description; recent, genuine photos of your team, premises and work; a booking or website link; and a steady flow of reviews with replies.\n\nIf your business is missing from Maps altogether, start with [why your business is not showing on Google Maps](/blog/why-your-business-isn-t-showing-up-on-google-maps)."
+      },
+      {
+        "heading": "A review engine that runs itself",
+        "body": "Most happy customers will leave a review if you ask at the right moment and make it easy. We set up a short review link and an automatic request after each job or appointment, by text, email or WhatsApp, with a gentle reminder if they forget. You reply to reviews in seconds using suggested responses, or we handle replies for you.\n\nWe never buy reviews or offer rewards for them, which breaks Google's policies. Read more in [how to get more Google reviews without begging](/blog/how-to-get-more-google-reviews-without-begging)."
+      },
+      {
+        "heading": "Google Business Profile management cost",
+        "body": "A Google Maps and Apple Maps listing is included on every plan from $199 a month. Ongoing Google Business Profile management, listings on 20+ directories and review requests are included on Growth at $399 a month, together with your website, on-page SEO and two blog posts a month. Agencies that sell profile management on its own often charge $100 to $500 a month for similar work.\n\nCompare plans on the [pricing page](/pricing), or pair it with our [local SEO services](/services/seo) to rank in more areas."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much does Google Business Profile management cost?",
+        "answer": "Profile management, directory listings and review requests are included in our Growth plan at $399 a month, together with your website, hosting and on-page SEO. A basic Maps listing is included on every plan from $199."
+      },
+      {
+        "question": "Can you fix a suspended Google Business Profile?",
+        "answer": "Often, yes. We find what broke Google's guidelines, correct it and submit a reinstatement request with the right evidence. Google makes the final decision, so we cannot guarantee reinstatement."
+      },
+      {
+        "question": "Do I keep ownership of my Business Profile?",
+        "answer": "Yes. The profile stays in your name and Google account. We are added as a manager, so you can remove our access at any time."
+      }
     ]
   }
 }
