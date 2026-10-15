@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.resolve(__dirname, '..');
 const appDir = path.join(root, 'public', 'velaris-design-system', 'ui_kits', 'web-app');
 const ORIGIN = 'https://velarisweb.com';
-const V = '20261014-p2';
+const V = '20261015-s1';
 const WA = 'https://wa.me/8801989570693';
 const SHARE_IMAGE = `${ORIGIN}/velaris-design-system/assets/og-velaris.png`;
 const LOGO = `${ORIGIN}/velaris-design-system/assets/velaris-icon.png`;
@@ -583,7 +583,7 @@ function websiteSubscriptionPage(cases) {
     { question: 'What is a web design subscription?', answer: 'A web design subscription replaces the big upfront cost of a website with one monthly fee. The fee covers the custom design and build, hosting, security, backups, content updates and support, so your website keeps improving instead of going out of date.' },
     { question: 'What is website as a service?', answer: 'Website as a service is another name for the same model: you pay monthly for a website that is built, hosted and maintained for you, rather than buying it once and looking after it yourself.' },
     { question: 'How much does a web design subscription cost?', answer: 'Our plans are $199, $399 and from $699 a month. Starter covers a custom website up to 5 pages; Growth adds booking, unlimited updates and SEO; Scale adds custom software and AI. There is no setup fee.' },
-    { question: 'Who owns the website and domain?', answer: 'Your domain is registered in your name, and your business name, logo, content and data are always yours. What happens to the website itself if you cancel, including any option to transfer or buy it out, is agreed with you in writing before work starts.' },
+    { question: 'Who owns the website and domain?', answer: 'Your domain is registered in your name, and your business name, logo, content and data are always yours. If you cancel, we send you all your website files so you can host and manage the site yourself or with another provider.' },
     { question: 'Can I cancel my subscription?', answer: "Yes. Plans are month-to-month and you can cancel anytime with 30 days' notice by email or WhatsApp. There is no long contract." },
     { question: 'Is a subscription cheaper than a one-off website?', answer: 'In the first year, almost always: you pay nothing upfront. Over three years the total is similar to a mid-priced agency build plus hosting and maintenance, but the subscription includes updates, fixes and SEO work that a one-off build charges for separately.' },
     { question: 'How long does it take to launch?', answer: 'You see a working preview within 5 business days of our kick-off call. Most sites go live within two to three weeks, depending on how quickly content and feedback come back.' },
@@ -637,7 +637,7 @@ function websiteSubscriptionPage(cases) {
 
 <section class="v-section soft">
   ${storyRows([
-    ['Who owns the website?', "<p>Your domain is registered in your name, and your business name, logo, content and data always belong to you. What happens to the website itself if you leave, including any option to transfer or buy it out, is written into your proposal before work starts, so there are no surprises. If you would rather own everything outright from day one, we also build <a href=\"/pricing#custom\">one-off website projects</a>.</p>"],
+    ['Who owns the website?', "<p>Your domain is registered in your name, and your business name, logo, content and data always belong to you. If you leave, we send you all your website files, so you can host and manage the site yourself or with another provider. No surprises. If you would rather own everything outright from day one, we also build <a href=\"/pricing#custom\">one-off website projects</a>.</p>"],
     ['Cancelling', "<p>Every plan is month-to-month. You can cancel anytime with 30 days' notice by email or WhatsApp, with no exit fee. Most clients stay because the website keeps bringing in work, not because they are locked in.</p>"],
     ['Is a subscription right for you?', `<p>A web design subscription suits service businesses that want a professional website without a large upfront bill, and want someone to keep it fast, secure and up to date. If you only need a simple page you will never change, a DIY builder may be enough. Read <a href="/blog/website-cost-per-month-small-business">how much a website costs per month for a small business</a> and our honest comparison of a <a href="/blog/web-design-subscription-vs-one-time">web design subscription vs a one-time payment</a>, or see five <a href="/blog/website-as-a-service">website as a service examples</a>. If you are in the UK, see our <a href="/pay-monthly-website">pay monthly websites for UK small businesses</a>. Compare every plan on our <a href="/pricing">small business web design packages</a> page, or see which system fits <a href="/solutions">your industry</a>.</p>`],
   ])}
@@ -659,7 +659,7 @@ function payMonthlyPage(cases) {
     { question: 'Why are your prices in US dollars?', answer: 'We work with small businesses in the UK, US and Canada and bill every client in US dollars by card or bank transfer. The pound amount you pay moves slightly with the exchange rate, and your bank may add a small conversion fee.' },
     { question: 'Do your prices include VAT?', answer: 'No VAT is added to our invoices. If your business is VAT-registered, ask your accountant whether you need to account for VAT under the reverse charge.' },
     { question: 'Is there a minimum contract?', answer: "No. Plans are month-to-month and you can cancel anytime with 30 days' notice. There are no 12 or 24-month tie-ins." },
-    { question: 'Who owns my domain and content?', answer: 'Your domain, whether .co.uk or .com, is registered in your name, and your logo, content and customer data are always yours. What happens to the website itself if you cancel, including transfer or buy-out options, is agreed in writing before we start.' },
+    { question: 'Who owns my domain and content?', answer: 'Your domain, whether .co.uk or .com, is registered in your name, and your logo, content and customer data are always yours. If you cancel, we send you all your website files to host and manage yourself or with another provider.' },
     { question: 'Can you help my business show up on Google Maps?', answer: 'Yes. Every plan includes Google Maps and Apple Maps listings, and Growth includes ongoing Google Business Profile management to help you appear in local searches in your town.' },
     { question: 'Pay monthly or a one-off website: which is better?', answer: 'Pay monthly is better if you want no upfront cost and someone to keep the site updated and secure. A one-off build suits businesses that want to own everything outright and are happy to manage hosting and changes themselves. We offer both.' },
     { question: 'How quickly can my website go live?', answer: 'You see a working preview within 5 business days of our first call, and most sites launch within two to three weeks.' },
@@ -683,7 +683,7 @@ function payMonthlyPage(cases) {
       <div class="v-feat"><h3>Bespoke design</h3><p>Designed around your business and customers. No off-the-shelf templates.</p></div>
       <div class="v-feat"><h3>Hosting &amp; security</h3><p>Fast hosting, SSL certificate, daily backups and security monitoring.</p></div>
       <div class="v-feat"><h3>Your .co.uk domain</h3><p>Registered in your name and connected for you, with a business email address.</p></div>
-      <div class="v-feat"><h3>Changes when you need them</h3><p>Send updates by WhatsApp or email. No invoice for every small change.</p></div>
+      <div class="v-feat"><h3>UK-hours support</h3><p>Send changes by WhatsApp or email and get replies during UK business hours, 9am to 5pm. No invoice for every small change.</p></div>
       <div class="v-feat"><h3>Local SEO</h3><p>Set up to rank in your town, with Google Maps and Apple Maps listings.</p></div>
       <div class="v-feat"><h3>Enquiry capture</h3><p>Quote forms, WhatsApp and click-to-call on every page, so visitors get in touch.</p></div>
       <div class="v-feat"><h3>Online booking</h3><p>Bookings with automatic reminders on the Growth plan, so fewer no-shows.</p></div>
@@ -716,8 +716,8 @@ function payMonthlyPage(cases) {
 
 <section class="v-section soft">
   ${storyRows([
-    ['Built for UK customers', '<p>We write your website in UK English, with pound prices, local phone numbers and the towns you cover, so it reads like a local business, because it is one. Service-area pages help you show up for searches like &ldquo;plumber in Leeds&rdquo; or &ldquo;cleaner near me&rdquo;, and your Google Business Profile is set up to match.</p>'],
-    ['Ownership and leaving', "<p>Your domain is registered in your name and your content is always yours. Plans run month to month with 30 days' notice to cancel, and what happens to the website itself if you leave is agreed in writing before we start. If you prefer to buy a website outright, we build <a href=\"/pricing#custom\">one-off projects</a> too.</p>"],
+    ['Built for UK customers', '<p>We write your website in UK English, with pound prices, local phone numbers and the towns you cover, so it reads like a local business, because it is one. We work UK business hours for UK clients, 9am to 5pm, so questions and changes get answered the same day. Service-area pages help you show up for searches like &ldquo;plumber in Leeds&rdquo; or &ldquo;cleaner near me&rdquo;, and your Google Business Profile is set up to match.</p>'],
+    ['Ownership and leaving', "<p>Your domain is registered in your name and your content is always yours. Plans run month to month with 30 days' notice to cancel, and if you leave, we send you all your website files to host and manage yourself or with another provider. If you prefer to buy a website outright, we build <a href=\"/pricing#custom\">one-off projects</a> too.</p>"],
     ['Not in the UK?', '<p>See our <a href="/website-subscription">web design subscription</a> page for US and Canadian businesses, compare <a href="/pricing">all plans and features</a>, or find the system built for <a href="/solutions">your industry</a>.</p><p>Still weighing it up? Read <a href="/blog/website-cost-per-month-small-business">how much a website costs per month</a> and <a href="/blog/web-design-subscription-vs-one-time">pay monthly vs a one-off payment</a>.</p>'],
   ])}
 </section>

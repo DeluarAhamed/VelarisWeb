@@ -783,7 +783,16 @@
     }, 4000);
   }
 
-  LIBS.reduce(function(p, src){ return p.then(function(){ return load(src); }); }, Promise.resolve())
+  // Motion is decoration: fetch the libraries only after the page has loaded and the browser is idle,
+  // so they never compete with the content for bandwidth or main-thread time (LCP/TBT).
+  function afterLoad(){
+    return new Promise(function(ok){
+      var go = function(){ (window.requestIdleCallback || function(f){ setTimeout(f, 200); })(ok, {timeout: 2500}); };
+      document.readyState === 'complete' ? go() : window.addEventListener('load', go, {once: true});
+    });
+  }
+
+  afterLoad().then(function(){ return LIBS.reduce(function(p, src){ return p.then(function(){ return load(src); }); }, Promise.resolve()); })
     .then(ready)
     .then(function(){
       var gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;

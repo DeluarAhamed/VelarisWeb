@@ -55,6 +55,9 @@ h1,h2,h3,h4{margin:0;font-family:var(--font-ui);font-weight:700;letter-spacing:-
 /* nav hides on scroll down, returns on scroll up (site.js onScroll).
    #site-nav must not box the header, or sticky only works within its 107px. */
 #site-nav{display:contents}
+/* Reserve the injected topbar + header height so content does not jump (CLS) before site.js fills it. */
+#site-nav:empty{display:block;height:119px}
+@media (max-width:680px){#site-nav:empty{height:107px}}
 header.nav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);
   transition:box-shadow .3s,transform .35s var(--ease)}
 header.nav.hide{transform:translateY(-100%)}
