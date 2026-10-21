@@ -1,0 +1,348 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><title>AI Receptionist Call Demo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a phone call on the left plays out line by line; what the owner receives builds up on the right. */
+  :root{
+    --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#E9EDF2; --ink:#142030; --muted:#5A6878; --line:rgba(20,32,48,.12);
+    --ai:#2457D6; --ai-ink:#FFFFFF; --caller:#E3E8EF; --caller-ink:#142030;
+    --amber:#E3A21A; --amber-ink:#7A5200; --ok:#1F8A55;
+    --display:'Archivo', 'Arial Narrow', system-ui, sans-serif; --body:'Public Sans', system-ui, sans-serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#0E1520; --surface:#162131; --surface-2:#1E2B3D; --ink:#E7ECF2; --muted:#9AA8B8; --line:rgba(231,236,242,.12);
+    --ai:#4D7EF5; --ai-ink:#FFFFFF; --caller:#24334A; --caller-ink:#E7ECF2; --amber:#F2B73E; --amber-ink:#F2B73E; --ok:#3CC283; color-scheme:dark } }
+  :root[data-theme="dark"]{
+    --bg:#0E1520; --surface:#162131; --surface-2:#1E2B3D; --ink:#E7ECF2; --muted:#9AA8B8; --line:rgba(231,236,242,.12);
+    --ai:#4D7EF5; --ai-ink:#FFFFFF; --caller:#24334A; --caller-ink:#E7ECF2; --amber:#F2B73E; --amber-ink:#F2B73E; --ok:#3CC283; color-scheme:dark }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;
+    padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 48px}
+  .wrap{max-width:1120px;margin:0 auto;display:grid;gap:28px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-ink);display:flex;align-items:center;gap:8px}
+  .eyebrow::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--amber);transform:rotate(45deg)}
+  h1{font-family:var(--display);font-weight:800;font-stretch:112%;font-size:clamp(30px,4.6vw,50px);line-height:1.04;letter-spacing:-.02em;margin:10px 0 10px;text-wrap:balance;max-width:20ch}
+  .lede{color:var(--muted);font-size:17px;max-width:60ch;margin:0}
+  .note{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:10px}
+  .tab{font:600 14.5px var(--body);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}
+  .tab .t{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .tab[aria-selected="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+  .tab[aria-selected="true"] .t{color:var(--bg);opacity:.75}
+  .tab:focus-visible,.play:focus-visible,.mute:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+  .grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:22px;align-items:start}
+
+  /* call card */
+  .call{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;min-width:0}
+  .callhead{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;flex:none}
+  .who{min-width:0;flex:1}
+  .who b{display:block;font-size:16px}
+  .who span{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .status{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+  .live .dot{background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+  .controls{display:flex;gap:10px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .play{font:700 15px var(--body);background:var(--amber);color:#1A1200;border:0;border-radius:999px;padding:12px 20px;cursor:pointer;display:flex;gap:9px;align-items:center}
+  .play:hover{filter:brightness(1.05)}
+  .mute{font:600 14px var(--body);background:transparent;color:var(--ink);border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;cursor:pointer}
+  .wave{display:flex;gap:3px;align-items:center;height:26px;margin-left:auto}
+  .wave i{width:3px;height:6px;border-radius:2px;background:var(--line);transition:height .12s}
+  .speaking .wave i{background:var(--ai)}
+  .speaking.caller-speaking .wave i{background:var(--muted)}
+  .transcript{list-style:none;margin:0;padding:18px 20px 22px;display:grid;gap:10px}
+  .msg{display:grid;gap:3px;max-width:86%;animation:in .35s ease both}
+  .msg .lab{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+  .msg p{margin:0;padding:11px 14px;border-radius:16px;font-size:15.5px}
+  .msg.ai{justify-self:start}
+  .msg.ai p{background:var(--ai);color:var(--ai-ink);border-bottom-left-radius:5px}
+  .msg.caller{justify-self:end;text-align:left}
+  .msg.caller .lab{text-align:right}
+  .msg.caller p{background:var(--caller);color:var(--caller-ink);border-bottom-right-radius:5px}
+  .msg.now p{box-shadow:0 0 0 3px color-mix(in srgb,var(--amber) 55%,transparent)}
+  @keyframes in{from{opacity:.0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.msg{animation:none}.live .dot{animation:none}}
+
+  /* owner side */
+  .side{display:grid;gap:16px;min-width:0}
+  .side h2{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:20px;margin:0}
+  .side .sub{color:var(--muted);font-size:14.5px;margin:2px 0 0}
+  .sms{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .sms .top{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+  .bubble{background:var(--surface-2);border-radius:16px;border-top-left-radius:5px;padding:12px 14px;font-size:15px}
+  .bubble b{display:block;margin-bottom:4px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:6px 0 0;font-size:14.5px}
+  .kv dt{color:var(--muted)}
+  .kv dd{margin:0;min-width:0}
+  .slot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center}
+  .day{border-radius:14px;overflow:hidden;text-align:center;border:1px solid var(--line)}
+  .day .m{background:var(--amber);color:#1A1200;font:700 12px var(--mono);padding:4px 0;letter-spacing:.08em}
+  .day .d{font-family:var(--display);font-weight:800;font-size:28px;padding:6px 0;font-variant-numeric:tabular-nums}
+  .slot b{display:block}
+  .slot span{color:var(--muted);font-size:14.5px}
+  .after{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:10px}
+  .after h3{margin:0;font-size:15px}
+  .step{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:14.5px;align-items:start}
+  .step svg{margin-top:2px}
+  .step em{font-style:normal;color:var(--muted)}
+  .pending{opacity:.45;transition:opacity .4s}
+  .pending.done{opacity:1}
+
+  .cta{background:var(--ink);color:var(--bg);border-radius:22px;padding:24px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+  .cta h2{font-family:var(--display);font-stretch:112%;font-weight:800;font-size:clamp(22px,2.6vw,28px);margin:0 0 4px;text-wrap:balance}
+  .cta p{margin:0;opacity:.8;max-width:52ch}
+  .cta .contact{font-family:var(--mono);font-size:14px;background:color-mix(in srgb,var(--bg) 12%,transparent);border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);border-radius:12px;padding:12px 14px;user-select:all}
+  footer{font-size:13px;color:var(--muted);text-align:center}
+
+  @media (max-width:860px){ .grid{grid-template-columns:1fr} .msg{max-width:94%} }
+</style></head><body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">AI receptionist demo</div>
+    <h1>Hear it answer a call your team would have missed.</h1>
+    <p class="lede">Press play to hear a sample call to a Houston electrician, then see exactly what the owner gets the moment it ends: a text with every detail and a job already on the calendar.</p>
+    <p class="note">Sample business and sample caller. This is a scripted recreation of how the AI receptionist handles the call.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Sample calls">
+    <button class="tab" role="tab" id="tab-night" aria-selected="true" data-s="night"><span>Storm outage, after hours</span><span class="t">9:42 PM</span></button>
+    <button class="tab" role="tab" id="tab-day" aria-selected="false" data-s="day"><span>EV charger, crew on a job</span><span class="t">1:15 PM</span></button>
+  </div>
+
+  <div class="grid">
+    <section class="call" id="call" aria-label="Call">
+      <div class="callhead">
+        <div class="avatar" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
+        </div>
+        <div class="who"><b>Sample Electric Co.</b><span id="lineinfo">Incoming call · (713) 555-0182</span></div>
+        <div class="status" id="status"><span class="dot"></span><span id="statustext">Ready</span></div>
+      </div>
+      <div class="controls">
+        <button class="play" id="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><span id="playlabel">Play the call</span></button>
+        <button class="mute" id="mute" aria-pressed="false">Sound on</button>
+        <div class="wave" aria-hidden="true" id="wave"></div>
+      </div>
+      <ol class="transcript" id="transcript" aria-live="polite"></ol>
+    </section>
+
+    <aside class="side" aria-label="What the owner receives">
+      <div>
+        <h2>What the owner gets</h2>
+        <p class="sub">Sent automatically when the call ends.</p>
+      </div>
+      <div class="sms pending" id="sms">
+        <div class="top"><span>Text message to owner</span><span id="smstime">9:46 PM</span></div>
+        <div class="bubble" id="smsbody"></div>
+      </div>
+      <div class="slot pending" id="slot">
+        <div class="day"><div class="m" id="mon">FRI</div><div class="d" id="dnum">24</div></div>
+        <div><b id="slottitle"></b><span id="slotsub"></span></div>
+      </div>
+      <div class="after pending" id="after">
+        <h3>Then, without anyone lifting a finger</h3>
+        <div class="step"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>The customer gets a text confirming the appointment.</span></div>
+        <div class="step"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>The call recording and summary are saved to the customer's record.</span></div>
+        <div class="step"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>After the job, they get a text asking for a Google review. <em>(AI Front Desk plan)</em></span></div>
+      </div>
+    </aside>
+  </div>
+
+  <section class="cta">
+    <div>
+      <h2>Want this answering your phone?</h2>
+      <p>Set up with your business name, services, hours and calendar. No setup fee, no contract.</p>
+    </div>
+    <div class="contact">Deluar Ahamed · VelarisWeb<br>ahamed.deluar22@gmail.com</div>
+  </section>
+  <footer>Demo by VelarisWeb. Sample Electric Co. is a made-up business; the caller, the address and the phone numbers are fictional.</footer>
+</div>
+
+<script>
+const SCENES = {
+  night: {
+    line: "Incoming call · (281) 555-0147 · 9:42 PM",
+    smsTime: "9:46 PM", mon: "FRI", day: "24",
+    slotTitle: "Generator repair · Fri 8:00 AM",
+    slotSub: "Booked by the AI receptionist at 9:45 PM",
+    sms: { title: "New booking: generator won't start", rows: [["Customer","Mark Ellis"],["Phone","(281) 555-0147"],["Address","2214 Willow Bend Dr, Katy"],["Type","Residential"],["When","Tomorrow, 8:00 AM"],["Notes","Power flickered in the storm. House is safe overnight, no medical equipment."]] },
+    lines: [
+      ["ai","Thanks for calling Sample Electric Co., this is the after-hours assistant. How can I help you tonight?"],
+      ["caller","Hi. Our power flickered during the storm and now our generator won't start."],
+      ["ai","I'm sorry to hear that. First, is everyone safe tonight, and is anyone relying on medical equipment?"],
+      ["caller","We're fine, just no backup power."],
+      ["ai","Good. Is this for your home or a business?"],
+      ["caller","Our home, in Katy."],
+      ["ai","Thanks. What's the street address?"],
+      ["caller","2214 Willow Bend Drive."],
+      ["ai","I can have an electrician out tomorrow at 8 AM or 10:30 AM. Which works better?"],
+      ["caller","8 AM, please."],
+      ["ai","You're booked for 8 AM tomorrow. Can I get your name and the best number to text?"],
+      ["caller","Mark Ellis. 281 555 0147."],
+      ["ai","Thank you, Mark. You'll get a text confirmation now, and the electrician will call before arriving. Is there anything else?"],
+      ["caller","No, that's it. Thank you!"]
+    ]
+  },
+  day: {
+    line: "Incoming call · (832) 555-0129 · 1:15 PM",
+    smsTime: "1:18 PM", mon: "FRI", day: "24",
+    slotTitle: "EV charger estimate · Fri 2:00 PM",
+    slotSub: "Booked by the AI receptionist at 1:17 PM",
+    sms: { title: "New booking: EV charger install estimate", rows: [["Customer","Priya Shah"],["Phone","(832) 555-0129"],["Address","5810 Cedar Ridge Ln, Sugar Land"],["Type","Residential"],["When","Friday, 2:00 PM"],["Notes","Has a Level 2 charger already. Panel is in the garage."]] },
+    lines: [
+      ["ai","Thanks for calling Sample Electric Co. Our team is out on jobs right now, but I can help you. What do you need?"],
+      ["caller","I just bought an electric car and I need a charger installed in my garage."],
+      ["ai","Congratulations on the new car. Do you already have the charger, or would you like us to supply one?"],
+      ["caller","I already have a Level 2 charger."],
+      ["ai","Perfect. Is your electrical panel in the garage, or somewhere else in the house?"],
+      ["caller","It's in the garage."],
+      ["ai","That usually keeps the install simple. I can book an estimate visit. Would Thursday at 9 AM or Friday at 2 PM work?"],
+      ["caller","Friday at 2 works."],
+      ["ai","Great. What's your name and the address?"],
+      ["caller","Priya Shah, 5810 Cedar Ridge Lane, Sugar Land."],
+      ["ai","Thanks, Priya. You're booked for Friday at 2 PM, and I'll text you a confirmation right now."],
+      ["caller","Thank you!"]
+    ]
+  }
+};
+
+const $ = s => document.querySelector(s);
+const transcript = $("#transcript"), wave = $("#wave"), call = $("#call");
+for (let i = 0; i < 18; i++) wave.appendChild(document.createElement("i"));
+
+let scene = "night", playing = false, runId = 0, sound = true, waveTimer = null;
+const synth = ("speechSynthesis" in window) ? window.speechSynthesis : null;
+let voices = [];
+function loadVoices(){ try { voices = synth ? synth.getVoices().filter(v => /^en(-|_)?/i.test(v.lang)) : []; } catch { voices = []; } }
+if (synth) { loadVoices(); synth.onvoiceschanged = loadVoices; }
+function pickVoice(role){
+  if (!voices.length) return null;
+  const female = /(samantha|aria|jenny|zira|female|victoria|karen|moira|google us english)/i;
+  const male = /(daniel|guy|david|mark|alex|fred|male|google uk english male)/i;
+  const pref = role === "ai" ? female : male;
+  return voices.find(v => pref.test(v.name) && /en(-|_)US/i.test(v.lang)) || voices.find(v => pref.test(v.name)) ||
+         (role === "ai" ? voices[0] : voices[Math.min(1, voices.length - 1)]);
+}
+
+function renderOwner(final){
+  const s = SCENES[scene];
+  $("#lineinfo").textContent = s.line;
+  $("#smstime").textContent = s.smsTime;
+  $("#mon").textContent = s.mon; $("#dnum").textContent = s.day;
+  $("#slottitle").textContent = s.slotTitle; $("#slotsub").textContent = s.slotSub;
+  const b = $("#smsbody"); b.textContent = "";
+  const t = document.createElement("b"); t.textContent = s.sms.title; b.appendChild(t);
+  const dl = document.createElement("dl"); dl.className = "kv";
+  for (const [k, v] of s.sms.rows){ const dt = document.createElement("dt"); dt.textContent = k; const dd = document.createElement("dd"); dd.textContent = v; dl.append(dt, dd); }
+  b.appendChild(dl);
+  for (const id of ["#sms","#slot","#after"]) $(id).classList.toggle("done", !!final);
+}
+
+function addLine([who, text], now){
+  const li = document.createElement("li");
+  li.className = "msg " + who + (now ? " now" : "");
+  const lab = document.createElement("span"); lab.className = "lab";
+  lab.textContent = who === "ai" ? "AI receptionist" : "Caller";
+  const p = document.createElement("p"); p.textContent = text;
+  li.append(lab, p); transcript.appendChild(li);
+  return li;
+}
+
+function showAll(){
+  transcript.textContent = "";
+  for (const l of SCENES[scene].lines) addLine(l, false);
+  renderOwner(true);
+  setStatus("Call ended · 3:41", false);
+}
+
+function setStatus(text, live){
+  $("#statustext").textContent = text;
+  $("#status").classList.toggle("live", live);
+}
+
+function animateWave(on, who){
+  call.classList.toggle("speaking", on);
+  call.classList.toggle("caller-speaking", on && who === "caller");
+  clearInterval(waveTimer);
+  const bars = [...wave.children];
+  if (!on || matchMedia("(prefers-reduced-motion: reduce)").matches){ bars.forEach(b => b.style.height = "6px"); return; }
+  waveTimer = setInterval(() => bars.forEach(b => b.style.height = (6 + Math.random() * 20) + "px"), 120);
+}
+
+function speak(who, text, myRun){
+  return new Promise(resolve => {
+    const fallbackMs = Math.max(1400, text.length * 58);
+    if (!sound || !synth){ setTimeout(resolve, fallbackMs); return; }
+    let done = false;
+    const finish = () => { if (!done){ done = true; resolve(); } };
+    try {
+      const u = new SpeechSynthesisUtterance(text);
+      const v = pickVoice(who); if (v) u.voice = v;
+      u.rate = who === "ai" ? 1.02 : 1.06;
+      u.pitch = who === "ai" ? 1.08 : 0.88;
+      u.onend = finish; u.onerror = finish;
+      synth.speak(u);
+      setTimeout(finish, fallbackMs * 2.2 + 1500);   // safety net if a browser never fires onend
+    } catch { setTimeout(finish, fallbackMs); }
+  });
+}
+
+async function play(){
+  const myRun = ++runId;
+  playing = true;
+  $("#playlabel").textContent = "Stop";
+  if (synth) synth.cancel();
+  transcript.textContent = "";
+  renderOwner(false);
+  setStatus("Connected · Sample Electric Co.", true);
+  for (const line of SCENES[scene].lines){
+    if (myRun !== runId) return;
+    transcript.querySelectorAll(".now").forEach(n => n.classList.remove("now"));
+    const li = addLine(line, true);
+    li.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    animateWave(true, line[0]);
+    await speak(line[0], line[1], myRun);
+    animateWave(false);
+    await new Promise(r => setTimeout(r, 280));
+  }
+  if (myRun !== runId) return;
+  transcript.querySelectorAll(".now").forEach(n => n.classList.remove("now"));
+  setStatus("Call ended · booking sent", false);
+  for (const [i, id] of ["#sms","#slot","#after"].entries()) setTimeout(() => $(id).classList.add("done"), 350 * (i + 1));
+  playing = false;
+  $("#playlabel").textContent = "Play again";
+}
+
+function stop(){
+  runId++; playing = false;
+  if (synth) synth.cancel();
+  animateWave(false);
+  showAll();
+  $("#playlabel").textContent = "Play the call";
+}
+
+$("#play").addEventListener("click", () => playing ? stop() : play());
+$("#mute").addEventListener("click", e => {
+  sound = !sound;
+  e.currentTarget.textContent = sound ? "Sound on" : "Sound off";
+  e.currentTarget.setAttribute("aria-pressed", String(!sound));
+  if (!sound && synth) synth.cancel();
+});
+if (!synth){ $("#mute").textContent = "Text only"; $("#mute").disabled = true; sound = false; }
+
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", String(x === t)));
+  scene = t.dataset.s;
+  stop();
+}));
+
+showAll();
+</script>
+</body></html>
